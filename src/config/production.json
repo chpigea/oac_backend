@@ -1,0 +1,4 @@
+{
+	"protocol": "http",
+	"url_register": "http://localhost:4001/services"
+}
