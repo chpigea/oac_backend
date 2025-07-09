@@ -1,4 +1,7 @@
 {
 	"protocol": "http",
-	"url_register": "http://localhost:4001/services"
+	"url_register": "http://localhost:4001/services",
+	"port_range": {
+		"min": 5000, "max": 6000
+	}
 }
