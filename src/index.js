@@ -7,28 +7,33 @@ const serviceName = "backend"
 const app = express();
 app.use(express.json());
 
+let newPort = null
+
+const register = async function(){
+    try {
+        await axios.post(config.url_register, {
+            name: serviceName,
+            host: "localhost",
+            port: newPort
+        });
+        console.log(`Registered ${serviceName}`)
+    } catch (err) {
+        console.error(`Failed to register ${serviceName}: ${err.message}`);
+        setTimeout(register, 10*1000)
+    }
+}
 
 getPort.default({ 
     port: getPort.portNumbers(config.port_range.min, config.port_range.max) }
-).then((newPort)=>{
-    
-    const healthRouter = require('./controllers/health.js');
-    app.use('/health', healthRouter);
+).then((port)=>{
+    newPort = port
+    const healthRouter = require('./controllers/health.js')
+    app.use(`/${serviceName}/health`, healthRouter)
 
-    app.listen(newPort, async () => {
-        console.log(`${serviceName} listening on port ${newPort}`);
-        try {
-            await axios.post(config.url_register, {
-                name: serviceName,
-                host: "localhost",
-                port: newPort
-            });
-            console.log(`Registered ${serviceName}`);
-        } catch (err) {
-            console.error(`Failed to register ${serviceName}: ${err.message}`);
-        }
+    app.listen(port, async () => {
+        console.log(`${serviceName} listening on port ${port}`)
+        await register()
     });
-
 
 })
 
