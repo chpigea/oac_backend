@@ -11,5 +11,6 @@
 		"password": "postgres",
 		"database": "oac",
 		"schema": "public"
-	}
+	},
+	"jwt_secret": "@igea#"
 }

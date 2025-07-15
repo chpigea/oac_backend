@@ -2,10 +2,23 @@ const config = require('./config.js');
 const express = require("express");
 const axios = require("axios");
 const getPort = require('get-port');
+const cookieParser = require('cookie-parser');
 const serviceName = "backend"
+const jwtLibFactory = require('@igea/oac_jwt_helpers')
+const jwtLib = jwtLibFactory({
+    secret: process.env.JWT_SECRET || config.jwt_secret,
+    excludePaths: [
+        `/${serviceName}/auth/authenticate`,
+        `/${serviceName}/auth/echo`,
+        `/${serviceName}/health`
+    ],
+    signOptions: { expiresIn: '1h' }
+});
 
 const app = express();
+app.use(cookieParser());
 app.use(express.json());
+app.use(jwtLib.middleware);
 
 let newPort = null
 
@@ -31,7 +44,7 @@ getPort.default({
     const healthRouter = require('./controllers/health.js')
     app.use(`/${serviceName}/health`, healthRouter)
 
-    const authRouter = require('./controllers/auth.js')
+    const authRouter = require('./controllers/auth.js')(jwtLib)
     app.use(`/${serviceName}/auth`, authRouter)
 
     app.listen(port, async () => {
