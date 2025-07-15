@@ -27,8 +27,12 @@ getPort.default({
     port: getPort.portNumbers(config.port_range.min, config.port_range.max) }
 ).then((port)=>{
     newPort = port
+    
     const healthRouter = require('./controllers/health.js')
     app.use(`/${serviceName}/health`, healthRouter)
+
+    const authRouter = require('./controllers/auth.js')
+    app.use(`/${serviceName}/auth`, authRouter)
 
     app.listen(port, async () => {
         console.log(`${serviceName} listening on port ${port}`)
