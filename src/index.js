@@ -12,7 +12,7 @@ const jwtLib = jwtLibFactory({
         `/${serviceName}/auth/echo`,
         `/${serviceName}/health`
     ],
-    signOptions: { expiresIn: '1h' }
+    signOptions: { expiresIn: '15m' }
 });
 
 const app = express();
