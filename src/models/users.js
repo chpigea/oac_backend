@@ -34,23 +34,25 @@ class Users {
         });
     }
     
-    static get(options){
+    static find(id){
        return new Promise(async (resolve, reject) => {
             try{
                 let fields = '*'
-                if(options.id){
-                    const users = await db(table).select(fields);
-                    const safeUsers = users.map(({ password, ...rest }) => rest);
-                    resolve(safeUsers)
-                }else{
+                if(id){
+                    console.log("SINGLE USER: " + id)
                     const user = await db(table).select(fields)
-                        .where({ id: options.id }).first();
+                        .where({ id }).first();
                     if(user){
                         const { password, ...safeUser } = user;   
                         resolve(safeUser) 
                     }else{
                         resolve(null)
                     }
+                }else{
+                    console.log("ALLL USERS")
+                    const users = await db(table).select(fields);
+                    const safeUsers = users.map(({ password, ...rest }) => rest);
+                    resolve(safeUsers)
                 }
             }catch(e){
                 reject(e)

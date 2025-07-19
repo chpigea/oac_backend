@@ -5,7 +5,7 @@ const Users = require('../models/users');
 
 // Get all users
 router.get('/', async (req, res) => {
-    Users.get().then(users => {
+    Users.find(null).then(users => {
       res.json({
         success: true,
         data: users,
@@ -22,13 +22,11 @@ router.get('/', async (req, res) => {
 
 // Get user by ID
 router.get('/:id', async (req, res) => {
-  Users.get({
-    id: req.params.id
-  }).then(user => {
+  Users.find(req.params.id).then(user => {
       if(user){
         res.json({
           success: true,
-          data: users,
+          data: user,
           message: null
         });
       }else{
