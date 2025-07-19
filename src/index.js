@@ -47,6 +47,9 @@ getPort.default({
     const authRouter = require('./controllers/auth.js')(jwtLib)
     app.use(`/${serviceName}/auth`, authRouter)
 
+    const usersRouter = require('./controllers/users.js')
+    app.use(`/${serviceName}/users`, usersRouter)
+
     app.listen(port, async () => {
         console.log(`${serviceName} listening on port ${port}`)
         await register()
