@@ -1,7 +1,16 @@
 {
 	"protocol": "http",
-	"url_register": "http://localhost:4001/services",
+	"url_register": "http://localhost:4001/register",
 	"port_range": {
 		"min": 5000, "max": 6000
-	}
+	},
+	"database": {
+		"host": "127.0.0.1",
+		"port": "5432",
+		"user": "postgres",
+		"password": "postgres",
+		"database": "oac",
+		"schema": "public"
+	},
+	"jwt_secret": "@igea#"
 }
