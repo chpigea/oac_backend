@@ -11,7 +11,11 @@ const jwtLib = jwtLibFactory({
         `/${serviceName}/auth/authenticate`,
         `/${serviceName}/auth/echo`,
         `/${serviceName}/health`,
-        `/${serviceName}/fuseki/count/entities`
+        
+        `/${serviceName}/fuseki/count/entities`,
+        `/${serviceName}/fuseki/export/rdf/campione/1`,
+        `/${serviceName}/fuseki/export/turtle/campione/1`
+        
     ],
     signOptions: { expiresIn: '15m' }
 });

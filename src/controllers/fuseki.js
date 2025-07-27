@@ -9,6 +9,7 @@ const configFuseki = config.fuseki || {
 }
 const fusekiUrl = `${configFuseki.protocol}://${configFuseki.host}:${configFuseki.port}/${configFuseki.dataset}/sparql`;
 const axios = require('axios');
+const Fuseki = require('../models/fuseki');
 
 router.get('/count/entities', (req, res) => {
     const query = `
@@ -40,6 +41,51 @@ router.get('/count/entities', (req, res) => {
             data: results,
             message: null
         });
+    }).catch(err => {
+        res.status(500).json({
+            success: false,
+            data: null,
+            message: `Error: ${err}`
+        });
+    });
+    
+});
+
+router.get('/export/:format/:entity/:id', (req, res) => {
+    let accept = 'application/rdf+xml'
+    let filename = `${req.params.entity}_${req.params.id}`;
+    switch(req.params.format){
+        case 'turtle':
+            accept='text/turtle'
+            filename += ".ttl"
+            break;
+        case 'json':
+            accept='application/ld+json'
+            filename += ".jsonld"
+            break;
+        case 'n-triples':
+            accept='application/n-triples'
+            filename += ".nt"
+            break;
+        case 'trig':
+            accept='application/trig'
+            filename += ".trig"
+            break;
+        default:
+            filename += ".rdf"  
+    }
+    const uri = 'http://diagnostica/campione/1'
+    const query = Fuseki.getQueryDownload2(uri, 4)
+    axios.post(fusekiUrl, `query=${encodeURIComponent(query)}`,{
+        headers: {
+            'Accept': `${accept}`,
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        responseType: 'stream'
+    }).then(response => {
+        res.setHeader('Content-Disposition', `attachment; filename=${filename}`);
+        res.setHeader('Content-Type', response.headers['content-type'] || 'application/octet-stream');
+        response.data.pipe(res);
     }).catch(err => {
         res.status(500).json({
             success: false,
