@@ -12,5 +12,11 @@
 		"database": "oac",
 		"schema": "public"
 	},
+	"fuseki": {
+		"protocol": "http",
+		"host": "127.0.0.1",
+		"port": "3333",
+		"dataset": "oac"
+	},
 	"jwt_secret": "@igea#"
 }

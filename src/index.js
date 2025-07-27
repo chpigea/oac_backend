@@ -10,7 +10,8 @@ const jwtLib = jwtLibFactory({
     excludePaths: [
         `/${serviceName}/auth/authenticate`,
         `/${serviceName}/auth/echo`,
-        `/${serviceName}/health`
+        `/${serviceName}/health`,
+        `/${serviceName}/fuseki/count/entities`
     ],
     signOptions: { expiresIn: '15m' }
 });
@@ -49,6 +50,9 @@ getPort.default({
 
     const usersRouter = require('./controllers/users.js')
     app.use(`/${serviceName}/users`, usersRouter)
+
+    const fusekiRouter = require('./controllers/fuseki.js')
+    app.use(`/${serviceName}/fuseki`, fusekiRouter)
 
     app.listen(port, async () => {
         console.log(`${serviceName} listening on port ${port}`)
