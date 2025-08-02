@@ -1,0 +1,921 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vocabularies>
+
+    <!-- Prefissio per i vocabolari -->
+	<prefix value="diagnostica"/>
+	
+	<!-- Vocabolario per CONDIZIONI AMBIENTALI (1) -->
+    <vocabulary>
+        <term id="condizioni-ambientali">
+			<name lang="it">Condizioni ambientali</name>
+            <sub-terms>
+                <term id="ambiente">
+					<name lang="it">Ambiente</name>
+                    <sub-terms>
+                        <term id="buio">
+							<name lang="it">Buio</name>
+						</term>
+                        <term id="illuminato">
+							<name lang="it">Illuminato</name>
+						</term>
+                    </sub-terms>
+                </term>
+                <term id="illuminazione">
+					<name lang="it">Illuminazione</name>
+                    <sub-terms>
+                        <term id="diffusa">
+							<name lang="it">Diffusa</name>
+						</term>
+                        <term id="diretta">
+							<name lang="it">Diretta</name>
+						</term>
+                    </sub-terms>
+                </term>
+                <term id="presenza-umidita">
+					<name lang="it">Presenza di umidità</name>
+				</term>
+                <term id="temperature">
+					<name lang="it">Temperature</name>
+                    <sub-terms>
+                        <term id="alte">
+							<name lang="it">Alte</name>
+						</term>
+                        <term id="basse">
+							<name lang="it">Basse</name>
+						</term>
+                    </sub-terms>
+                </term>
+            </sub-terms>
+        </term>
+    </vocabulary>
+	
+    <!-- Vocabolario per CONTESTO (2) -->
+    <vocabulary>
+        <term id="contesto">
+			<name lang="it">Contesto</name>
+            <sub-terms>
+                <term id="ambientale">
+					<name lang="it">Ambientale</name>
+				</term>
+                <term id="archeologico">
+					<name lang="it">Archeologico</name>
+				</term>
+                <term id="architettonico">
+					<name lang="it">Architettonico</name>
+				</term>
+                <term id="storico-artistico">
+					<name lang="it">Storico-Artistico</name>
+				</term>
+            </sub-terms>
+        </term>
+    </vocabulary>
+    
+	<!-- Vocabolario per DEGRADO (3) -->
+	<vocabulary>
+        <term id="degrado">
+			<name lang="it">Degrado</name>
+            <sub-terms>
+                <term id="strutturale">
+					<name lang="it">Strutturale</name>
+					<sub-terms>
+						<term id="deformazione">
+							<name lang="it">Deformazione</name>
+						</term>
+						<term id="lesione">
+							<name lang="it">Lesione</name>
+						</term>
+					</sub-terms>
+				</term>
+                <term id="superficiale">
+					<name lang="it">Superficiale</name>
+					<sub-terms>
+						<term id="alterazione-cromatica">
+							<name lang="it">Alterazione cromatica</name>
+						</term>
+						<term id="alveolizzazione">
+							<name lang="it">Alveolizzazione</name>
+						</term>
+						<term id="concrezione">
+							<name lang="it">Concrezione</name>
+						</term>
+						<term id="crosta">
+							<name lang="it">Crosta</name>
+						</term>
+						<term id="deformazione">
+							<name lang="it">Deformazione</name>
+						</term>
+						<term id="degradazione-differenziale">
+							<name lang="it">Degradazione differenziale</name>
+						</term>
+						<term id="deposito-superficiale">
+							<name lang="it">Deposito superficiale</name>
+						</term>
+						<term id="disgregazione">
+							<name lang="it">Disgregazione</name>
+						</term>
+						<term id="distacco">
+							<name lang="it">Distacco</name>
+						</term>
+						<term id="efflorescenza">
+							<name lang="it">Efflorescenza</name>
+						</term>
+						<term id="erosione">
+							<name lang="it">Erosione</name>
+						</term>
+						<term id="esfoliazione">
+							<name lang="it">Esfoliazione</name>
+						</term>
+						<term id="fratturazione-fessurazione">
+							<name lang="it">Fratturazione/Fessurazione</name>
+						</term>
+						<term id="incrostazione">
+							<name lang="it">Incrostazione</name>
+						</term>
+						<term id="lacuna">
+							<name lang="it">Lacuna</name>
+						</term>
+						<term id="macchia">
+							<name lang="it">Macchia</name>
+						</term>
+						<term id="mancanza">
+							<name lang="it">Mancanza</name>
+						</term>
+						<term id="patina">
+							<name lang="it">Patina</name>
+						</term>
+						<term id="patina-biologica">
+							<name lang="it">Patina biologica</name>
+						</term>
+						<term id="pellicola">
+							<name lang="it">Pellicola</name>
+						</term>
+						<term id="pitting">
+							<name lang="it">Pitting</name>
+						</term>
+						<term id="polverizzazione">
+							<name lang="it">Polverizzazione</name>
+						</term>
+						<term id="presenza-di-vegetazione">
+							<name lang="it">Presenza di vegetazione</name>
+						</term>
+						<term id="rigonfiamento">
+							<name lang="it">Rigonfiamento</name>
+						</term>
+						<term id="scagliatura">
+							<name lang="it">Scagliatura</name>
+						</term>
+					</sub-terms>
+				</term>
+            </sub-terms>
+        </term>
+    </vocabulary>
+	
+	<!-- Vocabolario DESCRIZIONE CAMPIONE (4) -->
+	<vocabulary>
+	  <term id="descrizione-del-campione">
+		<name lang="it">Descrizione del campione</name>
+		<sub-terms>
+
+		  <term id="arte-pittorica">
+			<name lang="it">Arte pittorica</name>
+			<sub-terms>
+			  <term id="dipinto-murario">
+				<name lang="it">dipinto murario</name>
+			  </term>
+			  <term id="su-parete-di-roccia">
+				<name lang="it">su parete di roccia</name>
+			  </term>
+			</sub-terms>
+		  </term>
+
+		  <term id="banco-roccioso-lavorato">
+			<name lang="it">Banco roccioso lavorato</name>
+		  </term>
+
+		  <term id="blocco">
+			<name lang="it">Blocco</name>
+			<sub-terms>
+			  <term id="originale">
+				<name lang="it">originale</name>
+			  </term>
+			  <term id="sperimentale">
+				<name lang="it">sperimentale</name>
+			  </term>
+			</sub-terms>
+		  </term>
+
+		  <term id="calco">
+			<name lang="it">Calco</name>
+			<sub-terms>
+			  <term id="in-negativo-in-silicone-della-traccia">
+				<name lang="it">in negativo in silicone della traccia</name>
+			  </term>
+			  <term id="in-positivo-in-resina-della-traccia">
+				<name lang="it">in positivo in resina della traccia</name>
+			  </term>
+			</sub-terms>
+		  </term>
+
+		  <term id="campione-di-terra">
+			<name lang="it">Campione di terra</name>
+		  </term>
+
+		  <term id="capitello">
+			<name lang="it">Capitello</name>
+		  </term>
+
+		  <term id="colonna">
+			<name lang="it">Colonna</name>
+		  </term>
+
+		  <term id="colonnina">
+			<name lang="it">Colonnina</name>
+		  </term>
+
+		  <term id="decorazione">
+			<name lang="it">Decorazione</name>
+			<sub-terms>
+			  <term id="incisa-su-capitello">
+				<name lang="it">incisa su capitello</name>
+			  </term>
+			  <term id="incisa-su-ceramica">
+				<name lang="it">incisa su ceramica</name>
+			  </term>
+			  <term id="sperimentale">
+				<name lang="it">sperimentale</name>
+			  </term>
+			  <term id="su-pietra">
+				<name lang="it">su pietra</name>
+			  </term>
+			</sub-terms>
+		  </term>
+
+		  <term id="epigrafe">
+			<name lang="it">Epigrafe</name>
+		  </term>
+
+		  <term id="frammento">
+			<name lang="it">Frammento</name>
+			<sub-terms>
+			  <term id="ceramica">
+				<name lang="it">ceramica</name>
+			  </term>
+			  <term id="intonaco-dipinto">
+				<name lang="it">intonaco dipinto</name>
+			  </term>
+			  <term id="malta-di-allettamento">
+				<name lang="it">malta di allettamento</name>
+			  </term>
+			  <term id="malta-di-finitura">
+				<name lang="it">malta di finitura</name>
+			  </term>
+			  <term id="malta-di-nucleo">
+				<name lang="it">malta di nucleo</name>
+			  </term>
+			  <term id="vaso-sperimentale-in-argilla">
+				<name lang="it">vaso sperimentale in argilla</name>
+			  </term>
+			</sub-terms>
+		  </term>
+
+		  <term id="impressione-su-argilla">
+			<name lang="it">Impressione su argilla</name>
+		  </term>
+
+		  <term id="impronta-su-argilla">
+			<name lang="it">Impronta su argilla</name>
+		  </term>
+
+		  <term id="incisione">
+			<name lang="it">Incisione</name>
+			<sub-terms>
+			  <term id="su-ceramica">
+				<name lang="it">su ceramica</name>
+			  </term>
+			  <term id="su-intonaco">
+				<name lang="it">su intonaco</name>
+				<sub-terms>
+				  <term id="dipinto">
+					<name lang="it">dipinto</name>
+				  </term>
+				  <term id="non-dipinto">
+					<name lang="it">non dipinto</name>
+				  </term>
+				</sub-terms>
+			  </term>
+			  <term id="su-laterizio">
+				<name lang="it">su laterizio</name>
+			  </term>
+			  <term id="su-parete-di-roccia">
+				<name lang="it">su parete di roccia</name>
+			  </term>
+			  <term id="su-pietra">
+				<name lang="it">su pietra</name>
+			  </term>
+			</sub-terms>
+		  </term>
+
+		  <term id="laterizi-bollati">
+			<name lang="it">Laterizi bollati</name>
+		  </term>
+
+		  <term id="lucerna">
+			<name lang="it">Lucerna</name>
+		  </term>
+
+		  <term id="muratura">
+			<name lang="it">Muratura</name>
+			<sub-terms>
+			  <term id="a-sacco">
+				<name lang="it">a sacco</name>
+			  </term>
+			  <term id="opus-caementicium">
+				<name lang="it">opus caementicium</name>
+			  </term>
+			  <term id="opus-incertum">
+				<name lang="it">opus incertum</name>
+			  </term>
+			  <term id="opus-mixtum">
+				<name lang="it">opus mixtum</name>
+			  </term>
+			  <term id="opus-quadratum">
+				<name lang="it">opus quadratum</name>
+			  </term>
+			  <term id="opus-testaceum">
+				<name lang="it">opus testaceum</name>
+			  </term>
+			  <term id="opus-vittatum">
+				<name lang="it">opus vittatum</name>
+			  </term>
+			</sub-terms>
+		  </term>
+
+		  <term id="parete-di-grotta">
+			<name lang="it">Parete di grotta</name>
+		  </term>
+
+		  <term id="sarcofago">
+			<name lang="it">Sarcofago</name>
+			<sub-terms>
+			  <term id="originale">
+				<name lang="it">originale</name>
+			  </term>
+			  <term id="sperimentale">
+				<name lang="it">sperimentale</name>
+			  </term>
+			</sub-terms>
+		  </term>
+
+		  <term id="scultura">
+			<name lang="it">Scultura</name>
+			<sub-terms>
+			  <term id="originale">
+				<name lang="it">originale</name>
+			  </term>
+			  <term id="sperimentale">
+				<name lang="it">sperimentale</name>
+			  </term>
+			</sub-terms>
+		  </term>
+
+		  <term id="statuetta-fittile">
+			<name lang="it">Statuetta fittile</name>
+			<sub-terms>
+			  <term id="originale">
+				<name lang="it">originale</name>
+			  </term>
+			  <term id="sperimentale">
+				<name lang="it">sperimentale</name>
+			  </term>
+			</sub-terms>
+		  </term>
+
+		</sub-terms>
+	  </term>
+	</vocabulary>
+
+	<!-- Vocabolario COMPETENZA (5) -->
+	<vocabulary>
+        <term id="competenza">
+			<name lang="it">Competenza</name>
+            <sub-terms>
+                <term id="antropologia ">
+					<name lang="it">Antropologia </name>
+					<sub-terms>
+						<term id="culturale">
+							<name lang="it">Culturale</name>
+						</term>
+						<term id="fisica">
+							<name lang="it">Fisica</name>
+						</term>
+					</sub-terms>
+				</term>
+                <term id="archeologia">
+					<name lang="it">Archeologia</name>
+				</term>
+				<term id="architettura">
+					<name lang="it">Architettura</name>
+				</term>
+				<term id="Biologia">
+					<name lang="it">biologia</name>
+				</term>
+				<term id="chimica">
+					<name lang="it">Chimica</name>
+				</term>
+				<term id="climatologia">
+					<name lang="it">Climatologia</name>
+				</term>
+				<term id="ecologia">
+					<name lang="it">Ecologia</name>
+				</term>
+				<term id="etnoarcheologia">
+					<name lang="it">Etnoarcheologia</name>
+				</term>
+				<term id="fisica">
+					<name lang="it">Fisica</name>
+				</term>
+				<term id="geologia">
+					<name lang="it">Geologia</name>
+				</term>
+				<term id="storia">
+					<name lang="it">Storia</name>
+				</term>
+            </sub-terms>
+        </term>
+    </vocabulary>
+	
+	<!-- Vocabolario ELEMENTO COSTRUTTIVO (6) -->
+	<vocabulary>
+	  <term id="elemento-costruttivo">
+		<name lang="it">Elemento costruttivo</name>
+		<sub-terms>
+
+		  <term id="collegamenti-verticali">
+			<name lang="it">collegamenti verticali</name>
+			<sub-terms>
+			  <term id="altro">
+				<name lang="it">altro</name>
+			  </term>
+			  <term id="cordonata">
+				<name lang="it">cordonata</name>
+			  </term>
+			  <term id="rampa">
+				<name lang="it">rampa</name>
+			  </term>
+			  <term id="scala">
+				<name lang="it">scala</name>
+			  </term>
+			</sub-terms>
+		  </term>
+
+		  <term id="coperture">
+			<name lang="it">coperture</name>
+			<sub-terms>
+			  <term id="altro">
+				<name lang="it">altro</name>
+			  </term>
+			  <term id="copertura">
+				<name lang="it">copertura</name>
+				<sub-terms>
+				  <term id="a-cupola">
+					<name lang="it">a cupola</name>
+				  </term>
+				  <term id="a-volta">
+					<name lang="it">a volta</name>
+				  </term>
+				  <term id="inclinata">
+					<name lang="it">inclinata</name>
+					<sub-terms>
+					  <term id="a-falda-singola">
+						<name lang="it">a falda singola</name>
+					  </term>
+					  <term id="a-doppia-falda">
+						<name lang="it">a doppia falda</name>
+					  </term>
+					</sub-terms>
+				  </term>
+				  <term id="piana">
+					<name lang="it">piana</name>
+					<sub-terms>
+					  <term id="non-calpestabile">
+						<name lang="it">non calpestabile</name>
+					  </term>
+					  <term id="terrazzo">
+						<name lang="it">terrazzo</name>
+					  </term>
+					</sub-terms>
+				  </term>
+				</sub-terms>
+			  </term>
+			</sub-terms>
+		  </term>
+
+		  <term id="fondazioni">
+			<name lang="it">fondazioni</name>
+			<sub-terms>
+			  <term id="altro">
+				<name lang="it">altro</name>
+			  </term>
+			  <term id="continue">
+				<name lang="it">continue</name>
+				<sub-terms>
+				  <term id="gettate">
+					<name lang="it">gettate</name>
+				  </term>
+				  <term id="platea">
+					<name lang="it">platea</name>
+				  </term>
+				</sub-terms>
+			  </term>
+			  <term id="puntuali">
+				<name lang="it">puntuali</name>
+				<sub-terms>
+				  <term id="pali">
+					<name lang="it">pali</name>
+				  </term>
+				  <term id="plinti">
+					<name lang="it">plinti</name>
+				  </term>
+				</sub-terms>
+			  </term>
+			</sub-terms>
+		  </term>
+
+		  <term id="pavimentazioni">
+			<name lang="it">pavimentazioni</name>
+			<sub-terms>
+			  <term id="altro">
+				<name lang="it">altro</name>
+			  </term>
+			  <term id="cosmatesco">
+				<name lang="it">cosmatesco</name>
+			  </term>
+			  <term id="lastre-tombali">
+				<name lang="it">lastre tombali</name>
+			  </term>
+			  <term id="lastricato">
+				<name lang="it">lastricato</name>
+				<sub-terms>
+				  <term id="a-lastre">
+					<name lang="it">a lastre</name>
+				  </term>
+				  <term id="a-blochhi">
+					<name lang="it">a blochhi</name>
+				  </term>
+				  <term id="opus-sectile">
+					<name lang="it">opus sectile</name>
+				  </term>
+				</sub-terms>
+			  </term>
+			  <term id="laterizio">
+				<name lang="it">laterizio</name>
+				<sub-terms>
+				  <term id="bipedali-sesquipedali">
+					<name lang="it">bipedali/sesquipedali</name>
+				  </term>
+				  <term id="formelle-esagonali">
+					<name lang="it">formelle esagonali</name>
+				  </term>
+				  <term id="spicato">
+					<name lang="it">spicato</name>
+				  </term>
+				</sub-terms>
+			  </term>
+			  <term id="mosaico">
+				<name lang="it">mosaico</name>
+				<sub-terms>
+				  <term id="acciottolato">
+					<name lang="it">acciottolato</name>
+				  </term>
+				  <term id="scutulato">
+					<name lang="it">scutulato</name>
+				  </term>
+				  <term id="segmentatum">
+					<name lang="it">segmentatum</name>
+				  </term>
+				  <term id="signino">
+					<name lang="it">signino</name>
+				  </term>
+				  <term id="vermiculato">
+					<name lang="it">vermiculato</name>
+				  </term>
+				</sub-terms>
+			  </term>
+			</sub-terms>
+		  </term>
+
+		  <term id="strutture-di-elevazione">
+			<name lang="it">Strutture di elevazione</name>
+			<sub-terms>
+			  <term id="altro">
+				<name lang="it">altro</name>
+			  </term>
+			  <term id="colonna">
+				<name lang="it">colonna</name>
+			  </term>
+			  <term id="parete">
+				<name lang="it">parete</name>
+			  </term>
+			  <term id="setto">
+				<name lang="it">setto</name>
+				<sub-terms>
+				  <term id="di-tamponamento">
+					<name lang="it">di tamponamento</name>
+				  </term>
+				  <term id="portante">
+					<name lang="it">portante</name>
+				  </term>
+				  <term id="tramezzo">
+					<name lang="it">tramezzo</name>
+				  </term>
+				</sub-terms>
+			  </term>
+			  <term id="pilastro">
+				<name lang="it">pilastro</name>
+			  </term>
+			</sub-terms>
+		  </term>
+
+		  <term id="strutture-di-orizzontamento">
+			<name lang="it">strutture di orizzontamento</name>
+			<sub-terms>
+			  <term id="altro">
+				<name lang="it">altro</name>
+			  </term>
+			  <term id="arco">
+				<name lang="it">arco</name>
+			  </term>
+			  <term id="cupola">
+				<name lang="it">cupola</name>
+			  </term>
+			  <term id="solaio-piano">
+				<name lang="it">solaio piano</name>
+			  </term>
+			  <term id="trave">
+				<name lang="it">trave</name>
+			  </term>
+			  <term id="volta">
+				<name lang="it">volta</name>
+			  </term>
+			</sub-terms>
+		  </term>
+
+		  <term id="rivestimenti-e-decorazioni">
+			<name lang="it">rivestimenti e decorazioni</name>
+			<sub-terms>
+			  <term id="altro">
+				<name lang="it">altro</name>
+			  </term>
+			  <term id="cassettonato">
+				<name lang="it">cassettonato</name>
+			  </term>
+			  <term id="dipinto-murale">
+				<name lang="it">dipinto murale</name>
+			  </term>
+			  <term id="gruppi-scultorei">
+				<name lang="it">gruppi scultorei</name>
+			  </term>
+			  <term id="incrostazione-marmorea">
+				<name lang="it">incrostazione marmorea</name>
+			  </term>
+			  <term id="mosaico">
+				<name lang="it">mosaico</name>
+			  </term>
+			  <term id="rilievo">
+				<name lang="it">rilievo</name>
+			  </term>
+			</sub-terms>
+		  </term>
+
+		</sub-terms>
+	  </term>
+	</vocabulary>
+
+	<!-- Vocabolario per FASE DI ANALISI (7) -->
+    <vocabulary>
+        <term id="fase-di-analisi">
+			<name lang="it">Fase di analisi</name>
+            <sub-terms>
+                <term id="esecutiva">
+					<name lang="it">Esecutiva</name>
+				</term>
+				<term id="preliminare">
+					<name lang="it">Preliminare</name>
+				</term>
+            </sub-terms>
+        </term>
+    </vocabulary>
+
+	<!-- Vocabolario per QUESITO DIAGNOSTICO (8) -->
+	<vocabulary>
+		<term id="quesito-diagnostico">
+			<name lang="it">Quesito diagnostico</name>
+			<sub-terms>
+				<term id="altro">
+					<name lang="it">altro</name>
+				</term>
+				<term id="caratterizzazione">
+					<name lang="it">caratterizzazione</name>
+					<sub-terms>
+						<term id="degrado">
+							<name lang="it">degrado</name>
+						</term>
+						<term id="materiale">
+							<name lang="it">materiale</name>
+						</term>
+						<term id="morfologia">
+							<name lang="it">morfologia</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="datazione">
+					<name lang="it">datazione</name>
+				</term>
+				<term id="estrazione-dei-granuli-pollinici">
+					<name lang="it">estrazione dei granuli pollinici</name>
+				</term>
+				<term id="discontinuita-tessiturali">
+					<name lang="it">discontinuità tessiturali</name>
+				</term>
+				<term id="distribuzione-distacchi">
+					<name lang="it">distribuzione distacchi</name>
+				</term>
+				<term id="inglobamento-strutture">
+					<name lang="it">inglobamento strutture</name>
+				</term>
+				<term id="pratiche-colturali">
+					<name lang="it">pratiche colturali</name>
+				</term>
+				<term id="provenienza">
+					<name lang="it">provenienza</name>
+				</term>
+				<term id="relazioni-tra-parti">
+					<name lang="it">relazioni tra parti</name>
+				</term>
+				<term id="ricostruzione-del-paleoambiente">
+					<name lang="it">ricostruzione del paleoambiente</name>
+				</term>
+				<term id="stratigrafia">
+					<name lang="it">stratigrafia</name>
+					<sub-terms>
+						<term id="materiali">
+							<name lang="it">materiali</name>
+						</term>
+						<term id="strutture">
+							<name lang="it">strutture</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="tecnologia-di-produzione">
+					<name lang="it">tecnologia di produzione</name>
+				</term>
+			</sub-terms>
+		</term>
+	</vocabulary>
+
+	<!-- Vocabolario per INQUADRAMENTO CRONOLOGICO (9) -->
+	<vocabulary>
+		<term id="inquadramento-cronologico">
+			<name lang="it">Inquadramento cronologico</name>
+			<sub-terms>
+				<term id="preistoria">
+					<name lang="it">Preistoria</name>
+					<sub-terms>
+						<term id="paleolitico">
+							<name lang="it">Paleolitico</name>
+						</term>
+						<term id="mesolitico">
+							<name lang="it">Mesolitico</name>
+						</term>
+						<term id="neolitico">
+							<name lang="it">Neolitico</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="protostoria">
+					<name lang="it">Protostoria</name>
+					<sub-terms>
+						<term id="eta-del-rame">
+							<name lang="it">Età del rame</name>
+						</term>
+						<term id="eta-del-bronzo">
+							<name lang="it">Età del bronzo</name>
+						</term>
+						<term id="eta-del-ferro">
+							<name lang="it">Età del ferro</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="antichita">
+					<name lang="it">Antichità</name>
+					<sub-terms>
+						<term id="periodo-preclassico">
+							<name lang="it">Periodo preclassico</name>
+						</term>
+						<term id="civilta-greca">
+							<name lang="it">Civiltà greca</name>
+						</term>
+						<term id="civilta-romana">
+							<name lang="it">Civiltà romana</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="medioevo">
+					<name lang="it">Medioevo</name>
+					<sub-terms>
+						<term id="alto-medioevo">
+							<name lang="it">Alto Medioevo</name>
+							<sub-terms>
+								<term id="v-dc">
+									<name lang="it">V d.C.</name>
+								</term>
+								<term id="vi-dc">
+									<name lang="it">VI d.C.</name>
+								</term>
+								<term id="vii-dc">
+									<name lang="it">VII d.C.</name>
+								</term>
+								<term id="viii-dc">
+									<name lang="it">VIII d.C.</name>
+								</term>
+								<term id="ix-dc">
+									<name lang="it">IX d.C.</name>
+								</term>
+								<term id="x-dc">
+									<name lang="it">X d.C.</name>
+								</term>
+								<term id="xi-dc">
+									<name lang="it">XI d.C.</name>
+								</term>
+							</sub-terms>
+						</term>
+						<term id="basso-medioevo">
+							<name lang="it">Basso Medioevo</name>
+							<sub-terms>
+								<term id="xii-dc">
+									<name lang="it">XII d.C.</name>
+								</term>
+								<term id="xiii-dc">
+									<name lang="it">XIII d.C.</name>
+								</term>
+								<term id="xiv-dc">
+									<name lang="it">XIV d.C.</name>
+								</term>
+								<term id="xv-dc">
+									<name lang="it">XV d.C.</name>
+								</term>
+							</sub-terms>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="eta-moderna">
+					<name lang="it">Età moderna</name>
+					<sub-terms>
+						<term id="xv-dc">
+							<name lang="it">XV d.C.</name>
+						</term>
+						<term id="xvi-dc">
+							<name lang="it">XVI d.C.</name>
+						</term>
+						<term id="xvii-dc">
+							<name lang="it">XVII d.C.</name>
+						</term>
+						<term id="prima-meta-del-xviii-dc">
+							<name lang="it">prima metà del XVIII d.C.</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="eta-contemporanea">
+					<name lang="it">Età contemporanea</name>
+					<sub-terms>
+						<term id="seconda-meta-del-xviii-dc">
+							<name lang="it">seconda metà del XVIII d.C.</name>
+						</term>
+						<term id="xix-dc">
+							<name lang="it">XIX d.C.</name>
+						</term>
+						<term id="xx-dc">
+							<name lang="it">XX d.C.</name>
+						</term>
+					</sub-terms>
+				</term>
+			</sub-terms>
+		</term>
+	</vocabulary>
+
+	<!-- Vocabolario per LUOGO DI ANALISI (10) -->
+    <vocabulary>
+        <term id="luogo-di-analisi">
+			<name lang="it">Luogo di analisi</name>
+            <sub-terms>
+                <term id="laboratorio">
+					<name lang="it">Laboratorio</name>
+				</term>
+                <term id="in-situ">
+					<name lang="it">In situ</name>
+				</term>
+            </sub-terms>
+        </term>
+    </vocabulary>
+
+</vocabularies>
