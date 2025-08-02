@@ -1,0 +1,82 @@
+const fs = require('fs');
+const path = require('path');
+const XsltProcessor = require('xslt-processor');
+const {XmlParser, Xslt} = XsltProcessor;
+const libxmljs = require('libxmljs2');
+const { exec } = require('child_process');
+const stripBom = require('strip-bom').default;
+const xslt = new Xslt({
+    escape: false,
+    outputMethod: 'text'
+});
+const xmlParser = new XmlParser();
+
+
+class Parser{
+    
+    static _INSTANCE = null;
+
+    constructor(){
+        let xsdPath = path.join(__dirname, 'vocabolaries.xsd');
+        this.xsltPath = path.join(__dirname, 'vocabolaries.xslt');
+        this.xsdData = fs.readFileSync(xsdPath, 'utf8');
+        this.xsdDoc = libxmljs.parseXml(this.xsdData);
+        this.xsltData = fs.readFileSync(this.xsltPath, 'utf8');
+        //this.xslt = xmlParser.xmlParse(this.xsltData);
+        this.xsltDoc = libxmljs.parseXml(this.xsdData);
+    }
+
+    _getXmlData(xmlPath){
+        let _xmlData = fs.readFileSync(xmlPath, 'utf8');
+        let xmlData = stripBom(_xmlData);
+        return xmlData;
+    }
+
+    parse(xmlPath){
+        let xmlData = this._getXmlData(xmlPath);
+        let xmlDoc = libxmljs.parseXml(xmlData);
+        let validation = xmlDoc.validate(this.xsdDoc);
+        if (!validation) {
+            throw new Error(`XML validation failed: ${xmlDoc.validationErrors}`);
+        }
+        return xmlDoc;
+    }
+
+    transform(xmlPath){
+        return new Promise((resolve, reject) => {
+            try{
+                exec('xsltproc ' + this.xsltPath + ' ' + xmlPath, (err, stdout, stderr) => {
+                    if (err) {
+                        reject(err)
+                    }else{
+                        var terms = stdout.split('\n')
+                        resolve(terms.map(line => line.trim()).filter(line => line.length > 0));
+                    }
+                });                
+            }catch(e){
+                reject(e)        
+            }
+            
+            /*    
+            let xmlData = this._getXmlData(xmlPath);
+            const xml = xmlParser.xmlParse(xmlData);
+            xslt.xsltProcess(xml, this.xslt)
+            .then(result => {
+                var terms = result.split('&#10;')
+                resolve(terms.map(line => line.trim()).filter(line => line.length > 0));
+            }).catch(err => {
+                reject(err)
+            });
+            */
+        });
+    }
+
+    static GET_INSTANCE(){
+        if (Parser._INSTANCE === null) {
+            Parser._INSTANCE = new Parser();
+        }
+        return Parser._INSTANCE;
+    }
+}
+
+module.exports = Parser

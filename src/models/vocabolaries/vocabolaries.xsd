@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified">
+
+  <!-- Radice -->
+  <xs:element name="vocabularies">
+    <xs:complexType>
+      <xs:sequence>
+        <!-- Required prefix element with a mandatory "value" attribute -->
+        <xs:element name="prefix">
+          <xs:complexType>
+            <xs:attribute name="value" type="xs:string" use="required"/>
+          </xs:complexType>
+        </xs:element>
+
+        <!-- Multiple vocabulary entries -->
+        <xs:element name="vocabulary" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="term" type="termType"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- Tipo ricorsivo per ogni term -->
+  <xs:complexType name="termType">
+    <xs:sequence>
+      <xs:element name="name">
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:string">
+              <xs:attribute name="lang" type="xs:string" use="required"/>
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+
+      <!-- Sub-terms ricorsivo -->
+      <xs:element name="sub-terms" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="term" type="termType" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+
+    <xs:attribute name="id" type="xs:string" use="required"/>
+  </xs:complexType>
+
+</xs:schema>
