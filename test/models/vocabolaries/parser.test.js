@@ -26,9 +26,10 @@ describe('Vocabolaries.Parsers', () => {
   it('should transform the vocabolaries.xml file', async () => {
     const parser = Parser.GET_INSTANCE();
     var terms = await parser.transform(__dirname + '/vocabolaries.xml');
-    expect(terms.length).to.be.equal(193);
-    expect(terms[0]).to.be.equal('http://diagnostica/condizioni-ambientali/ambiente/buio rdfs:label "Buio"@it');
-    expect(terms[1]).to.be.equal('http://diagnostica/condizioni-ambientali/ambiente/illuminato rdfs:label "Illuminato"@it');
+    console.log(terms.filter(n => n.indexOf('P127_has_broader_term') == -1))
+    expect(terms.length).to.be.equal(246);
+    expect(terms[0]).to.be.equal('<http://diagnostica/vocabularies/condizioni-ambientali> a crm:E55_Type rdfs:label "Condizioni ambientali"@it ; crm:P127_has_broader_term <http://diagnostica/vocabularies> .');
+    expect(terms[1]).to.be.equal('<http://diagnostica/vocabularies/condizioni-ambientali/ambiente> a crm:E55_Type rdfs:label "Ambiente"@it ; crm:P127_has_broader_term <http://diagnostica/vocabularies/condizioni-ambientali> .');
   });
     
 });
