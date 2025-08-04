@@ -1,7 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-const XsltProcessor = require('xslt-processor');
-const {XmlParser, Xslt} = XsltProcessor;
 const libxmljs = require('libxmljs2');
 const { exec } = require('child_process');
 const stripBom = require('strip-bom').default;
@@ -37,6 +35,19 @@ class Parser{
             throw new Error(`XML validation failed: ${xmlDoc.validationErrors}`);
         }
         return xmlDoc;
+    }
+
+    validate(xmlPath){
+        let result = {
+            status: true, message: ''
+        };
+        try{
+            this.parse(xmlPath);
+        }catch(e){
+            result.status = false;
+            result.message = `XML validation failed: ${e.message}`;
+        }
+        return result
     }
 
     transform(xmlPath){

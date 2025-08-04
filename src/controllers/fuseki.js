@@ -1,5 +1,8 @@
 const express = require('express');
+const multer = require('multer');
 const router = express.Router();
+const path = require('path');
+const fs = require('fs');
 const config = require('../config')
 const configFuseki = config.fuseki || {
     "protocol": "http",
@@ -10,7 +13,88 @@ const configFuseki = config.fuseki || {
 const fusekiUrl = `${configFuseki.protocol}://${configFuseki.host}:${configFuseki.port}/${configFuseki.dataset}/sparql`;
 const axios = require('axios');
 const Fuseki = require('../models/fuseki');
+const VocabParser = require('../models/vocabolaries/parser').GET_INSTANCE();
 
+//---------------------------------------------------------------
+const uploadFolder = path.join(__dirname, '../data/import');    
+if (!fs.existsSync(uploadFolder)) {
+  fs.mkdirSync(uploadFolder);
+}
+const uploadStorage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, uploadFolder); // Folder where files will be stored
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + '-' + file.originalname);
+  }
+});
+
+const upload = multer({ storage: uploadStorage });
+const deleteFiles = function(files){
+    for(let i=0; i<files.length; i++){
+        fs.unlink(files[i].path, (err) => {
+            if (err) {
+            console.error('Error deleting file:', files[i].path, err);
+            } else {
+            console.log('File deleted successfully:', files[i].path);
+            }   
+        });
+    }
+}
+/**
+ * Route to upload vocabulary files
+ * @route POST /fuseki/upload/vocabularies
+ * @param {Array} files - Array of files to be uploaded
+ * @returns {Object} - Response object with message and file details
+ *
+ * curl -X POST -F "files=@vocabolaries.xsd" http://localhost:5000/backend/fuseki/upload/vocabularies
+ * 
+ * */
+router.post('/upload/vocabularies', upload.array('files'), (req, res) => {
+  if (!req.files || req.files.length === 0) {
+    return res.status(400).json({ message: 'No file uploaded' });
+  }
+
+  const uploadedFiles = req.files.map(file => ({
+    filename: file.filename,
+    originalname: file.originalname,
+    mimetype: file.mimetype,
+    size: file.size,
+    path: file.path
+  }));
+
+  const xmlFiles = uploadedFiles.filter(f => f.mimetype === 'application/xml' || f.mimetype === 'text/xml')
+    .map(file => file.valid = VocabParser.validate(file.path).status)
+
+  if(xmlFiles.length == 1) {
+    let xmlFile = uploadedFiles[0];
+    VocabParser.transform(xmlFile.path).then(terms => {
+        console.log(terms)
+        deleteFiles(uploadedFiles)
+        res.json({
+            message: 'File correctly uploaded',
+            files: uploadedFiles
+        });
+    }).catch(err => {
+        deleteFiles(uploadedFiles)
+        console.error('Error transforming XML:', err);
+        res.status(500).json({ 
+            message: 'Error transforming XML:' + err.message, 
+            files: uploadedFiles 
+        });    
+    })  
+    
+  }else{
+    deleteFiles(uploadedFiles);
+    let message = 'Multiple XML files is not supported';
+    if(xmlFiles.length == 0)
+      message = 'No XML files uploaded';        
+    return res.status(400).json({ message });  
+  }
+
+});
+
+//---------------------------------------------------------------
 router.get('/count/entities', (req, res) => {
     const query = `
         PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
