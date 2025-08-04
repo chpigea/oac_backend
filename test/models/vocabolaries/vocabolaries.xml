@@ -2,7 +2,9 @@
 <vocabularies>
 
     <!-- Prefissio per i vocabolari -->
+	<!--
 	<prefix value="diagnostica"/>
+	-->
 	
 	<!-- Vocabolario per CONDIZIONI AMBIENTALI (1) -->
     <vocabulary>

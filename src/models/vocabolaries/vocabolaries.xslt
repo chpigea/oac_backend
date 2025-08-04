@@ -4,11 +4,16 @@
 
   <xsl:output method="text" encoding="UTF-8"/>
 
+  <xsl:param name="prefix"/>
+
   <!-- Prendi il prefix e passa ai vocabolari -->
   <xsl:template match="/vocabularies">
+    <!--
     <xsl:variable name="prefix" select="prefix/@value"/>
+    -->
+    
     <xsl:apply-templates select="vocabulary">
-      <xsl:with-param name="prefix" select="$prefix"/>
+      <xsl:with-param name="prefix" select="concat($prefix,'/vocabularies')"/>
     </xsl:apply-templates>
   </xsl:template>
 
@@ -31,16 +36,34 @@
       <!-- Se NON ha sub-terms/term -->
       <xsl:when test="not(sub-terms/term)">
         <xsl:for-each select="name">
-          <xsl:value-of select="$new-path"/>
-          <xsl:text> rdfs:label "</xsl:text>
+          <xsl:value-of select="concat('&lt;',$new-path,'&gt;')"/>
+          <xsl:text> a crm:E55_Type rdfs:label "</xsl:text>
           <xsl:value-of select="."/>
           <xsl:text>"@</xsl:text>
           <xsl:value-of select="@lang"/>
-          <xsl:text>&#10;</xsl:text>
+          <xsl:text> ; crm:P127_has_broader_term </xsl:text>
+          <xsl:value-of select="concat('&lt;',$path,'&gt;')"/>
+          <xsl:text> . &#10;</xsl:text>
         </xsl:for-each>
       </xsl:when>
       <xsl:otherwise>
+        
+        <xsl:variable name="cid" select="@id"/>
+        <xsl:variable name="npath" select="concat($path, '/', $current-id)"/>
+
+        <xsl:for-each select="name">
+          <xsl:value-of select="concat('&lt;',$npath,'&gt;')"/>
+          <xsl:text> a crm:E55_Type rdfs:label "</xsl:text>
+          <xsl:value-of select="."/>
+          <xsl:text>"@</xsl:text>
+          <xsl:value-of select="@lang"/>
+          <xsl:text> ; crm:P127_has_broader_term </xsl:text>
+          <xsl:value-of select="concat('&lt;',$path,'&gt;')"/>
+          <xsl:text> . &#10;</xsl:text>
+        </xsl:for-each>
+
         <xsl:apply-templates select="sub-terms/term">
+          <xsl:with-param name="prev-path" select="$path"/>
           <xsl:with-param name="path" select="$new-path"/>
         </xsl:apply-templates>
       </xsl:otherwise>

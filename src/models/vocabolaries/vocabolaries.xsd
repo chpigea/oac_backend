@@ -7,11 +7,14 @@
     <xs:complexType>
       <xs:sequence>
         <!-- Required prefix element with a mandatory "value" attribute -->
+        
+        <!--
         <xs:element name="prefix">
           <xs:complexType>
             <xs:attribute name="value" type="xs:string" use="required"/>
           </xs:complexType>
         </xs:element>
+        -->
 
         <!-- Multiple vocabulary entries -->
         <xs:element name="vocabulary" maxOccurs="unbounded">

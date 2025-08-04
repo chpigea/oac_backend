@@ -5,11 +5,8 @@ const {XmlParser, Xslt} = XsltProcessor;
 const libxmljs = require('libxmljs2');
 const { exec } = require('child_process');
 const stripBom = require('strip-bom').default;
-const xslt = new Xslt({
-    escape: false,
-    outputMethod: 'text'
-});
-const xmlParser = new XmlParser();
+const config = require('../../config');
+const VocabPrefix = config.fuseki.vocabularies.prefix || 'diagnostica';
 
 
 class Parser{
@@ -45,7 +42,9 @@ class Parser{
     transform(xmlPath){
         return new Promise((resolve, reject) => {
             try{
-                exec('xsltproc ' + this.xsltPath + ' ' + xmlPath, (err, stdout, stderr) => {
+                let command = 'xsltproc --stringparam prefix ' + VocabPrefix + ' ';
+                command += this.xsltPath + ' ' + xmlPath    
+                exec(command, (err, stdout, stderr) => {
                     if (err) {
                         reject(err)
                     }else{
