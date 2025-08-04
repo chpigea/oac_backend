@@ -10,7 +10,9 @@ const jwtLib = jwtLibFactory({
     excludePaths: [
         `/${serviceName}/auth/authenticate`,
         `/${serviceName}/auth/echo`,
-        `/${serviceName}/health`
+        `/${serviceName}/health`,
+        `/${serviceName}/fuseki/upload/vocabularies`
+        
     ],
     signOptions: { expiresIn: '15m' }
 });
