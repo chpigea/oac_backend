@@ -7,16 +7,24 @@ const config = require('../../config');
 const VocabPrefix = config.fuseki.vocabularies.prefix || 'diagnostica';
 
 
+const transformMode = {
+    default: 'default',
+    forInsert: 'forInsert'
+}
+
 class Parser{
     
     static _INSTANCE = null;
 
     constructor(){
         let xsdPath = path.join(__dirname, 'vocabolaries.xsd');
-        this.xsltPath = path.join(__dirname, 'vocabolaries.xslt');
+        this.xsltPath = {
+            default: path.join(__dirname, 'vocabolaries.xslt'),
+            forInsert: path.join(__dirname, 'vocabolaries_for_insert.xslt')
+        };
         this.xsdData = fs.readFileSync(xsdPath, 'utf8');
         this.xsdDoc = libxmljs.parseXml(this.xsdData);
-        this.xsltData = fs.readFileSync(this.xsltPath, 'utf8');
+        //this.xsltData = fs.readFileSync(this.xsltPath, 'utf8');
         //this.xslt = xmlParser.xmlParse(this.xsltData);
         this.xsltDoc = libxmljs.parseXml(this.xsdData);
     }
@@ -50,11 +58,12 @@ class Parser{
         return result
     }
 
-    transform(xmlPath){
+    transform(xmlPath, using=transformMode.default){
         return new Promise((resolve, reject) => {
+            let xsltPath = this.xsltPath[using] || this.xsltPath.default;
             try{
                 let command = 'xsltproc --stringparam prefix ' + VocabPrefix + ' ';
-                command += this.xsltPath + ' ' + xmlPath    
+                command += xsltPath + ' ' + xmlPath    
                 exec(command, (err, stdout, stderr) => {
                     if (err) {
                         reject(err)
@@ -81,6 +90,33 @@ class Parser{
         });
     }
 
+    insertQuery(xmlPath){
+        return new Promise((resolve, reject) => {
+            this.transform(xmlPath, transformMode.forInsert).then(terms => {
+                let query = `
+                PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
+                PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+                INSERT {
+                    ?term a crm:E55_Type ;
+                    rdfs:label ?label ;
+                    crm:P127_has_broader_term ?broader .
+                }
+                WHERE {
+                    VALUES (?term ?label ?broader) {
+                        ${terms.join(' \n')}
+                    }
+                    FILTER NOT EXISTS {
+                        ?term rdfs:label ?label .
+                    }
+                }`
+                resolve(query);
+            }).catch(err => {
+                reject(err);
+            });
+        })
+    }
+
     static GET_INSTANCE(){
         if (Parser._INSTANCE === null) {
             Parser._INSTANCE = new Parser();
@@ -89,4 +125,4 @@ class Parser{
     }
 }
 
-module.exports = Parser
+module.exports = { Parser, transformMode };

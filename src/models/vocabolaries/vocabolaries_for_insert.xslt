@@ -36,14 +36,13 @@
       <!-- Se NON ha sub-terms/term -->
       <xsl:when test="not(sub-terms/term)">
         <xsl:for-each select="name">
-          <xsl:value-of select="concat('&lt;',$new-path,'&gt;')"/>
-          <xsl:text> a crm:E55_Type rdfs:label "</xsl:text>
+          <xsl:value-of select="concat('(', '&lt;',$new-path,'&gt; ')"/>
+          <xsl:text>"</xsl:text>
           <xsl:value-of select="."/>
           <xsl:text>"@</xsl:text>
           <xsl:value-of select="@lang"/>
-          <xsl:text> ; crm:P127_has_broader_term </xsl:text>
-          <xsl:value-of select="concat('&lt;',$path,'&gt;')"/>
-          <xsl:text> . &#10;</xsl:text>
+          <xsl:value-of select="concat(' &lt;',$path,'&gt;', ') ')"/>
+          <xsl:text>&#10;</xsl:text>
         </xsl:for-each>
       </xsl:when>
       <xsl:otherwise>
@@ -52,14 +51,13 @@
         <xsl:variable name="npath" select="concat($path, '/', $current-id)"/>
 
         <xsl:for-each select="name">
-          <xsl:value-of select="concat('&lt;',$npath,'&gt;')"/>
-          <xsl:text> a crm:E55_Type rdfs:label "</xsl:text>
+          <xsl:value-of select="concat('(','&lt;',$npath,'&gt; ')"/>
+          <xsl:text>"</xsl:text>
           <xsl:value-of select="."/>
           <xsl:text>"@</xsl:text>
           <xsl:value-of select="@lang"/>
-          <xsl:text> ; crm:P127_has_broader_term </xsl:text>
-          <xsl:value-of select="concat('&lt;',$path,'&gt;')"/>
-          <xsl:text> . &#10;</xsl:text>
+          <xsl:value-of select="concat(' &lt;',$path,'&gt;',') ')"/>
+          <xsl:text>&#10;</xsl:text>
         </xsl:for-each>
 
         <xsl:apply-templates select="sub-terms/term">
