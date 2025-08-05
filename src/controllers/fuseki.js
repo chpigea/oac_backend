@@ -10,10 +10,13 @@ const configFuseki = config.fuseki || {
     "port": "3030",
     "dataset": "oac"
 }
-const fusekiUrl = `${configFuseki.protocol}://${configFuseki.host}:${configFuseki.port}/${configFuseki.dataset}/sparql`;
+const fusekiUrlDataset = `${configFuseki.protocol}://${configFuseki.host}:${configFuseki.port}/${configFuseki.dataset}`;
+const fusekiUrl = `${fusekiUrlDataset}/sparql`;
+const fusekiUrlUpdate = `${fusekiUrlDataset}/update`;
 const axios = require('axios');
 const Fuseki = require('../models/fuseki');
-const VocabParser = require('../models/vocabolaries/parser').GET_INSTANCE();
+const { Parser, transformMode } = require('../models/vocabolaries/parser');
+const VocabParser = Parser.GET_INSTANCE();
 
 //---------------------------------------------------------------
 const uploadFolder = path.join(__dirname, '../data/import');    
@@ -47,7 +50,7 @@ const deleteFiles = function(files){
  * @param {Array} files - Array of files to be uploaded
  * @returns {Object} - Response object with message and file details
  *
- * curl -X POST -F "files=@vocabolaries.xsd" http://localhost:5000/backend/fuseki/upload/vocabularies
+ * curl -X POST -F "files=@vocabolaries.xml" http://localhost:5000/backend/fuseki/upload/vocabularies
  * 
  * */
 router.post('/upload/vocabularies', upload.array('files'), (req, res) => {
@@ -68,13 +71,32 @@ router.post('/upload/vocabularies', upload.array('files'), (req, res) => {
 
   if(xmlFiles.length == 1) {
     let xmlFile = uploadedFiles[0];
-    VocabParser.transform(xmlFile.path).then(terms => {
-        console.log(terms)
+    VocabParser.insertQuery(xmlFile.path).then(query => {
+        console.log("Query to insert vocabularies: ", query);
+        
         deleteFiles(uploadedFiles)
-        res.json({
-            message: 'File correctly uploaded',
-            files: uploadedFiles
+        
+        
+        axios.post(fusekiUrlUpdate, query, {
+            headers: {
+                'Content-Type': 'application/sparql-update',
+                'Accept': 'application/sparql-results+json'
+            }
+        })
+        .then(response => {
+            res.json({
+                message: 'File correctly uploaded and vocabularies updated: ' + response.data,
+                files: uploadedFiles
+            });
+        }).catch(error => {
+            let message = (error.response?.status + error.response?.data) || error.message
+            res.status(500).json({ 
+                message: 'Error from SPARQL end-point: ' + message, 
+                files: uploadedFiles,
+                query
+            });
         });
+        
     }).catch(err => {
         deleteFiles(uploadedFiles)
         console.error('Error transforming XML:', err);
