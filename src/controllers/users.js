@@ -47,6 +47,7 @@ router.get('/:id', async (req, res) => {
 
 // Create new user
 router.post('/', async (req, res) => {
+  console.log("POST new user");
   const user = req.body;
   Users.add(user).then(id => {
     res.status(201).json({
@@ -65,8 +66,9 @@ router.post('/', async (req, res) => {
 
 // Update existing user
 router.put('/:id', async (req, res) => {
-  
+    console.log("PUT update user");
     const user = req.body;
+    console.log(user);
     Users.update(user).then(count=>{
       if (count === 0) {
         res.status(404).json({
@@ -91,6 +93,7 @@ router.put('/:id', async (req, res) => {
 })
 
 router.delete('/:id', async (req, res) => {
+  console.log("DELETE user");
   Users.delete(req.params.id).then(deletedCount=>{
     if (deletedCount === 0) {
       res.status(404).json({
@@ -106,6 +109,7 @@ router.delete('/:id', async (req, res) => {
       });
     }
   }).catch(err=>{
+    console.log(err)
     res.status(500).json({
       success: false,
       data: null,
