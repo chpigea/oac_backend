@@ -50,7 +50,7 @@ class Users {
                     }
                 }else{
                     console.log("ALLL USERS")
-                    const users = await db(table).select(fields);
+                    const users = await db(table).select(fields).orderByRaw('id ASC')  ;
                     const safeUsers = users.map(({ password, ...rest }) => rest);
                     resolve(safeUsers)
                 }
