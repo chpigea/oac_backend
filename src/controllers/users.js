@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Users = require('../models/users');
-
+const { randomUUID } = require('crypto');
 
 // Get all users
 router.get('/', async (req, res) => {
@@ -116,6 +116,23 @@ router.delete('/:id', async (req, res) => {
       message: `Error: ${err}`
     });
   })
+});
+
+router.get('/forget-password/:user_or_email', async (req, res) => {
+  const user_or_email = req.params.user_or_email;
+  const resetToken = randomUUID();
+  const resetLink = req.protocol + '://' + req.get('host') + '/frontend/reset-password?token=' + resetToken;
+  Users.sendResetPassword(user_or_email, resetToken, resetLink).then(() => {
+    res.json({
+      success: true,
+      message: ''
+    });
+  }).catch(err => {
+    res.status(500).json({
+      success: false,
+      message: `${err}`
+    });
+  });
 });
 
 module.exports = router;

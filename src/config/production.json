@@ -21,5 +21,14 @@
 			"prefix": "diagnostica"
 		}
 	},
-	"jwt_secret": "@igea#"
+	"jwt_secret": "@igea#",
+	"smtp": {
+		"host": "smtp.aruba.it",
+		"port": 465,
+		"secure": true,
+		"auth": {
+			"user": "your_smtp_user",
+			"pass": "your_smtp_password"
+		}
+	}
 }
