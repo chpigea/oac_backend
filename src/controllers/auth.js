@@ -51,7 +51,7 @@ module.exports = function(jwtLib){
         username: 'anonymous',
         email: 'anonymous@igea-soluzioni.it',
         mobile: null,
-        is_admin: false,
+        role: 3,
         is_active: true,
         is_anonymous: true
       })
