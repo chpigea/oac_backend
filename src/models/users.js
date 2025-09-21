@@ -34,6 +34,30 @@ class Users {
             }
         });
     }
+
+    static fromUserOrEmail(userOrEmail){
+        
+        return new Promise(async (resolve, reject) => {
+            try{
+                let userFound = await db(table)
+                    .where(function() {
+                        this.whereRaw(
+                            '(username = ? OR email = ?)', 
+                            [userOrEmail, userOrEmail]
+                        );
+                    })
+                    .first();
+                if(userFound && userFound["is_active"]) {
+                    delete userFound["password"]
+                    resolve(userFound)
+                }else{
+                    reject(new Error("User not found or not active"))        
+                }
+            }catch(e){
+                reject(e)
+            }
+        });
+    }
     
     static find(id){
        return new Promise(async (resolve, reject) => {
@@ -99,46 +123,20 @@ class Users {
         }); 
     }
 
-    static sendResetPassword(user_or_email, resetToken, resetLink) {
+    static setPasswordRecoveryToken(id, resetToken) {
         return new Promise(async (resolve, reject) => {
-            let user = null;
             try {
-                user = await db(table)
-                    .where(function() {
-                        this.where('username', user_or_email)
-                            .orWhere('email', user_or_email);
-                    })
-                    .first();
-            } catch (e) {
-                return reject(e);
-            }
-            if(!user){
-                return resolve();
-            }
-
-            // TODO:
-            // Here we have to store the resetToken and expiration date (utc) 
-            // in the database associated with the user
-
-            // Send the email
-            try{
-                const smtpConfig = config.smtp;
-                let transporter = nodemailer.createTransport(smtpConfig);
-                let mailOptions = {
-                    from: smtpConfig.auth.user,
-                    to: user.email,
-                    subject: 'Password Reset',
-                    text: `Hello ${user.name},\n\nYou can reset your password using the following link:\n${resetLink}\n\nIf you did not request a password reset, please ignore this email.\n\nBest regards,\nYour Company`
-                };
-                transporter.sendMail(mailOptions, (error, info) => {
-                    if (error) {
-                        return reject(error);
-                    }
-                    resolve();
+                let count = await db(table)
+                .where({ id })
+                .update({
+                    id,
+                    reset_token: resetToken,
+                    reset_token_expiration: Math.ceil((new Date().getTime())/1000)
                 });
-            }catch(e){
-                reject(e)
-            }
+                resolve();
+            } catch (e) {
+                reject(e);
+            }            
         });
     }
 

@@ -1,6 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const Users = require('../models/users');
+const EmailSender = require('../models/EmailSender');
+const config = require('../config');
+const EXPOSED = config.exposed || {};
+const { randomUUID } = require('crypto');
+
+
 
 module.exports = function(jwtLib){
   /**
@@ -66,6 +72,39 @@ module.exports = function(jwtLib){
           message: null
       });
   });
+
+  router.post('/password_recovery', (req, res) => {  
+    let body = req.body 
+    let user_or_email = body.user
+    Users.fromUserOrEmail(user_or_email)
+      .then(async response => {
+        let email = response.email
+        console.log(`Send email to ${email} with recovery instructions`)
+        const token = randomUUID();
+        await Users.setPasswordRecoveryToken(response.id, token)
+        const activationLink = `${EXPOSED.protocol}://${EXPOSED.host}:${EXPOSED.port}/frontend/users/reset_password/${response.id}/${token}`
+        EmailSender.sendPasswordRecoveryEmail(
+          email, activationLink
+        ).then( () => {
+          console.log("Email sent")
+          res.json({ 
+            success: true
+          });
+        }).catch( err => {
+          console.log("Error sending email", err)
+          res.json({ 
+              success: false, 
+              message: `${ err }`
+          });
+        })
+      }).catch(err => { 
+        console.log(err)  
+        res.json({ 
+            success: false, 
+            message: `${ err }`
+        });
+    })
+  })
 
   return router
 
