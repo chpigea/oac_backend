@@ -27,8 +27,13 @@
 		"port": 465,
 		"secure": true,
 		"auth": {
-			"user": "your_smtp_user",
-			"pass": "your_smtp_password"
+			"user": "supporto@igea-soluzioni.it",
+			"pass": "<your_smtp_password>"
 		}
+	},
+	"exposed":{
+		"protocol": "http",
+		"host": "localhost",
+		"port": "4000"
 	}
 }

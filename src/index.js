@@ -9,10 +9,10 @@ const jwtLib = jwtLibFactory({
     secret: process.env.JWT_SECRET || config.jwt_secret,
     excludePaths: [
         `/${serviceName}/auth/authenticate`,
+        `/${serviceName}/auth/password_recovery`,
         `/${serviceName}/auth/echo`,
         `/${serviceName}/health`,
         `/${serviceName}/fuseki/upload/vocabularies`
-        
     ],
     signOptions: { expiresIn: '15m' }
 });
