@@ -11,6 +11,7 @@ const jwtLib = jwtLibFactory({
         `/${serviceName}/auth/authenticate`,
         `/${serviceName}/auth/password_recovery`,
         `/${serviceName}/auth/echo`,
+        `/${serviceName}/users/reset-password`,
         `/${serviceName}/health`,
         `/${serviceName}/fuseki/upload/vocabularies`
     ],
