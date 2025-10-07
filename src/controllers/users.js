@@ -135,4 +135,51 @@ router.get('/forget-password/:user_or_email', async (req, res) => {
   });
 });
 
+router.post('/reset-password', async (req, res) => {
+  const body = req.body || {};
+  const _user = body.user || {}
+  const user_id = _user.id || 0;
+  const resetToken = _user.token || null;
+  const resetPassword = _user.password || null;
+  const currentTs = Math.ceil((new Date().getTime())/1000);
+  console.log("HERE: " + user_id)
+  Users.find(user_id).then(user => {
+    console.log(user)
+    console.log(currentTs)
+    if(user && user.reset_token === resetToken && (currentTs <= parseInt(user.reset_token_expiration))){
+      console.log("To update...")
+      Users.update({
+        id: user.id,
+        password: resetPassword,
+        reset_token: '',
+        reset_token_expiration: 0
+      }).then(() => {
+        console.log("Reset ok...")
+        res.json({
+          success: true,
+          message: 'Password reset successfully'
+        });
+      }).catch(err => {
+        console.log("Reset ERROR...")
+        res.status(500).json({
+          success: false,
+          message: `${err}`
+        });
+      });
+    }else{
+      console.log("Invalid token...")
+      res.status(400).json({
+        success: false,
+        message: 'Invalid token'
+      });
+    }
+  }).catch(err => {
+    console.log("Other error...")
+    res.status(500).json({
+      success: false,
+      message: `${err}`
+    });
+  });
+});
+
 module.exports = router;

@@ -131,7 +131,7 @@ class Users {
                 .update({
                     id,
                     reset_token: resetToken,
-                    reset_token_expiration: Math.ceil((new Date().getTime())/1000)
+                    reset_token_expiration: Math.ceil(60*60*24 + (new Date().getTime())/1000)
                 });
                 resolve();
             } catch (e) {
