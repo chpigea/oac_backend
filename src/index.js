@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const config = require('./config.js');
 const express = require("express");
 const axios = require("axios");
