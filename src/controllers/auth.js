@@ -5,8 +5,15 @@ const EmailSender = require('../models/EmailSender');
 const config = require('../config');
 const EXPOSED = config.exposed || {};
 const { randomUUID } = require('crypto');
+const rateLimit = require('express-rate-limit');
 
-
+const authLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // limit each IP to 100 requests per windowMs
+  message: 'Too many requests from this IP, please try again later.',
+  standardHeaders: true,
+  legacyHeaders: false,
+});
 
 module.exports = function(jwtLib){
   /**
@@ -30,7 +37,7 @@ module.exports = function(jwtLib){
       });
   }
 
-  router.post('/authenticate', (req, res) => {  
+  router.post('/authenticate', authLimiter, (req, res) => {  
     console.log("here authenticate")
     let body = req.body 
     let type = body.type

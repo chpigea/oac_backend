@@ -6,7 +6,6 @@ const table = `${schema}.users`
 class Users {
 
     static fromAuthentication(user, password){
-        console.log(user, password)
         return new Promise(async (resolve, reject) => {
             try{
                 let userFound = await db(table)
