@@ -1,0 +1,2088 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix volipi: <http://data.sparna.fr/ontologies/volipi#> .
+@prefix ex: <http://example.org/ns#> .
+
+ex:LiteralShape
+a sh:NodeShape ;
+sh:targetClass <http://www.w3.org/2000/01/rdf-schema#Literal> ;
+sh:property [
+       sh:name "type" ;
+       sh:description "Literal.type" ;
+       sh:path <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "label" ;
+       sh:description "Literal.label" ;
+       sh:path <http://www.w3.org/2000/01/rdf-schema#label> ;
+sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+sh:message "Il campo label deve essere una stringa e non può essere vuoto."@it ;
+       sh:message "The field label must be a string and cannot be empty."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+.
+ex:CP41_Environmental_Observable_EntityShape
+a sh:NodeShape ;
+rdfs:label "Environmental Observable"@en, "Ambiente Osservabile"@it;
+volipi:iconName "fa-solid fa-clover";
+sh:targetClass <http://ontome.net/ns/cpm/CP41_Environmental_Observable_Entity> ;
+sh:property [
+       sh:name "type" ;
+       sh:description "CP41_Environmental_Observable_Entity.type" ;
+       sh:path <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "label" ;
+       sh:description "CP41_Environmental_Observable_Entity.label" ;
+       sh:path <http://www.w3.org/2000/01/rdf-schema#label> ;
+sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+sh:message "Il campo label deve essere una stringa e non può essere vuoto."@it ;
+       sh:message "The field label must be a string and cannot be empty."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P2_has_type" ;
+       sh:description "CP41_Environmental_Observable_Entity.P2_has_type" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E55_Type> <http://www.cidoc-crm.org/extensions/crmsci/S13_Sample> <http://www.cidoc-crm.org/cidoc-crm/E70_Thing>) ] ;
+sh:message "Il campo P2_has_type deve essere un'istanza valida."@it ;
+       sh:message "The field P2_has_type must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "Pc1_affects" ;
+       sh:description "CP41_Environmental_Observable_Entity.Pc1_affects" ;
+       sh:path <http://ontome.net/ns/cpm/Pc1_affects> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/extensions/crmsci/S13_Sample> <http://www.cidoc-crm.org/cidoc-crm/E55_Type>) ] ;
+sh:message "Il campo Pc1_affects deve essere un'istanza valida."@it ;
+       sh:message "The field Pc1_affects must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+.
+ex:S22_Segment_of_MatterShape
+a sh:NodeShape ;
+sh:targetClass <http://www.cidoc-crm.org/extensions/crmsci/S22_Segment_of_Matter> ;
+sh:property [
+       sh:name "type" ;
+       sh:description "S22_Segment_of_Matter.type" ;
+       sh:path <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "label" ;
+       sh:description "S22_Segment_of_Matter.label" ;
+       sh:path <http://www.w3.org/2000/01/rdf-schema#label> ;
+sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+sh:message "Il campo label deve essere una stringa e non può essere vuoto."@it ;
+       sh:message "The field label must be a string and cannot be empty."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "O15i_was_occupied_by" ;
+       sh:description "S22_Segment_of_Matter.O15i_was_occupied_by" ;
+       sh:path <http://www.cidoc-crm.org/extensions/crmsci/O15i_was_occupied_by> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/extensions/crmsci/S13_Sample>) ] ;
+sh:message "Il campo O15i_was_occupied_by deve essere un'istanza valida."@it ;
+       sh:message "The field O15i_was_occupied_by must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+.
+ex:S13_SampleShape
+a sh:NodeShape ;
+sh:targetClass <http://www.cidoc-crm.org/extensions/crmsci/S13_Sample> ;
+sh:property [
+       sh:name "type" ;
+       sh:description "S13_Sample.type" ;
+       sh:path <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "label" ;
+       sh:description "S13_Sample.label" ;
+       sh:path <http://www.w3.org/2000/01/rdf-schema#label> ;
+sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+sh:message "Il campo label deve essere una stringa e non può essere vuoto."@it ;
+       sh:message "The field label must be a string and cannot be empty."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P48_has_preferred_identifier" ;
+       sh:description "S13_Sample.P48_has_preferred_identifier" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P48_has_preferred_identifier> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E42_Identifier> <http://www.cidoc-crm.org/cidoc-crm/E7_Activity>) ] ;
+sh:message "Il campo P48_has_preferred_identifier deve essere un'istanza valida."@it ;
+       sh:message "The field P48_has_preferred_identifier must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P140i_was_attributed_by" ;
+       sh:description "S13_Sample.P140i_was_attributed_by" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P140i_was_attributed_by> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E14_Condition_Assessment> <http://www.cidoc-crm.org/extensions/crmsci/S4_Observation>) ] ;
+sh:message "Il campo P140i_was_attributed_by deve essere un'istanza valida."@it ;
+       sh:message "The field P140i_was_attributed_by must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P16i_was_used_for" ;
+       sh:description "S13_Sample.P16i_was_used_for" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P16i_was_used_for> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E7_Activity>) ] ;
+sh:message "Il campo P16i_was_used_for deve essere un'istanza valida."@it ;
+       sh:message "The field P16i_was_used_for must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P2_has_type" ;
+       sh:description "S13_Sample.P2_has_type" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E55_Type> <http://www.cidoc-crm.org/extensions/crmsci/S13_Sample> <http://www.cidoc-crm.org/cidoc-crm/E70_Thing>) ] ;
+sh:message "Il campo P2_has_type deve essere un'istanza valida."@it ;
+       sh:message "The field P2_has_type must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P43_has_dimension" ;
+       sh:description "S13_Sample.P43_has_dimension" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P43_has_dimension> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E54_Dimension>) ] ;
+sh:message "Il campo P43_has_dimension deve essere un'istanza valida."@it ;
+       sh:message "The field P43_has_dimension must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "O25_contains" ;
+       sh:description "S13_Sample.O25_contains" ;
+       sh:path <http://www.cidoc-crm.org/extensions/crmsci/O25_contains> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/extensions/crmsci/S10_Material_Substantial> <http://www.cidoc-crm.org/cidoc-crm/E55_Type> <http://www.cidoc-crm.org/extensions/crmsci/S13_Sample>) ] ;
+sh:message "Il campo O25_contains deve essere un'istanza valida."@it ;
+       sh:message "The field O25_contains must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "O2i_was_removed_by" ;
+       sh:description "S13_Sample.O2i_was_removed_by" ;
+       sh:path <http://www.cidoc-crm.org/extensions/crmsci/O2i_was_removed_by> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/extensions/crmsci/S2_Sample_Taking>) ] ;
+sh:message "Il campo O2i_was_removed_by deve essere un'istanza valida."@it ;
+       sh:message "The field O2i_was_removed_by must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "O5i_was_removed_by" ;
+       sh:description "S13_Sample.O5i_was_removed_by" ;
+       sh:path <http://www.cidoc-crm.org/extensions/crmsci/O5i_was_removed_by> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/extensions/crmsci/S2_Sample_Taking>) ] ;
+sh:message "Il campo O5i_was_removed_by deve essere un'istanza valida."@it ;
+       sh:message "The field O5i_was_removed_by must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P3_has_note" ;
+       sh:description "S13_Sample.P3_has_note" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P3_has_note> ;
+sh:class [ sh:in (<http://www.w3.org/2000/01/rdf-schema#Literal>) ] ;
+sh:message "Il campo P3_has_note deve essere un'istanza valida."@it ;
+       sh:message "The field P3_has_note must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P130_shows_features_of" ;
+       sh:description "S13_Sample.P130_shows_features_of" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P130_shows_features_of> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/extensions/crmsci/S13_Sample>) ] ;
+sh:message "Il campo P130_shows_features_of deve essere un'istanza valida."@it ;
+       sh:message "The field P130_shows_features_of must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "O3i_was_sample_by" ;
+       sh:description "S13_Sample.O3i_was_sample_by" ;
+       sh:path <http://www.cidoc-crm.org/extensions/crmsci/O3i_was_sample_by> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/extensions/crmsci/S2_Sample_Taking>) ] ;
+sh:message "Il campo O3i_was_sample_by deve essere un'istanza valida."@it ;
+       sh:message "The field O3i_was_sample_by must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+.
+ex:E42_IdentifierShape
+a sh:NodeShape ;
+sh:targetClass <http://www.cidoc-crm.org/cidoc-crm/E42_Identifier> ;
+sh:property [
+       sh:name "type" ;
+       sh:description "E42_Identifier.type" ;
+       sh:path <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "label" ;
+       sh:description "E42_Identifier.label" ;
+       sh:path <http://www.w3.org/2000/01/rdf-schema#label> ;
+sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+sh:message "Il campo label deve essere una stringa e non può essere vuoto."@it ;
+       sh:message "The field label must be a string and cannot be empty."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P48_has_preferred_identifier" ;
+       sh:description "E42_Identifier.P48_has_preferred_identifier" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P48_has_preferred_identifier> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E42_Identifier> <http://www.cidoc-crm.org/cidoc-crm/E7_Activity>) ] ;
+sh:message "Il campo P48_has_preferred_identifier deve essere un'istanza valida."@it ;
+       sh:message "The field P48_has_preferred_identifier must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P2_has_type" ;
+       sh:description "E42_Identifier.P2_has_type" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E55_Type> <http://www.cidoc-crm.org/extensions/crmsci/S13_Sample> <http://www.cidoc-crm.org/cidoc-crm/E70_Thing>) ] ;
+sh:message "Il campo P2_has_type deve essere un'istanza valida."@it ;
+       sh:message "The field P2_has_type must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "Pc43i_uses" ;
+       sh:description "E42_Identifier.Pc43i_uses" ;
+       sh:path <http://ontome.net/ns/cpm/Pc43i_uses> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E41_Appellation> <http://ontome.net/ns/cpm/CP2_Architecture_Work>) ] ;
+sh:message "Il campo Pc43i_uses deve essere un'istanza valida."@it ;
+       sh:message "The field Pc43i_uses must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P14_carried_out_by" ;
+       sh:description "E42_Identifier.P14_carried_out_by" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P14_carried_out_by> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E39_Actor>) ] ;
+sh:message "Il campo P14_carried_out_by deve essere un'istanza valida."@it ;
+       sh:message "The field P14_carried_out_by must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P33_used_specific_technique" ;
+       sh:description "E42_Identifier.P33_used_specific_technique" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P33_used_specific_technique> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E29_Design_or_Procedure>) ] ;
+sh:message "Il campo P33_used_specific_technique deve essere un'istanza valida."@it ;
+       sh:message "The field P33_used_specific_technique must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P160_has_temporal_projection" ;
+       sh:description "E42_Identifier.P160_has_temporal_projection" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P160_has_temporal_projection> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E52_Time-Span>) ] ;
+sh:message "Il campo P160_has_temporal_projection deve essere un'istanza valida."@it ;
+       sh:message "The field P160_has_temporal_projection must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P67i_is_referred_to_by" ;
+       sh:description "E42_Identifier.P67i_is_referred_to_by" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P67i_is_referred_to_by> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E73_Information_Object> <http://www.cidoc-crm.org/cidoc-crm/E29_Design_or_Procedure>) ] ;
+sh:message "Il campo P67i_is_referred_to_by deve essere un'istanza valida."@it ;
+       sh:message "The field P67i_is_referred_to_by must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P129i_is_subject_of" ;
+       sh:description "E42_Identifier.P129i_is_subject_of" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P129i_is_subject_of> ;
+sh:class [ sh:in (<http://www.ics.forth.gr/isl/CRMinf/I4_Proposition_Set>) ] ;
+sh:message "Il campo P129i_is_subject_of deve essere un'istanza valida."@it ;
+       sh:message "The field P129i_is_subject_of must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P12_occurred_in_the_presence_of" ;
+       sh:description "E42_Identifier.P12_occurred_in_the_presence_of" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P12_occurred_in_the_presence_of> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/extensions/crmsci/S13_Sample>) ] ;
+sh:message "Il campo P12_occurred_in_the_presence_of deve essere un'istanza valida."@it ;
+       sh:message "The field P12_occurred_in_the_presence_of must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P16_used_specific_object" ;
+       sh:description "E42_Identifier.P16_used_specific_object" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P16_used_specific_object> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E70_Thing> <http://www.cidoc-crm.org/cidoc-crm/E73_Information_Object>) ] ;
+sh:message "Il campo P16_used_specific_object deve essere un'istanza valida."@it ;
+       sh:message "The field P16_used_specific_object must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P17i_motivated" ;
+       sh:description "E42_Identifier.P17i_motivated" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P17i_motivated> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E13_Attribute_Assignment>) ] ;
+sh:message "Il campo P17i_motivated deve essere un'istanza valida."@it ;
+       sh:message "The field P17i_motivated must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P7_took_place_at" ;
+       sh:description "E42_Identifier.P7_took_place_at" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P7_took_place_at> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E53_Place>) ] ;
+sh:message "Il campo P7_took_place_at deve essere un'istanza valida."@it ;
+       sh:message "The field P7_took_place_at must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+.
+ex:E73_Information_ObjectShape
+a sh:NodeShape ;
+sh:targetClass <http://www.cidoc-crm.org/cidoc-crm/E73_Information_Object> ;
+sh:property [
+       sh:name "type" ;
+       sh:description "E73_Information_Object.type" ;
+       sh:path <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "label" ;
+       sh:description "E73_Information_Object.label" ;
+       sh:path <http://www.w3.org/2000/01/rdf-schema#label> ;
+sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+sh:message "Il campo label deve essere una stringa e non può essere vuoto."@it ;
+       sh:message "The field label must be a string and cannot be empty."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P48_has_preferred_identifier" ;
+       sh:description "E73_Information_Object.P48_has_preferred_identifier" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P48_has_preferred_identifier> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E42_Identifier> <http://www.cidoc-crm.org/cidoc-crm/E7_Activity>) ] ;
+sh:message "Il campo P48_has_preferred_identifier deve essere un'istanza valida."@it ;
+       sh:message "The field P48_has_preferred_identifier must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P2_has_type" ;
+       sh:description "E73_Information_Object.P2_has_type" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E55_Type> <http://www.cidoc-crm.org/extensions/crmsci/S13_Sample> <http://www.cidoc-crm.org/cidoc-crm/E70_Thing>) ] ;
+sh:message "Il campo P2_has_type deve essere un'istanza valida."@it ;
+       sh:message "The field P2_has_type must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P105_right_held_by" ;
+       sh:description "E73_Information_Object.P105_right_held_by" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P105_right_held_by> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E39_Actor>) ] ;
+sh:message "Il campo P105_right_held_by deve essere un'istanza valida."@it ;
+       sh:message "The field P105_right_held_by must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P165i_is_incorporated_in" ;
+       sh:description "E73_Information_Object.P165i_is_incorporated_in" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P165i_is_incorporated_in> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E73_Information_Object>) ] ;
+sh:message "Il campo P165i_is_incorporated_in deve essere un'istanza valida."@it ;
+       sh:message "The field P165i_is_incorporated_in must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P94i_was_created_by" ;
+       sh:description "E73_Information_Object.P94i_was_created_by" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P94i_was_created_by> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E65_Creation>) ] ;
+sh:message "Il campo P94i_was_created_by deve essere un'istanza valida."@it ;
+       sh:message "The field P94i_was_created_by must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P67i_is_referred_to_by" ;
+       sh:description "E73_Information_Object.P67i_is_referred_to_by" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P67i_is_referred_to_by> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E73_Information_Object> <http://www.cidoc-crm.org/cidoc-crm/E29_Design_or_Procedure>) ] ;
+sh:message "Il campo P67i_is_referred_to_by deve essere un'istanza valida."@it ;
+       sh:message "The field P67i_is_referred_to_by must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P67_refers_to" ;
+       sh:description "E73_Information_Object.P67_refers_to" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P67_refers_to> ;
+sh:class [ sh:in (<http://www.ics.forth.gr/isl/CRMsci/S5_Inference_Making> <http://www.ics.forth.gr/isl/CRMinf/I5_Inference_Making> <http://www.cidoc-crm.org/cidoc-crm/E55_Type> <http://www.cidoc-crm.org/cidoc-crm/E70_Thing> <http://www.cidoc-crm.org/cidoc-crm/E42_Identifier>) ] ;
+sh:message "Il campo P67_refers_to deve essere un'istanza valida."@it ;
+       sh:message "The field P67_refers_to must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P15i_influenced" ;
+       sh:description "E73_Information_Object.P15i_influenced" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P15i_influenced> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E13_Attribute_Assignment>) ] ;
+sh:message "Il campo P15i_influenced deve essere un'istanza valida."@it ;
+       sh:message "The field P15i_influenced must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+.
+ex:E39_ActorShape
+a sh:NodeShape ;
+sh:targetClass <http://www.cidoc-crm.org/cidoc-crm/E39_Actor> ;
+sh:property [
+       sh:name "type" ;
+       sh:description "E39_Actor.type" ;
+       sh:path <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "label" ;
+       sh:description "E39_Actor.label" ;
+       sh:path <http://www.w3.org/2000/01/rdf-schema#label> ;
+sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+sh:message "Il campo label deve essere una stringa e non può essere vuoto."@it ;
+       sh:message "The field label must be a string and cannot be empty."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P2_has_type" ;
+       sh:description "E39_Actor.P2_has_type" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E55_Type> <http://www.cidoc-crm.org/extensions/crmsci/S13_Sample> <http://www.cidoc-crm.org/cidoc-crm/E70_Thing>) ] ;
+sh:message "Il campo P2_has_type deve essere un'istanza valida."@it ;
+       sh:message "The field P2_has_type must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P1_is_identified_by" ;
+       sh:description "E39_Actor.P1_is_identified_by" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E41_Appellation> <http://ontome.net/ns/cpm/CP2_Architecture_Work> <http://www.cidoc-crm.org/cidoc-crm/E42_Identifier>) ] ;
+sh:message "Il campo P1_is_identified_by deve essere un'istanza valida."@it ;
+       sh:message "The field P1_is_identified_by must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P3_has_note" ;
+       sh:description "E39_Actor.P3_has_note" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P3_has_note> ;
+sh:class [ sh:in (<http://www.w3.org/2000/01/rdf-schema#Literal>) ] ;
+sh:message "Il campo P3_has_note deve essere un'istanza valida."@it ;
+       sh:message "The field P3_has_note must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P107i_is_current_or_former_member_of" ;
+       sh:description "E39_Actor.P107i_is_current_or_former_member_of" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P107i_is_current_or_former_member_of> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E74_Group>) ] ;
+sh:message "Il campo P107i_is_current_or_former_member_of deve essere un'istanza valida."@it ;
+       sh:message "The field P107i_is_current_or_former_member_of must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+.
+ex:E65_CreationShape
+a sh:NodeShape ;
+sh:targetClass <http://www.cidoc-crm.org/cidoc-crm/E65_Creation> ;
+sh:property [
+       sh:name "type" ;
+       sh:description "E65_Creation.type" ;
+       sh:path <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "label" ;
+       sh:description "E65_Creation.label" ;
+       sh:path <http://www.w3.org/2000/01/rdf-schema#label> ;
+sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+sh:message "Il campo label deve essere una stringa e non può essere vuoto."@it ;
+       sh:message "The field label must be a string and cannot be empty."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P173_starts_before_or_with_the_end_of" ;
+       sh:description "E65_Creation.P173_starts_before_or_with_the_end_of" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P173_starts_before_or_with_the_end_of> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E2_Temporal_Entity>) ] ;
+sh:message "Il campo P173_starts_before_or_with_the_end_of deve essere un'istanza valida."@it ;
+       sh:message "The field P173_starts_before_or_with_the_end_of must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P182_ends_before_or_with_the_start_of" ;
+       sh:description "E65_Creation.P182_ends_before_or_with_the_start_of" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P182_ends_before_or_with_the_start_of> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E2_Temporal_Entity>) ] ;
+sh:message "Il campo P182_ends_before_or_with_the_start_of deve essere un'istanza valida."@it ;
+       sh:message "The field P182_ends_before_or_with_the_start_of must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+.
+ex:E29_Design_or_ProcedureShape
+a sh:NodeShape ;
+sh:targetClass <http://www.cidoc-crm.org/cidoc-crm/E29_Design_or_Procedure> ;
+sh:property [
+       sh:name "type" ;
+       sh:description "E29_Design_or_Procedure.type" ;
+       sh:path <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "label" ;
+       sh:description "E29_Design_or_Procedure.label" ;
+       sh:path <http://www.w3.org/2000/01/rdf-schema#label> ;
+sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+sh:message "Il campo label deve essere una stringa e non può essere vuoto."@it ;
+       sh:message "The field label must be a string and cannot be empty."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P2_has_type" ;
+       sh:description "E29_Design_or_Procedure.P2_has_type" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E55_Type> <http://www.cidoc-crm.org/extensions/crmsci/S13_Sample> <http://www.cidoc-crm.org/cidoc-crm/E70_Thing>) ] ;
+sh:message "Il campo P2_has_type deve essere un'istanza valida."@it ;
+       sh:message "The field P2_has_type must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P1_is_identified_by" ;
+       sh:description "E29_Design_or_Procedure.P1_is_identified_by" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E41_Appellation> <http://ontome.net/ns/cpm/CP2_Architecture_Work> <http://www.cidoc-crm.org/cidoc-crm/E42_Identifier>) ] ;
+sh:message "Il campo P1_is_identified_by deve essere un'istanza valida."@it ;
+       sh:message "The field P1_is_identified_by must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P3_has_note" ;
+       sh:description "E29_Design_or_Procedure.P3_has_note" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P3_has_note> ;
+sh:class [ sh:in (<http://www.w3.org/2000/01/rdf-schema#Literal>) ] ;
+sh:message "Il campo P3_has_note deve essere un'istanza valida."@it ;
+       sh:message "The field P3_has_note must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P67_refers_to" ;
+       sh:description "E29_Design_or_Procedure.P67_refers_to" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P67_refers_to> ;
+sh:class [ sh:in (<http://www.ics.forth.gr/isl/CRMsci/S5_Inference_Making> <http://www.ics.forth.gr/isl/CRMinf/I5_Inference_Making> <http://www.cidoc-crm.org/cidoc-crm/E55_Type> <http://www.cidoc-crm.org/cidoc-crm/E70_Thing> <http://www.cidoc-crm.org/cidoc-crm/E42_Identifier>) ] ;
+sh:message "Il campo P67_refers_to deve essere un'istanza valida."@it ;
+       sh:message "The field P67_refers_to must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P129_is_about" ;
+       sh:description "E29_Design_or_Procedure.P129_is_about" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P129_is_about> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E1_CRM_Entity>) ] ;
+sh:message "Il campo P129_is_about deve essere un'istanza valida."@it ;
+       sh:message "The field P129_is_about must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P69_has_association_with" ;
+       sh:description "E29_Design_or_Procedure.P69_has_association_with" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P69_has_association_with> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E29_Design_or_Procedure>) ] ;
+sh:message "Il campo P69_has_association_with deve essere un'istanza valida."@it ;
+       sh:message "The field P69_has_association_with must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+.
+ex:E41_AppellationShape
+a sh:NodeShape ;
+sh:targetClass <http://www.cidoc-crm.org/cidoc-crm/E41_Appellation> ;
+sh:property [
+       sh:name "type" ;
+       sh:description "E41_Appellation.type" ;
+       sh:path <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "label" ;
+       sh:description "E41_Appellation.label" ;
+       sh:path <http://www.w3.org/2000/01/rdf-schema#label> ;
+sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+sh:message "Il campo label deve essere una stringa e non può essere vuoto."@it ;
+       sh:message "The field label must be a string and cannot be empty."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P48_has_preferred_identifier" ;
+       sh:description "E41_Appellation.P48_has_preferred_identifier" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P48_has_preferred_identifier> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E42_Identifier> <http://www.cidoc-crm.org/cidoc-crm/E7_Activity>) ] ;
+sh:message "Il campo P48_has_preferred_identifier deve essere un'istanza valida."@it ;
+       sh:message "The field P48_has_preferred_identifier must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P2_has_type" ;
+       sh:description "E41_Appellation.P2_has_type" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E55_Type> <http://www.cidoc-crm.org/extensions/crmsci/S13_Sample> <http://www.cidoc-crm.org/cidoc-crm/E70_Thing>) ] ;
+sh:message "Il campo P2_has_type deve essere un'istanza valida."@it ;
+       sh:message "The field P2_has_type must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P1_is_identified_by" ;
+       sh:description "E41_Appellation.P1_is_identified_by" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E41_Appellation> <http://ontome.net/ns/cpm/CP2_Architecture_Work> <http://www.cidoc-crm.org/cidoc-crm/E42_Identifier>) ] ;
+sh:message "Il campo P1_is_identified_by deve essere un'istanza valida."@it ;
+       sh:message "The field P1_is_identified_by must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "Pc1i_is_subject_to" ;
+       sh:description "E41_Appellation.Pc1i_is_subject_to" ;
+       sh:path <http://ontome.net/ns/cpm/Pc1i_is_subject_to> ;
+sh:class [ sh:in (<http://ontome.net/ns/cpm/CP41_Environmental_Observable_Entity>) ] ;
+sh:message "Il campo Pc1i_is_subject_to deve essere un'istanza valida."@it ;
+       sh:message "The field Pc1i_is_subject_to must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "Pc61_was_affected_by" ;
+       sh:description "E41_Appellation.Pc61_was_affected_by" ;
+       sh:path <http://ontome.net/ns/cpm/Pc61_was_affected_by> ;
+sh:class [ sh:in (<http://ontome.net/ns/cpm/CP43_Structural_Damage>) ] ;
+sh:message "Il campo Pc61_was_affected_by deve essere un'istanza valida."@it ;
+       sh:message "The field Pc61_was_affected_by must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P46_is_composed_of" ;
+       sh:description "E41_Appellation.P46_is_composed_of" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P46_is_composed_of> ;
+sh:class [ sh:in (<http://ontome.net/ns/cpm/CP20_Construction_Work>) ] ;
+sh:message "Il campo P46_is_composed_of deve essere un'istanza valida."@it ;
+       sh:message "The field P46_is_composed_of must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+.
+ex:CP43_Structural_DamageShape
+a sh:NodeShape ;
+sh:targetClass <http://ontome.net/ns/cpm/CP43_Structural_Damage> ;
+sh:property [
+       sh:name "type" ;
+       sh:description "CP43_Structural_Damage.type" ;
+       sh:path <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "label" ;
+       sh:description "CP43_Structural_Damage.label" ;
+       sh:path <http://www.w3.org/2000/01/rdf-schema#label> ;
+sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+sh:message "Il campo label deve essere una stringa e non può essere vuoto."@it ;
+       sh:message "The field label must be a string and cannot be empty."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+.
+ex:E55_TypeShape
+a sh:NodeShape ;
+sh:targetClass <http://www.cidoc-crm.org/cidoc-crm/E55_Type> ;
+sh:property [
+       sh:name "type" ;
+       sh:description "E55_Type.type" ;
+       sh:path <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "label" ;
+       sh:description "E55_Type.label" ;
+       sh:path <http://www.w3.org/2000/01/rdf-schema#label> ;
+sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+sh:message "Il campo label deve essere una stringa e non può essere vuoto."@it ;
+       sh:message "The field label must be a string and cannot be empty."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P48_has_preferred_identifier" ;
+       sh:description "E55_Type.P48_has_preferred_identifier" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P48_has_preferred_identifier> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E42_Identifier> <http://www.cidoc-crm.org/cidoc-crm/E7_Activity>) ] ;
+sh:message "Il campo P48_has_preferred_identifier deve essere un'istanza valida."@it ;
+       sh:message "The field P48_has_preferred_identifier must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P2_has_type" ;
+       sh:description "E55_Type.P2_has_type" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E55_Type> <http://www.cidoc-crm.org/extensions/crmsci/S13_Sample> <http://www.cidoc-crm.org/cidoc-crm/E70_Thing>) ] ;
+sh:message "Il campo P2_has_type deve essere un'istanza valida."@it ;
+       sh:message "The field P2_has_type must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "O25_contains" ;
+       sh:description "E55_Type.O25_contains" ;
+       sh:path <http://www.cidoc-crm.org/extensions/crmsci/O25_contains> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/extensions/crmsci/S10_Material_Substantial> <http://www.cidoc-crm.org/cidoc-crm/E55_Type> <http://www.cidoc-crm.org/extensions/crmsci/S13_Sample>) ] ;
+sh:message "Il campo O25_contains deve essere un'istanza valida."@it ;
+       sh:message "The field O25_contains must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P1_is_identified_by" ;
+       sh:description "E55_Type.P1_is_identified_by" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E41_Appellation> <http://ontome.net/ns/cpm/CP2_Architecture_Work> <http://www.cidoc-crm.org/cidoc-crm/E42_Identifier>) ] ;
+sh:message "Il campo P1_is_identified_by deve essere un'istanza valida."@it ;
+       sh:message "The field P1_is_identified_by must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P3_has_note" ;
+       sh:description "E55_Type.P3_has_note" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P3_has_note> ;
+sh:class [ sh:in (<http://www.w3.org/2000/01/rdf-schema#Literal>) ] ;
+sh:message "Il campo P3_has_note deve essere un'istanza valida."@it ;
+       sh:message "The field P3_has_note must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P130_shows_features_of" ;
+       sh:description "E55_Type.P130_shows_features_of" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P130_shows_features_of> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/extensions/crmsci/S13_Sample>) ] ;
+sh:message "Il campo P130_shows_features_of deve essere un'istanza valida."@it ;
+       sh:message "The field P130_shows_features_of must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "O3i_was_sample_by" ;
+       sh:description "E55_Type.O3i_was_sample_by" ;
+       sh:path <http://www.cidoc-crm.org/extensions/crmsci/O3i_was_sample_by> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/extensions/crmsci/S2_Sample_Taking>) ] ;
+sh:message "Il campo O3i_was_sample_by deve essere un'istanza valida."@it ;
+       sh:message "The field O3i_was_sample_by must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P103_was_intended_for" ;
+       sh:description "E55_Type.P103_was_intended_for" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P103_was_intended_for> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E55_Type>) ] ;
+sh:message "Il campo P103_was_intended_for deve essere un'istanza valida."@it ;
+       sh:message "The field P103_was_intended_for must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "Pc1i_is_subject_to" ;
+       sh:description "E55_Type.Pc1i_is_subject_to" ;
+       sh:path <http://ontome.net/ns/cpm/Pc1i_is_subject_to> ;
+sh:class [ sh:in (<http://ontome.net/ns/cpm/CP41_Environmental_Observable_Entity>) ] ;
+sh:message "Il campo Pc1i_is_subject_to deve essere un'istanza valida."@it ;
+       sh:message "The field Pc1i_is_subject_to must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+.
+ex:E14_Condition_AssessmentShape
+a sh:NodeShape ;
+sh:targetClass <http://www.cidoc-crm.org/cidoc-crm/E14_Condition_Assessment> ;
+sh:property [
+       sh:name "type" ;
+       sh:description "E14_Condition_Assessment.type" ;
+       sh:path <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "label" ;
+       sh:description "E14_Condition_Assessment.label" ;
+       sh:path <http://www.w3.org/2000/01/rdf-schema#label> ;
+sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+sh:message "Il campo label deve essere una stringa e non può essere vuoto."@it ;
+       sh:message "The field label must be a string and cannot be empty."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P35_has_identified" ;
+       sh:description "E14_Condition_Assessment.P35_has_identified" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P35_has_identified> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E3_Condition_State>) ] ;
+sh:message "Il campo P35_has_identified deve essere un'istanza valida."@it ;
+       sh:message "The field P35_has_identified must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+.
+ex:E3_Condition_StateShape
+a sh:NodeShape ;
+sh:targetClass <http://www.cidoc-crm.org/cidoc-crm/E3_Condition_State> ;
+sh:property [
+       sh:name "type" ;
+       sh:description "E3_Condition_State.type" ;
+       sh:path <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "label" ;
+       sh:description "E3_Condition_State.label" ;
+       sh:path <http://www.w3.org/2000/01/rdf-schema#label> ;
+sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+sh:message "Il campo label deve essere una stringa e non può essere vuoto."@it ;
+       sh:message "The field label must be a string and cannot be empty."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P2_has_type" ;
+       sh:description "E3_Condition_State.P2_has_type" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E55_Type> <http://www.cidoc-crm.org/extensions/crmsci/S13_Sample> <http://www.cidoc-crm.org/cidoc-crm/E70_Thing>) ] ;
+sh:message "Il campo P2_has_type deve essere un'istanza valida."@it ;
+       sh:message "The field P2_has_type must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+.
+ex:S4_ObservationShape
+a sh:NodeShape ;
+sh:targetClass <http://www.cidoc-crm.org/extensions/crmsci/S4_Observation> ;
+sh:property [
+       sh:name "type" ;
+       sh:description "S4_Observation.type" ;
+       sh:path <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "label" ;
+       sh:description "S4_Observation.label" ;
+       sh:path <http://www.w3.org/2000/01/rdf-schema#label> ;
+sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+sh:message "Il campo label deve essere una stringa e non può essere vuoto."@it ;
+       sh:message "The field label must be a string and cannot be empty."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P2_has_type" ;
+       sh:description "S4_Observation.P2_has_type" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E55_Type> <http://www.cidoc-crm.org/extensions/crmsci/S13_Sample> <http://www.cidoc-crm.org/cidoc-crm/E70_Thing>) ] ;
+sh:message "Il campo P2_has_type deve essere un'istanza valida."@it ;
+       sh:message "The field P2_has_type must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P140_assigned_attribute_to" ;
+       sh:description "S4_Observation.P140_assigned_attribute_to" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P140_assigned_attribute_to> ;
+sh:class [ sh:in (<http://www.ics.forth.gr/isl/CRMinf/I2_Belief> <http://www.cidoc-crm.org/cidoc-crm/E18_Physical_Thing> <http://www.cidoc-crm.org/extensions/crmsci/S10_Material_Substantial>) ] ;
+sh:message "Il campo P140_assigned_attribute_to deve essere un'istanza valida."@it ;
+       sh:message "The field P140_assigned_attribute_to must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "O16_observed_value" ;
+       sh:description "S4_Observation.O16_observed_value" ;
+       sh:path <http://www.cidoc-crm.org/extensions/crmsci/O16_observed_value> ;
+sh:class [ sh:in (<http://ontome.net/ns/cpm/CP41_Environmental_Observable_Entity>) ] ;
+sh:message "Il campo O16_observed_value deve essere un'istanza valida."@it ;
+       sh:message "The field O16_observed_value must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+.
+ex:E7_ActivityShape
+a sh:NodeShape ;
+sh:targetClass <http://www.cidoc-crm.org/cidoc-crm/E7_Activity> ;
+sh:property [
+       sh:name "type" ;
+       sh:description "E7_Activity.type" ;
+       sh:path <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "label" ;
+       sh:description "E7_Activity.label" ;
+       sh:path <http://www.w3.org/2000/01/rdf-schema#label> ;
+sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+sh:message "Il campo label deve essere una stringa e non può essere vuoto."@it ;
+       sh:message "The field label must be a string and cannot be empty."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P48_has_preferred_identifier" ;
+       sh:description "E7_Activity.P48_has_preferred_identifier" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P48_has_preferred_identifier> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E42_Identifier> <http://www.cidoc-crm.org/cidoc-crm/E7_Activity>) ] ;
+sh:message "Il campo P48_has_preferred_identifier deve essere un'istanza valida."@it ;
+       sh:message "The field P48_has_preferred_identifier must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P2_has_type" ;
+       sh:description "E7_Activity.P2_has_type" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E55_Type> <http://www.cidoc-crm.org/extensions/crmsci/S13_Sample> <http://www.cidoc-crm.org/cidoc-crm/E70_Thing>) ] ;
+sh:message "Il campo P2_has_type deve essere un'istanza valida."@it ;
+       sh:message "The field P2_has_type must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "Pc43i_uses" ;
+       sh:description "E7_Activity.Pc43i_uses" ;
+       sh:path <http://ontome.net/ns/cpm/Pc43i_uses> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E41_Appellation> <http://ontome.net/ns/cpm/CP2_Architecture_Work>) ] ;
+sh:message "Il campo Pc43i_uses deve essere un'istanza valida."@it ;
+       sh:message "The field Pc43i_uses must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P134_continued" ;
+       sh:description "E7_Activity.P134_continued" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P134_continued> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E42_Identifier> <http://www.cidoc-crm.org/cidoc-crm/E7_Activity>) ] ;
+sh:message "Il campo P134_continued deve essere un'istanza valida."@it ;
+       sh:message "The field P134_continued must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P14_carried_out_by" ;
+       sh:description "E7_Activity.P14_carried_out_by" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P14_carried_out_by> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E39_Actor>) ] ;
+sh:message "Il campo P14_carried_out_by deve essere un'istanza valida."@it ;
+       sh:message "The field P14_carried_out_by must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P17_was_motivated_by" ;
+       sh:description "E7_Activity.P17_was_motivated_by" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P17_was_motivated_by> ;
+sh:class [ sh:in (<http://www.ics.forth.gr/isl/CRMinf/I12_Adopted_Belief>) ] ;
+sh:message "Il campo P17_was_motivated_by deve essere un'istanza valida."@it ;
+       sh:message "The field P17_was_motivated_by must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P33_used_specific_technique" ;
+       sh:description "E7_Activity.P33_used_specific_technique" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P33_used_specific_technique> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E29_Design_or_Procedure>) ] ;
+sh:message "Il campo P33_used_specific_technique deve essere un'istanza valida."@it ;
+       sh:message "The field P33_used_specific_technique must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "O23i_defines" ;
+       sh:description "E7_Activity.O23i_defines" ;
+       sh:path <http://www.cidoc-crm.org/extensions/crmsci/O23i_defines> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/extensions/crmsci/S22_Segment_of_Matter>) ] ;
+sh:message "Il campo O23i_defines deve essere un'istanza valida."@it ;
+       sh:message "The field O23i_defines must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P160_has_temporal_projection" ;
+       sh:description "E7_Activity.P160_has_temporal_projection" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P160_has_temporal_projection> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E52_Time-Span>) ] ;
+sh:message "Il campo P160_has_temporal_projection deve essere un'istanza valida."@it ;
+       sh:message "The field P160_has_temporal_projection must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P67i_is_referred_to_by" ;
+       sh:description "E7_Activity.P67i_is_referred_to_by" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P67i_is_referred_to_by> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E73_Information_Object> <http://www.cidoc-crm.org/cidoc-crm/E29_Design_or_Procedure>) ] ;
+sh:message "Il campo P67i_is_referred_to_by deve essere un'istanza valida."@it ;
+       sh:message "The field P67i_is_referred_to_by must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P129i_is_subject_of" ;
+       sh:description "E7_Activity.P129i_is_subject_of" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P129i_is_subject_of> ;
+sh:class [ sh:in (<http://www.ics.forth.gr/isl/CRMinf/I4_Proposition_Set>) ] ;
+sh:message "Il campo P129i_is_subject_of deve essere un'istanza valida."@it ;
+       sh:message "The field P129i_is_subject_of must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P12_occurred_in_the_presence_of" ;
+       sh:description "E7_Activity.P12_occurred_in_the_presence_of" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P12_occurred_in_the_presence_of> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/extensions/crmsci/S13_Sample>) ] ;
+sh:message "Il campo P12_occurred_in_the_presence_of deve essere un'istanza valida."@it ;
+       sh:message "The field P12_occurred_in_the_presence_of must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P16_used_specific_object" ;
+       sh:description "E7_Activity.P16_used_specific_object" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P16_used_specific_object> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E70_Thing> <http://www.cidoc-crm.org/cidoc-crm/E73_Information_Object>) ] ;
+sh:message "Il campo P16_used_specific_object deve essere un'istanza valida."@it ;
+       sh:message "The field P16_used_specific_object must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P17i_motivated" ;
+       sh:description "E7_Activity.P17i_motivated" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P17i_motivated> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E13_Attribute_Assignment>) ] ;
+sh:message "Il campo P17i_motivated deve essere un'istanza valida."@it ;
+       sh:message "The field P17i_motivated must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P7_took_place_at" ;
+       sh:description "E7_Activity.P7_took_place_at" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P7_took_place_at> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E53_Place>) ] ;
+sh:message "Il campo P7_took_place_at deve essere un'istanza valida."@it ;
+       sh:message "The field P7_took_place_at must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+.
+ex:E54_DimensionShape
+a sh:NodeShape ;
+sh:targetClass <http://www.cidoc-crm.org/cidoc-crm/E54_Dimension> ;
+sh:property [
+       sh:name "type" ;
+       sh:description "E54_Dimension.type" ;
+       sh:path <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "label" ;
+       sh:description "E54_Dimension.label" ;
+       sh:path <http://www.w3.org/2000/01/rdf-schema#label> ;
+sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+sh:message "Il campo label deve essere una stringa e non può essere vuoto."@it ;
+       sh:message "The field label must be a string and cannot be empty."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P90_has_value" ;
+       sh:description "E54_Dimension.P90_has_value" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P90_has_value> ;
+sh:class [ sh:in (<http://www.w3.org/2000/01/rdf-schema#Literal>) ] ;
+sh:message "Il campo P90_has_value deve essere un'istanza valida."@it ;
+       sh:message "The field P90_has_value must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P91_has_unit" ;
+       sh:description "E54_Dimension.P91_has_unit" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P91_has_unit> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E58_Measurement_Unit>) ] ;
+sh:message "Il campo P91_has_unit deve essere un'istanza valida."@it ;
+       sh:message "The field P91_has_unit must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+.
+ex:S10_Material_SubstantialShape
+a sh:NodeShape ;
+sh:targetClass <http://www.cidoc-crm.org/extensions/crmsci/S10_Material_Substantial> ;
+sh:property [
+       sh:name "type" ;
+       sh:description "S10_Material_Substantial.type" ;
+       sh:path <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "label" ;
+       sh:description "S10_Material_Substantial.label" ;
+       sh:path <http://www.w3.org/2000/01/rdf-schema#label> ;
+sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+sh:message "Il campo label deve essere una stringa e non può essere vuoto."@it ;
+       sh:message "The field label must be a string and cannot be empty."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P2_has_type" ;
+       sh:description "S10_Material_Substantial.P2_has_type" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E55_Type> <http://www.cidoc-crm.org/extensions/crmsci/S13_Sample> <http://www.cidoc-crm.org/cidoc-crm/E70_Thing>) ] ;
+sh:message "Il campo P2_has_type deve essere un'istanza valida."@it ;
+       sh:message "The field P2_has_type must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "O25_contains" ;
+       sh:description "S10_Material_Substantial.O25_contains" ;
+       sh:path <http://www.cidoc-crm.org/extensions/crmsci/O25_contains> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/extensions/crmsci/S10_Material_Substantial> <http://www.cidoc-crm.org/cidoc-crm/E55_Type> <http://www.cidoc-crm.org/extensions/crmsci/S13_Sample>) ] ;
+sh:message "Il campo O25_contains deve essere un'istanza valida."@it ;
+       sh:message "The field O25_contains must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P3_has_note" ;
+       sh:description "S10_Material_Substantial.P3_has_note" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P3_has_note> ;
+sh:class [ sh:in (<http://www.w3.org/2000/01/rdf-schema#Literal>) ] ;
+sh:message "Il campo P3_has_note deve essere un'istanza valida."@it ;
+       sh:message "The field P3_has_note must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "O25i_is_contained_in" ;
+       sh:description "S10_Material_Substantial.O25i_is_contained_in" ;
+       sh:path <http://www.cidoc-crm.org/extensions/crmsci/O25i_is_contained_in> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/extensions/crmsci/S13_Sample> <http://www.cidoc-crm.org/cidoc-crm/E41_Appellation> <http://ontome.net/ns/cpm/CP2_Architecture_Work>) ] ;
+sh:message "Il campo O25i_is_contained_in deve essere un'istanza valida."@it ;
+       sh:message "The field O25i_is_contained_in must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "Pc51_was_affected_by" ;
+       sh:description "S10_Material_Substantial.Pc51_was_affected_by" ;
+       sh:path <http://ontome.net/ns/cpm/Pc51_was_affected_by> ;
+sh:class [ sh:in (<http://ontome.net/ns/cpm/CP42_Material_Decay>) ] ;
+sh:message "Il campo Pc51_was_affected_by deve essere un'istanza valida."@it ;
+       sh:message "The field Pc51_was_affected_by must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+.
+ex:S2_Sample_TakingShape
+a sh:NodeShape ;
+sh:targetClass <http://www.cidoc-crm.org/extensions/crmsci/S2_Sample_Taking> ;
+sh:property [
+       sh:name "type" ;
+       sh:description "S2_Sample_Taking.type" ;
+       sh:path <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "label" ;
+       sh:description "S2_Sample_Taking.label" ;
+       sh:path <http://www.w3.org/2000/01/rdf-schema#label> ;
+sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+sh:message "Il campo label deve essere una stringa e non può essere vuoto."@it ;
+       sh:message "The field label must be a string and cannot be empty."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P173_starts_before_or_with_the_end_of" ;
+       sh:description "S2_Sample_Taking.P173_starts_before_or_with_the_end_of" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P173_starts_before_or_with_the_end_of> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E2_Temporal_Entity>) ] ;
+sh:message "Il campo P173_starts_before_or_with_the_end_of deve essere un'istanza valida."@it ;
+       sh:message "The field P173_starts_before_or_with_the_end_of must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P33_used_specific_technique" ;
+       sh:description "S2_Sample_Taking.P33_used_specific_technique" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P33_used_specific_technique> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E29_Design_or_Procedure>) ] ;
+sh:message "Il campo P33_used_specific_technique deve essere un'istanza valida."@it ;
+       sh:message "The field P33_used_specific_technique must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P8_took_place_on_or_within" ;
+       sh:description "S2_Sample_Taking.P8_took_place_on_or_within" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P8_took_place_on_or_within> ;
+sh:class [ sh:in (<http://ontome.net/ns/cpm/CP20_Construction_Work>) ] ;
+sh:message "Il campo P8_took_place_on_or_within deve essere un'istanza valida."@it ;
+       sh:message "The field P8_took_place_on_or_within must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "O4_sampled_at" ;
+       sh:description "S2_Sample_Taking.O4_sampled_at" ;
+       sh:path <http://www.cidoc-crm.org/extensions/crmsci/O4_sampled_at> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E53_Place>) ] ;
+sh:message "Il campo O4_sampled_at deve essere un'istanza valida."@it ;
+       sh:message "The field O4_sampled_at must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P160_has_temporal_projection" ;
+       sh:description "S2_Sample_Taking.P160_has_temporal_projection" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P160_has_temporal_projection> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E52_Time-Span>) ] ;
+sh:message "Il campo P160_has_temporal_projection deve essere un'istanza valida."@it ;
+       sh:message "The field P160_has_temporal_projection must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+.
+ex:I2_BeliefShape
+a sh:NodeShape ;
+sh:targetClass <http://www.ics.forth.gr/isl/CRMinf/I2_Belief> ;
+sh:property [
+       sh:name "type" ;
+       sh:description "I2_Belief.type" ;
+       sh:path <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "label" ;
+       sh:description "I2_Belief.label" ;
+       sh:path <http://www.w3.org/2000/01/rdf-schema#label> ;
+sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+sh:message "Il campo label deve essere una stringa e non può essere vuoto."@it ;
+       sh:message "The field label must be a string and cannot be empty."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P2_has_type" ;
+       sh:description "I2_Belief.P2_has_type" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E55_Type> <http://www.cidoc-crm.org/extensions/crmsci/S13_Sample> <http://www.cidoc-crm.org/cidoc-crm/E70_Thing>) ] ;
+sh:message "Il campo P2_has_type deve essere un'istanza valida."@it ;
+       sh:message "The field P2_has_type must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P3_has_note" ;
+       sh:description "I2_Belief.P3_has_note" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P3_has_note> ;
+sh:class [ sh:in (<http://www.w3.org/2000/01/rdf-schema#Literal>) ] ;
+sh:message "Il campo P3_has_note deve essere un'istanza valida."@it ;
+       sh:message "The field P3_has_note must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "J1i_was_premise_for" ;
+       sh:description "I2_Belief.J1i_was_premise_for" ;
+       sh:path <http://www.ics.forth.gr/isl/CRMinf/J1i_was_premise_for> ;
+sh:class [ sh:in (<http://www.ics.forth.gr/isl/CRMsci/S5_Inference_Making> <http://www.ics.forth.gr/isl/CRMinf/I5_Inference_Making>) ] ;
+sh:message "Il campo J1i_was_premise_for deve essere un'istanza valida."@it ;
+       sh:message "The field J1i_was_premise_for must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+.
+ex:E2_Temporal_EntityShape
+a sh:NodeShape ;
+sh:targetClass <http://www.cidoc-crm.org/cidoc-crm/E2_Temporal_Entity> ;
+sh:property [
+       sh:name "type" ;
+       sh:description "E2_Temporal_Entity.type" ;
+       sh:path <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "label" ;
+       sh:description "E2_Temporal_Entity.label" ;
+       sh:path <http://www.w3.org/2000/01/rdf-schema#label> ;
+sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+sh:message "Il campo label deve essere una stringa e non può essere vuoto."@it ;
+       sh:message "The field label must be a string and cannot be empty."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+.
+ex:I12_Adopted_BeliefShape
+a sh:NodeShape ;
+sh:targetClass <http://www.ics.forth.gr/isl/CRMinf/I12_Adopted_Belief> ;
+sh:property [
+       sh:name "type" ;
+       sh:description "I12_Adopted_Belief.type" ;
+       sh:path <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "label" ;
+       sh:description "I12_Adopted_Belief.label" ;
+       sh:path <http://www.w3.org/2000/01/rdf-schema#label> ;
+sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+sh:message "Il campo label deve essere una stringa e non può essere vuoto."@it ;
+       sh:message "The field label must be a string and cannot be empty."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P2_has_type" ;
+       sh:description "I12_Adopted_Belief.P2_has_type" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E55_Type> <http://www.cidoc-crm.org/extensions/crmsci/S13_Sample> <http://www.cidoc-crm.org/cidoc-crm/E70_Thing>) ] ;
+sh:message "Il campo P2_has_type deve essere un'istanza valida."@it ;
+       sh:message "The field P2_has_type must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+.
+ex:E52_Time-SpanShape
+a sh:NodeShape ;
+sh:targetClass <http://www.cidoc-crm.org/cidoc-crm/E52_Time-Span> ;
+sh:property [
+       sh:name "type" ;
+       sh:description "E52_Time-Span.type" ;
+       sh:path <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "label" ;
+       sh:description "E52_Time-Span.label" ;
+       sh:path <http://www.w3.org/2000/01/rdf-schema#label> ;
+sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+sh:message "Il campo label deve essere una stringa e non può essere vuoto."@it ;
+       sh:message "The field label must be a string and cannot be empty."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+.
+ex:CP42_Material_DecayShape
+a sh:NodeShape ;
+sh:targetClass <http://ontome.net/ns/cpm/CP42_Material_Decay> ;
+sh:property [
+       sh:name "type" ;
+       sh:description "CP42_Material_Decay.type" ;
+       sh:path <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "label" ;
+       sh:description "CP42_Material_Decay.label" ;
+       sh:path <http://www.w3.org/2000/01/rdf-schema#label> ;
+sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+sh:message "Il campo label deve essere una stringa e non può essere vuoto."@it ;
+       sh:message "The field label must be a string and cannot be empty."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P3_has_note" ;
+       sh:description "CP42_Material_Decay.P3_has_note" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P3_has_note> ;
+sh:class [ sh:in (<http://www.w3.org/2000/01/rdf-schema#Literal>) ] ;
+sh:message "Il campo P3_has_note deve essere un'istanza valida."@it ;
+       sh:message "The field P3_has_note must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+.
+ex:CP2_Architecture_WorkShape
+a sh:NodeShape ;
+sh:targetClass <http://ontome.net/ns/cpm/CP2_Architecture_Work> ;
+sh:property [
+       sh:name "type" ;
+       sh:description "CP2_Architecture_Work.type" ;
+       sh:path <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "label" ;
+       sh:description "CP2_Architecture_Work.label" ;
+       sh:path <http://www.w3.org/2000/01/rdf-schema#label> ;
+sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+sh:message "Il campo label deve essere una stringa e non può essere vuoto."@it ;
+       sh:message "The field label must be a string and cannot be empty."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P48_has_preferred_identifier" ;
+       sh:description "CP2_Architecture_Work.P48_has_preferred_identifier" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P48_has_preferred_identifier> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E42_Identifier> <http://www.cidoc-crm.org/cidoc-crm/E7_Activity>) ] ;
+sh:message "Il campo P48_has_preferred_identifier deve essere un'istanza valida."@it ;
+       sh:message "The field P48_has_preferred_identifier must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P2_has_type" ;
+       sh:description "CP2_Architecture_Work.P2_has_type" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E55_Type> <http://www.cidoc-crm.org/extensions/crmsci/S13_Sample> <http://www.cidoc-crm.org/cidoc-crm/E70_Thing>) ] ;
+sh:message "Il campo P2_has_type deve essere un'istanza valida."@it ;
+       sh:message "The field P2_has_type must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P1_is_identified_by" ;
+       sh:description "CP2_Architecture_Work.P1_is_identified_by" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E41_Appellation> <http://ontome.net/ns/cpm/CP2_Architecture_Work> <http://www.cidoc-crm.org/cidoc-crm/E42_Identifier>) ] ;
+sh:message "Il campo P1_is_identified_by deve essere un'istanza valida."@it ;
+       sh:message "The field P1_is_identified_by must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "Pc1i_is_subject_to" ;
+       sh:description "CP2_Architecture_Work.Pc1i_is_subject_to" ;
+       sh:path <http://ontome.net/ns/cpm/Pc1i_is_subject_to> ;
+sh:class [ sh:in (<http://ontome.net/ns/cpm/CP41_Environmental_Observable_Entity>) ] ;
+sh:message "Il campo Pc1i_is_subject_to deve essere un'istanza valida."@it ;
+       sh:message "The field Pc1i_is_subject_to must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "Pc61_was_affected_by" ;
+       sh:description "CP2_Architecture_Work.Pc61_was_affected_by" ;
+       sh:path <http://ontome.net/ns/cpm/Pc61_was_affected_by> ;
+sh:class [ sh:in (<http://ontome.net/ns/cpm/CP43_Structural_Damage>) ] ;
+sh:message "Il campo Pc61_was_affected_by deve essere un'istanza valida."@it ;
+       sh:message "The field Pc61_was_affected_by must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P46_is_composed_of" ;
+       sh:description "CP2_Architecture_Work.P46_is_composed_of" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P46_is_composed_of> ;
+sh:class [ sh:in (<http://ontome.net/ns/cpm/CP20_Construction_Work>) ] ;
+sh:message "Il campo P46_is_composed_of deve essere un'istanza valida."@it ;
+       sh:message "The field P46_is_composed_of must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+.
+ex:E13_Attribute_AssignmentShape
+a sh:NodeShape ;
+sh:targetClass <http://www.cidoc-crm.org/cidoc-crm/E13_Attribute_Assignment> ;
+sh:property [
+       sh:name "type" ;
+       sh:description "E13_Attribute_Assignment.type" ;
+       sh:path <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "label" ;
+       sh:description "E13_Attribute_Assignment.label" ;
+       sh:path <http://www.w3.org/2000/01/rdf-schema#label> ;
+sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+sh:message "Il campo label deve essere una stringa e non può essere vuoto."@it ;
+       sh:message "The field label must be a string and cannot be empty."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P2_has_type" ;
+       sh:description "E13_Attribute_Assignment.P2_has_type" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E55_Type> <http://www.cidoc-crm.org/extensions/crmsci/S13_Sample> <http://www.cidoc-crm.org/cidoc-crm/E70_Thing>) ] ;
+sh:message "Il campo P2_has_type deve essere un'istanza valida."@it ;
+       sh:message "The field P2_has_type must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P140_assigned_attribute_to" ;
+       sh:description "E13_Attribute_Assignment.P140_assigned_attribute_to" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P140_assigned_attribute_to> ;
+sh:class [ sh:in (<http://www.ics.forth.gr/isl/CRMinf/I2_Belief> <http://www.cidoc-crm.org/cidoc-crm/E18_Physical_Thing> <http://www.cidoc-crm.org/extensions/crmsci/S10_Material_Substantial>) ] ;
+sh:message "Il campo P140_assigned_attribute_to deve essere un'istanza valida."@it ;
+       sh:message "The field P140_assigned_attribute_to must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P160_has_temporal_projection" ;
+       sh:description "E13_Attribute_Assignment.P160_has_temporal_projection" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P160_has_temporal_projection> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E52_Time-Span>) ] ;
+sh:message "Il campo P160_has_temporal_projection deve essere un'istanza valida."@it ;
+       sh:message "The field P160_has_temporal_projection must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P67i_is_referred_to_by" ;
+       sh:description "E13_Attribute_Assignment.P67i_is_referred_to_by" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P67i_is_referred_to_by> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E73_Information_Object> <http://www.cidoc-crm.org/cidoc-crm/E29_Design_or_Procedure>) ] ;
+sh:message "Il campo P67i_is_referred_to_by deve essere un'istanza valida."@it ;
+       sh:message "The field P67i_is_referred_to_by must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P11_had_participant" ;
+       sh:description "E13_Attribute_Assignment.P11_had_participant" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P11_had_participant> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E39_Actor>) ] ;
+sh:message "Il campo P11_had_participant deve essere un'istanza valida."@it ;
+       sh:message "The field P11_had_participant must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+.
+ex:E18_Physical_ThingShape
+a sh:NodeShape ;
+sh:targetClass <http://www.cidoc-crm.org/cidoc-crm/E18_Physical_Thing> ;
+sh:property [
+       sh:name "type" ;
+       sh:description "E18_Physical_Thing.type" ;
+       sh:path <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "label" ;
+       sh:description "E18_Physical_Thing.label" ;
+       sh:path <http://www.w3.org/2000/01/rdf-schema#label> ;
+sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+sh:message "Il campo label deve essere una stringa e non può essere vuoto."@it ;
+       sh:message "The field label must be a string and cannot be empty."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P48_has_preferred_identifier" ;
+       sh:description "E18_Physical_Thing.P48_has_preferred_identifier" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P48_has_preferred_identifier> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E42_Identifier> <http://www.cidoc-crm.org/cidoc-crm/E7_Activity>) ] ;
+sh:message "Il campo P48_has_preferred_identifier deve essere un'istanza valida."@it ;
+       sh:message "The field P48_has_preferred_identifier must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P2_has_type" ;
+       sh:description "E18_Physical_Thing.P2_has_type" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E55_Type> <http://www.cidoc-crm.org/extensions/crmsci/S13_Sample> <http://www.cidoc-crm.org/cidoc-crm/E70_Thing>) ] ;
+sh:message "Il campo P2_has_type deve essere un'istanza valida."@it ;
+       sh:message "The field P2_has_type must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P3_has_note" ;
+       sh:description "E18_Physical_Thing.P3_has_note" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P3_has_note> ;
+sh:class [ sh:in (<http://www.w3.org/2000/01/rdf-schema#Literal>) ] ;
+sh:message "Il campo P3_has_note deve essere un'istanza valida."@it ;
+       sh:message "The field P3_has_note must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+.
+ex:E70_ThingShape
+a sh:NodeShape ;
+sh:targetClass <http://www.cidoc-crm.org/cidoc-crm/E70_Thing> ;
+sh:property [
+       sh:name "type" ;
+       sh:description "E70_Thing.type" ;
+       sh:path <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "label" ;
+       sh:description "E70_Thing.label" ;
+       sh:path <http://www.w3.org/2000/01/rdf-schema#label> ;
+sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+sh:message "Il campo label deve essere una stringa e non può essere vuoto."@it ;
+       sh:message "The field label must be a string and cannot be empty."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P48_has_preferred_identifier" ;
+       sh:description "E70_Thing.P48_has_preferred_identifier" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P48_has_preferred_identifier> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E42_Identifier> <http://www.cidoc-crm.org/cidoc-crm/E7_Activity>) ] ;
+sh:message "Il campo P48_has_preferred_identifier deve essere un'istanza valida."@it ;
+       sh:message "The field P48_has_preferred_identifier must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P2_has_type" ;
+       sh:description "E70_Thing.P2_has_type" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E55_Type> <http://www.cidoc-crm.org/extensions/crmsci/S13_Sample> <http://www.cidoc-crm.org/cidoc-crm/E70_Thing>) ] ;
+sh:message "Il campo P2_has_type deve essere un'istanza valida."@it ;
+       sh:message "The field P2_has_type must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P67i_is_referred_to_by" ;
+       sh:description "E70_Thing.P67i_is_referred_to_by" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P67i_is_referred_to_by> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E73_Information_Object> <http://www.cidoc-crm.org/cidoc-crm/E29_Design_or_Procedure>) ] ;
+sh:message "Il campo P67i_is_referred_to_by deve essere un'istanza valida."@it ;
+       sh:message "The field P67i_is_referred_to_by must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+.
+ex:S5_Inference_MakingShape
+a sh:NodeShape ;
+sh:targetClass <http://www.ics.forth.gr/isl/CRMsci/S5_Inference_Making> ;
+sh:property [
+       sh:name "type" ;
+       sh:description "S5_Inference_Making.type" ;
+       sh:path <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "label" ;
+       sh:description "S5_Inference_Making.label" ;
+       sh:path <http://www.w3.org/2000/01/rdf-schema#label> ;
+sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+sh:message "Il campo label deve essere una stringa e non può essere vuoto."@it ;
+       sh:message "The field label must be a string and cannot be empty."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+.
+ex:I5_Inference_MakingShape
+a sh:NodeShape ;
+sh:targetClass <http://www.ics.forth.gr/isl/CRMinf/I5_Inference_Making> ;
+sh:property [
+       sh:name "type" ;
+       sh:description "I5_Inference_Making.type" ;
+       sh:path <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "label" ;
+       sh:description "I5_Inference_Making.label" ;
+       sh:path <http://www.w3.org/2000/01/rdf-schema#label> ;
+sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+sh:message "Il campo label deve essere una stringa e non può essere vuoto."@it ;
+       sh:message "The field label must be a string and cannot be empty."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+.
+ex:I4_Proposition_SetShape
+a sh:NodeShape ;
+sh:targetClass <http://www.ics.forth.gr/isl/CRMinf/I4_Proposition_Set> ;
+sh:property [
+       sh:name "type" ;
+       sh:description "I4_Proposition_Set.type" ;
+       sh:path <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "label" ;
+       sh:description "I4_Proposition_Set.label" ;
+       sh:path <http://www.w3.org/2000/01/rdf-schema#label> ;
+sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+sh:message "Il campo label deve essere una stringa e non può essere vuoto."@it ;
+       sh:message "The field label must be a string and cannot be empty."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "J4i_is_subject_of" ;
+       sh:description "I4_Proposition_Set.J4i_is_subject_of" ;
+       sh:path <http://www.ics.forth.gr/isl/CRMinf/J4i_is_subject_of> ;
+sh:class [ sh:in (<http://www.ics.forth.gr/isl/CRMinf/I2_Belief>) ] ;
+sh:message "Il campo J4i_is_subject_of deve essere un'istanza valida."@it ;
+       sh:message "The field J4i_is_subject_of must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+.
+ex:E53_PlaceShape
+a sh:NodeShape ;
+sh:targetClass <http://www.cidoc-crm.org/cidoc-crm/E53_Place> ;
+sh:property [
+       sh:name "type" ;
+       sh:description "E53_Place.type" ;
+       sh:path <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "label" ;
+       sh:description "E53_Place.label" ;
+       sh:path <http://www.w3.org/2000/01/rdf-schema#label> ;
+sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+sh:message "Il campo label deve essere una stringa e non può essere vuoto."@it ;
+       sh:message "The field label must be a string and cannot be empty."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P48_has_preferred_identifier" ;
+       sh:description "E53_Place.P48_has_preferred_identifier" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P48_has_preferred_identifier> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E42_Identifier> <http://www.cidoc-crm.org/cidoc-crm/E7_Activity>) ] ;
+sh:message "Il campo P48_has_preferred_identifier deve essere un'istanza valida."@it ;
+       sh:message "The field P48_has_preferred_identifier must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P2_has_type" ;
+       sh:description "E53_Place.P2_has_type" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E55_Type> <http://www.cidoc-crm.org/extensions/crmsci/S13_Sample> <http://www.cidoc-crm.org/cidoc-crm/E70_Thing>) ] ;
+sh:message "Il campo P2_has_type deve essere un'istanza valida."@it ;
+       sh:message "The field P2_has_type must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P3_has_note" ;
+       sh:description "E53_Place.P3_has_note" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P3_has_note> ;
+sh:class [ sh:in (<http://www.w3.org/2000/01/rdf-schema#Literal>) ] ;
+sh:message "Il campo P3_has_note deve essere un'istanza valida."@it ;
+       sh:message "The field P3_has_note must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P67i_is_referred_to_by" ;
+       sh:description "E53_Place.P67i_is_referred_to_by" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P67i_is_referred_to_by> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E73_Information_Object> <http://www.cidoc-crm.org/cidoc-crm/E29_Design_or_Procedure>) ] ;
+sh:message "Il campo P67i_is_referred_to_by deve essere un'istanza valida."@it ;
+       sh:message "The field P67i_is_referred_to_by must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P168_place_is_defined_by" ;
+       sh:description "E53_Place.P168_place_is_defined_by" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P168_place_is_defined_by> ;
+sh:class [ sh:in (<http://www.w3.org/2000/01/rdf-schema#Literal>) ] ;
+sh:message "Il campo P168_place_is_defined_by deve essere un'istanza valida."@it ;
+       sh:message "The field P168_place_is_defined_by must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P62i_is_depicted_by" ;
+       sh:description "E53_Place.P62i_is_depicted_by" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P62i_is_depicted_by> ;
+sh:class [ sh:in (<http://ontome.net/ns/cpm/CP38_Architecture_Representation_Element>) ] ;
+sh:message "Il campo P62i_is_depicted_by deve essere un'istanza valida."@it ;
+       sh:message "The field P62i_is_depicted_by must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+.
+ex:CP20_Construction_WorkShape
+a sh:NodeShape ;
+sh:targetClass <http://ontome.net/ns/cpm/CP20_Construction_Work> ;
+sh:property [
+       sh:name "type" ;
+       sh:description "CP20_Construction_Work.type" ;
+       sh:path <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "label" ;
+       sh:description "CP20_Construction_Work.label" ;
+       sh:path <http://www.w3.org/2000/01/rdf-schema#label> ;
+sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+sh:message "Il campo label deve essere una stringa e non può essere vuoto."@it ;
+       sh:message "The field label must be a string and cannot be empty."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P2_has_type" ;
+       sh:description "CP20_Construction_Work.P2_has_type" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E55_Type> <http://www.cidoc-crm.org/extensions/crmsci/S13_Sample> <http://www.cidoc-crm.org/cidoc-crm/E70_Thing>) ] ;
+sh:message "Il campo P2_has_type deve essere un'istanza valida."@it ;
+       sh:message "The field P2_has_type must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "Pc41_shows_as_main_material" ;
+       sh:description "CP20_Construction_Work.Pc41_shows_as_main_material" ;
+       sh:path <http://ontome.net/ns/cpm/Pc41_shows_as_main_material> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/extensions/crmsci/S10_Material_Substantial> <http://ontome.net/ns/cpm/CP9_Building_Material>) ] ;
+sh:message "Il campo Pc41_shows_as_main_material deve essere un'istanza valida."@it ;
+       sh:message "The field Pc41_shows_as_main_material must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P46i_forms_part_of" ;
+       sh:description "CP20_Construction_Work.P46i_forms_part_of" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P46i_forms_part_of> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/cidoc-crm/E41_Appellation> <http://ontome.net/ns/cpm/CP2_Architecture_Work>) ] ;
+sh:message "Il campo P46i_forms_part_of deve essere un'istanza valida."@it ;
+       sh:message "The field P46i_forms_part_of must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "P62_depicts" ;
+       sh:description "CP20_Construction_Work.P62_depicts" ;
+       sh:path <http://www.cidoc-crm.org/cidoc-crm/P62_depicts> ;
+sh:class [ sh:in (<http://www.ics.forth.gr/isl/CRMinf/I2_Belief>) ] ;
+sh:message "Il campo P62_depicts deve essere un'istanza valida."@it ;
+       sh:message "The field P62_depicts must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+.
+ex:E58_Measurement_UnitShape
+a sh:NodeShape ;
+sh:targetClass <http://www.cidoc-crm.org/cidoc-crm/E58_Measurement_Unit> ;
+sh:property [
+       sh:name "type" ;
+       sh:description "E58_Measurement_Unit.type" ;
+       sh:path <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "label" ;
+       sh:description "E58_Measurement_Unit.label" ;
+       sh:path <http://www.w3.org/2000/01/rdf-schema#label> ;
+sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+sh:message "Il campo label deve essere una stringa e non può essere vuoto."@it ;
+       sh:message "The field label must be a string and cannot be empty."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+.
+ex:CP9_Building_MaterialShape
+a sh:NodeShape ;
+sh:targetClass <http://ontome.net/ns/cpm/CP9_Building_Material> ;
+sh:property [
+       sh:name "type" ;
+       sh:description "CP9_Building_Material.type" ;
+       sh:path <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "label" ;
+       sh:description "CP9_Building_Material.label" ;
+       sh:path <http://www.w3.org/2000/01/rdf-schema#label> ;
+sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+sh:message "Il campo label deve essere una stringa e non può essere vuoto."@it ;
+       sh:message "The field label must be a string and cannot be empty."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "O25_contains" ;
+       sh:description "CP9_Building_Material.O25_contains" ;
+       sh:path <http://www.cidoc-crm.org/extensions/crmsci/O25_contains> ;
+sh:class [ sh:in (<http://www.cidoc-crm.org/extensions/crmsci/S10_Material_Substantial> <http://www.cidoc-crm.org/cidoc-crm/E55_Type> <http://www.cidoc-crm.org/extensions/crmsci/S13_Sample>) ] ;
+sh:message "Il campo O25_contains deve essere un'istanza valida."@it ;
+       sh:message "The field O25_contains must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "Pc51_was_affected_by" ;
+       sh:description "CP9_Building_Material.Pc51_was_affected_by" ;
+       sh:path <http://ontome.net/ns/cpm/Pc51_was_affected_by> ;
+sh:class [ sh:in (<http://ontome.net/ns/cpm/CP42_Material_Decay>) ] ;
+sh:message "Il campo Pc51_was_affected_by deve essere un'istanza valida."@it ;
+       sh:message "The field Pc51_was_affected_by must be a valid instance."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+.
+ex:CP38_Architecture_Representation_ElementShape
+a sh:NodeShape ;
+sh:targetClass <http://ontome.net/ns/cpm/CP38_Architecture_Representation_Element> ;
+sh:property [
+       sh:name "type" ;
+       sh:description "CP38_Architecture_Representation_Element.type" ;
+       sh:path <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "label" ;
+       sh:description "CP38_Architecture_Representation_Element.label" ;
+       sh:path <http://www.w3.org/2000/01/rdf-schema#label> ;
+sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+sh:message "Il campo label deve essere una stringa e non può essere vuoto."@it ;
+       sh:message "The field label must be a string and cannot be empty."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+.
+ex:E74_GroupShape
+a sh:NodeShape ;
+sh:targetClass <http://www.cidoc-crm.org/cidoc-crm/E74_Group> ;
+sh:property [
+       sh:name "type" ;
+       sh:description "E74_Group.type" ;
+       sh:path <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "label" ;
+       sh:description "E74_Group.label" ;
+       sh:path <http://www.w3.org/2000/01/rdf-schema#label> ;
+sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+sh:message "Il campo label deve essere una stringa e non può essere vuoto."@it ;
+       sh:message "The field label must be a string and cannot be empty."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+.
+ex:E1_CRM_EntityShape
+a sh:NodeShape ;
+sh:targetClass <http://www.cidoc-crm.org/cidoc-crm/E1_CRM_Entity> ;
+sh:property [
+       sh:name "type" ;
+       sh:description "E1_CRM_Entity.type" ;
+       sh:path <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+sh:property [
+       sh:name "label" ;
+       sh:description "E1_CRM_Entity.label" ;
+       sh:path <http://www.w3.org/2000/01/rdf-schema#label> ;
+sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+sh:message "Il campo label deve essere una stringa e non può essere vuoto."@it ;
+       sh:message "The field label must be a string and cannot be empty."@en ;
+sh:minCount 1 ;
+       sh:maxCount 1 ;
+] ;
+.
+        

@@ -57,6 +57,9 @@ getPort.default({
     const fusekiRouter = require('./controllers/fuseki.js')
     app.use(`/${serviceName}/fuseki`, fusekiRouter)
 
+    const ontologyRouter = require('./controllers/ontology.js')
+    app.use(`/${serviceName}/ontology`, ontologyRouter)
+
     app.listen(port, async () => {
         console.log(`${serviceName} listening on port ${port}`)
         await register()
