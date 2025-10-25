@@ -1,0 +1,635 @@
+@prefix inf:   <http://www.ics.forth.gr/isl/CRMinf/> .
+@prefix cpm:   <http://ontome.net/ns/cpm/> .
+@prefix basecpm: <http://ontome.net/ns/cpm/> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix crmsci: <http://www.ics.forth.gr/isl/CRMsci/> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml:   <http://www.w3.org/XML/1998/namespace> .
+@prefix pref:  <http://Indagine/> .
+@prefix crm:   <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix base:  <http://www.ics.forth.gr/isl/CRMinf/> .
+
+<http://Indagine/note_descrizione_campione/xxxx>
+        a           rdfs:Literal ;
+        rdfs:label  "note descrizione campione xxxx" .
+
+<http://Indagine/Fenomeno_osservato/dissesto>
+        a           basecpm:CP41_Environmental_Observable_Entity ;
+        rdfs:label  "Fenomeno osservato per il bene dissesto" .
+
+<http://Indagine/porzione%20identificata0F0C1D64-0593-4852-929B-90CB05459878>
+        a           <http://www.cidoc-crm.org/extensions/crmsci/S22_Segment_of_Matter> ;
+        rdfs:label  "porzione identificata" ;
+        <http://www.cidoc-crm.org/extensions/crmsci/O15i_was_occupied_by>
+                <http://Indagine/Campione/01> .
+
+<http://Indagine/ID/01>
+        a           crm:E42_Identifier ;
+        rdfs:label  "ID campione 01" .
+
+<http://Indagine/Report/R-01>
+        a                             crm:E73_Information_Object ;
+        rdfs:label                    "Report R-01" ;
+        crm:P105_right_held_by        pref:Report_autoreFE181486-FFE9-4855-ADF4-BB3F15C77861 ;
+        crm:P165i_is_incorporated_in  <http://Indagine/allegato/xxx> ;
+        crm:P48_has_preferred_identifier
+                <http://Indagine/ID_report/R-01> ;
+        crm:P94i_was_created_by       pref:Creazione_allegato7EE1BC15-F729-4A07-9E8D-205AD378457D .
+
+<http://Indagine/Procedura_ass/3>
+        a           crm:E29_Design_or_Procedure ;
+        rdfs:label  "Procedura_ass 3" .
+
+<http://Indagine/Competenza/architettura>
+        a                crm:E39_Actor ;
+        rdfs:label       "Competenza architettura" ;
+        crm:P3_has_note  <http://Indagine/Ruolo/architetto> .
+
+<http://Indagine/denom_ente_schedatore/Chiara_Porrovecchio>
+        a           crm:E41_Appellation ;
+        rdfs:label  "Schedatore Chiara_Porrovecchio" .
+
+<http://Indagine/Dissesto_strutturale/deformazione>
+        a           basecpm:CP43_Structural_Damage ;
+        rdfs:label  "Dissesto strutturale deformazione" .
+
+<http://Indagine/tipo_input/Ricerca_bibliografica>
+        a           crm:E55_Type ;
+        rdfs:label  "tipo input Ricerca_bibliografica" .
+
+pref:Valutazione_stato_conservazioneD7BA071A-B449-4101-A4FC-92911EEB8BB0
+        a                       crm:E14_Condition_Assessment ;
+        rdfs:label              "Valutazione dello stato di conservazione" ;
+        crm:P35_has_identified  pref:Tafonomia_e_stato_conservazione34ABADC5-6460-40C9-830D-A388B3119EA6 .
+
+<http://Indagine/procedura_associata/3>
+        a           crm:E29_Design_or_Procedure ;
+        rdfs:label  "procedura associata ID 3" .
+
+<http://Indagine/Campione/01>
+        a                            <http://www.cidoc-crm.org/extensions/crmsci/S13_Sample> ;
+        rdfs:label                   "Campione 01" ;
+        crm:P140i_was_attributed_by  pref:Osservazione3A9D8A20-8033-4065-8484-A28EBB918865 , pref:Valutazione_stato_conservazioneD7BA071A-B449-4101-A4FC-92911EEB8BB0 , <http://Indagine/Osservazione/Osservazione> ;
+        crm:P16i_was_used_for        <http://Indagine/Indagine/1> ;
+        crm:P2_has_type              <http://Indagine/tipo_campione/muratura> , <http://Indagine/descrizione_indagine/Muratura_opus_testaceum> ;
+        crm:P43_has_dimension        <http://Indagine/Dimensione/Dimensione> ;
+        crm:P48_has_preferred_identifier
+                <http://Indagine/ID/01> ;
+        <http://www.cidoc-crm.org/extensions/crmsci/O25_contains>
+                <http://Indagine/Materiale_prevalente/Materiale_prevalente> , <http://Indagine/Sottocampione/xxxx> ;
+        <http://www.cidoc-crm.org/extensions/crmsci/O2i_was_removed_by>
+                <http://Indagine/Campionamento/apposizione_griglia_di_scansione> ;
+        <http://www.cidoc-crm.org/extensions/crmsci/O5i_was_removed_by>
+                <http://Indagine/Campionamento/apposizione_griglia_di_scansione> .
+
+<http://Indagine/Inquadramento_cronologico/XII_secolo>
+        a           base:I2_Belief ;
+        rdfs:label  "Inquadramento cronologico XII_secolo" .
+
+<http://Indagine/Tipo_preparazione_campione/non_necessaria>
+        a                crm:E55_Type ;
+        rdfs:label       "Tipo preparazione del campione non_necessaria" ;
+        crm:P3_has_note  <http://Indagine/note_preparazionecampione/xxxx> .
+
+<http://Indagine/Data_campionamento/30/6/2024>
+        a           crm:E2_Temporal_Entity ;
+        rdfs:label  "Data campionamento 30/6/2024" .
+
+<http://Indagine/Tipo_inquadramento_cronologico/Fonte_bibliografica>
+        a           crm:E55_Type ;
+        rdfs:label  "Tipo inquadramento cronologico Fonte_bibliografica" .
+
+pref:Quesito_diagnostico5D39BEE7-1C9B-46F4-BFD4-D0DA226E2768
+        a                base:I12_Adopted_Belief ;
+        rdfs:label       "Quesito diagnostico" ;
+        crm:P2_has_type  <http://Indagine/Tipo_quesito_diagnostico/caratterizzazione_materiale> .
+
+<http://Indagine/tipo_indagine/strutturale>
+        a                          crm:E55_Type ;
+        rdfs:label                 "Tipo indagine strutturale" ;
+        crm:P103_was_intended_for  <http://Indagine/tipo_quesito_diagnostico/caratterizzazione_materiale> .
+
+<http://Indagine/ID/xxx>
+        a           crm:E42_Identifier ;
+        rdfs:label  "ID xxx" .
+
+<http://Indagine/tipo_el_costr/pilastro>
+        a                crm:E55_Type ;
+        rdfs:label       "Tipo elemento costruttivo pilastro" ;
+        crm:P3_has_note  <http://Indagine/note_ELC/xxxx> .
+
+<http://Indagine/tipo_output/determinazione_geometrica_distacco>
+        a           crm:E55_Type ;
+        rdfs:label  "tipo di output determinazione_geometrica_distacco" .
+
+<http://Indagine/ID_sootocampione/xxxx>
+        a           crm:E42_Identifier ;
+        rdfs:label  "ID sottocampione xxxx" .
+
+<http://Indagine/data_analisi_sottocampione/15_Luglio_2024>
+        a           crm:E52_Time-Span ;
+        rdfs:label  "Data 15_Luglio_2024" .
+
+<http://Indagine/Degrado/xxxx>
+        a                basecpm:CP42_Material_Decay ;
+        rdfs:label       "Degrado xxxx" ;
+        crm:P3_has_note  <http://Indagine/note_degrado/xxx> .
+
+<http://Indagine/note_materiale/xxx>
+        a           rdfs:Literal ;
+        rdfs:label  "note materiale xxx" .
+
+<http://Indagine/Indagine/1>
+        a                         crm:E7_Activity ;
+        rdfs:label                "Indagine 1" ;
+        basecpm:Pc43i_uses        <http://Indagine/Bene_riferimento/Basilica_di_San_Giorgio_al_Velabro> ;
+        crm:P134_continued        <http://Indagine/Attivita_diagnostica/01> ;
+        crm:P14_carried_out_by    <http://Indagine/Attori/Attori> ;
+        crm:P17_was_motivated_by  pref:Quesito_diagnostico5D39BEE7-1C9B-46F4-BFD4-D0DA226E2768 ;
+        crm:P2_has_type           <http://Indagine/tipo_indagine/strutturale> ;
+        crm:P33_used_specific_technique
+                <http://Indagine/Procedura_ass/3> ;
+        crm:P48_has_preferred_identifier
+                <http://Indagine/ID_Indagine/1> ;
+        <http://www.cidoc-crm.org/extensions/crmsci/O23i_defines>
+                <http://Indagine/porzione%20identificata0F0C1D64-0593-4852-929B-90CB05459878> .
+
+<http://Indagine/Tipo_luogo_analisi/in_situ>
+        a           crm:E55_Type ;
+        rdfs:label  "Tipo luogo di analisi in_situ" .
+
+<http://Indagine/Output/Output>
+        a                               crm:E13_Attribute_Assignment ;
+        rdfs:label                      "Output" ;
+        crm:P11_had_participant         <http://Indagine/Competenza/architettura> ;
+        crm:P140_assigned_attribute_to  <http://Indagine/componente_specifico/componente_specifico> , <http://Indagine/Materiale_specifico/Materiale_specifico> ;
+        crm:P160_has_temporal_projection
+                <http://Indagine/data_elaborazione/15_Luglio_2024> ;
+        crm:P2_has_type                 <http://Indagine/tipo_output/determinazione_geometrica_distacco> ;
+        crm:P67i_is_referred_to_by      <http://Indagine/Report/R-01> .
+
+<http://Indagine/Tipo_quesito_diagnostico/caratterizzazione_materiale>
+        a                crm:E55_Type ;
+        rdfs:label       "Quesito diagnostico caratterizzazione_materiale" ;
+        crm:P3_has_note  <http://Indagine/noteQD/xxx> .
+
+<http://Indagine/software/Screaning_eagle_app_proceq>
+        a           crm:E55_Type ;
+        rdfs:label  "software usato Screaning_eagle_app_proceq" .
+
+<http://Indagine/Osservazione/Osservazione>
+        a                               <http://www.cidoc-crm.org/extensions/crmsci/S4_Observation> ;
+        rdfs:label                      "Osservazione" ;
+        crm:P140_assigned_attribute_to  <http://Indagine/Inquadramento_cronologico/XII_secolo> ;
+        <http://www.cidoc-crm.org/extensions/crmsci/O16_observed_value>
+                <http://Indagine/Condizione_ambientale/Condizione_ambientale> .
+
+<http://Indagine/Strumentazione/Strumentazione>
+        a                           crm:E70_Thing ;
+        rdfs:label                  "Strumentazione" ;
+        crm:P2_has_type             <http://Indagine/Strumentazione/sonda_GPR> ;
+        crm:P48_has_preferred_identifier
+                <http://Indagine/Specifiche_tecniche/Proceq_GP800> ;
+        crm:P67i_is_referred_to_by  <http://Indagine/Procedura/scansione_areale> .
+
+<http://Indagine/tipo_inq_cron/XII_secolo>
+        a           crm:E55_Type ;
+        rdfs:label  "tipo XII_secolo" .
+
+pref:Input334FDE3B-A078-4FB0-9CB2-32ABB98493D8
+        a                         base:I2_Belief ;
+        rdfs:label                "Input" ;
+        crm:P2_has_type           <http://Indagine/tipo_input/Ricerca_bibliografica> ;
+        crm:P3_has_note           <http://Indagine/note_input/xxxx> ;
+        base:J1i_was_premise_for  <http://Indagine/inference_making/Radargramma> .
+
+<http://Indagine/data/13_Luglio_2024>
+        a           crm:E52_Time-Span ;
+        rdfs:label  "data 13_Luglio_2024" .
+
+<http://Indagine/software/software>
+        a                  crm:E73_Information_Object ;
+        rdfs:label         "software" ;
+        crm:P2_has_type    <http://Indagine/software/Screaning_eagle_app_proceq> ;
+        crm:P67_refers_to  <http://Indagine/inference_making/Radargramma> .
+
+<http://Indagine/Attivita_diagnostica/01>
+        a                             crm:E42_Identifier , crm:E7_Activity ;
+        rdfs:label                    "Attività Diagnostica ID 01" , "Attività diagnostica ID 01" , "ID attività diagnostica 01" ;
+        basecpm:Pc43i_uses            <http://Indagine/Bene_riferimento/Basilica_di_San_Giorgio_al_Velabro> ;
+        crm:P129i_is_subject_of       pref:assunti_baseB7A1A0C7-6906-4F20-B8E0-7AEB969B5393 ;
+        crm:P12_occurred_in_the_presence_of
+                <http://Indagine/Campione/01> ;
+        crm:P14_carried_out_by        <http://Indagine/Autore/Chiara_Porrovecchio> ;
+        crm:P160_has_temporal_projection
+                <http://Indagine/data/13_Luglio_2024> ;
+        crm:P16_used_specific_object  <http://Indagine/software/software> , <http://Indagine/Strumentazione/Strumentazione> ;
+        crm:P17i_motivated            <http://Indagine/Output/Output> ;
+        crm:P2_has_type               <http://Indagine/Tipo_tecnica_diagnostica/georadar> , <http://Indagine/Tipo_preparazione_campione/non_necessaria> , <http://Indagine/Fase_analisi/preliminare> ;
+        crm:P33_used_specific_technique
+                <http://Indagine/Procedura/Procedura> ;
+        crm:P48_has_preferred_identifier
+                <http://Indagine/Attivita_diagnostica/01> ;
+        crm:P67i_is_referred_to_by    <http://Indagine/Report/R-01> , <http://Indagine/Medium/Medium> ;
+        crm:P7_took_place_at          pref:Luogo_analisiAA37D6D5-2193-4918-8538-98A03DBF4809 .
+
+<http://Indagine/Data_aggiornamento_report/15_Luglio_2024>
+        a           crm:E2_Temporal_Entity ;
+        rdfs:label  "Data di aggiornamento del report 15_Luglio_2024" .
+
+<http://Indagine/ID_bene_VIR/10000298>
+        a           crm:E42_Identifier ;
+        rdfs:label  "ID del bene in VIR 10000298" .
+
+pref:Creazione_allegato7EE1BC15-F729-4A07-9E8D-205AD378457D
+        a           crm:E65_Creation ;
+        rdfs:label  "Creazione dell'allegato" ;
+        crm:P173_starts_before_or_with_the_end_of
+                <http://Indagine/Data_creazione_report/15_Luglio_2024> ;
+        crm:P182_ends_before_or_with_the_start_of
+                <http://Indagine/Data_aggiornamento_report/15_Luglio_2024> .
+
+<http://Indagine/inference_making/Radargramma>
+        a           crmsci:S5_Inference_Making , base:I5_Inference_Making ;
+        rdfs:label  "inference_making Radargramma" , "inference_making" .
+
+<http://Indagine/Data_creazione_report/15_Luglio_2024>
+        a           crm:E2_Temporal_Entity ;
+        rdfs:label  "Data di creazione del report 15_Luglio_2024" .
+
+<http://Indagine/Bene_riferimento/Basilica_di_San_Giorgio_al_Velabro>
+        a                             crm:E41_Appellation , basecpm:CP2_Architecture_Work ;
+        rdfs:label                    "Denominazione Basilica_di_San_Giorgio_al_Velabro" , "Bene di riferimento" , "Bene_riferimento Basilica_di_San_Giorgio_al_Velabro" , "Bene di riferimento Basilica_di_San_Giorgio_al_Velabro" ;
+        basecpm:Pc1i_is_subject_to    <http://Indagine/Fenomeno_osservato/dissesto> ;
+        basecpm:Pc61_was_affected_by  <http://Indagine/Dissesto_strutturale/deformazione> ;
+        crm:P1_is_identified_by       <http://Indagine/Bene_riferimento/Basilica_di_San_Giorgio_al_Velabro> ;
+        crm:P2_has_type               <http://Indagine/Tipo_contesto/architettonico> ;
+        crm:P46_is_composed_of        <http://Indagine/Elemento_costruttivo/pilastro> ;
+        crm:P48_has_preferred_identifier
+                <http://Indagine/ID_bene_VIR/10000298> .
+
+<http://Indagine/Ente_richiedente/Sapienza_Universita_di_Roma>
+        a                        crm:E55_Type ;
+        rdfs:label               "Ente richiedente" ;
+        crm:P1_is_identified_by  <http://Indagine/denom_ente_richiedente/Sapienza_Universita_di_Roma> .
+
+<http://Indagine/noteQD/xxx>
+        a           rdfs:Literal ;
+        rdfs:label  "note quesito diagnostico xxx" .
+
+<http://Indagine/denom_ente_richiedente/Sapienza_Universita_di_Roma>
+        a           crm:E41_Appellation ;
+        rdfs:label  "Ente  Sapienza_Universita_di_Roma" .
+
+<http://Indagine/Unita_misura/m2>
+        a           crm:E58_Measurement_Unit ;
+        rdfs:label  "Unità di misura  m2" .
+
+<http://Indagine/Output/determinazione_geometrica_distacco>
+        a           crm:E13_Attribute_Assignment ;
+        rdfs:label  "Output determinazione_geometrica_distacco" .
+
+<http://Indagine/note_input/xxxx>
+        a           rdfs:Literal ;
+        rdfs:label  "note input xxxx" .
+
+<http://Indagine/processo_sottocampionamento/xxx>
+        a           crm:E29_Design_or_Procedure ;
+        rdfs:label  "procedura di sottocampionamento xxx" .
+
+pref:Osservazione3A9D8A20-8033-4065-8484-A28EBB918865
+        a                <http://www.cidoc-crm.org/extensions/crmsci/S4_Observation> ;
+        rdfs:label       "Osservazione" ;
+        crm:P2_has_type  <http://Indagine/Tipo_inquadramento_cronologico/Fonte_bibliografica> .
+
+<http://Indagine/ID_report/R-01>
+        a           crm:E42_Identifier ;
+        rdfs:label  "ID report R-01" .
+
+<http://Indagine/Campionamento/apposizione_griglia_di_scansione>
+        a                               <http://www.cidoc-crm.org/extensions/crmsci/S2_Sample_Taking> ;
+        rdfs:label                      "Campionamento apposizione_griglia_di_scansione" ;
+        crm:P173_starts_before_or_with_the_end_of
+                <http://Indagine/Data_campionamento/30/6/2024> ;
+        crm:P33_used_specific_technique
+                <http://Indagine/Processo_campionamento/apposizione_griglia_di_scansione> ;
+        crm:P8_took_place_on_or_within  <http://Indagine/Elemento_costruttivo/pilastro> ;
+        <http://www.cidoc-crm.org/extensions/crmsci/O4_sampled_at>
+                <http://Indagine/Area_prelievo/Area_prelievo_campione> .
+
+<http://Indagine/Elemento_costruttivo/pilastro>
+        a                       basecpm:CP20_Construction_Work ;
+        rdfs:label              "Elemento costruttivo" , "Elemento costruttivo pilastro" ;
+        basecpm:Pc41_shows_as_main_material
+                <http://Indagine/Materiale_prevalente/laterizio> ;
+        crm:P2_has_type         <http://Indagine/tipo_el_costr/pilastro> ;
+        crm:P46i_forms_part_of  <http://Indagine/Bene_riferimento/Basilica_di_San_Giorgio_al_Velabro> ;
+        crm:P62_depicts         pref:Inquadramento_cronologico441DAFD2-BAE8-42F3-B7BE-8CD18F4D2F2E .
+
+<http://Indagine/allegato/xxxxx>
+        a           crm:E73_Information_Object ;
+        rdfs:label  "link xxxxx" .
+
+<http://Indagine/Area_prelievo/Area_prelievo_campione>
+        a                             crm:E53_Place ;
+        rdfs:label                    "Area di prelievo" ;
+        crm:P168_place_is_defined_by  <http://Indagine/coordinate/xxxxx> ;
+        crm:P3_has_note               <http://Indagine/Localizzazione_area_campionamento/xxxx> ;
+        crm:P48_has_preferred_identifier
+                <http://Indagine/ID_area_prelievo/A-1> ;
+        crm:P62i_is_depicted_by       <http://Indagine/allegato_grafico/TAV_01> ;
+        crm:P67i_is_referred_to_by    <http://Indagine/allegato/xxxxx> .
+
+<http://Indagine/tipo_componente_specifico/xxxx>
+        a           crm:E55_Type ;
+        rdfs:label  "componente specifico tipo xxxx" .
+
+<http://Indagine/Procedura/scansione_areale>
+        a           crm:E29_Design_or_Procedure ;
+        rdfs:label  "Procedura scansione_areale" .
+
+<http://Indagine/Ente/AStRe-LabMat>
+        a           crm:E74_Group ;
+        rdfs:label  "Ente AStRe-LabMat" .
+
+<http://Indagine/Tipo_condizione_ambientale/Illuminazione_diretta>
+        a                crm:E55_Type ;
+        rdfs:label       "Tipo condizione ambientale Illuminazione_diretta" ;
+        crm:P3_has_note  <http://Indagine/note/xxx> .
+
+<http://Indagine/Autore_report/Chiara_Porrovecchio>
+        a           crm:E41_Appellation ;
+        rdfs:label  "Autore del report Chiara_Porrovecchio" .
+
+<http://Indagine/nota/zzz>
+        a           rdfs:Literal ;
+        rdfs:label  "nota zzz" .
+
+<http://Indagine/note_ELC/xxxx>
+        a           rdfs:Literal ;
+        rdfs:label  "note per tipo elemento costruttivo xxxx" .
+
+<http://Indagine/Medium/Medium>
+        a                           crm:E73_Information_Object ;
+        rdfs:label                  "Medium" ;
+        crm:P15i_influenced         <http://Indagine/Output/determinazione_geometrica_distacco> ;
+        crm:P2_has_type             <http://Indagine/tipo_medium/Radargramma> ;
+        crm:P67_refers_to           <http://Indagine/Specifiche_tecniche/Proceq_GP800> ;
+        crm:P67i_is_referred_to_by  <http://Indagine/link/xxx> .
+
+<http://Indagine/allegato_grafico/TAV_01>
+        a           basecpm:CP38_Architecture_Representation_Element ;
+        rdfs:label  "Allegato TAV_01" .
+
+pref:assunti_baseB7A1A0C7-6906-4F20-B8E0-7AEB969B5393
+        a                       base:I4_Proposition_Set ;
+        rdfs:label              "assunti_base" ;
+        base:J4i_is_subject_of  pref:Input334FDE3B-A078-4FB0-9CB2-32ABB98493D8 .
+
+<http://Indagine/Ruolo/architetto>
+        a           rdfs:Literal ;
+        rdfs:label  "Ruolo architetto" .
+
+<http://Indagine/ID_Indagine/1>
+        a           crm:E42_Identifier ;
+        rdfs:label  "ID Indagine 1" .
+
+pref:Report_autoreFE181486-FFE9-4855-ADF4-BB3F15C77861
+        a                        crm:E39_Actor ;
+        rdfs:label               "Autore del report" ;
+        crm:P1_is_identified_by  <http://Indagine/Autore_report/Chiara_Porrovecchio> .
+
+<http://Indagine/Note_sottocampione/xxx>
+        a           rdfs:Literal ;
+        rdfs:label  "Note del sottocampione xxx" .
+
+pref:Inquadramento_cronologico441DAFD2-BAE8-42F3-B7BE-8CD18F4D2F2E
+        a                base:I2_Belief ;
+        rdfs:label       "inquadramento cronologico" ;
+        crm:P2_has_type  <http://Indagine/tipo_inq_cron/XII_secolo> .
+
+<http://Indagine/tipo_medium/Radargramma>
+        a           crm:E55_Type ;
+        rdfs:label  "tipo di medium Radargramma" .
+
+pref:Luogo_analisiAA37D6D5-2193-4918-8538-98A03DBF4809
+        a                crm:E53_Place ;
+        rdfs:label       "Luogo di analisi" ;
+        crm:P2_has_type  <http://Indagine/Tipo_luogo_analisi/in_situ> .
+
+<http://Indagine/coordinate/xxxxx>
+        a           rdfs:Literal ;
+        rdfs:label  "coordinate xxxxx" .
+
+<http://Indagine/Strumentazione/sonda_GPR>
+        a           crm:E55_Type , crm:E70_Thing ;
+        rdfs:label  "tipo sonda_GPR" , "Strumento sonda_GPR" .
+
+<http://Indagine/note_preparazionecampione/xxxx>
+        a           rdfs:Literal ;
+        rdfs:label  "note preparazione campione xxxx" .
+
+<http://Indagine/Autore/Chiara_Porrovecchio>
+        a           crm:E39_Actor ;
+        rdfs:label  "Autore Chiara_Porrovecchio" ;
+        crm:P107i_is_current_or_former_member_of
+                <http://Indagine/Ente/AStRe-LabMat> .
+
+<http://Indagine/Attori/Attori>
+        a                crm:E39_Actor ;
+        rdfs:label       "Attori coinvolti" ;
+        crm:P2_has_type  <http://Indagine/Ente_schedatore/Chiara_Porrovecchio> , <http://Indagine/Ente_richiedente/Sapienza_Universita_di_Roma> .
+
+<http://Indagine/Dimensione/Dimensione>
+        a                  crm:E54_Dimension ;
+        rdfs:label         "Dimensione" ;
+        crm:P90_has_value  <http://Indagine/Dimensione_grandezza/1> ;
+        crm:P91_has_unit   <http://Indagine/Unita_misura/m2> .
+
+<http://Indagine/Protocollo/000001>
+        a           crm:E42_Identifier ;
+        rdfs:label  "Protocollo 000001" .
+
+<http://Indagine/Materiale_prevalente/laterizio>
+        a                             <http://www.cidoc-crm.org/extensions/crmsci/S10_Material_Substantial> , basecpm:CP9_Building_Material ;
+        rdfs:label                    "Materiale prevalente laterizio" ;
+        basecpm:Pc51_was_affected_by  <http://Indagine/Degrado/xxxx> ;
+        <http://www.cidoc-crm.org/extensions/crmsci/O25_contains>
+                <http://Indagine/Materiale_specifico/xxxx> .
+
+<http://Indagine/tipo_campione/muratura>
+        a           crm:E55_Type ;
+        rdfs:label  "Tipo campione muratura" .
+
+<http://Indagine/Tipo_contesto/architettonico>
+        a           crm:E55_Type ;
+        rdfs:label  "Tipo di contesto del bene architettonico" .
+
+<http://Indagine/tipo_materiale_specifico/xxxx>
+        a                crm:E55_Type ;
+        rdfs:label       "tipo  xxxx" ;
+        crm:P3_has_note  <http://Indagine/note_altro/xxx> .
+
+<http://Indagine/allegato/xxx>
+        a           crm:E73_Information_Object ;
+        rdfs:label  "allegato xxx" .
+
+<http://Indagine/finalita/caratterizzazione_degrado>
+        a           crm:E1_CRM_Entity ;
+        rdfs:label  "finalità  caratterizzazione_degrado" .
+
+<http://Indagine/Localizzazione_area_campionamento/xxxx>
+        a           rdfs:Literal ;
+        rdfs:label  "Localizzazione area di campionamento xxxx" .
+
+<http://Indagine/Specifiche_tecniche/Proceq_GP800>
+        a           crm:E42_Identifier ;
+        rdfs:label  "Specifiche tecniche Proceq_GP800" .
+
+<http://Indagine/Processo_campionamento/apposizione_griglia_di_scansione>
+        a                crm:E29_Design_or_Procedure ;
+        rdfs:label       "Processo di campionamento apposizione_griglia_di_scansione" ;
+        crm:P3_has_note  <http://Indagine/nota/zzz> .
+
+<http://Indagine/Dimensione_grandezza/1>
+        a           rdfs:Literal ;
+        rdfs:label  "Misura 1" .
+
+<http://Indagine/Sottocampione/xxxx>
+        a                           <http://www.cidoc-crm.org/extensions/crmsci/S13_Sample> , crm:E55_Type ;
+        rdfs:label                  "Sottocampione xxxx" , "Tipo sottocampione xxxx" ;
+        crm:P130_shows_features_of  <http://Indagine/Campione/01> ;
+        crm:P2_has_type             <http://Indagine/Sottocampione/xxxx> ;
+        crm:P3_has_note             <http://Indagine/Note_sottocampione/xxx> ;
+        crm:P48_has_preferred_identifier
+                <http://Indagine/ID_sootocampione/xxxx> ;
+        <http://www.cidoc-crm.org/extensions/crmsci/O25_contains>
+                <http://Indagine/Materiale_sottocampione/Materiale_sottocampione> ;
+        <http://www.cidoc-crm.org/extensions/crmsci/O3i_was_sample_by>
+                <http://Indagine/Sottocampionamento/Sottocampionamento> .
+
+<http://Indagine/Materiale_sottocampione/Materiale_sottocampione>
+        a                <http://www.cidoc-crm.org/extensions/crmsci/S10_Material_Substantial> ;
+        rdfs:label       "Materiale del sottocampione" ;
+        crm:P2_has_type  <http://Indagine/Tipo_materiale_campione/xxxx> ;
+        crm:P3_has_note  <http://Indagine/note_materiale/xxx> .
+
+<http://Indagine/modalita/scansione_areale>
+        a           crm:E55_Type ;
+        rdfs:label  "modalità di indagine scansione_areale" .
+
+<http://Indagine/note_altro/xxx>
+        a           rdfs:Literal ;
+        rdfs:label  "nota altro xxx" .
+
+<http://Indagine/Tipo_tafonomia_e_stato_conservazione/Degradato>
+        a           crm:E55_Type ;
+        rdfs:label  "Tipo tafonomia e stato di conservazione Degradato" .
+
+<http://Indagine/Materiale_specifico/xxxx>
+        a           <http://www.cidoc-crm.org/extensions/crmsci/S10_Material_Substantial> ;
+        rdfs:label  "Materiale specifico xxxx" .
+
+<http://Indagine/Materiale_prevalente/Materiale_prevalente>
+        a                <http://www.cidoc-crm.org/extensions/crmsci/S10_Material_Substantial> ;
+        rdfs:label       "Materiale prevalente" ;
+        crm:P2_has_type  <http://Indagine/Materiale/laterizio> ;
+        <http://www.cidoc-crm.org/extensions/crmsci/O25_contains>
+                <http://Indagine/Materiale_specifico/xxxx> .
+
+<http://Indagine/tipo_quesito_diagnostico/caratterizzazione_materiale>
+        a           crm:E55_Type ;
+        rdfs:label  "Quesito diagnostico caratterizzazione_materiale" .
+
+<http://Indagine/descrizione_indagine/Muratura_opus_testaceum>
+        a                crm:E55_Type ;
+        rdfs:label       "Descrizione campione Muratura_opus_testaceum" ;
+        crm:P3_has_note  <http://Indagine/note_descrizione_campione/xxxx> .
+
+<http://Indagine/data_elaborazione/15_Luglio_2024>
+        a           crm:E52_Time-Span ;
+        rdfs:label  "data elaborazione 15_Luglio_2024" .
+
+<http://Indagine/link/xxx>
+        a           crm:E73_Information_Object ;
+        rdfs:label  "link xxx" .
+
+<http://Indagine/Materiale/laterizio>
+        a           crm:E55_Type ;
+        rdfs:label  "tipo laterizio" .
+
+<http://Indagine/Ente_schedatore/Chiara_Porrovecchio>
+        a                        crm:E55_Type ;
+        rdfs:label               "Ente schedatore" ;
+        crm:P1_is_identified_by  <http://Indagine/denom_ente_schedatore/Chiara_Porrovecchio> .
+
+<http://Indagine/note/xxx>
+        a           rdfs:Literal ;
+        rdfs:label  "nota xxx" , "note xxx" .
+
+<http://Indagine/Condizione_ambientale/Condizione_ambientale>
+        a                    basecpm:CP41_Environmental_Observable_Entity ;
+        rdfs:label           "Condizione ambientale" ;
+        basecpm:Pc1_affects  <http://Indagine/Tipo_tecnica_diagnostica/georadar> , <http://Indagine/Campione/01> ;
+        crm:P2_has_type      <http://Indagine/Tipo_condizione_ambientale/Illuminazione_diretta> .
+
+<http://Indagine/componente_specifico/componente_specifico>
+        a                crm:E18_Physical_Thing ;
+        rdfs:label       "Componente specifico" ;
+        crm:P2_has_type  <http://Indagine/tipo_componente_specifico/xxxx> ;
+        crm:P3_has_note  <http://Indagine/note/xxx> ;
+        crm:P48_has_preferred_identifier
+                <http://Indagine/ID/xxx> .
+
+<http://Indagine/Materiale_specifico/Materiale_specifico>
+        a                <http://www.cidoc-crm.org/extensions/crmsci/S10_Material_Substantial> ;
+        rdfs:label       "Materiale specifico" ;
+        crm:P2_has_type  <http://Indagine/tipo_materiale_specifico/xxxx> ;
+        <http://www.cidoc-crm.org/extensions/crmsci/O25i_is_contained_in>
+                <http://Indagine/Campione/01> , <http://Indagine/Bene_riferimento/Basilica_di_San_Giorgio_al_Velabro> .
+
+<http://Indagine/Fase_analisi/preliminare>
+        a           crm:E55_Type ;
+        rdfs:label  "Fase di analisi preliminare" .
+
+<http://Indagine/ID_area_prelievo/A-1>
+        a           crm:E42_Identifier ;
+        rdfs:label  "ID area prelievo A-1" .
+
+pref:Tafonomia_e_stato_conservazione34ABADC5-6460-40C9-830D-A388B3119EA6
+        a                crm:E3_Condition_State ;
+        rdfs:label       "Tafonomia e stato di conservazione" ;
+        crm:P2_has_type  <http://Indagine/Tipo_tafonomia_e_stato_conservazione/Degradato> .
+
+<http://Indagine/Sottocampionamento/Sottocampionamento>
+        a           <http://www.cidoc-crm.org/extensions/crmsci/S2_Sample_Taking> ;
+        rdfs:label  "Sottocampionamento" ;
+        crm:P160_has_temporal_projection
+                <http://Indagine/data_analisi_sottocampione/15_Luglio_2024> ;
+        crm:P33_used_specific_technique
+                <http://Indagine/processo_sottocampionamento/xxx> .
+
+<http://Indagine/note_degrado/xxx>
+        a           rdfs:Literal ;
+        rdfs:label  "note_degrado xxx" .
+
+<http://Indagine/Tipo_materiale_campione/xxxx>
+        a           crm:E55_Type ;
+        rdfs:label  "Tipo materiale del sottocampione xxxx" .
+
+<http://Indagine/Procedura/Procedura>
+        a                             crm:E29_Design_or_Procedure ;
+        rdfs:label                    "Procedura" ;
+        crm:P129_is_about             <http://Indagine/finalita/caratterizzazione_degrado> ;
+        crm:P1_is_identified_by       <http://Indagine/Protocollo/000001> ;
+        crm:P2_has_type               <http://Indagine/modalita/scansione_areale> ;
+        crm:P67_refers_to             <http://Indagine/Strumentazione/sonda_GPR> ;
+        crm:P69_has_association_with  <http://Indagine/procedura_associata/3> .
+
+<http://Indagine/Tipo_tecnica_diagnostica/georadar>
+        a                           crm:E55_Type ;
+        rdfs:label                  "Tipo tecnica diagnostica georadar" ;
+        basecpm:Pc1i_is_subject_to  <http://Indagine/Condizione_ambientale/Condizione_ambientale> .
