@@ -1902,6 +1902,7 @@ sh:minCount 1 ;
 ex:CP20_Construction_WorkShape
 a sh:NodeShape ;
 sh:targetClass <http://ontome.net/ns/cpm/CP20_Construction_Work> ;
+volipi:iconName "fa-solid fa-building" ;
 sh:property [
        sh:name "type" ;
        sh:description "CP20_Construction_Work.type" ;
@@ -1962,6 +1963,7 @@ sh:minCount 1 ;
 .
 ex:E58_Measurement_UnitShape
 a sh:NodeShape ;
+volipi:iconName "fa-solid fa-ruler" ;
 sh:targetClass <http://www.cidoc-crm.org/cidoc-crm/E58_Measurement_Unit> ;
 sh:property [
        sh:name "type" ;
