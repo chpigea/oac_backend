@@ -202,4 +202,105 @@ router.get('/export/:format/:entity/:id', (req, res) => {
     
 });
 
+// GENERAL SPARQL QUERIES ---------------------------------------------------------------
+
+router.get("/endpoint/sparql", async (req, res) => {
+  try {
+    const query = req.query.query;
+    if (!query) return res.status(400).json({ error: "Missing ?query=" });
+
+    const url = fusekiUrl + "?query=" + encodeURIComponent(query);
+
+    axios.get(url, {
+        headers: {
+            'Accept': 'application/sparql-results+json'
+        }
+    })
+    .then(response => {
+        res.status(200).json(response.data);
+    }).catch(error => {
+        let message = (error.response?.status + error.response?.data) || error.message
+        res.status(500).json({ 
+            message: 'Error from SPARQL end-point: ' + message, 
+            query
+        });
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "SPARQL request failed" });
+  }
+});
+
+router.post("/endpoint/sparql", async (req, res) => {
+  try {
+    const { query, format = "json" } = req.body;
+    if (!query) return res.status(400).json({ error: "Missing query" });
+
+    // INVIO A FUSEKI
+    axios.post(fusekiUrl, query, {
+        headers: {
+            "Content-Type": "application/sparql-query",
+            "Accept":
+                format === "xml" 
+                    ? "application/sparql-results+xml"
+                    : "application/sparql-results+json",
+        }
+    })
+    .then(response => {
+        if(format === "xml")
+            res.send(response.data);
+        else
+            res.status(200).json(response.data);
+    }).catch(error => {
+        let message = (error.response?.status + error.response?.data) || error.message
+        res.status(500).json({ 
+            message: 'Error from SPARQL end-point: ' + message, 
+            query
+        });
+    });
+
+
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "SPARQL request failed" });
+  }
+});
+
+router.post('/endpoint/update', (req, res) => {
+    try {
+        const updateQuery =
+        typeof req.body === "string"
+            ? req.body
+            : req.body.update;
+
+        if (!updateQuery)
+            return res.status(400).json({
+                error: "Missing SPARQL UPDATE in request body"
+            });
+
+        // INVIO A FUSEKI
+        axios.post(fusekiUrlUpdate, updateQuery, {
+            headers: {
+                'Content-Type': 'application/sparql-update',
+                'Accept': 'application/sparql-results+json'
+            }
+        })
+        .then(response => {
+            res.status(200).json({
+                message: 'Query update executed correctly: ' + response.data
+            });
+        }).catch(error => {
+            let message = (error.response?.status + error.response?.data) || error.message
+            res.status(500).json({ 
+                message: 'Error from SPARQL end-point: ' + message, 
+                query
+            });
+        });
+
+    } catch (err) {
+            console.error(err);
+            res.status(500).json({ error: "SPARQL UPDATE request failed" });
+    }
+})
+
 module.exports = router

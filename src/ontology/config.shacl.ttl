@@ -26,6 +26,7 @@
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix skosxl: <http://www.w3.org/2008/05/skos-xl#> .
+@prefix ex: <http://example.com/ns#> .
 
 <https://data.mydomain.com/ontologies/sparnatural-config> a owl:Ontology .
 
@@ -62,7 +63,20 @@ this:Vehicle_VIN sh:path odb:VIN;
   sh:maxCount "1"^^xsd:integer;
   sh:nodeKind sh:Literal;
   sh:datatype xsd:string;
-  dash:searchWidget core:AutocompleteProperty;
+  
+  #dash:searchWidget core:AutocompleteProperty;
+  
+  dash:searchWidget core:ListProperty ;   
+  sh:in (
+      "Orange"
+      "Lemon"
+      "Strawberry"
+      "Blueberry"
+      "Carrot"
+      "Beetroot"
+      "Lettuce"
+      "Spinach"
+  ) ;
   dash:propertyRole dash:LabelRole .
 
 this:Vehicle_hasManufacturer sh:path odb:hasManufacturer;
