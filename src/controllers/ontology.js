@@ -39,6 +39,40 @@ router.get('/schema/:format', (req, res) => {
     });
 });
 
-
+router.get('/schema/:type/:what', (req, res) => {
+    console.log(`Requesting SHACL schema in format: ${req.params.type}`); 
+    let type = req.params.type || 'config';
+    let filePath = null;
+    switch(type){
+        case 'config':
+            filePath = 'config.shacl.ttl'; //'schema_v1.shacl.ttl';
+            res.setHeader('Content-Type', 'text/turtle');
+            break;
+        case 'form':
+            filePath = req.params.what + '/form.json';
+            res.setHeader('Content-Type', 'application/json');
+            break;
+        case 'query':
+            filePath = req.params.what + '/query.json';
+            res.setHeader('Content-Type', 'application/json');
+            break;
+        default:
+            res.status(400).json({
+                success: false,
+                data: null,
+                message: `Unsupported type: ${type}`
+            });
+            return;
+    }
+    res.sendFile(path.join(ONTO_FOLDER, 'form', filePath), (err) => {
+        if (err) {
+            res.status(500).json({
+                success: false,
+                data: null,
+                message: `Error sending file: ${err}`   
+            });
+        }
+    });
+});
 
 module.exports = router
