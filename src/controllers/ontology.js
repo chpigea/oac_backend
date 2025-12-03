@@ -12,6 +12,10 @@ router.get('/schema/:format', (req, res) => {
             filePath = 'config.shacl.ttl'; //'schema_v1.shacl.ttl';
             res.setHeader('Content-Type', 'text/turtle');
             break;
+        case 'ttl2':
+            filePath = 'schema_v2.shacl.ttl';
+            res.setHeader('Content-Type', 'text/turtle');
+            break;
         case 'jsonld':
             filePath = 'schema_v1.shacl.jsonld';
             res.setHeader('Content-Type', 'application/ld+json');
@@ -74,5 +78,20 @@ router.get('/schema/:type/:what', (req, res) => {
         }
     });
 });
+
+router.get('/schema-temp', (req, res) => {
+    let filePath = 'schema_v2.shacl.ttl'; 
+    res.setHeader('Content-Type', 'text/turtle');
+    res.sendFile(path.join(ONTO_FOLDER, filePath), (err) => {
+        if (err) {
+            res.status(500).json({
+                success: false,
+                data: null,
+                message: `Error sending file: ${err}`   
+            });
+        }
+    });
+});
+
 
 module.exports = router

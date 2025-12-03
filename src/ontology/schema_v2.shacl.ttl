@@ -1,0 +1,162 @@
+@prefix sh:   <http://www.w3.org/ns/shacl#> .
+@prefix ex:   <http://example.org/shapes/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+
+ex:E7ActivityShape
+    a sh:NodeShape ;
+    sh:targetClass crm:E7_Activity ;
+	#rdfs:label "Indagine" ;
+    #sh:description "Indagine" ;
+	#sh:group ex:NameGroup ;
+	sh:property [
+        sh:path crm:P48_has_preferred_identifier ;
+		sh:node ex:E42IdentifierShape ;
+		sh:name "ID indagine" ;
+        sh:maxCount 1 ;
+        sh:minCount 1 ;
+    ] ;
+    sh:property [
+        sh:path crm:P2_has_type ;
+        sh:node ex:E55Type01Shape ;
+		sh:name "Tipo indagine" ;
+        sh:maxCount 1 ;
+        sh:minCount 1 ;
+    ] ;
+    sh:property [
+        sh:path crm:P17_was_motivated_by ;
+        sh:node ex:I12AdoptedBeliefShape ;
+		sh:name "Quesito diagnostico" ;
+        sh:maxCount 1 ;
+        sh:minCount 1 ;
+    ] ;
+    sh:property [
+        sh:path crm:P14_was_carried_out_by ;
+        sh:node ex:E29ActorShape ;
+		sh:name "Attori" ;
+        #sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path crm:P16_used_specific_object ;
+        sh:node ex:S13Sample ;
+		sh:name "Campione" ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path crm:xxx ;
+        sh:node ex:E7Activity1 ;
+		sh:name "Attività dignostica" ;
+        #sh:maxCount 1 ;
+    ] .
+	
+ex:E42IdentifierShape
+    a sh:NodeShape ;
+    sh:targetClass crm:E42_Identifier ;
+	sh:property [
+        sh:path ex:P48_has_preferred_identifier ;
+		sh:datatype xsd:string ;
+		sh:name "ID" ;
+		sh:defaultValue "$uuid$" ;
+        sh:maxCount 1 ;
+        sh:minCount 1 ;
+    ] .
+
+ex:E55Type01Shape
+    a sh:NodeShape ;
+    sh:targetClass crm:E55_Type ;
+    sh:property [
+        sh:path ex:P2hastype1 ;
+        #sh:class ex:E55Type01 ;
+		#sh:in ( ex:TipoIndagineA ex:TipoIndagineB ) ;
+		sh:in ( "Tipo indagine A" "Tipo indagine B" ) ;
+		#owl:imports
+		sh:name "Tipo" ;
+        sh:maxCount 1 ;
+        sh:minCount 1 ; 
+    ] .
+
+# Vocabolario E55Type01 (Tipo indagine)
+#ex:TipoIndagineA
+#    a crm:E55_Type ;
+#    rdfs:label "Tipo indagine A" .
+#ex:TipoIndagineB
+#    a crm:E55_Type ;
+#    rdfs:label "Tipo indagine B" .
+
+ex:I12AdoptedBeliefShape
+    a sh:NodeShape ;
+    sh:targetClass crm:I12_Adopted_Belief ;
+    sh:property [
+        sh:path crm:P2_has_type ;
+        sh:node ex:E55Type02Shape ;
+		sh:name "Tipo quesito diagnostico" ;
+        sh:maxCount 1 ;
+        sh:minCount 1 ; 
+    ] .
+
+ex:E55Type02Shape
+    a sh:NodeShape ;
+    sh:targetClass crm:E55_Type ;
+    sh:property [
+        sh:path ex:P2hastype2 ;
+        #sh:class ex:E55Type02 ;
+		#sh:in ( ex:TipoQuesitoDiagnostico1 ex:TipoQuesitoDiagnostico2 ex:TipoQuesitoDiagnostico3 ) ;
+		sh:in ( "Tipo quesito diagnistico 1" "Tipo quesito diagnistico 2" "Tipo quesito diagnistico 3" ) ;
+		sh:name "Tipo" ;
+        sh:maxCount 1 ;
+        sh:minCount 1 ; 
+    ] ;
+    sh:property [
+        sh:path crm:P3_has_note ;
+		sh:datatype xsd:string ;
+		sh:name "Altro" ;
+        sh:maxCount 1 ;
+    ] .
+
+# Vocabolario E55Type02 (Tipo quesito diagnostico)
+#ex:TipoQuesitoDiagnostico1
+#    a crm:E55_Type ;
+#    rdfs:label "Tipo quesito diagnistico 1" .
+#ex:TipoQuesitoDiagnostico2
+#    a crm:E55_Type ;
+#    rdfs:label "Tipo quesito diagnistico 2" .
+#ex:TipoQuesitoDiagnostico3
+#    a crm:E55_Type ;
+#    rdfs:label "Tipo quesito diagnistico 3" .
+
+ex:E29ActorShape
+    a sh:NodeShape ;
+    sh:targetClass crm:E29_Actor ;
+    sh:property [
+        sh:path ex:ente_richiedente ;
+		sh:datatype xsd:string ;
+		sh:name "Ente richiedente" ;
+        sh:maxCount 1 ; 
+    ] ;
+    sh:property [
+        sh:path ex:schedatore ;
+		sh:datatype xsd:string ;
+		sh:name "Schedatore" ;
+        sh:maxCount 1 ; 
+        sh:minCount 1 ; 
+    ] .
+
+#Vocabolario E55Type03a (con unico termine "Ente_richiedente") ???
+#Vocabolario E55Type03b (con unico termine "Ente_schedatore") ???
+#ex:TipoAttore1
+#   a crm:E55_Type ;
+#    rdfs:label "Ente richiedente" .
+#ex:TipoAttore2
+#    a crm:E55_Type ;
+#    rdfs:label "Schedatore" .
+    
+#ex:E55Type03Shape
+#    a sh:NodeShape ;
+#    sh:targetClass crm:E55_Type ;
+#    sh:property [
+#        sh:path crm:P1_is_defined_by ;
+#        sh:node ex:E41AppellationShape ;
+#		sh:name "Attore" ;
+#        sh:maxCount 1 ; 
+#    ] .
