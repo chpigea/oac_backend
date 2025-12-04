@@ -36,7 +36,8 @@
     "n3": "1.26.0",
     "nodemailer": "7.0.6",
     "pg": "8.16.3",
-    "strip-bom": "5.0.0"
+    "strip-bom": "5.0.0",
+    "tmp": "0.2.5"
   },
   "devDependencies": {
     "chai": "5.2.1",

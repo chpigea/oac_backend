@@ -1,7 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const path = require('path');   
-const ONTO_FOLDER = path.join(__dirname, '..', 'ontology'); ;
+const ONTO_FOLDER = path.join(__dirname, '..', 'ontology');
+const Converter = require('../models/converter');
+const tmp = require('tmp');
+
 
 router.get('/schema/:format', (req, res) => {
     console.log(`Requesting SHACL schema in format: ${req.params.format}`); 
@@ -93,5 +96,63 @@ router.get('/schema-temp', (req, res) => {
     });
 });
 
+router.post('/convert/:from/:to', (req, res) => {
+    const from = req.params.from;
+    const to = req.params.to;
+    console.log(`Requesting conversion from ${from} to ${to}`); 
+    let conversionFunction = null
+    if(from === 'ttl' && to === 'xml'){
+        conversionFunction = Converter.turtle2RdfXml
+    }else if(from === 'xml' && to === 'ttl'){
+        conversionFunction = Converter.rdfXml2Turtle
+    }else{
+        res.status(400).json({
+            success: false,
+            data: null,
+            message: `Unsupported conversion from ${from} to ${to}`   
+        }); 
+        return;
+    }
+    
+    const inputFile = tmp.fileSync({ postfix: `.${from}` });
+    const outputFile = tmp.fileSync({ postfix: `.${to}` });
+
+    const content = req.body.file
+
+    fs.writeFileSync(inputFile, content);
+
+    const removeFiles = function(_files){
+        for(let i=0; i<_files.length; i++){
+            try {
+                fs.unlinkSync(_files[i]);
+                console.log(`File ${_files[i]} removed`);
+            } catch (e) {
+                console.error(`Error deleting ${_files[i]}`, e);
+            }
+        }
+    }
+    let files = [inputFile];
+    conversionFunction(inputFile, outputFile).then(() => {
+        res.sendFile(outputFile, (err) => {
+            if (err) {
+                res.status(500).json({
+                    success: false,
+                    data: null,
+                    message: `Error sending file: ${err}`   
+                });
+                files = [inputFile]
+            }
+            files.push(outputFile)
+            removeFiles(files)
+        });
+    }).catch(err => {
+        res.status(500).json({
+            success: false,
+            data: null,
+            message: `Conversion error: ${err}`   
+        });
+        removeFiles(files)
+    });
+})
 
 module.exports = router

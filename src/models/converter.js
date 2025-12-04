@@ -1,8 +1,45 @@
 const fs = require('fs');
 const { Parser } = require('n3');
 const { DataFactory, Store } = require('n3');
+const { exec } = require('child_process');
 
 class Converter {
+
+    static async turtle2RdfXml(inTurtlePath, outRdfXmlPath) {
+        return new Promise((resolve, reject) => {
+            const command = `rapper -i turtle -o rdfxml "${inTurtlePath}" > "${outRdfXmlPath}"`; 
+            exec(command, (error, stdout, stderr) => {
+                if (error) {
+                    console.error(`Error during conversion: ${error.message}`);
+                    reject(error);
+                    return;
+                }
+                if (stderr) {
+                    console.log(`Conversion stderr: ${stderr}`);
+                }
+                console.log(`Conversion stdout: ${stdout}`);
+                resolve();
+            });
+        });
+    }
+
+    static async rdfXml2Turtle(inRdfXmlPath, outTurtlePath) {
+        return new Promise((resolve, reject) => {
+            const command = `rapper -i rdfxml -o turtle "${inRdfXmlPath}" > "${outTurtlePath}"`; 
+            exec(command, (error, stdout, stderr) => {
+                if (error) {
+                    console.error(`Error during conversion: ${error.message}`);
+                    reject(error);
+                    return;
+                }
+                if (stderr) {
+                    console.log(`Conversion stderr: ${stderr}`);
+                }
+                console.log(`Conversion stdout: ${stdout}`);
+                resolve();
+            });
+        });
+    }
 
     // Funzione per generare messaggi di errore multilingua
     static generateErrorMessages(propertyName, datatype, isRelation) {
