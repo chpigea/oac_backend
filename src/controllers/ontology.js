@@ -6,7 +6,6 @@ const ONTO_FOLDER = path.join(__dirname, '..', 'ontology');
 const Converter = require('../models/converter');
 const tmp = require('tmp');
 
-
 router.get('/schema/:format', (req, res) => {
     console.log(`Requesting SHACL schema in format: ${req.params.format}`); 
     let format = req.params.format || 'ttl';
@@ -111,6 +110,7 @@ router.get('/schema-temp', (req, res) => {
 });
 
 router.post('/convert/:from/:to', (req, res) => {
+    console.log(req.headers['content-type']);
     const from = req.params.from;
     const to = req.params.to;
     console.log(`Requesting conversion from ${from} to ${to}`); 
@@ -119,6 +119,8 @@ router.post('/convert/:from/:to', (req, res) => {
         conversionFunction = Converter.turtle2RdfXml
     }else if(from === 'xml' && to === 'ttl'){
         conversionFunction = Converter.rdfXml2Turtle
+    }else if(from === to){
+        conversionFunction = Converter.same
     }else{
         res.status(400).json({
             success: false,
@@ -127,13 +129,12 @@ router.post('/convert/:from/:to', (req, res) => {
         }); 
         return;
     }
-    
     const inputFile = tmp.fileSync({ postfix: `.${from}` });
     const outputFile = tmp.fileSync({ postfix: `.${to}` });
-
-    const content = req.body.file
-
-    fs.writeFileSync(inputFile, content);
+    
+    let content = req.body.file
+    
+    fs.writeFileSync(inputFile.name, content);
 
     const removeFiles = function(_files){
         for(let i=0; i<_files.length; i++){
@@ -145,9 +146,12 @@ router.post('/convert/:from/:to', (req, res) => {
             }
         }
     }
-    let files = [inputFile];
-    conversionFunction(inputFile, outputFile).then(() => {
-        res.sendFile(outputFile, (err) => {
+    let files = [inputFile.name];
+    conversionFunction(inputFile.name, outputFile.name).then(() => {
+        let dt = new Date();
+        let filename = `investigation-${dt.toISOString()}.${to}`;
+        res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
+        res.sendFile(outputFile.name, (err) => {
             if (err) {
                 res.status(500).json({
                     success: false,
@@ -156,7 +160,7 @@ router.post('/convert/:from/:to', (req, res) => {
                 });
                 files = [inputFile]
             }
-            files.push(outputFile)
+            files.push(outputFile.name)
             removeFiles(files)
         });
     }).catch(err => {
