@@ -84,6 +84,28 @@ class Fuseki {
             }`;
     }
 
+    static getQuerySearchByPrefix(prefix, limit, offset){
+        limit = limit || 50;
+        offset = offset || 0;
+        if(limit < 1) limit = 50;
+        return `
+            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+            SELECT DISTINCT ?instance ?label
+            WHERE {
+                # tutte le istanze con qualsiasi proprietà
+                ?instance ?p ?o .
+                # filtro per IRI che inizia con il prefisso specifico
+                FILTER(STRSTARTS(STR(?instance), "${prefix}"))
+                # filtro per IRI che termina con UUID
+                #FILTER(REGEX(STR(?instance), "[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"))
+                # label opzionale
+                OPTIONAL { ?instance rdfs:label ?label . }
+            }
+            ORDER BY ?label
+            LIMIT ${limit}
+            OFFSET ${offset}`   
+    }
+
 }
 
 module.exports = Fuseki;

@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const path = require('path');   
+const fs = require('fs');   
 const ONTO_FOLDER = path.join(__dirname, '..', 'ontology');
 const Converter = require('../models/converter');
 const tmp = require('tmp');
@@ -35,7 +36,20 @@ router.get('/schema/:format', (req, res) => {
             });
             return;
     }
-    res.sendFile(path.join(ONTO_FOLDER, filePath), (err) => {
+
+    let fileContent = fs.readFileSync(path.join(ONTO_FOLDER, filePath), 'utf8');
+    let protocol = process.env.OAC_EXPOSED_PROTOCOL || 'http';
+    let host = process.env.OAC_EXPOSED_HOST || '127.0.0.1';
+    if(host=="localhost") host="127.0.0.1";
+    let port = process.env.OAC_EXPOSED_PORT || '4000';
+    fileContent = fileContent.replace(/OAC_EXPOSED_PROTOCOL/g, protocol);
+    fileContent = fileContent.replace(/OAC_EXPOSED_HOST/g, host);
+    fileContent = fileContent.replace(/OAC_EXPOSED_PORT/g, port);
+
+    const tempFile = tmp.fileSync({ postfix: filePath });
+    fs.writeFileSync(tempFile.name, fileContent);
+
+    res.sendFile(tempFile.name, (err) => {
         if (err) {
             res.status(500).json({
                 success: false,

@@ -117,6 +117,121 @@ router.post('/upload/vocabularies', upload.array('files'), (req, res) => {
 });
 
 //---------------------------------------------------------------
+router.get('/get-vocabolary-terms/:key', (req, res) => {
+    const key = req.params.key;
+    const rootIRI = `<http://diagnostica/vocabularies/${key}>`;
+
+    let _query = `PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
+    CONSTRUCT {
+        ?concept ?p ?o .
+    }
+    WHERE {
+        ?concept (crm:P127_has_broader_term*) ${rootIRI} .
+        ?concept ?p ?o .
+    }`;
+
+    let query = `PREFIX crm:  <http://www.cidoc-crm.org/cidoc-crm/>
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+        PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+        PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+
+        CONSTRUCT {
+
+            ?concept a owl:Class ;
+                    rdfs:subClassOf ?parent ;
+                    skos:prefLabel ?label ;
+                    skos:closeMatch ?mappedConcept .
+
+        }
+        WHERE {
+
+            # Trovo tutti i concetti del vocabolario
+            ?concept (crm:P127_has_broader_term*) ${rootIRI} .
+
+            # Recupero l'etichetta
+            OPTIONAL { ?concept rdfs:label ?label . }
+
+            # Prelevo il parent da broader term
+            OPTIONAL {
+                ?concept crm:P127_has_broader_term ?parent .
+            }
+
+            # Genero un mapping verso un URI esterno
+            BIND(
+                IRI(CONCAT("${rootIRI}", REPLACE(STR(?concept), "^.*[/#]", "")))
+                AS ?mappedConcept
+            )
+
+        }
+        ORDER BY ?label`
+    
+    axios.post(fusekiUrl, `query=${encodeURIComponent(query)}`,{
+        headers: {
+            'Accept': `text/turtle`,
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        responseType: 'stream'
+    }).then(response => {
+        res.setHeader('Content-Type', response.headers['content-type']);
+        response.data.pipe(res);
+    }).catch(err => {
+        res.status(500).json({
+            success: false,
+            data: null,
+            message: `Error: ${err}`
+        });
+    });
+})
+//---------------------------------------------------------------
+
+/**
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+    SELECT ?obj
+    WHERE {
+        ?obj rdf:type <http://www.cidoc-crm.org/cidoc-crm/E55_Type> .
+    }
+    ORDER BY ?obj
+    LIMIT 10
+    OFFSET 50
+ */
+//---------------------------------------------------------------
+router.post('/search/by-prefix', (req, res) => {
+    const query = Fuseki.getQuerySearchByPrefix(
+        req.body.prefix || "",
+        parseInt(req.body.limit) || 50,
+        parseInt(req.body.offset) || 0
+    );
+    
+    axios.post(fusekiUrl, `query=${encodeURIComponent(query)}`, {
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Accept': 'application/sparql-results+json'
+        }
+    }).then(response => {
+        const bindings = response.data.results.bindings;
+        let results = []
+        bindings.forEach(result => {
+            results.push({
+                instance: result.instance.value,
+                label: result.label.value,
+            });
+        });
+        res.json({ 
+            success: true, 
+            data: results,
+            message: null
+        });
+    }).catch(err => {
+        res.status(500).json({
+            success: false,
+            data: null,
+            message: `Error: ${err}`
+        });
+    });
+    
+});
+//---------------------------------------------------------------
 router.get('/count/entities', (req, res) => {
     const query = `
         PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -154,7 +269,6 @@ router.get('/count/entities', (req, res) => {
             message: `Error: ${err}`
         });
     });
-    
 });
 
 router.get('/export/:format/:entity/:id', (req, res) => {
