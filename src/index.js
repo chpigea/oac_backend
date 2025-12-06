@@ -23,6 +23,7 @@ const app = express();
 app.use(cookieParser());
 app.use(express.json());
 app.use(jwtLib.middleware);
+app.use(express.urlencoded({ extended: true }))
 
 let newPort = null
 

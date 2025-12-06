@@ -5,6 +5,18 @@ const { exec } = require('child_process');
 
 class Converter {
 
+    static async same(inPath, outPath) {
+        return new Promise((resolve, reject) => {
+            fs.copyFile(inPath, outPath, (err) => {
+                if (err) {
+                    console.error(`Error during copying file: ${err.message}`);
+                    reject(err);
+                }else
+                    resolve();
+            }); 
+        })
+    }
+
     static async turtle2RdfXml(inTurtlePath, outRdfXmlPath) {
         return new Promise((resolve, reject) => {
             const command = `rapper -i turtle -o rdfxml "${inTurtlePath}" > "${outRdfXmlPath}"`; 
