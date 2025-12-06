@@ -3,6 +3,8 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
 @prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 
 ex:E7ActivityShape
     a sh:NodeShape ;
@@ -57,7 +59,8 @@ ex:E42IdentifierShape
         sh:path ex:P48_has_preferred_identifier ;
 		sh:datatype xsd:string ;
 		sh:name "ID" ;
-		sh:defaultValue "$uuid$" ;
+        sh:nodeKind sh:IRI;
+		sh:description "http://diagnostica/indagine/$UUID$" ;
         sh:maxCount 1 ;
         sh:minCount 1 ;
     ] .
@@ -66,23 +69,13 @@ ex:E55Type01Shape
     a sh:NodeShape ;
     sh:targetClass crm:E55_Type ;
     sh:property [
-        sh:path ex:P2hastype1 ;
-        #sh:class ex:E55Type01 ;
-		#sh:in ( ex:TipoIndagineA ex:TipoIndagineB ) ;
-		sh:in ( "Tipo indagine A" "Tipo indagine B" ) ;
-		#owl:imports
+        sh:class        owl:Class ;
+        sh:path         crm:P127_has_broader_term ;
+        owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/fase-di-analisi> ;
 		sh:name "Tipo" ;
         sh:maxCount 1 ;
         sh:minCount 1 ; 
     ] .
-
-# Vocabolario E55Type01 (Tipo indagine)
-#ex:TipoIndagineA
-#    a crm:E55_Type ;
-#    rdfs:label "Tipo indagine A" .
-#ex:TipoIndagineB
-#    a crm:E55_Type ;
-#    rdfs:label "Tipo indagine B" .
 
 ex:I12AdoptedBeliefShape
     a sh:NodeShape ;
@@ -99,13 +92,18 @@ ex:E55Type02Shape
     a sh:NodeShape ;
     sh:targetClass crm:E55_Type ;
     sh:property [
-        sh:path ex:P2hastype2 ;
-        #sh:class ex:E55Type02 ;
-		#sh:in ( ex:TipoQuesitoDiagnostico1 ex:TipoQuesitoDiagnostico2 ex:TipoQuesitoDiagnostico3 ) ;
-		sh:in ( "Tipo quesito diagnistico 1" "Tipo quesito diagnistico 2" "Tipo quesito diagnistico 3" ) ;
 		sh:name "Tipo" ;
         sh:maxCount 1 ;
         sh:minCount 1 ; 
+        #sh:class       crm:E55_Type ;
+        sh:class        owl:Class ;
+        sh:path         crm:P127_has_broader_term ;
+        owl:imports     <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/quesito-diagnostico> ;
+
+        #sh:class       owl:Class ;
+        #sh:path        dcterms:subject ;
+        #owl:imports <https://raw.githubusercontent.com/tibonto/DFG-Fachsystematik-Ontology/refs/heads/main/dfgfo.ttl> ;
+
     ] ;
     sh:property [
         sh:path crm:P3_has_note ;
@@ -114,25 +112,20 @@ ex:E55Type02Shape
         sh:maxCount 1 ;
     ] .
 
-# Vocabolario E55Type02 (Tipo quesito diagnostico)
-#ex:TipoQuesitoDiagnostico1
-#    a crm:E55_Type ;
-#    rdfs:label "Tipo quesito diagnistico 1" .
-#ex:TipoQuesitoDiagnostico2
-#    a crm:E55_Type ;
-#    rdfs:label "Tipo quesito diagnistico 2" .
-#ex:TipoQuesitoDiagnostico3
-#    a crm:E55_Type ;
-#    rdfs:label "Tipo quesito diagnistico 3" .
-
 ex:E29ActorShape
     a sh:NodeShape ;
     sh:targetClass crm:E29_Actor ;
     sh:property [
         sh:path ex:ente_richiedente ;
 		sh:datatype xsd:string ;
-		sh:name "Ente richiedente" ;
-        sh:maxCount 1 ; 
+		
+        #sh:name "Ente richiedente" ;
+        #sh:maxCount 1 ; 
+
+        sh:name "ID" ;
+        sh:nodeKind sh:IRI;
+		sh:description "http://diagnostica/actor/$UUID$" ;
+
     ] ;
     sh:property [
         sh:path ex:schedatore ;
@@ -141,22 +134,3 @@ ex:E29ActorShape
         sh:maxCount 1 ; 
         sh:minCount 1 ; 
     ] .
-
-#Vocabolario E55Type03a (con unico termine "Ente_richiedente") ???
-#Vocabolario E55Type03b (con unico termine "Ente_schedatore") ???
-#ex:TipoAttore1
-#   a crm:E55_Type ;
-#    rdfs:label "Ente richiedente" .
-#ex:TipoAttore2
-#    a crm:E55_Type ;
-#    rdfs:label "Schedatore" .
-    
-#ex:E55Type03Shape
-#    a sh:NodeShape ;
-#    sh:targetClass crm:E55_Type ;
-#    sh:property [
-#        sh:path crm:P1_is_defined_by ;
-#        sh:node ex:E41AppellationShape ;
-#		sh:name "Attore" ;
-#        sh:maxCount 1 ; 
-#    ] .
