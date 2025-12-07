@@ -37,6 +37,13 @@ module.exports = function(jwtLib){
       });
   }
 
+  router.get('/exposed_config', (req, res) => {  
+      res.json({ 
+          success: true, 
+          data: EXPOSED
+      });
+  });
+
   router.post('/authenticate', authLimiter, (req, res) => {  
     console.log("here authenticate")
     let body = req.body 
