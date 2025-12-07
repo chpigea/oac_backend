@@ -7,7 +7,7 @@
 	-->
 	
 	<!-- Vocabolario per CONDIZIONI AMBIENTALI (1) -->
-    <vocabulary>
+    <vocabulary class="crm:E55_Type"> 
         <term id="condizioni-ambientali">
 			<name lang="it">Condizioni ambientali</name>
             <sub-terms>
@@ -73,7 +73,7 @@
     </vocabulary>
     
 	<!-- Vocabolario per DEGRADO (3) -->
-	<vocabulary>
+	<vocabulary class="basecpm:CP42_Material_Decay">
         <term id="degrado">
 			<name lang="it">Degrado</name>
             <sub-terms>

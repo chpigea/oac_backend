@@ -22,6 +22,7 @@
             <xs:sequence>
               <xs:element name="term" type="termType"/>
             </xs:sequence>
+            <xs:attribute name="class" type="xs:string" default="crm:E55_Type" use="optional"/>
           </xs:complexType>
         </xs:element>
       </xs:sequence>
