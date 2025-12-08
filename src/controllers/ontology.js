@@ -4,50 +4,61 @@ const path = require('path');
 const fs = require('fs');   
 const ONTO_FOLDER = path.join(__dirname, '..', 'ontology');
 const Converter = require('../models/converter');
+const Validator = require('../models/validator');
 const tmp = require('tmp');
+const Investigations = require('../models/investigations');
+
+let SCHEMAS = {}
+
+const getSchema = function(format){
+    let fileContent = null;
+    let filePath = null;
+    let fileType = null;
+    switch(format){
+        case 'ttl':
+            filePath = 'config.shacl.ttl'; //'schema_v1.shacl.ttl';
+            fileType = 'text/turtle';
+            break;
+        case 'ttl2':
+            filePath = 'schema_v2.shacl.ttl';
+            fileType = 'text/turtle';
+            break;
+        case 'jsonld':
+            filePath = 'schema_v1.shacl.jsonld';
+            fileType = 'application/ld+json';
+            break;
+        case 'xml':
+            filePath = 'schema_v1.shacl.rdf';
+            fileType = 'application/rdf+xml';
+            break;
+        default:
+            throw new Error(`Unsupported format: ${format}`);
+    }
+    if(SCHEMAS.hasOwnProperty(format)){
+        fileContent = SCHEMAS[format];
+    }
+    if(!fileContent){    
+        fileContent = fs.readFileSync(path.join(ONTO_FOLDER, filePath), 'utf8');
+        let protocol = process.env.OAC_EXPOSED_PROTOCOL || 'http';
+        let host = process.env.OAC_EXPOSED_HOST || '127.0.0.1';
+        if(host=="localhost") host="127.0.0.1";
+        let port = process.env.OAC_EXPOSED_PORT || '4000';
+        fileContent = fileContent.replace(/OAC_EXPOSED_PROTOCOL/g, protocol);
+        fileContent = fileContent.replace(/OAC_EXPOSED_HOST/g, host);
+        fileContent = fileContent.replace(/OAC_EXPOSED_PORT/g, port);
+        SCHEMAS[format] = fileContent;
+    }
+    return { content: fileContent , path: filePath, type: fileType };
+}
 
 router.get('/schema/:format', (req, res) => {
     console.log(`Requesting SHACL schema in format: ${req.params.format}`); 
     let format = req.params.format || 'ttl';
-    let filePath = null;
-    switch(format){
-        case 'ttl':
-            filePath = 'config.shacl.ttl'; //'schema_v1.shacl.ttl';
-            res.setHeader('Content-Type', 'text/turtle');
-            break;
-        case 'ttl2':
-            filePath = 'schema_v2.shacl.ttl';
-            res.setHeader('Content-Type', 'text/turtle');
-            break;
-        case 'jsonld':
-            filePath = 'schema_v1.shacl.jsonld';
-            res.setHeader('Content-Type', 'application/ld+json');
-            break;
-        case 'xml':
-            filePath = 'schema_v1.shacl.rdf';
-            res.setHeader('Content-Type', 'application/rdf+xml');
-            break;
-        default:
-            res.status(400).json({
-                success: false,
-                data: null,
-                message: `Unsupported format: ${format}`
-            });
-            return;
-    }
-
-    let fileContent = fs.readFileSync(path.join(ONTO_FOLDER, filePath), 'utf8');
-    let protocol = process.env.OAC_EXPOSED_PROTOCOL || 'http';
-    let host = process.env.OAC_EXPOSED_HOST || '127.0.0.1';
-    if(host=="localhost") host="127.0.0.1";
-    let port = process.env.OAC_EXPOSED_PORT || '4000';
-    fileContent = fileContent.replace(/OAC_EXPOSED_PROTOCOL/g, protocol);
-    fileContent = fileContent.replace(/OAC_EXPOSED_HOST/g, host);
-    fileContent = fileContent.replace(/OAC_EXPOSED_PORT/g, port);
-
-    const tempFile = tmp.fileSync({ postfix: filePath });
+    let schema = getSchema(format);
+    let fileContent = schema.content;
+    res.setHeader('Content-Type', schema.type);
+    const tempFile = tmp.fileSync({ postfix: schema.path });
     fs.writeFileSync(tempFile.name, fileContent);
-
     res.sendFile(tempFile.name, (err) => {
         if (err) {
             res.status(500).json({
@@ -57,6 +68,59 @@ router.get('/schema/:format', (req, res) => {
             });
         }
     });
+});
+
+router.post('/validate', (req, res) => {
+    let turtle = req.body.turtle;
+    let schema = getSchema('ttl2');
+    console.log("validate...")
+    let shacl = schema.content.replace(/owl:imports/g, '#owl:imports');
+    Validator.validateDataSyntax(turtle, shacl).then( (result) => {
+        res.json({
+            success: true,
+            data: result,
+            message: 'Validation completed'   
+        });
+    }).catch( (err) => {
+        console.log(err);
+        res.status(500).json({
+            success: false,
+            data: null,
+            message: `Validation error: ${err}`   
+        });
+    });
+}); 
+
+router.post('/form/save', (req, res) => {
+    let dataset = req.body.turtle;
+    let uuid = req.body.uuid;
+    Investigations.save({
+        uuid, dataset, format: 'turtle'
+    }).then( () => {
+        res.json({
+            success: true
+        });
+    }).catch( (err) => {
+        console.log("Error saving investigation: ", err);
+        res.json({
+            success: false,
+            message: `Error: ${err}`
+        });
+    });    
+});
+
+router.get('/form/:uuid', (req, res) => {
+    let uuid = req.params.uuid;
+    res.setHeader('Content-Type', 'text/turtle');
+    Investigations.get(uuid).then( (response) => {
+        res.send(response ? response.dataset : null);
+    }).catch( (err) => {
+        console.log("Error getting investigation datset: ", err);
+        res.json({
+            success: false,
+            message: `Error: ${err}`
+        });
+    });    
 });
 
 router.get('/schema/:type/:what', (req, res) => {

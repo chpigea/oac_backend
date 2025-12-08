@@ -36,6 +36,7 @@
     "n3": "1.26.0",
     "nodemailer": "7.0.6",
     "pg": "8.16.3",
+    "rdf-validate-shacl": "0.6.5",
     "strip-bom": "5.0.0",
     "tmp": "0.2.5"
   },
