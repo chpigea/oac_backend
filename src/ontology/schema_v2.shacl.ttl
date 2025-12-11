@@ -117,14 +117,14 @@ ex:E29ActorShape
     sh:targetClass crm:E29_Actor ;
     sh:property [
         sh:path ex:ente_richiedente ;
-		sh:datatype xsd:string ;
+        sh:datatype xsd:string ;
 		
         #sh:name "Ente richiedente" ;
         #sh:maxCount 1 ; 
 
         sh:name "ID" ;
         sh:nodeKind sh:IRI;
-		sh:description "http://diagnostica/actor/$UUID$" ;
+		sh:description "http://diagnostica/actor/$SEQ3$" ;
 
     ] ;
     sh:property [

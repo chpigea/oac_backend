@@ -14,6 +14,19 @@ class Investigations {
         }); 
     }
 
+    static getCounter(name){
+        return new Promise(async (resolve, reject) => {
+            try{
+                const sql = `SELECT nextval('${name}') as count`;
+                const result =  await db.raw(sql);
+                const count = result.rows[0].count;
+                resolve(count)
+            }catch(e){
+                reject(e)
+            }
+        }); 
+    }
+
     static save(item){
         item.format = item.format || 'turtle'
         return new Promise(async (resolve, reject) => {
