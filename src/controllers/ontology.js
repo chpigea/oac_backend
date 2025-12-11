@@ -70,6 +70,24 @@ router.get('/schema/:format', (req, res) => {
     });
 });
 
+router.get('/counter/:name', (req, res) => {
+    let name = req.params.name;
+    Investigations.getCounter(name).then( (count) => {
+        res.json({
+            success: true,
+            data: count,
+            message: `Counter ${name} value retrieved`   
+        });
+    }).catch( (err) => {
+        console.log(err);
+        res.status(500).json({
+            success: false,
+            data: null,
+            message: `Error retrieving counter ${name}: ${err}`   
+        });
+    });
+});
+
 router.post('/validate', (req, res) => {
     let turtle = req.body.turtle;
     let schema = getSchema('ttl2');
