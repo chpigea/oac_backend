@@ -106,6 +106,15 @@ class Fuseki {
             OFFSET ${offset}`   
     }
 
+    static getQuerySearchInvestigation(id, prefix='http://indagine/') {
+        return `
+            PREFIX ex:   <http://example.org/shapes/>
+            SELECT ?s
+            WHERE {
+                ?s ex:P48haspreferredidentifier01 <${prefix}${id}> .
+            }`
+    }
+
 }
 
 module.exports = Fuseki;
