@@ -239,10 +239,13 @@ router.post('/search/by-prefix', (req, res) => {
         const bindings = response.data.results.bindings;
         let results = []
         bindings.forEach(result => {
-            results.push({
-                instance: result.instance.value,
-                label: result.label.value,
-            });
+            if(result.node){
+                var label = result.label ? result.label.value : "";
+                results.push({
+                    instance: result.node.value,
+                    label
+                });
+            }
         });
         res.json({ 
             success: true, 
@@ -250,6 +253,7 @@ router.post('/search/by-prefix', (req, res) => {
             message: null
         });
     }).catch(err => {
+        console.log(err)
         res.status(500).json({
             success: false,
             data: null,
