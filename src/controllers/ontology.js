@@ -7,6 +7,12 @@ const Converter = require('../models/converter');
 const Validator = require('../models/validator');
 const tmp = require('tmp');
 const Investigations = require('../models/investigations');
+const {
+    fusekiUrlDataset,
+    fusekiUrl,
+    fusekiUrlUpdate
+} = require('../models/fusekiConfig');
+const axios = require('axios');
 
 let SCHEMAS = {}
 
@@ -112,19 +118,43 @@ router.post('/validate', (req, res) => {
 router.post('/form/save', (req, res) => {
     let dataset = req.body.turtle;
     let uuid = req.body.uuid;
-    Investigations.save({
-        uuid, dataset, format: 'turtle'
-    }).then( () => {
-        res.json({
-            success: true
-        });
-    }).catch( (err) => {
-        console.log("Error saving investigation: ", err);
+    try{
+        let updateQuery = Converter.turtle2Sparql(dataset);
+        Investigations.save({
+            uuid, dataset, format: 'turtle'
+        }).then( () => {
+            axios.post(fusekiUrlUpdate, updateQuery, {
+                headers: {
+                    'Content-Type': 'application/sparql-update',
+                    'Accept': 'application/sparql-results+json'
+                }
+            }).then(response => {
+                console.log(response.data);
+                res.status(200).json({
+                    success: true
+                });
+            }).catch(error => {
+                //TODO: rollback investigation save
+                let message = (error.response?.status + error.response?.data) || error.message
+                res.status(500).json({ 
+                    message: 'Error from SPARQL end-point: ' + message, 
+                    success: false
+                });
+            });                
+        }).catch( (err) => {
+            console.log("Error saving investigation: ", err);
+            res.json({
+                success: false,
+                message: `Error: ${err}`
+            });
+        }); 
+    }catch(e){
         res.json({
             success: false,
-            message: `Error: ${err}`
+            message: `Error: ${e.message}`
         });
-    });    
+        return;
+    }       
 });
 
 router.get('/form/:uuid', (req, res) => {
