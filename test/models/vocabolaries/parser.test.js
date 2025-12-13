@@ -44,7 +44,10 @@ describe('Vocabolaries.Parsers', () => {
   it('should get the insert query for the vocabolaries.xml file', async () => {
     const parser = Parser.GET_INSTANCE();
     var query = await parser.insertQuery(__dirname + '/vocabolaries.xml');
-    expect(query.length).to.be.equal(40619);
+    expect(query.length).to.be.equal(3);
+    expect(query[0].length).to.be.equal(5279);
+    expect(query[1].length).to.be.equal(2665);
+    expect(query[2].length).to.be.equal(35150);
   });
 
 });

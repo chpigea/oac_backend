@@ -1,0 +1,4508 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vocabularies>
+
+    <!-- Prefissio per i vocabolari -->
+	<!-- <prefix value="diagnostica"/> -->
+	
+	<!-- Vocabolario CONDIZIONI AMBIENTALI (1) -->
+    <vocabulary class="crm:E55_Type">
+        <term id="condizioni-ambientali">
+			<name lang="it">Condizioni ambientali</name>
+            <sub-terms>
+                <term id="ambiente">
+					<name lang="it">ambiente</name>
+                    <sub-terms>
+                        <term id="esterno">
+							<name lang="it">esterno</name>
+						</term>
+                        <term id="semiconfinato">
+							<name lang="it">semiconfinato</name>
+						</term>
+                        <term id="interno">
+							<name lang="it">interno</name>
+						</term>
+                    </sub-terms>
+                </term>
+                <term id="illuminazione">
+					<name lang="it">Illuminazione</name>
+                    <sub-terms>
+                        <term id="assente">
+							<name lang="it">assente</name>
+						</term>
+                        <term id="artificiale">
+							<name lang="it">artificiale</name>
+							<sub-terms>
+								<term id="diffusa">
+									<name lang="it">diffusa</name>
+								</term>
+								<term id="diretta">
+									<name lang="it">diretta</name>
+								</term>
+							</sub-terms>
+						</term>
+                        <term id="naturale">
+							<name lang="it">naturale</name>
+							<sub-terms>
+								<term id="diffusa">
+									<name lang="it">diffusa</name>
+								</term>
+								<term id="diretta">
+									<name lang="it">diretta</name>
+								</term>
+							</sub-terms>
+						</term>
+                    </sub-terms>
+                </term>
+                <term id="umidita">
+					<name lang="it">umidità</name>
+                    <sub-terms>
+                        <term id="presente">
+							<name lang="it">presente</name>
+						</term>
+                        <term id="assente">
+							<name lang="it">assente</name>
+						</term>
+                    </sub-terms>
+				</term>
+                <term id="temperature">
+					<name lang="it">Temperature</name>
+                    <sub-terms>
+                        <term id="alte-30">
+							<name lang="it">alte (>30°)</name>
+						</term>
+                        <term id="medie-10-30">
+							<name lang="it">medie (10°-30°)</name>
+						</term>
+                        <term id="basse-10">
+							<name lang="it">basse (&lt;10°)</name>
+						</term>
+                    </sub-terms>
+                </term>
+            </sub-terms>
+        </term>
+    </vocabulary>
+	
+    <!-- Vocabolario CONTESTO (2) -->
+    <vocabulary class="crm:E55_Type">
+        <term id="contesto">
+			<name lang="it">Contesto</name>
+            <sub-terms>
+                <term id="museale">
+					<name lang="it">museale</name>
+				</term>
+                <term id="archeologico">
+					<name lang="it">archeologico</name>
+                    <sub-terms>
+                        <term id="subacqueo">
+							<name lang="it">subacqueo</name>
+						</term>
+                        <term id="ipogeo">
+							<name lang="it">ipogeo</name>
+						</term>
+                        <term id="semipogeo">
+							<name lang="it">semipogeo</name>
+						</term>
+                        <term id="fuori-terra">
+							<name lang="it">fuori terra</name>
+						</term>
+                    </sub-terms>
+				</term>
+                <term id="architettonico">
+					<name lang="it">architettonico</name>
+                    <sub-terms>
+                        <term id="subacqueo">
+							<name lang="it">subacqueo</name>
+						</term>
+                        <term id="ipogeo">
+							<name lang="it">ipogeo</name>
+						</term>
+                        <term id="semipogeo">
+							<name lang="it">semipogeo</name>
+						</term>
+                        <term id="fuori-terra">
+							<name lang="it">fuori terra</name>
+						</term>
+                    </sub-terms>
+				</term>
+                <term id="ambientale">
+					<name lang="it">ambientale</name>
+				</term>
+            </sub-terms>
+        </term>
+    </vocabulary>
+    
+	<!-- Vocabolario DEGRADO (3) -->
+	<vocabulary class="basecpm:CP42_Material_Decay">
+        <term id="degrado">
+			<name lang="it">Degrado</name>
+            <sub-terms>
+                <term id="disgregazione-materiale">
+					<name lang="it">disgregazione materiale</name>
+					<sub-terms>
+						<term id="alveolizzazione">
+							<name lang="it">alveolizzazione</name>
+						</term>
+						<term id="crosta">
+							<name lang="it">crosta</name>
+						</term>
+						<term id="degradazione-differenziale">
+							<name lang="it">degradazione differenziale</name>
+						</term>
+						<term id="disgregazione">
+							<name lang="it">disgregazione</name>
+						</term>
+						<term id="efflorescenza">
+							<name lang="it">efflorescenza</name>
+						</term>
+						<term id="erosione">
+							<name lang="it">erosione</name>
+						</term>
+						<term id="esfoliazione">
+							<name lang="it">esfoliazione</name>
+						</term>
+						<term id="fratturazione">
+							<name lang="it">fratturazione</name>
+						</term>
+						<term id="pitting">
+							<name lang="it">pitting</name>
+						</term>
+						<term id="polverizzazione">
+							<name lang="it">polverizzazione</name>
+						</term>
+						<term id="processi-ossidativi">
+							<name lang="it">processi ossidativi</name>
+							<sub-terms>
+								<term id="ossidazione">
+									<name lang="it">ossidazione</name>
+								</term>
+								<term id="corrosione">
+									<name lang="it">corrosione</name>
+									<sub-terms>
+										<term id="corrosione-attiva">
+											<name lang="it">corrosione attiva</name>
+										</term>
+									</sub-terms>
+								</term>
+							</sub-terms>
+						</term>
+						<term id="scagliatura">
+							<name lang="it">scagliatura</name>
+						</term>
+					</sub-terms>
+				</term>
+                <term id="macchie-di-umidita">
+					<name lang="it">macchie di umidità</name>
+				</term>
+                <term id="attacchi-biologici">
+					<name lang="it">attacchi biologici</name>
+					<sub-terms>
+						<term id="attacchi-xilofagi">
+							<name lang="it">attacchi xilofagi</name>
+						</term>
+						<term id="degrado-fungino">
+							<name lang="it">degrado fungino</name>
+							<sub-terms>
+								<term id="carie-bianca">
+									<name lang="it">carie bianca</name>
+								</term>
+								<term id="carie-bruna">
+									<name lang="it">carie bruna</name>
+								</term>
+							</sub-terms>
+						</term>
+						<term id="deiezioni-animali">
+							<name lang="it">deiezioni animali</name>
+						</term>
+						<term id="patina-biologica">
+							<name lang="it">patina biologica</name>
+						</term>
+						<term id="presenza-di-vegetazione">
+							<name lang="it">presenza di vegetazione</name>
+						</term>					
+					</sub-terms>
+				</term>
+                <term id="alterazione-degli-strati-superficiali">
+					<name lang="it">alterazione degli strati superficiali</name>
+					<sub-terms>
+						<term id="alterazione-cromatica">
+							<name lang="it">alterazione cromatica</name>
+						</term>
+						<term id="concrezione">
+							<name lang="it">concrezione</name>
+						</term>
+						<term id="deposito-superficiale">
+							<name lang="it">deposito superficiale</name>
+						</term>
+						<term id="distacco">
+							<name lang="it">distacco</name>
+						</term>
+						<term id="fessurazione">
+							<name lang="it">fessurazione</name>
+						</term>
+						<term id="incrostazione">
+							<name lang="it">incrostazione</name>
+						</term>
+						<term id="macchia">
+							<name lang="it">macchia</name>
+							<sub-terms>
+								<term id="foxing">
+									<name lang="it">foxing</name>
+								</term>
+							</sub-terms>
+						</term>
+						<term id="patina">
+							<name lang="it">patina</name>
+						</term>
+						<term id="pellicola">
+							<name lang="it">pellicola</name>
+						</term>
+						<term id="rigonfiamento">
+							<name lang="it">rigonfiamento</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="parti-mancanti">
+					<name lang="it">parti mancanti</name>
+					<sub-terms>
+						<term id="lacuna">
+							<name lang="it">lacuna</name>
+						</term>
+						<term id="mancanza">
+							<name lang="it">mancanza</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="deformazione">
+					<name lang="it">deformazione</name>
+				</term>
+            </sub-terms>
+        </term>
+    </vocabulary>
+	
+	<!-- Vocabolario DESCRIZIONE CAMPIONE (4) -->
+	<vocabulary class="crm:E55_Type">
+	  <term id="descrizione-del-campione">
+		<name lang="it">Descrizione del campione</name>
+		<sub-terms>
+		  <term id="su-tela">
+			<name lang="it">su tela</name>
+			<sub-terms>
+			  <term id="su-tavola">
+				<name lang="it">su tavola</name>
+			  </term>
+			  <term id="su-pietra">
+				<name lang="it">su pietra</name>
+			  </term>
+			  <term id="su-parete">
+				<name lang="it">su parete</name>
+			  </term>
+			  <term id="su-metallo">
+				<name lang="it">su metallo</name>
+			  </term>
+			</sub-terms>
+		  </term>	  
+		  <term id="pellicola-pittorica">
+			<name lang="it">pellicola pittorica</name>
+		  </term>
+		  <term id="scultura">
+			<name lang="it">scultura</name>
+			<sub-terms>
+			  <term id="a-tutto-tondo">
+				<name lang="it">a tutto tondo</name>
+			  </term>
+			  <term id="altorilievo">
+				<name lang="it">altorilievo</name>
+			  </term>
+			  <term id="bassorilievo">
+				<name lang="it">bassorilievo</name>
+			  </term>
+			  <term id="incisa">
+				<name lang="it">incisa</name>
+			  </term>
+			</sub-terms>
+		  </term>
+		  <term id="decorazioni-e-scritture">
+			<name lang="it">decorazioni e scritture</name>
+			<sub-terms>
+			  <term id="su-pergamena">
+				<name lang="it">su pergamena</name>
+			  </term>
+			  <term id="su-carta">
+				<name lang="it">su carta</name>
+			  </term>
+			  <term id="su-papiro">
+				<name lang="it">su papiro</name>
+			  </term>
+			</sub-terms>
+		  </term>
+		  <term id="muratura">
+			<name lang="it">muratura</name>
+			<sub-terms>
+			  <term id="in-conglomerato">
+				<name lang="it">in conglomerato</name>
+			  </term>
+			  <term id="a-elementi-incastrati">
+				<name lang="it">a elementi incastrati</name>
+			  </term>
+			  <term id="con-paramenti-a-filari-e-nucleo-a-sacco">
+				<name lang="it">con paramenti a filari e nucleo a sacco</name>
+			  </term>
+			  <term id="con-paramenti-a-filari-e-nucleo-apparecchiato">
+				<name lang="it">con paramenti a filari e nucleo apparecchiato</name>
+			  </term>
+			  <term id="con-cortine-irregolari-e-nucleo-a-sacco">
+				<name lang="it">con cortine irregolari e nucleo a sacco</name>
+			  </term>
+			</sub-terms>			
+		  </term>
+		  <term id="elementi-costruttivi">
+			<name lang="it">elementi costruttivi</name>
+			<sub-terms>
+			  <term id="murari">
+				<name lang="it">murari</name>
+				<sub-terms>
+				  <term id="di-superficie">
+					<name lang="it">di superficie</name>
+				  </term>
+				  <term id="di-allettamento">
+					<name lang="it">di allettamento</name>
+				  </term>
+				  <term id="nucleo">
+					<name lang="it">nucleo</name>
+				  </term>
+				</sub-terms>			
+			  </term>
+			  <term id="altri">
+				<name lang="it">altri</name>
+			  </term>
+			</sub-terms>			
+		  </term>
+		  <term id="strato-di-finitura">
+			<name lang="it">strato di finitura</name>
+		  </term>
+		  <term id="segni-di-produzione-decorazione">
+			<name lang="it">segni di produzione/decorazione</name>
+			<sub-terms>			
+			  <term id="impressione">
+				<name lang="it">impressione</name>
+			  </term>
+			  <term id="incisione">
+				<name lang="it">incisione</name>
+				<sub-terms>
+				  <term id="su-ceramica">
+					<name lang="it">su ceramica</name>
+				  </term>
+				  <term id="su-intonaco">
+					<name lang="it">su intonaco</name>
+				  </term>
+				  <term id="su-laterizio">
+					<name lang="it">su laterizio</name>
+				  </term>
+				  <term id="su-parete-di-roccia">
+					<name lang="it">su parete di roccia</name>
+				  </term>
+				  <term id="su-pietra">
+					<name lang="it">su pietra</name>
+				  </term>
+				</sub-terms>			
+			  </term>
+			  <term id="impronta">
+				<name lang="it">impronta</name>
+			  </term>
+			</sub-terms>			
+		  </term>
+		  <term id="epigrafe">
+			<name lang="it">epigrafe</name>
+		  </term>
+		  <term id="manufatto">
+			<name lang="it">manufatto</name>
+			<sub-terms>
+			  <term id="lucerna">
+				<name lang="it">lucerna</name>
+			  </term>
+			  <term id="sarcofago">
+				<name lang="it">sarcofago</name>
+			  </term>
+			  <term id="vaso">
+				<name lang="it">vaso</name>
+			  </term>
+			  <term id="moneta">
+				<name lang="it">moneta</name>
+			  </term>
+			  <term id="gioiello">
+				<name lang="it">gioiello</name>
+			  </term>
+			</sub-terms>			
+		  </term>
+		  <term id="ecofatto">
+			<name lang="it">ecofatto</name>
+		  </term>
+		  <term id="calco">
+			<name lang="it">calco</name>
+			<sub-terms>
+			  <term id="in-negativo">
+				<name lang="it">in negativo</name>
+			  </term>
+			  <term id="in-positivo">
+				<name lang="it">in positivo</name>
+			  </term>
+			</sub-terms>
+		  </term>
+		</sub-terms>
+	  </term>
+	</vocabulary>
+
+	<!-- Vocabolario COMPETENZA (5) -->
+	<vocabulary class="crm:E55_Type">
+        <term id="competenza">
+			<name lang="it">Competenza</name>
+            <sub-terms>
+                <term id="antropologo">
+					<name lang="it">antropologo</name>
+					<sub-terms>
+						<term id="culturale">
+							<name lang="it">culturale</name>
+						</term>
+						<term id="fisico">
+							<name lang="it">fisico</name>
+						</term>
+					</sub-terms>
+				</term>
+                <term id="archeologo">
+					<name lang="it">archeologo</name>
+				</term>
+				<term id="architetto">
+					<name lang="it">architetto</name>
+				</term>
+				<term id="biologo">
+					<name lang="it">biologo</name>
+				</term>
+				<term id="chimica">
+					<name lang="it">chimico</name>
+				</term>
+				<term id="climatologo">
+					<name lang="it">climatologo</name>
+				</term>
+				<term id="ecologo">
+					<name lang="it">ecologo</name>
+				</term>
+				<term id="fisico">
+					<name lang="it">fisico</name>
+				</term>
+				<term id="geologo">
+					<name lang="it">geologo</name>
+				</term>
+				<term id="storico">
+					<name lang="it">storico</name>
+				</term>
+            </sub-terms>
+        </term>
+    </vocabulary>
+
+	
+	<!-- Vocabolario ELEMENTO COSTRUTTIVO (6) -->
+	<vocabulary class="crm:E55_Type">
+	  <term id="elemento-costruttivo">
+		<name lang="it">Elemento costruttivo</name>
+		<sub-terms>
+		  <term id="collegamenti-verticali">
+			<name lang="it">collegamenti verticali</name>
+			<sub-terms>
+			  <term id="cordonata">
+				<name lang="it">cordonata</name>
+			  </term>
+			  <term id="rampa">
+				<name lang="it">rampa</name>
+			  </term>
+			  <term id="scala">
+				<name lang="it">scala</name>
+			  </term>
+			</sub-terms>
+		  </term>
+		  <term id="coperture">
+			<name lang="it">coperture</name>
+			<sub-terms>
+			  <term id="copertura">
+				<name lang="it">copertura</name>
+				<sub-terms>
+				  <term id="a-cupola">
+					<name lang="it">a cupola</name>
+				  </term>
+				  <term id="a-volta">
+					<name lang="it">a volta</name>
+				  </term>
+				  <term id="a-tetto">
+					<name lang="it">a tetto</name>
+					<sub-terms>
+					  <term id="a-falda-singola">
+						<name lang="it">a falda singola</name>
+					  </term>
+					  <term id="a-doppia-falda">
+						<name lang="it">a doppia falda</name>
+					  </term>
+					</sub-terms>
+				  </term>
+				  <term id="a-terrazzo">
+					<name lang="it">a terrazzo</name>
+				  </term>
+				</sub-terms>
+			  </term>
+			</sub-terms>
+		  </term>
+		  <term id="fondazioni">
+			<name lang="it">fondazioni</name>
+			<sub-terms>
+			  <term id="continue">
+				<name lang="it">continue</name>
+				<sub-terms>
+				  <term id="rettilinee">
+					<name lang="it">rettilinee</name>
+				  </term>
+				  <term id="platea">
+					<name lang="it">platea</name>
+				  </term>
+				</sub-terms>
+			  </term>
+			  <term id="puntuali">
+				<name lang="it">puntuali</name>
+				<sub-terms>
+				  <term id="pali">
+					<name lang="it">pali</name>
+				  </term>
+				  <term id="plinti">
+					<name lang="it">plinti</name>
+				  </term>
+				</sub-terms>
+			  </term>
+			</sub-terms>
+		  </term>
+		  <term id="pavimentazione">
+			<name lang="it">pavimentazione</name>
+			<sub-terms>
+			  <term id="lastricato">
+				<name lang="it">lastricato</name>
+				<sub-terms>
+				  <term id="a-lastre">
+					<name lang="it">a lastre</name>
+				  </term>
+				  <term id="a-blochhi">
+					<name lang="it">a blochhi</name>
+				  </term>
+				</sub-terms>
+			  </term>
+			  <term id="a-tavole">
+				<name lang="it">a tavole</name>
+			  </term>
+			  <term id="a-ciottoli">
+				<name lang="it">a ciottoli</name>
+			  </term>
+			  <term id="a-tessere">
+				<name lang="it">a tessere</name>
+				<sub-terms>
+				  <term id="opus-sectile">
+					<name lang="it">opus sectile</name>
+				  </term>
+				  <term id="mosaico">
+					<name lang="it">mosaico</name>
+				  </term>
+				  <term id="tassellato-scutulato">
+					<name lang="it">tassellato (scutulato)</name>
+				  </term>
+				</sub-terms>
+			  </term>
+			  <term id="ammattonato">
+				<name lang="it">ammattonato</name>
+				<sub-terms>
+				  <term id="elementi-in-piano">
+					<name lang="it">elementi in piano</name>
+				  </term>
+				  <term id="elementi-di-taglio">
+					<name lang="it">elementi di taglio</name>
+				  </term>
+				</sub-terms>
+			  </term>
+			  <term id="in-conglomerato">
+				<name lang="it">in conglomerato</name>
+				<sub-terms>
+				  <term id="signino">
+					<name lang="it">signino</name>
+				  </term>
+				  <term id="veneziana-seminato">
+					<name lang="it">veneziana (seminato)</name>
+				  </term>
+				  <term id="vermiculato">
+					<name lang="it">vermiculato</name>
+				  </term>
+				</sub-terms>
+			  </term>
+			  <term id="mista">
+				<name lang="it">mista</name>
+			  </term>
+			</sub-terms>
+		  </term>
+		  <term id="strutture-di-elevazione">
+			<name lang="it">Strutture di elevazione</name>
+			<sub-terms>
+			  <term id="continua">
+				<name lang="it">continua</name>
+				<sub-terms>
+				  <term id="portante">
+					<name lang="it">portante</name>
+				  </term>
+				  <term id="tramezzo">
+					<name lang="it">tramezzo</name>
+				  </term>
+				  <term id="tamponatura">
+					<name lang="it">tamponatura</name>
+				  </term>
+				</sub-terms>
+			  </term>
+			  <term id="puntuale">
+				<name lang="it">puntuale</name>
+				<sub-terms>
+				  <term id="colonna">
+					<name lang="it">colonna</name>
+				  </term>
+				  <term id="pilastro">
+					<name lang="it">pilastro</name>
+				  </term>
+				</sub-terms>
+			  </term>
+			</sub-terms>
+		  </term>
+		  <term id="strutture-di-orizzontamento">
+			<name lang="it">strutture di orizzontamento</name>
+			<sub-terms>
+			  <term id="solaio-piano-su-archi">
+				<name lang="it">solaio piano su archi</name>
+			  </term>
+			  <term id="solaio-piano">
+				<name lang="it">solaio piano</name>
+			  </term>
+			  <term id="in-muratura-volta-cupola">
+				<name lang="it">in muratura (volta/cupola)</name>
+			  </term>
+			</sub-terms>
+		  </term>
+		  <term id="rivestimenti-e-decorazioni">
+			<name lang="it">rivestimenti e decorazioni</name>
+			<sub-terms>
+			  <term id="controsoffitto">
+				<name lang="it">controsoffitto</name>
+				<sub-terms>
+				  <term id="cassettonato">
+					<name lang="it">cassettonato</name>
+				  </term>
+				  <term id="piano">
+					<name lang="it">piano</name>
+				  </term>
+				</sub-terms>
+			  </term>
+			  <term id="dipinto">
+				<name lang="it">dipinto</name>
+			  </term>
+			  <term id="scultura">
+				<name lang="it">scultura</name>
+			  </term>
+			  <term id="modellato-plastico">
+				<name lang="it">modellato plastico</name>
+			  </term>
+			  <term id="lastre-lapidee">
+				<name lang="it">lastre lapidee</name>
+			  </term>
+			  <term id="mosaico">
+				<name lang="it">mosaico</name>
+			  </term>
+			</sub-terms>
+		  </term>
+		  <term id="altro">
+			<name lang="it">altro</name>
+		  </term>
+		</sub-terms>
+	  </term>
+	</vocabulary>
+
+	<!-- Vocabolario FASE DI ANALISI (7) -->
+    <vocabulary class="crm:E55_Type">
+        <term id="fase-di-analisi">
+			<name lang="it">Fase di analisi</name>
+            <sub-terms>
+                <term id="esecutiva">
+					<name lang="it">esecutiva</name>
+				</term>
+				<term id="preliminare">
+					<name lang="it">preliminare</name>
+				</term>
+            </sub-terms>
+        </term>
+    </vocabulary>
+
+	<!-- Vocabolario QUESITO DIAGNOSTICO (8) -->
+	<vocabulary class="crm:E55_Type">
+		<term id="quesito-diagnostico">
+			<name lang="it">Quesito diagnostico</name>
+			<sub-terms>
+				<term id="caratterizzazione">
+					<name lang="it">caratterizzazione</name>
+					<sub-terms>
+						<term id="del-degrado">
+							<name lang="it">del degrado</name>
+						</term>
+						<term id="dato-colore">
+							<name lang="it">dato colore</name>
+						</term>					
+						<term id="del-materiale">
+							<name lang="it">del materiale</name>
+						</term>
+						<term id="della-morfologia">
+							<name lang="it">della-morfologia</name>
+						</term>
+						<term id="morfometrica">
+							<name lang="it">morfometrica</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="datazione">
+					<name lang="it">datazione</name>
+				</term>
+				<term id="discontinuita-tessiturali">
+					<name lang="it">discontinuità tessiturali</name>
+				</term>
+				<term id="distribuzione-distacchi">
+					<name lang="it">distribuzione distacchi</name>
+				</term>
+				<term id="identificazione">
+					<name lang="it">identificazione</name>
+					<sub-terms>
+						<term id="degli-elementi">
+							<name lang="it">degli elementi</name>
+						</term>
+						<term id="del-composto">
+							<name lang="it">del composto</name>
+						</term>
+						<term id="della-specie-mineralogica">
+							<name lang="it">della specie mineralogica</name>
+						</term>
+						<term id="della-specie-biologica">
+							<name lang="it">della specie biologica</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="inglobamento-strutture">
+					<name lang="it">inglobamento strutture</name>
+				</term>
+				<term id="pratiche-colturali">
+					<name lang="it">pratiche colturali</name>
+				</term>
+				<term id="provenienza">
+					<name lang="it">provenienza</name>
+				</term>
+				<term id="relazioni-tra-parti">
+					<name lang="it">relazioni tra parti</name>
+				</term>
+				<term id="ricostruzione-del-paleoambiente">
+					<name lang="it">ricostruzione del paleoambiente</name>
+				</term>
+				<term id="stratigrafia">
+					<name lang="it">stratigrafia</name>
+					<sub-terms>
+						<term id="materiali">
+							<name lang="it">materiali</name>
+						</term>
+						<term id="strutture">
+							<name lang="it">strutture</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="tecnologia-di-produzione">
+					<name lang="it">tecnologia di produzione</name>
+				</term>
+				<term id="altro">
+					<name lang="it">altro</name>
+				</term>
+			</sub-terms>
+		</term>
+	</vocabulary>
+
+	<!-- Vocabolario INQUADRAMENTO CRONOLOGICO (9) -->
+	<vocabulary class="crm:E55_Type">
+		<term id="inquadramento-cronologico">
+			<name lang="it">Inquadramento cronologico</name>
+			<sub-terms>
+				<term id="preistoria">
+					<name lang="it">preistoria</name>
+					<sub-terms>
+						<term id="paleolitico">
+							<name lang="it">paleolitico</name>
+						</term>
+						<term id="mesolitico">
+							<name lang="it">mesolitico</name>
+						</term>
+						<term id="neolitico">
+							<name lang="it">neolitico</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="protostoria">
+					<name lang="it">protostoria</name>
+					<sub-terms>
+						<term id="eta-del-rame">
+							<name lang="it">età del rame</name>
+						</term>
+						<term id="eta-del-bronzo">
+							<name lang="it">età del bronzo</name>
+						</term>
+						<term id="eta-del-ferro">
+							<name lang="it">età del ferro</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="antichita">
+					<name lang="it">antichità</name>
+					<sub-terms>
+						<term id="periodo-preclassico">
+							<name lang="it">periodo preclassico</name>
+						</term>
+						<term id="civilta-greca">
+							<name lang="it">civiltà greca</name>
+						</term>
+						<term id="civilta-romana">
+							<name lang="it">civiltà romana</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="medioevo">
+					<name lang="it">Medioevo</name>
+					<sub-terms>
+						<term id="alto-medioevo">
+							<name lang="it">alto Medioevo</name>
+							<sub-terms>
+								<term id="v-dc">
+									<name lang="it">V d.C.</name>
+								</term>
+								<term id="vi-dc">
+									<name lang="it">VI d.C.</name>
+								</term>
+								<term id="vii-dc">
+									<name lang="it">VII d.C.</name>
+								</term>
+								<term id="viii-dc">
+									<name lang="it">VIII d.C.</name>
+								</term>
+								<term id="ix-dc">
+									<name lang="it">IX d.C.</name>
+								</term>
+								<term id="x-dc">
+									<name lang="it">X d.C.</name>
+								</term>
+								<term id="xi-dc">
+									<name lang="it">XI d.C.</name>
+								</term>
+							</sub-terms>
+						</term>
+						<term id="basso-medioevo">
+							<name lang="it">basso Medioevo</name>
+							<sub-terms>
+								<term id="xii-dc">
+									<name lang="it">XII d.C.</name>
+								</term>
+								<term id="xiii-dc">
+									<name lang="it">XIII d.C.</name>
+								</term>
+								<term id="xiv-dc">
+									<name lang="it">XIV d.C.</name>
+								</term>
+								<term id="xv-dc">
+									<name lang="it">XV d.C.</name>
+								</term>
+							</sub-terms>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="eta-moderna">
+					<name lang="it">età moderna</name>
+					<sub-terms>
+						<term id="xv-dc">
+							<name lang="it">XV d.C.</name>
+						</term>
+						<term id="xvi-dc">
+							<name lang="it">XVI d.C.</name>
+						</term>
+						<term id="xvii-dc">
+							<name lang="it">XVII d.C.</name>
+						</term>
+						<term id="prima-meta-del-xviii-dc">
+							<name lang="it">prima metà del XVIII d.C.</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="eta-contemporanea">
+					<name lang="it">età contemporanea</name>
+					<sub-terms>
+						<term id="seconda-meta-del-xviii-dc">
+							<name lang="it">seconda metà del XVIII d.C.</name>
+						</term>
+						<term id="xix-dc">
+							<name lang="it">XIX d.C.</name>
+						</term>
+						<term id="xx-dc">
+							<name lang="it">XX d.C.</name>
+						</term>
+					</sub-terms>
+				</term>
+			</sub-terms>
+		</term>
+	</vocabulary>
+
+	<!-- Vocabolario LUOGO DI ANALISI (10) -->
+    <vocabulary class="crm:E55_Type">
+        <term id="luogo-di-analisi">
+			<name lang="it">Luogo di analisi</name>
+            <sub-terms>
+                <term id="in-laboratorio">
+					<name lang="it">in-laboratorio</name>
+				</term>
+                <term id="in-situ">
+					<name lang="it">in situ</name>
+				</term>
+            </sub-terms>
+        </term>
+    </vocabulary>
+
+	<!-- Vocabolario MATERIALE (11) -->
+    <vocabulary class="crm:E55_Type">
+        <term id="materiale">
+			<name lang="it">Materiale</name>
+            <sub-terms>
+                <term id="aggiunta">
+					<name lang="it">aggiunta</name>
+					<sub-terms>
+						<term id="paglia">
+							<name lang="it">paglia</name>
+						</term>
+						<term id="fibre">
+							<name lang="it">fibre</name>
+						</term>
+						<term id="sterco">
+							<name lang="it">sterco</name>
+						</term>
+						<term id="cenere">
+							<name lang="it">cenere</name>
+						</term>
+						<term id="altro">
+							<name lang="it">altro</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="aggregato">
+					<name lang="it">aggregato</name>
+					<sub-terms>
+						<term id="sabbia">
+							<name lang="it">sabbia</name>
+						</term>
+						<term id="pozzolana">
+							<name lang="it">pozzolana</name>
+							<sub-terms>
+								<term id="sabbia">
+									<name lang="it">rossa</name>
+								</term>
+								<term id="pozzolana">
+									<name lang="it">nera</name>	
+								</term>
+								<term id="pozzolana">
+									<name lang="it">grigia</name>	
+								</term>
+								<term id="pozzolana">
+									<name lang="it">bruna</name>	
+								</term>
+							</sub-terms>
+						</term>
+						<term id="carbonatico">
+							<name lang="it">carbonatico</name>
+						</term>
+						<term id="vulcanico">
+							<name lang="it">vulcanico</name>
+						</term>
+						<term id="cocciopesto">
+							<name lang="it">cocciopesto</name>
+						</term>
+						<term id="marmoreo">
+							<name lang="it">marmoreo</name>
+						</term>
+						<term id="altro">
+							<name lang="it">altro</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="additivo">
+					<name lang="it">additivo</name>
+					<sub-terms>
+						<term id="malto">
+							<name lang="it">malto</name>
+						</term>
+						<term id="birra">
+							<name lang="it">birra</name>
+						</term>
+						<term id="urina">
+							<name lang="it">urina</name>
+						</term>
+						<term id="sangue">
+							<name lang="it">sangue</name>
+						</term>
+						<term id="albume">
+							<name lang="it">albume</name>
+						</term>
+						<term id="caseina">
+							<name lang="it">caseina</name>
+						</term>
+						<term id="gomma-arabica">
+							<name lang="it">gomma arabica</name>
+						</term>
+						<term id="amido">
+							<name lang="it">amido</name>
+						</term>
+						<term id="olio">
+							<name lang="it">olio</name>
+						</term>
+						<term id="altro">
+							<name lang="it">altro</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="carapace">
+					<name lang="it">carapace</name>
+					<sub-terms>
+						<term id="chitinico">
+							<name lang="it">chitinico</name>
+						</term>
+						<term id="mineralizzato">
+							<name lang="it">mineralizzato</name>
+						</term>
+						<term id="osseo">
+							<name lang="it">osseo</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="carta">
+					<name lang="it">carta</name>
+					<sub-terms>
+						<term id="di-lino">
+							<name lang="it">di lino</name>
+						</term>
+						<term id="di-stracci">
+							<name lang="it">di stracci</name>
+						</term>
+						<term id="di-pasta-di-legno">
+							<name lang="it">di pasta di legno</name>
+						</term>
+						<term id="chimica">
+							<name lang="it">chimica</name>
+						</term>
+						<term id="acid-free">
+							<name lang="it">acid-free</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="ceramica">
+					<name lang="it">ceramica</name>
+					<sub-terms>
+						<term id="bucchero">
+							<name lang="it">bucchero</name>
+						</term>
+						<term id="gres">
+							<name lang="it">gres</name>
+							<sub-terms>
+								<term id="con-smalto-salino">
+									<name lang="it">con smalto salino</name>
+								</term>
+							</sub-terms>
+						</term>
+						<term id="maiolica">
+							<name lang="it">maiolica</name>
+						</term>
+						<term id="nera-a-vernice-rossa">
+							<name lang="it">nera a vernice rossa</name>
+						</term>
+						<term id="terra-sigillata">
+							<name lang="it">terra sigillata</name>
+						</term>
+						<term id="terracotta">
+							<name lang="it">terracotta</name>
+							<sub-terms>
+								<term id="con-ingobbio">
+									<name lang="it">con ingobbio</name>
+								</term>
+							</sub-terms>
+						</term>
+						<term id="terraglia">
+							<name lang="it">terraglia</name>
+							<sub-terms>
+								<term id="con-smalto-stannifero">
+									<name lang="it">con smalto stannifero</name>
+								</term>
+								<term id="con-vetrina">
+									<name lang="it">con vetrina</name>
+								</term>
+							</sub-terms>
+						</term>
+						<term id="porcellana">
+							<name lang="it">porcellana</name>
+							<sub-terms>
+								<term id="dura">
+									<name lang="it">dura</name>
+								</term>
+								<term id="tenera">
+									<name lang="it">tenera</name>
+								</term>
+							</sub-terms>
+						</term>
+						<term id="rossa-a-vernice-nera">
+							<name lang="it">rossa a vernice nera</name>
+						</term>
+					</sub-terms>
+				</term>				
+				<term id="coloranti">
+					<name lang="it">coloranti</name>
+					<sub-terms>
+						<term id="annatto">
+							<name lang="it">annatto</name>
+						</term>
+						<term id="camomilla">
+							<name lang="it">camomilla</name>
+						</term>
+						<term id="campeggio">
+							<name lang="it">campeggio</name>
+						</term>
+						<term id="catecu">
+							<name lang="it">catecù</name>
+						</term>
+						<term id="crespino">
+							<name lang="it">crespino</name>
+						</term>
+						<term id="curcuma">
+							<name lang="it">curcuma</name>
+						</term>
+						<term id="giaggiolo-acquatico">
+							<name lang="it">giaggiolo acquatico</name>
+						</term>
+						<term id="ginestra">
+							<name lang="it">ginestra</name>
+						</term>
+						<term id="ginestra-dei-carbonai">
+							<name lang="it">ginestra dei carbonai</name>
+						</term>
+						<term id="guado">
+							<name lang="it">guado</name>
+						</term>
+						<term id="henne">
+							<name lang="it">hennè</name>
+						</term>
+						<term id="indaco">
+							<name lang="it">indaco</name>
+						</term>
+						<term id="lavanda-selvatica">
+							<name lang="it">lavanda selvatica</name>
+						</term>
+						<term id="legno-rosso-del-brasile">
+							<name lang="it">legno rosso del Brasile</name>
+						</term>
+						<term id="mirtillo-nero">
+							<name lang="it">mirtillo nero</name>
+						</term>
+						<term id="noce">
+							<name lang="it">noce</name>
+						</term>
+						<term id="ontano-comune">
+							<name lang="it">ontano comune</name>
+						</term>
+						<term id="oricello">
+							<name lang="it">oricello</name>
+						</term>
+						<term id="papavero">
+							<name lang="it">papavero</name>
+						</term>
+						<term id="poligono-tintorio">
+							<name lang="it">poligono tintorio</name>
+						</term>
+						<term id="reseda-bionda">
+							<name lang="it">reseda bionda</name>
+						</term>
+						<term id="robbia">
+							<name lang="it">robbia</name>
+						</term>
+						<term id="salice-rosso">
+							<name lang="it">salice rosso</name>
+						</term>
+						<term id="sangue-di-drago">
+							<name lang="it">sangue di drago</name>
+						</term>
+						<term id="scoparius">
+							<name lang="it">scoparius</name>
+						</term>
+						<term id="sintetico">
+							<name lang="it">sintetico</name>
+							<sub-terms>
+								<term id="azoico">
+									<name lang="it">azoico</name>
+								</term>
+								<term id="acido">
+									<name lang="it">acido</name>
+								</term>
+								<term id="basico">
+									<name lang="it">basico</name>
+								</term>
+								<term id="disperso">
+									<name lang="it">disperso</name>
+								</term>
+							</sub-terms>						
+						</term>
+						<term id="sparzio-villoso">
+							<name lang="it">sparzio villoso</name>
+						</term>
+						<term id="zafferano">
+							<name lang="it">zafferano</name>
+						</term>
+						<term id="zafferanone">
+							<name lang="it">zafferanone</name>
+						</term>
+						<term id="altro">
+							<name lang="it">altro</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="conchiglia">
+					<name lang="it">conchiglia</name>
+					<sub-terms>
+						<term id="nacrea">
+							<name lang="it">nacrea</name>
+						</term>
+						<term id="non-nacrea">
+							<name lang="it">non nacrea</name>
+						</term>
+						<term id="perla">
+							<name lang="it">perla</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="consolidante">
+					<name lang="it">consolidante</name>
+					<sub-terms>
+						<term id="adesivo">
+							<name lang="it">adesivo</name>
+						</term>
+						<term id="nano-calce">
+							<name lang="it">nano-calce</name>
+						</term>
+						<term id="resina">
+							<name lang="it">resina</name>
+							<sub-terms>
+								<term id="acrilica">
+									<name lang="it">acrilica</name>
+									<sub-terms>
+										<term id="paraloid-b72">
+											<name lang="it">Paraloid B72</name>
+										</term>
+									</sub-terms>
+								</term>
+								<term id="epossidica">
+									<name lang="it">epossidica</name>
+								</term>
+								<term id="siliconica">
+									<name lang="it">siliconica</name>
+								</term>
+							</sub-terms>
+						</term>
+						<term id="silicato">
+							<name lang="it">silicato</name>
+							<sub-terms>
+								<term id="nano-silice">
+									<name lang="it">nano-silice</name>
+								</term>
+								<term id="silicato-di-etile">
+									<name lang="it">silicato di etile</name>
+								</term>
+							</sub-terms>
+						</term>
+						<term id="altro">
+							<name lang="it">altro</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="corallo">
+					<name lang="it">corallo</name>
+					<sub-terms>
+						<term id="bianco">
+							<name lang="it">bianco</name>
+						</term>
+						<term id="boke">
+							<name lang="it">bokè</name>
+						</term>
+						<term id="moro">
+							<name lang="it">moro</name>
+						</term>
+						<term id="pelle-dangelo">
+							<name lang="it">pelle d'angelo</name>
+						</term>
+						<term id="rosso">
+							<name lang="it">rosso</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="corno">
+					<name lang="it">corno</name>
+					<sub-terms>
+						<term id="bovino">
+							<name lang="it">bovino</name>
+						</term>
+						<term id="cervide">
+							<name lang="it">cervide</name>
+						</term>
+						<term id="ovino">
+							<name lang="it">ovino</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="cotone">
+					<name lang="it">cotone</name>
+					<sub-terms>
+						<term id="filato">
+							<name lang="it">filato</name>
+						</term>
+						<term id="non-filato">
+							<name lang="it">non filato</name>
+						</term>					
+					</sub-terms>
+				</term>
+				<term id="dente">
+					<name lang="it">dente</name>
+					<sub-terms>
+						<term id="avorio">
+							<name lang="it">avorio</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="echinoderma">
+					<name lang="it">echinoderma</name>
+				</term>
+				<term id="elementi">
+					<name lang="it">elementi</name>
+					<sub-terms>
+						<term id="ag">      
+							<name lang="it">Ag</name>    
+						</term>
+						<term id="al">      
+							<name lang="it">Al</name>     
+						</term>
+						<term id="au">
+							<name lang="it">Au</name>
+						</term>
+						<term id="at">
+							<name lang="it">At</name>
+						</term>
+						<term id="b">
+							<name lang="it">B</name>
+						</term>
+						<term id="ba">
+							<name lang="it">Ba</name>
+						</term>
+						<term id="be">
+							<name lang="it">Be</name>
+						</term>
+						<term id="bh">
+							<name lang="it">Bh</name>
+						</term>
+						<term id="bi">
+							<name lang="it">Bi</name>
+						</term>
+						<term id="br">
+							<name lang="it">Br</name>
+						</term>
+						<term id="c">
+							<name lang="it">C</name>
+						</term>
+						<term id="ca">
+							<name lang="it">Ca</name>
+						</term>
+						<term id="cd">
+							<name lang="it">Cd</name>
+						</term>
+						<term id="cl">
+							<name lang="it">Cl</name>
+						</term>
+						<term id="cn">
+							<name lang="it">Cn</name>
+						</term>
+						<term id="co">
+							<name lang="it">Co</name>
+						</term>
+						<term id="cr">
+							<name lang="it">Cr</name>
+						</term>
+						<term id="cs">
+							<name lang="it">Cs</name>
+						</term>
+						<term id="cu">
+							<name lang="it">Cu</name>
+						</term>
+						<term id="db">
+							<name lang="it">Db</name>
+						</term>
+						<term id="ds">
+							<name lang="it">Ds</name>
+						</term>
+						<term id="f">
+							<name lang="it">F</name>
+						</term>
+						<term id="fe">
+							<name lang="it">Fe</name>
+						</term>
+						<term id="fl">
+							<name lang="it">Fl</name>
+						</term>
+						<term id="fr">
+							<name lang="it">Fr</name>
+						</term>
+						<term id="ga">
+							<name lang="it">Ga</name>
+						</term>
+						<term id="ge">
+							<name lang="it">Ge</name>
+						</term>
+						<term id="hf">
+							<name lang="it">Hf</name>
+						</term>
+						<term id="hg">
+							<name lang="it">Hg</name>
+						</term>
+						<term id="hs">
+							<name lang="it">Hs</name>
+						</term>
+						<term id="i">
+							<name lang="it">I</name>
+						</term>
+						<term id="in">
+							<name lang="it">In</name>
+						</term>
+						<term id="ir">
+							<name lang="it">Ir</name>
+						</term>
+						<term id="k">
+							<name lang="it">K</name>
+						</term>
+						<term id="li">
+							<name lang="it">Li</name>
+						</term>
+						<term id="lr">
+							<name lang="it">Lr</name>
+						</term>
+						<term id="lu">
+							<name lang="it">Lu</name>
+						</term>
+						<term id="lv">
+							<name lang="it">Lv</name>
+						</term>
+						<term id="mc">
+							<name lang="it">Mc</name>
+						</term>
+						<term id="mg">
+							<name lang="it">Mg</name>
+						</term>
+						<term id="mo">
+							<name lang="it">Mo</name>
+						</term>
+						<term id="mt">
+							<name lang="it">Mt</name>
+						</term>
+						<term id="n">
+							<name lang="it">N</name>
+						</term>
+						<term id="na">
+							<name lang="it">Na</name>
+						</term>
+						<term id="nh">
+							<name lang="it">Nh</name>
+						</term>
+						<term id="ni">
+							<name lang="it">Ni</name>
+						</term>
+						<term id="o">
+							<name lang="it">O</name>
+						</term>
+						<term id="p">
+							<name lang="it">P</name>
+						</term>
+						<term id="pb">
+							<name lang="it">Pb</name>
+						</term>
+						<term id="pd">
+							<name lang="it">Pd</name>
+						</term>
+						<term id="po">
+							<name lang="it">Po</name>
+						</term>
+						<term id="pt">
+							<name lang="it">Pt</name>
+						</term>
+						<term id="ra">
+							<name lang="it">Ra</name>
+						</term>
+						<term id="rb">
+							<name lang="it">Rb</name>
+						</term>
+						<term id="re">
+							<name lang="it">Re</name>
+						</term>
+						<term id="rf">
+							<name lang="it">Rf</name>
+						</term>
+						<term id="rg">
+							<name lang="it">Rg</name>
+						</term>
+						<term id="rh">
+							<name lang="it">Rh</name>
+						</term>
+						<term id="ru">
+							<name lang="it">Ru</name>
+						</term>
+						<term id="s">
+							<name lang="it">S</name>
+						</term>
+						<term id="sb">
+							<name lang="it">Sb</name>
+						</term>
+						<term id="sc">
+							<name lang="it">Sc</name>
+						</term>
+						<term id="se">
+							<name lang="it">Se</name>
+						</term>
+						<term id="sg">
+							<name lang="it">Sg</name>
+						</term>
+						<term id="si">
+							<name lang="it">Si</name>
+						</term>
+						<term id="sr">
+							<name lang="it">Sr</name>
+						</term>
+						<term id="te">
+							<name lang="it">Te</name>
+						</term>
+						<term id="ti">
+							<name lang="it">Ti</name>
+						</term>
+						<term id="tl">
+							<name lang="it">Tl</name>
+						</term>
+						<term id="ts">
+							<name lang="it">Ts</name>
+						</term>
+						<term id="v">
+							<name lang="it">V</name>
+						</term>
+						<term id="w">
+							<name lang="it">W</name>
+						</term>
+						<term id="y">
+							<name lang="it">Y</name>
+						</term>
+						<term id="zn">
+							<name lang="it">Zn</name>
+						</term>
+						<term id="zr">
+							<name lang="it">Zr</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="frutto">
+					<name lang="it">frutto</name>
+				</term>
+				<term id="gemma">
+					<name lang="it">gemma</name>
+					<sub-terms>
+						<term id="acquamarina">		
+							<name lang="it">acquamarina</name>		
+						</term>
+						<term id="agata">		
+							<name lang="it">agata</name>		
+						</term>
+						<term id="ametista">		
+							<name lang="it">ametista</name>		
+						</term>
+						<term id="avventurina">		
+							<name lang="it">avventurina</name>		
+						</term>
+						<term id="azzurrite">		
+							<name lang="it">azzurrite</name>		
+						</term>
+						<term id="corniola">		
+							<name lang="it">corniola</name>		
+						</term>
+						<term id="crisoberillo">		
+							<name lang="it">crisoberillo</name>		
+						</term>
+						<term id="crisocolla">		
+							<name lang="it">crisocolla</name>		
+						</term>
+						<term id="diamante">		
+							<name lang="it">diamante</name>		
+						</term>
+						<term id="diaspro">		
+							<name lang="it">diaspro</name>		
+						</term>
+						<term id="diopside">		
+							<name lang="it">diopside</name>		
+						</term>
+						<term id="eliodoro">		
+							<name lang="it">eliodoro</name>		
+						</term>
+						<term id="fluorite">		
+							<name lang="it">fluorite</name>		
+						</term>
+						<term id="giadeite">		
+							<name lang="it">giadeite</name>		
+						</term>
+						<term id="granato">		
+							<name lang="it">granato</name>		
+						</term>
+						<term id="labradorite">		
+							<name lang="it">labradorite</name>		
+						</term>
+						<term id="lapislazzuli">		
+							<name lang="it">lapislazzuli</name>		
+						</term>
+						<term id="lazulite">		
+							<name lang="it">lazulite</name>		
+						</term>
+						<term id="lazurite">		
+							<name lang="it">lazurite</name>		
+						</term>
+						<term id="malachite">		
+							<name lang="it">malachite</name>		
+						</term>
+						<term id="morganite">		
+							<name lang="it">morganite</name>		
+						</term>
+						<term id="olivina">	
+							<name lang="it">olivina</name>		
+						</term>
+						<term id="onice">		
+							<name lang="it">onice</name>		
+						</term>
+						<term id="opale">		
+							<name lang="it">opale</name>		
+						</term>
+						<term id="quarzo">		
+							<name lang="it">quarzo</name>		
+						</term>
+						<term id="rubino">		
+							<name lang="it">rubino</name>		
+						</term>
+						<term id="sfalerite">		
+							<name lang="it">sfalerite</name>		
+						</term>
+						<term id="smeraldo">		
+							<name lang="it">smeraldo</name>		
+						</term>
+						<term id="sodalite">		
+							<name lang="it">sodalite</name>		
+						</term>
+						<term id="topazio">		
+							<name lang="it">topazio</name>		
+						</term>
+						<term id="tormalina">		
+							<name lang="it">tormalina</name>		
+						</term>
+						<term id="turchese">		
+							<name lang="it">turchese</name>		
+						</term>
+						<term id="zaffiro">		
+							<name lang="it">zaffiro</name>		
+						</term>
+						<term id="zircone">		
+							<name lang="it">zircone</name>		
+						</term>
+						<term id="altro">		
+							<name lang="it">altro</name>		
+						</term>
+					</sub-terms>
+				</term>
+				<term id="intonaco">
+					<name lang="it">intonaco</name>
+					<sub-terms>
+						<term id="di-cocciopesto">		
+							<name lang="it">di cocciopesto</name>
+						</term>
+						<term id="dipinto">		
+							<name lang="it">dipinto</name>
+							<sub-terms>
+								<term id="a-fresco">		
+									<name lang="it">a fresco</name>
+								</term>
+								<term id="a-secco">		
+									<name lang="it">a secco</name>
+								</term>
+								<term id="a-tecnica-mista">		
+									<name lang="it">a tecnica mista</name>
+								</term>
+							</sub-terms>
+						</term>
+						<term id="liscio">		
+							<name lang="it">liscio</name>		
+						</term>
+						<term id="marmorino">		
+							<name lang="it">marmorino</name>		
+						</term>
+					</sub-terms>
+				</term>
+				<term id="lana">
+					<name lang="it">lana</name>
+					<sub-terms>
+						<term id="cardata">		
+							<name lang="it">cardata</name>
+						</term>
+						<term id="feltro">		
+							<name lang="it">feltro</name>
+						</term>
+						<term id="pettinata">		
+							<name lang="it">pettinata</name>
+						</term>
+						<term id="ritorta">		
+							<name lang="it">ritorta</name>
+						</term>
+						<term id="sgrassata">		
+							<name lang="it">sgrassata</name>
+						</term>
+						<term id="tintoriale">		
+							<name lang="it">tintoriale</name>
+						</term>
+						<term id="tosata">		
+							<name lang="it">tosata</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="legno">
+					<name lang="it">legno</name>
+					<sub-terms>
+						<term id="conifere">		
+							<name lang="it">conifere</name>
+						</term>
+						<term id="latifoglie">		
+							<name lang="it">latifoglie</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="legante">
+					<name lang="it">legante</name>
+					<sub-terms>
+						<term id="calce">		
+							<name lang="it">calce</name>
+							<sub-terms>
+								<term id="aerea">		
+									<name lang="it">aerea</name>
+								</term>
+								<term id="idraulica">		
+									<name lang="it">idraulica</name>
+								</term>
+							</sub-terms>
+						</term>
+						<term id="cemento">		
+							<name lang="it">cemento</name>		
+						</term>
+						<term id="gesso">		
+							<name lang="it">gesso</name>		
+						</term>
+						<term id="argilla">		
+							<name lang="it">argilla</name>		
+						</term>
+						<term id="caolino">		
+							<name lang="it">caolino</name>		
+						</term>
+						<term id="bitume">		
+							<name lang="it">bitume</name>		
+						</term>
+						<term id="tuorlo">		
+							<name lang="it">tuorlo</name>		
+						</term>
+						<term id="albume">		
+							<name lang="it">albume</name>		
+						</term>
+						<term id="caseina">		
+							<name lang="it">caseina</name>		
+						</term>
+						<term id="colla">		
+							<name lang="it">colla</name>		
+							<sub-terms>
+								<term id="di-pelle">		
+									<name lang="it">di pelle</name>
+								</term>
+								<term id="di-pesce">		
+									<name lang="it">di pesce</name>
+								</term>
+								<term id="di-ossa">		
+									<name lang="it">di ossa</name>
+								</term>
+								<term id="amido">		
+									<name lang="it">amido</name>
+								</term>
+								<term id="destrina">		
+									<name lang="it">destrina</name>
+								</term>
+								<term id="cellulosa">		
+									<name lang="it">cellulosa</name>
+								</term>
+								<term id="gomma-arabica">		
+									<name lang="it">gomma arabica</name>
+								</term>
+							</sub-terms>
+						</term>
+						<term id="olio">		
+							<name lang="it">olio</name>		
+							<sub-terms>
+								<term id="di-lino">		
+									<name lang="it">di lino</name>
+								</term>
+								<term id="di-papavero">		
+									<name lang="it">di papavero</name>
+								</term>
+								<term id="di-noce">		
+									<name lang="it">di noce</name>
+								</term>
+							</sub-terms>
+						</term>
+						<term id="resina">		
+							<name lang="it">resina</name>		
+							<sub-terms>
+								<term id="dammar">		
+									<name lang="it">dammar</name>
+								</term>
+								<term id="gomma-lacca">		
+									<name lang="it">gomma lacca</name>
+								</term>
+								<term id="mastice">		
+									<name lang="it">mastice</name>
+								</term>
+								<term id="trementina">		
+									<name lang="it">trementina</name>
+								</term>
+							</sub-terms>
+						</term>
+						<term id="altro">		
+							<name lang="it">altro</name>		
+						</term>
+					</sub-terms>
+				</term>
+				<term id="lino">
+					<name lang="it">lino</name>
+					<sub-terms>
+						<term id="filato">		
+							<name lang="it">filato</name>		
+						</term>
+						<term id="non-filato">		
+							<name lang="it">non filato</name>		
+						</term>
+					</sub-terms>
+				</term>
+				<term id="malta">
+					<name lang="it">malta</name>
+					<sub-terms>
+						<term id="aerea">		
+							<name lang="it">aerea</name>		
+						</term>
+						<term id="idraulica">		
+							<name lang="it">idraulica</name>		
+						</term>
+						<term id="cementizia">		
+							<name lang="it">cementizia</name>		
+						</term>
+					</sub-terms>
+				</term>
+				<term id="metallo">
+					<name lang="it">metallo</name>
+					<sub-terms>
+						<term id="lega">		
+							<name lang="it">lega</name>	
+							<sub-terms>
+								<term id="acciaio-ghisa">		
+									<name lang="it">acciaio/ghisa</name>		
+								</term>
+								<term id="biglione-mistura">		
+									<name lang="it">biglione/mistura</name>		
+								</term>
+								<term id="bronzo">		
+									<name lang="it">bronzo</name>
+									<sub-terms>
+										<term id="antimoniale">		
+											<name lang="it">antimoniale</name>		
+										</term>
+										<term id="arsenicale">		
+											<name lang="it">arsenicale</name>		
+										</term>
+									</sub-terms>
+								</term>
+								<term id="elettro">		
+									<name lang="it">elettro</name>		
+								</term>
+								<term id="ottone-oricalco">		
+									<name lang="it">ottone/oricalco</name>		
+								</term>
+							</sub-terms>
+						</term>
+						<term id="nativo">		
+							<name lang="it">nativo</name>	
+							<sub-terms>
+								<term id="alluminio">		
+									<name lang="it">alluminio</name>		
+								</term>
+								<term id="amalgama">		
+									<name lang="it">amalgama</name>		
+								</term>
+								<term id="antimonio">		
+									<name lang="it">antimonio</name>		
+								</term>
+								<term id="argento">		
+									<name lang="it">argento</name>		
+								</term>
+								<term id="arsenico">		
+									<name lang="it">arsenico</name>		
+								</term>
+								<term id="ferro">		
+									<name lang="it">ferro</name>		
+								</term>
+								<term id="ghisa">		
+									<name lang="it">ghisa</name>		
+								</term>
+								<term id="mercurio">		
+									<name lang="it">mercurio</name>		
+								</term>
+								<term id="oro">		
+									<name lang="it">oro</name>		
+								</term>
+								<term id="peltro">		
+									<name lang="it">peltro</name>		
+								</term>
+								<term id="piombo">		
+									<name lang="it">piombo</name>		
+								</term>
+								<term id="platino">		
+									<name lang="it">platino</name>		
+								</term>
+								<term id="rame">		
+									<name lang="it">rame</name>		
+								</term>
+								<term id="stagno">		
+									<name lang="it">stagno</name>		
+								</term>
+							</sub-terms>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="minerale">
+					<name lang="it">minerale</name>
+					<sub-terms>				
+						<term id="acmite">
+							<name lang="it">acmite</name>
+						</term>
+						<term id="adamite">
+							<name lang="it">adamite</name>
+						</term>
+						<term id="adularia">
+							<name lang="it">adularia</name>
+						</term>
+						<term id="albite">
+							<name lang="it">albite</name>
+						</term>
+						<term id="allanite">
+							<name lang="it">allanite</name>
+						</term>
+						<term id="almandino">
+							<name lang="it">almandino</name>
+						</term>
+						<term id="analcime">
+							<name lang="it">analcime</name>
+						</term>
+						<term id="anatasio">
+							<name lang="it">anatasio</name>
+						</term>
+						<term id="andalusite">
+							<name lang="it">andalusite</name>
+						</term>
+						<term id="andradite">
+							<name lang="it">andradite</name>
+						</term>
+						<term id="anglesite">
+							<name lang="it">anglesite</name>
+						</term>
+						<term id="anidrite">
+							<name lang="it">anidrite</name>
+						</term>
+						<term id="annabergite">
+							<name lang="it">annabergite</name>
+						</term>
+						<term id="anortite">
+							<name lang="it">anortite</name>
+						</term>
+						<term id="antimonite">
+							<name lang="it">antimonite</name>
+						</term>
+						<term id="apatite">
+							<name lang="it">apatite</name>
+						</term>
+						<term id="apofillite">
+							<name lang="it">apofillite</name>
+						</term>
+						<term id="aragonite">
+							<name lang="it">aragonite</name>
+						</term>
+						<term id="argentite">
+							<name lang="it">argentite</name>
+						</term>
+						<term id="arsenolite">
+							<name lang="it">arsenolite</name>
+						</term>
+						<term id="arsenopirite">
+							<name lang="it">arsenopirite</name>
+						</term>
+						<term id="artinite">
+							<name lang="it">artinite</name>
+						</term>
+						<term id="atacamite">
+							<name lang="it">atacamite</name>
+						</term>
+						<term id="attiniolite">
+							<name lang="it">attiniolite</name>
+						</term>
+						<term id="augite">
+							<name lang="it">augite</name>
+						</term>
+						<term id="auricalcite">
+							<name lang="it">auricalcite</name>
+						</term>
+						<term id="autunite">
+							<name lang="it">autunite</name>
+						</term>
+						<term id="axinite">
+							<name lang="it">axinite</name>
+						</term>
+						<term id="azzurrite">
+							<name lang="it">azzurrite</name>
+						</term>
+						<term id="barite">
+							<name lang="it">barite</name>
+						</term>
+						<term id="bavenite">
+							<name lang="it">bavenite</name>
+						</term>
+						<term id="bauxite">
+							<name lang="it">bauxite</name>
+						</term>
+						<term id="benitoite">
+							<name lang="it">benitoite</name>
+						</term>
+						<term id="berillo">
+							<name lang="it">berillo</name>
+						</term>
+						<term id="betafite">
+							<name lang="it">betafite</name>
+						</term>
+						<term id="biotite">
+							<name lang="it">biotite</name>
+						</term>
+						<term id="bismutinite">
+							<name lang="it">bismutinite</name>
+						</term>
+						<term id="blenda">
+							<name lang="it">blenda</name>
+						</term>
+						<term id="boleite">
+							<name lang="it">boleite</name>
+						</term>
+						<term id="borace">
+							<name lang="it">borace</name>
+						</term>
+						<term id="bornite">
+							<name lang="it">bornite</name>
+						</term>
+						<term id="boulangerite">
+							<name lang="it">boulangerite</name>
+						</term>
+						<term id="bournonite">
+							<name lang="it">bournonite</name>
+						</term>
+						<term id="bresilianite">
+							<name lang="it">bresilianite</name>
+						</term>
+						<term id="brochantite">
+							<name lang="it">brochantite</name>
+						</term>
+						<term id="bronzite">
+							<name lang="it">bronzite</name>
+						</term>
+						<term id="brookite">
+							<name lang="it">brookite</name>
+						</term>
+						<term id="brucite">
+							<name lang="it">brucite</name>
+						</term>
+						<term id="cabasite">
+							<name lang="it">cabasite</name>
+						</term>
+						<term id="calcedonio">
+							<name lang="it">calcedonio</name>
+						</term>
+						<term id="calcite">
+							<name lang="it">calcite</name>
+						</term>
+						<term id="calcocite">
+							<name lang="it">calcocite</name>
+						</term>
+						<term id="calcopirite">
+							<name lang="it">calcopirite</name>
+						</term>
+						<term id="cancrinite">
+							<name lang="it">cancrinite</name>
+						</term>
+						<term id="caolinite">
+							<name lang="it">caolinite</name>
+						</term>
+						<term id="carnallite">
+							<name lang="it">carnallite</name>
+						</term>
+						<term id="carnotite">
+							<name lang="it">carnotite</name>
+						</term>
+						<term id="cassiterite">
+							<name lang="it">cassiterite</name>
+						</term>
+						<term id="celestina">
+							<name lang="it">celestina</name>
+						</term>
+						<term id="cerargirite">
+							<name lang="it">cerargirite</name>
+						</term>
+						<term id="cerussite">
+							<name lang="it">cerussite</name>
+						</term>
+						<term id="cianite">
+							<name lang="it">cianite</name>
+						</term>
+						<term id="cianotrichite">
+							<name lang="it">cianotrichite</name>
+						</term>
+						<term id="cinabro">
+							<name lang="it">cinabro</name>
+						</term>
+						<term id="clinocloro">
+							<name lang="it">clinocloro</name>
+						</term>
+						<term id="clinozoite">
+							<name lang="it">clinozoite</name>
+						</term>
+						<term id="colemanite">
+							<name lang="it">colemanite</name>
+						</term>
+						<term id="columbite">
+							<name lang="it">columbite</name>
+						</term>
+						<term id="copiapite">
+							<name lang="it">copiapite</name>
+						</term>
+						<term id="cordierite">
+							<name lang="it">cordierite</name>
+						</term>
+						<term id="corindone">
+							<name lang="it">corindone</name>
+						</term>
+						<term id="crisoberillo">
+							<name lang="it">crisoberillo</name>
+						</term>
+						<term id="crisocolla">
+							<name lang="it">crisocolla</name>
+						</term>
+						<term id="crisotilo">
+							<name lang="it">crisotilo</name>
+						</term>
+						<term id="crocoite">
+							<name lang="it">crocoite</name>
+						</term>
+						<term id="cromite">
+							<name lang="it">cromite</name>
+						</term>
+						<term id="cummingtonite">
+							<name lang="it">cummingtonite</name>
+						</term>
+						<term id="cuprite">
+							<name lang="it">cuprite</name>
+						</term>
+						<term id="danbrunite">
+							<name lang="it">danbrunite</name>
+						</term>
+						<term id="datolite">
+							<name lang="it">datolite</name>
+						</term>
+						<term id="descloizite">
+							<name lang="it">descloizite</name>
+						</term>
+						<term id="devillina">
+							<name lang="it">devillina</name>
+						</term>
+						<term id="diallagio">
+							<name lang="it">diallagio</name>
+						</term>
+						<term id="diasporo">
+							<name lang="it">diasporo</name>
+						</term>
+						<term id="diopside">
+							<name lang="it">diopside</name>
+						</term>
+						<term id="dioptasio">
+							<name lang="it">dioptasio</name>
+						</term>
+						<term id="dolomite">
+							<name lang="it">dolomite</name>
+						</term>
+						<term id="dumortierite">
+							<name lang="it">dumortierite</name>
+						</term>
+						<term id="ematite">
+							<name lang="it">ematite</name>
+						</term>
+						<term id="emimorfite">
+							<name lang="it">emimorfite</name>
+						</term>
+						<term id="emplectite">
+							<name lang="it">emplectite</name>
+						</term>
+						<term id="enigmatite">
+							<name lang="it">enigmatite</name>
+						</term>
+						<term id="enstatite">
+							<name lang="it">enstatite</name>
+						</term>
+						<term id="epidoto">
+							<name lang="it">epidoto</name>
+						</term>
+						<term id="epsomite">
+							<name lang="it">epsomite</name>
+						</term>
+						<term id="eritrite">
+							<name lang="it">eritrite</name>
+						</term>
+						<term id="fassaite">
+							<name lang="it">fassaite</name>
+						</term>
+						<term id="fenacite">
+							<name lang="it">fenacite</name>
+						</term>
+						<term id="flogopite">
+							<name lang="it">flogopite</name>
+						</term>
+						<term id="fluorite">
+							<name lang="it">fluorite</name>
+						</term>
+						<term id="fosgenite">
+							<name lang="it">fosgenite</name>
+						</term>
+						<term id="franklinite">
+							<name lang="it">franklinite</name>
+						</term>
+						<term id="fuchsite">
+							<name lang="it">fuchsite</name>
+						</term>
+						<term id="gadolinite">
+							<name lang="it">gadolinite</name>
+						</term>
+						<term id="galena">
+							<name lang="it">galena</name>
+						</term>
+						<term id="garnietite">
+							<name lang="it">garnietite</name>
+						</term>
+						<term id="gesso">
+							<name lang="it">gesso</name>
+						</term>
+						<term id="giadeite">
+							<name lang="it">giadeite</name>
+						</term>
+						<term id="glauberite">
+							<name lang="it">glauberite</name>
+						</term>
+						<term id="glaucodoto">
+							<name lang="it">glaucodoto</name>
+						</term>
+						<term id="glaucofane">
+							<name lang="it">glaucofane</name>
+						</term>
+						<term id="glauconite">
+							<name lang="it">glauconite</name>
+						</term>
+						<term id="ghoetite">
+							<name lang="it">ghoetite</name>
+						</term>
+						<term id="greenokite">
+							<name lang="it">greenokite</name>
+						</term>
+						<term id="grossularia">
+							<name lang="it">grossularia</name>
+						</term>
+						<term id="hauerite">
+							<name lang="it">hauerite</name>
+						</term>
+						<term id="hausmannite">
+							<name lang="it">hausmannite</name>
+						</term>
+						<term id="hauyna">
+							<name lang="it">hauyna</name>
+						</term>
+						<term id="hedembergite">
+							<name lang="it">hedembergite</name>
+						</term>
+						<term id="heulandite">
+							<name lang="it">heulandite</name>
+						</term>
+						<term id="idroboracite">
+							<name lang="it">idroboracite</name>
+						</term>
+						<term id="idromagnesite">
+							<name lang="it">idromagnesite</name>
+						</term>
+						<term id="idrozincite">
+							<name lang="it">idrozincite</name>
+						</term>
+						<term id="ilmenite">
+							<name lang="it">ilmenite</name>
+						</term>
+						<term id="ilmanite">
+							<name lang="it">ilmanite</name>
+						</term>
+						<term id="johansenite">
+							<name lang="it">johansenite</name>
+						</term>
+						<term id="kainite">
+							<name lang="it">kainite</name>
+						</term>
+						<term id="labradorite">
+							<name lang="it">labradorite</name>
+						</term>
+						<term id="laumontite">
+							<name lang="it">laumontite</name>
+						</term>
+						<term id="lazulite">
+							<name lang="it">lazulite</name>
+						</term>
+						<term id="lazurite">
+							<name lang="it">lazurite</name>
+						</term>
+						<term id="lepidocrocite">
+							<name lang="it">lepidocrocite</name>
+						</term>
+						<term id="lepidolite">
+							<name lang="it">lepidolite</name>
+						</term>
+						<term id="leucite">
+							<name lang="it">leucite</name>
+						</term>
+						<term id="limonite">
+							<name lang="it">limonite</name>
+						</term>
+						<term id="linarite">
+							<name lang="it">linarite</name>
+						</term>
+						<term id="linneite">
+							<name lang="it">linneite</name>
+						</term>
+						<term id="magnesite">
+							<name lang="it">magnesite</name>
+						</term>
+						<term id="magnetite">
+							<name lang="it">magnetite</name>
+						</term>
+						<term id="malachite">
+							<name lang="it">malachite</name>
+						</term>
+						<term id="manganite">
+							<name lang="it">manganite</name>
+						</term>
+						<term id="marcasite">
+							<name lang="it">marcasite</name>
+						</term>
+						<term id="margarite">
+							<name lang="it">margarite</name>
+						</term>
+						<term id="melanoflogite">
+							<name lang="it">melanoflogite</name>
+						</term>
+						<term id="melilite">
+							<name lang="it">melilite</name>
+						</term>
+						<term id="microclino">
+							<name lang="it">microclino</name>
+						</term>
+						<term id="milarite">
+							<name lang="it">milarite</name>
+						</term>
+						<term id="millerite">
+							<name lang="it">millerite</name>
+						</term>
+						<term id="mimetite">
+							<name lang="it">mimetite</name>
+						</term>
+						<term id="molibdenite">
+							<name lang="it">molibdenite</name>
+						</term>
+						<term id="monazite">
+							<name lang="it">monazite</name>
+						</term>
+						<term id="monticellite">
+							<name lang="it">monticellite</name>
+						</term>
+						<term id="montmorillonite">
+							<name lang="it">montmorillonite</name>
+						</term>
+						<term id="muscovite">
+							<name lang="it">muscovite</name>
+						</term>
+						<term id="natrolite">
+							<name lang="it">natrolite</name>
+						</term>
+						<term id="nettunite">
+							<name lang="it">nettunite</name>
+						</term>
+						<term id="niccolite">
+							<name lang="it">niccolite</name>
+						</term>
+						<term id="oligoclasio">
+							<name lang="it">oligoclasio</name>
+						</term>
+						<term id="olivenite">
+							<name lang="it">olivenite</name>
+						</term>
+						<term id="olivina">
+							<name lang="it">olivina</name>
+						</term>
+						<term id="onfacite">
+							<name lang="it">onfacite</name>
+						</term>
+						<term id="opale">
+							<name lang="it">opale</name>
+						</term>
+						<term id="orneblenda">
+							<name lang="it">orneblenda</name>
+						</term>
+						<term id="orpimento">
+							<name lang="it">orpimento</name>
+						</term>
+						<term id="ortoclasio">
+							<name lang="it">ortoclasio</name>
+						</term>
+						<term id="phlogopite">
+							<name lang="it">phlogopite</name>
+						</term>
+						<term id="plagioclasio">
+							<name lang="it">plagioclasio</name>
+						</term>
+						<term id="pirite">
+							<name lang="it">pirite</name>
+						</term>
+						<term id="pirolusite">
+							<name lang="it">pirolusite</name>
+						</term>
+						<term id="pirosseno">
+							<name lang="it">pirosseno</name>
+						</term>
+						<term id="pirrotite">
+							<name lang="it">pirrotite</name>
+						</term>
+						<term id="quarzo">
+							<name lang="it">quarzo</name>
+						</term>
+						<term id="rodocrosite">
+							<name lang="it">rodocrosite</name>
+						</term>
+						<term id="rutilo">
+							<name lang="it">rutilo</name>
+						</term>
+						<term id="sanidino">
+							<name lang="it">sanidino</name>
+						</term>
+						<term id="scheelite">
+							<name lang="it">scheelite</name>
+						</term>
+						<term id="serpentino">
+							<name lang="it">serpentino</name>
+						</term>
+						<term id="siderite">
+							<name lang="it">siderite</name>
+						</term>
+						<term id="sillimanite">
+							<name lang="it">sillimanite</name>
+						</term>
+						<term id="smithsonite">
+							<name lang="it">smithsonite</name>
+						</term>
+						<term id="sodalite">
+							<name lang="it">sodalite</name>
+						</term>
+						<term id="sphalerite">
+							<name lang="it">sphalerite</name>
+						</term>
+						<term id="spinello">
+							<name lang="it">spinello</name>
+						</term>
+						<term id="stibnite">
+							<name lang="it">stibnite</name>
+						</term>
+						<term id="talco">
+							<name lang="it">talco</name>
+						</term>
+						<term id="tetraedrite">
+							<name lang="it">tetraedrite</name>
+						</term>
+						<term id="topazio">
+							<name lang="it">topazio</name>
+						</term>
+						<term id="tormalina">
+							<name lang="it">tormalina</name>
+						</term>
+						<term id="tremolite">
+							<name lang="it">tremolite</name>
+						</term>
+						<term id="turchese">
+							<name lang="it">turchese</name>
+						</term>
+						<term id="vanadinite">
+							<name lang="it">vanadinite</name>
+						</term>
+						<term id="weddelite">
+							<name lang="it">weddelite</name>
+						</term>
+						<term id="whewellite">
+							<name lang="it">whewellite</name>
+						</term>
+						<term id="zeolite">
+							<name lang="it">zeolite</name>
+						</term>
+						<term id="zolfo">
+							<name lang="it">zolfo</name>
+						</term>
+						<term id="altro">
+							<name lang="it">altro</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="osso">
+					<name lang="it">osso</name>
+				</term>
+				<term id="pigmento">
+					<name lang="it">pigmento</name>
+					<sub-terms>
+						<term id="atacamite">
+							<name lang="it">atacamite</name>
+						</term>
+						<term id="azzurrite">
+							<name lang="it">azzurrite</name>
+						</term>
+						<term id="biacca">
+							<name lang="it">biacca</name>
+						</term>
+						<term id="bianco-di-calce">
+							<name lang="it">bianco di calce</name>
+						</term>
+						<term id="bianco-fisso">
+							<name lang="it">bianco fisso</name>
+						</term>
+						<term id="bianco-di-zinco">
+							<name lang="it">bianco di zinco</name>
+						</term>
+						<term id="biossido-di-titanio">
+							<name lang="it">biossido di titanio</name>
+						</term>
+						<term id="bitume">
+							<name lang="it">bitume</name>
+						</term>
+						<term id="blu">
+							<name lang="it">blu</name>
+							<sub-terms>
+								<term id="cobalto">
+									<name lang="it">cobalto</name>
+								</term>
+								<term id="egizio">
+									<name lang="it">egizio</name>
+								</term>
+								<term id="di-prussia">
+									<name lang="it">di Prussia</name>
+								</term>
+								<term id="maya">
+									<name lang="it">Maya</name>
+								</term>
+							</sub-terms>
+						</term>
+						<term id="bruno-van-dyck">
+							<name lang="it">bruno Van Dyck</name>
+						</term>
+						<term id="carbone">
+							<name lang="it">carbone</name>
+						</term>
+						<term id="chalk">
+							<name lang="it">chalk</name>
+						</term>
+						<term id="cinabro">
+							<name lang="it">cinabro</name>
+						</term>
+						<term id="crisocolla">
+							<name lang="it">crisocolla</name>
+						</term>
+						<term id="ematite">
+							<name lang="it">ematite</name>
+						</term>
+						<term id="gesso">
+							<name lang="it">gesso</name>
+						</term>
+						<term id="giallo">
+							<name lang="it">giallo</name>
+							<sub-terms>
+								<term id="di-cadmio">
+									<name lang="it">di cadmio</name>
+								</term>
+								<term id="di-cromo">
+									<name lang="it">di cromo</name>
+								</term>
+								<term id="di-napoli">
+									<name lang="it">di Napoli</name>
+								</term>
+								<term id="di-piombo-e-stagno">
+									<name lang="it">di piombo e stagno</name>
+								</term>
+							</sub-terms>
+						</term>
+						<term id="giallorino">
+							<name lang="it">giallorino</name>
+						</term>
+						<term id="grafite">
+							<name lang="it">grafite</name>
+						</term>
+						<term id="lapislazzuli">
+							<name lang="it">lapislazzuli</name>
+						</term>
+						<term id="limonite">
+							<name lang="it">limonite</name>
+						</term>
+						<term id="litargirio">
+							<name lang="it">litargirio</name>
+						</term>
+						<term id="magnetite">
+							<name lang="it">magnetite</name>
+						</term>
+						<term id="malachite">
+							<name lang="it">malachite</name>
+						</term>
+						<term id="massicot">
+							<name lang="it">massicot</name>
+						</term>
+						<term id="minio">
+							<name lang="it">minio</name>
+						</term>
+						<term id="mummia">
+							<name lang="it">mummia</name>
+						</term>
+						<term id="nero-carbone">
+							<name lang="it">nero carbone</name>
+						</term>
+						<term id="nero-dossa">
+							<name lang="it">nero d'ossa</name>
+						</term>
+						<term id="nerofumo">
+							<name lang="it">nerofumo</name>
+						</term>
+						<term id="ocra">
+							<name lang="it">ocra</name>
+							<sub-terms>
+								<term id="gialla">
+									<name lang="it">gialla</name>
+								</term>
+								<term id="rossa">
+									<name lang="it">rossa</name>
+								</term>
+							</sub-terms>
+						</term>
+						<term id="oltremare-artificiale">
+							<name lang="it">oltremare artificiale</name>
+						</term>
+						<term id="orpimento">
+							<name lang="it">orpimento</name>
+						</term>
+						<term id="ossido-di-cromo">
+							<name lang="it">ossido di cromo</name>
+						</term>
+						<term id="realgar">
+							<name lang="it">realgar</name>
+						</term>
+						<term id="resinato-di-rame">
+							<name lang="it">resinato di rame</name>
+						</term>
+						<term id="seppia">
+							<name lang="it">seppia</name>
+						</term>
+						<term id="smalto">
+							<name lang="it">smalto</name>
+						</term>
+						<term id="terra-di-siena">
+							<name lang="it">terra di Siena</name>
+						</term>
+						<term id="terra-verde">
+							<name lang="it">terra verde</name>
+						</term>
+						<term id="terre-dombra">
+							<name lang="it">terre d'ombra</name>
+						</term>
+						<term id="terre-nere">
+							<name lang="it">terre nere</name>
+						</term>
+						<term id="verde-di-sheele">
+							<name lang="it">verde di Sheele</name>
+						</term>
+						<term id="verderame">
+							<name lang="it">verderame</name>
+						</term>
+						<term id="verde-smeraldo">
+							<name lang="it">verde smeraldo</name>
+						</term>
+						<term id="verdigris">
+							<name lang="it">verdigris</name>
+						</term>
+						<term id="altro">
+							<name lang="it">altro</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="polline">
+					<name lang="it">polline</name> 
+				</term>
+				<term id="roccia">
+					<name lang="it">roccia</name>
+					<sub-terms>
+						<term id="magmatica">
+							<name lang="it">magmatica</name>
+							<sub-terms>
+								<term id="basalto">
+									<name lang="it">basalto</name>
+								</term>
+								<term id="diorite">
+									<name lang="it">diorite</name>
+								</term>
+								<term id="gabbro">
+									<name lang="it">gabbro</name>
+								</term>
+								<term id="granito">
+									<name lang="it">granito</name>
+								</term>
+								<term id="ossidiana">
+									<name lang="it">ossidiana</name>
+								</term>
+								<term id="peperino">
+									<name lang="it">peperino</name>
+								</term>
+								<term id="porfido">
+									<name lang="it">porfido</name>
+								</term>
+								<term id="sienite">
+									<name lang="it">sienite</name>
+								</term>
+							</sub-terms>
+						</term>
+						<term id="metamorfica">
+							<name lang="it">metamorfica</name>
+							<sub-terms>
+								<term id="ardesia">
+									<name lang="it">ardesia</name>
+								</term>
+								<term id="gneiss">
+									<name lang="it">gneiss</name>
+								</term>
+								<term id="marmo">
+									<name lang="it">marmo</name>
+								</term>
+								<term id="oficalce">
+									<name lang="it">oficalce</name>
+								</term>
+								<term id="serpentiniti">
+									<name lang="it">serpentiniti</name>
+								</term>
+							</sub-terms>
+						</term>
+						<term id="sedimentaria">
+							<name lang="it">sedimentaria</name>
+							<sub-terms>
+								<term id="alabastro">
+									<name lang="it">alabastro</name>
+								</term>
+								<term id="argilla">
+									<name lang="it">argilla</name>
+								</term>
+								<term id="breccia">
+									<name lang="it">breccia</name>
+								</term>
+								<term id="calcare">
+									<name lang="it">calcare</name>
+								</term>
+								<term id="dolomia">
+									<name lang="it">dolomia</name>
+								</term>
+								<term id="grovacca">
+									<name lang="it">grovacca</name>
+								</term>
+								<term id="marna">
+									<name lang="it">marna</name>
+								</term>
+								<term id="selce">
+									<name lang="it">selce</name>
+								</term>
+								<term id="travertino">
+									<name lang="it">travertino</name>
+								</term>
+							</sub-terms>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="sale">
+					<name lang="it">sale</name>
+					<sub-terms>
+						<term id="carbonato">
+							<name lang="it">carbonato</name>
+						</term>
+						<term id="cloruro">
+							<name lang="it">cloruro</name>
+						</term>
+						<term id="nitrato">
+							<name lang="it">nitrato</name>
+						</term>
+						<term id="nitrito">
+							<name lang="it">nitrito</name>
+						</term>
+						<term id="solfato">
+							<name lang="it">solfato</name>
+						</term>
+						<term id="solfito">
+							<name lang="it">solfito</name>
+						</term>
+						<term id="altro">
+							<name lang="it">altro</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="seme">
+					<name lang="it">seme</name>
+				</term>
+				<term id="seta">
+					<name lang="it">seta</name>
+					<sub-terms>
+						<term id="broccato">
+							<name lang="it">broccato</name>
+						</term>
+						<term id="lampasso">
+							<name lang="it">lampasso</name>
+						</term>
+						<term id="tessuto">
+							<name lang="it">tessuto</name>
+						</term>
+						<term id="raso">
+							<name lang="it">raso</name>
+						</term>
+						<term id="velluto">
+							<name lang="it">velluto</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="smalto">
+					<name lang="it">smalto</name>
+					<sub-terms>
+						<term id="alcalino">
+							<name lang="it">alcalino</name>
+						</term>
+						<term id="feldspato">
+							<name lang="it">feldspato</name>
+						</term>
+						<term id="salino">
+							<name lang="it">salino</name>
+						</term>
+						<term id="stannifero">
+							<name lang="it">stannifero</name>
+						</term>
+						<term id="vetrina">
+							<name lang="it">vetrina</name>
+						</term>
+					</sub-terms>					
+				</term>
+				<term id="spugne">
+					<name lang="it">spugne</name>
+				</term>
+				<term id="stucco">
+					<name lang="it">stucco</name>
+					<sub-terms>
+						<term id="bianco">
+							<name lang="it">bianco</name>
+						</term>
+						<term id="dipinto">
+							<name lang="it">dipinto</name>
+						</term>
+						<term id="dorato">
+							<name lang="it">dorato</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="pelle">
+					<name lang="it">pelle</name>
+					<sub-terms>
+						<term id="cuoio">
+							<name lang="it">cuoio</name>
+							<sub-terms>
+								<term id="allumato">
+									<name lang="it">allumato</name>
+								</term>
+								<term id="al-cromo">
+									<name lang="it">al cromo</name>
+								</term>
+								<term id="al-tannino">
+									<name lang="it">al tannino</name>
+								</term>
+								<term id="bollito">
+									<name lang="it">bollito</name>
+								</term>
+								<term id="camoscio">
+									<name lang="it">camoscio</name>
+								</term>
+								<term id="dorato">
+									<name lang="it">dorato</name>
+								</term>
+								<term id="ingrassato">
+									<name lang="it">ingrassato</name>
+								</term>
+							</sub-terms>
+						</term>
+						<term id="grezza">
+							<name lang="it">grezza</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="pelliccia">
+					<name lang="it">pelliccia</name>
+				</term>
+				<term id="protettivo">
+					<name lang="it">protettivo</name>
+					<sub-terms>
+						<term id="alchidico">
+							<name lang="it">alchidico</name>
+						</term>
+						<term id="cellulosa">
+							<name lang="it">cellulosa</name>
+						</term>
+						<term id="epossidico">
+							<name lang="it">epossidico</name>
+						</term>
+						<term id="resina">
+							<name lang="it">resina</name>
+							<sub-terms>
+								<term id="acrilica">
+									<name lang="it">acrilica</name>
+								</term>
+								<term id="epossidica">
+									<name lang="it">epossidica</name>
+								</term>
+								<term id="poliestere">
+									<name lang="it">poliestere</name>
+								</term>
+								<term id="poliuretantica">
+									<name lang="it">poliuretantica</name>
+								</term>
+								<term id="siliconica">
+									<name lang="it">siliconica</name>
+								</term>
+							</sub-terms>
+						</term>
+						<term id="altro">
+							<name lang="it">altro</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="vetro">
+					<name lang="it">vetro</name>
+					<sub-terms>
+						<term id="al-piombo">
+							<name lang="it">al piombo</name>
+						</term>
+						<term id="pasta-vitrea">
+							<name lang="it">pasta vitrea</name>
+						</term>
+						<term id="potassico-calcico">
+							<name lang="it">potassico-calcico</name>
+						</term>
+						<term id="siliceo">
+							<name lang="it">siliceo</name>
+						</term>
+						<term id="sodico-calcico">
+							<name lang="it">sodico-calcico</name>
+							<sub-terms>
+								<term id="moderno">
+									<name lang="it">moderno</name>
+								</term>
+							</sub-terms>
+						</term>
+						<term id="vulcanico">
+							<name lang="it">vulcanico</name>
+							<sub-terms>
+								<term id="ossidiana">
+									<name lang="it">ossidiana</name>
+								</term>
+							</sub-terms>
+						</term>
+						<term id="altro">
+							<name lang="it">altro</name>
+						</term>			
+					</sub-terms>
+				</term>
+            </sub-terms>
+		</term>
+    </vocabulary>
+
+	<!-- Vocabolario MEDIUM (12) -->
+    <vocabulary class="crm:E55_Type">
+        <term id="medium">
+			<name lang="it">Medium</name>
+            <sub-terms>
+				<term id="cromatogramma">
+					<name lang="it">cromatogramma</name>
+				</term>
+				<term id="descrizione">
+					<name lang="it">descrizione</name>
+				</term>
+				<term id="diffrattogramma-rx">
+					<name lang="it">diffrattogramma RX</name>
+				</term>
+				<term id="fotografia">
+					<name lang="it">fotografia</name>
+				</term>
+				<term id="grafico">
+					<name lang="it">grafico</name>
+				</term>
+				<term id="immagine">
+					<name lang="it">immagine</name>
+				</term>
+				<term id="jpeg-radiometrico">
+					<name lang="it">jpeg radiometrico</name>
+				</term>
+				<term id="mappatura">
+					<name lang="it">mappatura</name>
+				</term>
+				<term id="modello-3d">
+					<name lang="it">modello 3D</name>
+				</term>
+				<term id="numerico">
+					<name lang="it">numerico</name>
+				</term>
+				<term id="qualitativo">
+					<name lang="it">qualitativo</name>
+				</term>
+				<term id="radargramma">
+					<name lang="it">radargramma</name>
+				</term>
+				<term id="spettro">
+					<name lang="it">spettro</name>
+				</term>
+				<term id="tabella-dati">
+					<name lang="it">tabella dati</name>
+				</term>
+				<term id="video">
+					<name lang="it">video</name>
+				</term>
+				<term id="altro">
+					<name lang="it">altro</name>
+				</term>
+            </sub-terms>
+		</term>
+    </vocabulary>
+
+	<!-- Vocabolario MODALITA' (13) -->
+    <vocabulary class="crm:E55_Type">
+        <term id="modalita-di-indagine">
+			<name lang="it">Modalità di indagine</name>
+            <sub-terms>
+				<term id="flottazione">
+					<name lang="it">flottazione</name>
+					<sub-terms>
+						<term id="manuale">
+							<name lang="it">manuale</name>
+						</term>
+						<term id="meccanica">
+							<name lang="it">meccanica</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="fotografia">
+					<name lang="it">fotografia</name>
+					<sub-terms>
+						<term id="uv">
+							<name lang="it">UV</name>
+						</term>
+						<term id="visibile">
+							<name lang="it">visibile</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="indagine-sonica">
+					<name lang="it">indagine sonica</name>
+					<sub-terms>
+						<term id="puntuale">
+							<name lang="it">puntuale</name>
+						</term>
+						<term id="tomografica">
+							<name lang="it">tomografica</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="microscopia-ottica">
+					<name lang="it">microscopia ottica</name>
+					<sub-terms>
+						<term id="luce-polarizzata">
+							<name lang="it">luce polarizzata</name>
+						</term>
+						<term id="luce-riflessa">
+							<name lang="it">luce riflessa</name>
+						</term>
+						<term id="luce-trasmessa">
+							<name lang="it">luce trasmessa</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="prospezione-georadar">
+					<name lang="it">prospezione georadar</name>
+					<sub-terms>
+						<term id="scansione-areale">
+							<name lang="it">scansione areale</name>
+						</term>
+						<term id="scansione-lineare">
+							<name lang="it">scansione lineare</name>
+						</term>
+					</sub-terms>
+				</term>			
+				<term id="scansione-laser">
+					<name lang="it">scansione laser</name>
+					<sub-terms>
+						<term id="statica-terrestre">
+							<name lang="it">statica (terrestre)</name>
+						</term>
+						<term id="mobile-portatile-slam">
+							<name lang="it">mobile (portatile/SLAM)</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="termografia">
+					<name lang="it">termografia</name>
+					<sub-terms>
+						<term id="attiva">
+							<name lang="it">attiva</name>
+						</term>
+						<term id="passiva">
+							<name lang="it">passiva</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="video-ispezione">
+					<name lang="it">video-ispezione</name>
+					<sub-terms>
+						<term id="inquadramento-frontale">
+							<name lang="it">inquadramento-frontale</name>
+						</term>
+						<term id="inquadramento-laterale">
+							<name lang="it">inquadramento laterale</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="altro">
+					<name lang="it">altro</name>
+				</term>
+            </sub-terms>
+		</term>
+    </vocabulary>
+
+	<!-- Vocabolario UNITA' DI MISURA (14) -->
+    <vocabulary class="crm:E58_Measurement_Unit">
+        <term id="unita-di-misura"> 
+			<name lang="it">Unità di misura</name> 
+            <sub-terms>
+				<term id="area">
+					<name lang="it">area</name>
+					<sub-terms>
+						<term id="m2">
+							<name lang="it">m2</name>
+						</term>
+						<term id="dm2">
+							<name lang="it">dm2</name>
+						</term>
+						<term id="cm2">
+							<name lang="it">cm2</name>
+						</term>
+						<term id="mm2">
+							<name lang="it">mm2</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="dimensione-lineare">
+					<name lang="it">dimensione lineare</name>
+					<sub-terms>
+						<term id="cm">
+							<name lang="it">cm</name>
+						</term>
+						<term id="mm">
+							<name lang="it">mm</name>
+						</term>
+						<term id="microm">
+							<name lang="it">µm</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="massa">
+					<name lang="it">massa</name>
+					<sub-terms>
+						<term id="g">
+							<name lang="it">g</name>
+						</term>
+						<term id="mg">
+							<name lang="it">mg</name>
+						</term>
+						<term id="microg">
+							<name lang="it">µg</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="volume">
+					<name lang="it">volume</name>
+					<sub-terms>
+						<term id="l">
+							<name lang="it">l</name>
+						</term>
+						<term id="cl">
+							<name lang="it">cl</name>
+						</term>
+						<term id="ml">
+							<name lang="it">ml</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="non-applicabile">
+					<name lang="it">non applicabile</name>
+				</term>
+            </sub-terms>
+		</term>
+    </vocabulary>
+
+	<!-- Vocabolario OUTPUT (15) -->
+    <vocabulary class="crm:E55_Type">
+        <term id="output"> 
+			<name lang="it">Output</name> 
+            <sub-terms>			
+				<term id="caratterizzazione">
+					<name lang="it">caratterizzazione</name>
+					<sub-terms>
+						<term id="materiale">
+							<name lang="it">materiale</name>
+						</term>
+						<term id="tecnica-di-produzione">
+							<name lang="it">tecnica di produzione</name>
+						</term>
+						<term id="tecnica-costruttiva">
+							<name lang="it">tecnica costruttiva</name>
+						</term>
+						<term id="stato-conservativo">
+							<name lang="it">stato conservativo</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="composizione">
+					<name lang="it">composizione</name>
+					<sub-terms>
+						<term id="qualitativa">
+							<name lang="it">qualitativa</name>
+						</term>
+						<term id="perc-in-peso">
+							<name lang="it">% in peso</name>
+						</term>
+						<term id="perc-in-volume">
+							<name lang="it">% in volume</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="datazione">
+					<name lang="it">datazione</name>
+					<sub-terms>
+						<term id="manufatto">
+							<name lang="it">manufatto</name>
+						</term>
+						<term id="ecofatto">
+							<name lang="it">ecofatto</name>
+						</term>
+						<term id="materiale">
+							<name lang="it">materiale</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="distribuzione">
+					<name lang="it">distribuzione</name>
+					<sub-terms>
+						<term id="degrado">
+							<name lang="it">degrado</name>
+						</term>
+						<term id="discontinuita">
+							<name lang="it">discontinuità</name>
+						</term>
+						<term id="materiale">
+							<name lang="it">materiale</name>
+						</term>
+						<term id="tracce">
+							<name lang="it">tracce</name>
+							<sub-terms>
+								<term id="di-lavorazione">
+									<name lang="it">di lavorazione</name>
+								</term>
+								<term id="duso">
+									<name lang="it">d'uso</name>
+								</term>
+							</sub-terms>
+						</term>
+						<term id="umidita">
+							<name lang="it">umidità</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="identificazione">
+					<name lang="it">identificazione</name>
+					<sub-terms>
+						<term id="elementale">
+							<name lang="it">elementale</name>
+						</term>
+						<term id="elemento-inglobato">
+							<name lang="it">materiali elemento inglobato</name>
+						</term>
+						<term id="elementi-in-traccia">
+							<name lang="it">elementi in traccia</name>
+						</term>
+						<term id="composizione">
+							<name lang="it">composizione</name>
+							<sub-terms>
+								<term id="chimica">
+									<name lang="it">chimica</name>
+								</term>
+								<term id="mineralogica">
+									<name lang="it">mineralogica</name>
+								</term>
+							</sub-terms>
+						</term>
+						<term id="specie">
+							<name lang="it">specie</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="lettura-stratigrafica">
+					<name lang="it">lettura stratigrafica</name>
+				</term>
+				<term id="misura">
+					<name lang="it">misura</name>
+					<sub-terms>
+						<term id="lunghezza-area-volume">
+							<name lang="it">lunghezza/area/volume</name>
+						</term>
+						<term id="temperatura-pressione-umidita">
+							<name lang="it">temperatura/pressione/umidità</name>
+						</term>
+						<term id="concentrazione">
+							<name lang="it">concentrazione</name>
+						</term>
+						<term id="proprieta-meccaniche">
+							<name lang="it">proprietà meccaniche</name>
+						</term>
+						<term id="colore">
+							<name lang="it">colore</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="studio-geometrico-morfologico">
+					<name lang="it">studio geometrico/morfologico</name>
+				</term>
+				<term id="rilievo">
+					<name lang="it">rilievo</name>
+				</term>
+				<term id="esito-negativo">
+					<name lang="it">esito negativo</name>
+				</term>
+				<term id="esito-insufficiente">
+					<name lang="it">esito insufficiente</name>
+				</term>
+				<term id="altro">
+					<name lang="it">altro</name>
+				</term>
+            </sub-terms>
+		</term>
+    </vocabulary>
+		
+	<!-- Vocabolario PREPARAZIONE CAMPIONE (16) -->
+    <vocabulary class="crm:E55_Type">
+        <term id="preparazione-campione"> 
+			<name lang="it">Preparazione campione</name> 
+            <sub-terms>
+				<term id="bagno-a-ultrasuoni">
+					<name lang="it">bagno a ultrasuoni</name>
+				</term>
+				<term id="frantumazione-e-riduzione-in-pastiglia-di-kbr">
+					<name lang="it">frantumazione e riduzione in pastiglia di Kbr</name>
+				</term>
+				<term id="inglobamento-in-resina-e-taglio">
+					<name lang="it">inglobamento in resina e taglio</name>
+				</term>
+				<term id="inglobamento-in-silicone">
+					<name lang="it">inglobamento in silicone</name>
+				</term>
+				<term id="metallizzazione">
+					<name lang="it">metallizzazione</name>
+				</term>
+				<term id="preparazione-vetrino-microscopio">
+					<name lang="it">preparazione vetrino microscopio</name>
+				</term>
+				<term id="pulitura-meccanica">
+					<name lang="it">pulitura meccanica</name>
+				</term>
+				<term id="pulizia-manuale-dellarea">
+					<name lang="it">pulizia manuale dell'area</name>
+				</term>
+				<term id="separazione">
+					<name lang="it">separazione</name>
+					<sub-terms>
+						<term id="centrifugazione">
+							<name lang="it">centrifugazione</name>
+						</term>
+						<term id="con-liquidi-pesanti">
+							<name lang="it">con liquidi pesanti</name>
+						</term>
+						<term id="estrazione-con-solvente">
+							<name lang="it">estrazione con solvente</name>
+						</term>
+						<term id="microdissezione">
+							<name lang="it">microdissezione</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="setacciatura-a-maglie-degradanti">
+					<name lang="it">setacciatura a maglie degradanti</name>
+					<sub-terms>
+						<term id="a-250-micrometri">
+							<name lang="it">a 250 micrometri</name>
+						</term>
+						<term id="a-maglie-degradanti">
+							<name lang="it">a maglie degradanti</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="sezione-sottile">
+					<name lang="it">sezione sottile</name>
+				</term>
+				<term id="sputtering">
+					<name lang="it">sputtering</name>
+				</term>				
+				<term id="trattamento-chimico-con-attacco-alternato-di-hcl-37-hf-40-e-naoh-a-caldo">
+					<name lang="it">trattamento chimico con attacco alternato di HCl (37%), HF (40%) e NaOH a caldo</name>
+				</term>
+				<term id="trattamento-aba-acido-base-acido">
+					<name lang="it">trattamento ABA (Acido-Base-Acido)</name>
+				</term>				
+				<term id="non-necessaria">
+					<name lang="it">non necessaria</name>
+				</term>
+            </sub-terms>
+		</term>
+    </vocabulary>
+		
+	<!-- Vocabolario PROCESSO DI CAMPIONAMENTO (17) -->
+    <vocabulary class="crm:E29_Design_or_Procedure">
+        <term id="processo-di-campionamento"> 
+			<name lang="it">Processo di campionamento</name> 
+            <sub-terms>
+				<term id="apposizione-griglia-di-scansione">
+					<name lang="it">apposizione griglia di scansione</name>
+				</term>
+				<term id="flottazione">
+					<name lang="it">flottazione</name>
+				</term>
+				<term id="inquadramento-area">
+					<name lang="it">inquadramento area</name>
+				</term>
+				<term id="prelievo-con">
+					<name lang="it">prelievo con</name>
+					<sub-terms>
+						<term id="bisturi">
+							<name lang="it">bisturi</name>
+						</term>
+						<term id="carotatrice">
+							<name lang="it">carotatrice</name>
+						</term>
+						<term id="elemento-erratico">
+							<name lang="it">elemento erratico</name>
+						</term>
+						<term id="gel-rigido">
+							<name lang="it">gel rigido</name>
+						</term>
+						<term id="provetta-sterile">
+							<name lang="it">provetta sterile</name>
+						</term>
+						<term id="scalpello">
+							<name lang="it">scalpello</name>
+						</term>
+						<term id="tampone">
+							<name lang="it">tampone</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="selezione-a-vista">
+					<name lang="it">selezione a vista</name>
+					<sub-terms>
+						<term id="punto-di-misura">
+							<name lang="it">punto di misura</name>
+						</term>
+						<term id="linea-di-scansione">
+							<name lang="it">linea di scansione</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="setacciatura">
+					<name lang="it">setacciatura</name>
+					<sub-terms>
+						<term id="in-acqua-di-sedimenti">
+							<name lang="it">in acqua di sedimenti</name>
+						</term>
+						<term id="a-secco-di-sedimenti">
+							<name lang="it">a secco di sedimenti</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="altro">
+					<name lang="it">altro</name>
+				</term>
+            </sub-terms>
+		</term>
+    </vocabulary>
+		
+	<!-- Vocabolario STRUMENTAZIONE (18) -->
+    <vocabulary class="crm:E55_Type">
+        <term id="strumentazione"> 
+			<name lang="it">Strumentazione</name> 
+            <sub-terms>
+				<term id="analizzatore-termico-differenziale">
+					<name lang="it">analizzatore termico differenziale</name>
+				</term>
+				<term id="aste-e-fili-invar">
+					<name lang="it">aste e fili Invar</name>
+				</term>
+				<term id="bilancia">
+					<name lang="it">bilancia</name>
+				</term>
+				<term id="calorimetro-differenziale-a-scansione">
+					<name lang="it">calorimetro differenziale a scansione</name>
+				</term>
+				<term id="camera">
+					<name lang="it">camera</name>
+					<sub-terms>
+						<term id="iperspettrale">
+							<name lang="it">iperspettrale</name>
+						</term>
+						<term id="multispettrale">
+							<name lang="it">multispettrale</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="carotatrice">
+					<name lang="it">carotatrice</name>
+				</term>
+				<term id="celle-di-carico">
+					<name lang="it">celle di carico</name>
+				</term>
+				<term id="centrifuga">
+					<name lang="it">centrifuga</name>
+				</term>
+				<term id="colorimetro">
+					<name lang="it">colorimetro</name>
+				</term>
+				<term id="computer">
+					<name lang="it">computer</name>
+					<sub-terms>
+						<term id="portatile">
+							<name lang="it">portatile</name>
+						</term>
+						<term id="fisso">
+							<name lang="it">fisso</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="conduttivimetro">
+					<name lang="it">conduttivimetro</name>
+				</term>
+				<term id="cromatografo">
+					<name lang="it">cromatografo</name>
+				</term>
+				<term id="diffrattometro-per-polveri">
+					<name lang="it">diffrattometro per polveri</name>
+				</term>
+				<term id="emettitore-laser">
+					<name lang="it">emettitore laser</name>
+				</term>
+				<term id="emettitore-ricevitore-ultrasuoni">
+					<name lang="it">emettitore/ricevitore ultrasuoni</name>
+				</term>
+				<term id="fibre-ottiche">
+					<name lang="it">fibre ottiche</name>
+				</term>
+				<term id="filtri-ottici-uv-riflesso-emesso">
+					<name lang="it">filtri ottici UV riflesso/emesso</name>
+				</term>
+				<term id="fotocamera">
+					<name lang="it">fotocamera</name>
+				</term>
+				<term id="forno-essiccatore">
+					<name lang="it">forno essiccatore</name>
+				</term>
+				<term id="igrometro-a-contatto">
+					<name lang="it">igrometro a contatto</name>
+				</term>
+				<term id="livella">
+					<name lang="it">livella</name>
+				</term>
+				<term id="matrinetti-oleodinamici">
+					<name lang="it">matrinetti oleodinamici</name>
+				</term>
+				<term id="microscopio">
+					<name lang="it">microscopio</name>
+					<sub-terms>
+						<term id="a-forza-atomica">
+							<name lang="it">a forza atomica</name>
+						</term>
+						<term id="a-scansione-di-sonda">
+							<name lang="it">a scansione di sonda</name>
+						</term>
+						<term id="digitale-da-campo">
+							<name lang="it">digitale da campo</name>
+						</term>
+						<term id="elettronico-a-scansione">
+							<name lang="it">elettronico a scansione</name>
+						</term>
+						<term id="in-campo-scuro">
+							<name lang="it">in campo scuro</name>
+						</term>
+						<term id="ottico-a-fluorescenza">
+							<name lang="it">ottico a fluorescenza</name>
+						</term>
+						<term id="in-campo-scuro">
+							<name lang="it">in campo scuro</name>
+						</term>
+						<term id="ottico-a-luce-riflessa">
+							<name lang="it">ottico a luce riflessa</name>
+						</term>
+						<term id="ottico-a-luce-trasmessa">
+							<name lang="it">ottico a luce trasmessa</name>
+						</term>
+						<term id="ottico-metallografico">
+							<name lang="it">ottico metallografico</name>
+						</term>
+						<term id="ottico-minero-petrografico-a-luce-trasmessa">
+							<name lang="it">ottico minero-petrografico a luce trasmessa</name>
+						</term>
+						<term id="stereo">
+							<name lang="it">stereo</name>
+						</term>
+					</sub-terms>
+				</term>	
+				<term id="microsonda-elettronica">
+					<name lang="it">microsonda elettronica</name>
+				</term>
+				<term id="novatank">
+					<name lang="it">novatank</name>
+				</term>
+				<term id="obiettivo-macro">
+					<name lang="it">obiettivo macro</name>
+				</term>
+				<term id="resistograph">
+					<name lang="it">resistograph</name>
+				</term>
+				<term id="scanner-laser">
+					<name lang="it">scanner laser</name>
+					<sub-terms>
+						<term id="portatile">
+							<name lang="it">portatile</name>
+							<sub-terms>
+								<term id="a-tempo-di-volo">
+									<name lang="it">a tempo di volo</name>
+								</term>
+								<term id="a-differenza-di-fase">
+									<name lang="it">a differenza di fase</name>
+								</term>
+								<term id="a-triangolazione">
+									<name lang="it">a triangolazione</name>
+								</term>
+							</sub-terms>
+						</term>
+						<term id="statico">
+							<name lang="it">statico</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="sonda-gpr">
+					<name lang="it">sonda GPR</name>
+				</term>
+				<term id="spettrofotometro">
+					<name lang="it">spettrofotometro</name>
+				</term>
+				<term id="spettrometro">
+					<name lang="it">spettrometro</name>
+					<sub-terms>
+						<term id="assorbimento-atomico">
+							<name lang="it">assorbimento atomico</name>
+						</term>			
+						<term id="di-fluorescenza">
+							<name lang="it">di fluorescenza</name>
+						</term>			
+						<term id="di-massa">
+							<name lang="it">di massa</name>
+						</term>
+						<term id="raman">
+							<name lang="it">Raman</name>
+						</term>
+						<term id="xrf">
+							<name lang="it">XRF</name>
+						</term>			
+						<term id="ftir">
+							<name lang="it">FTIR</name>
+						</term>			
+						<term id="nmr">
+							<name lang="it">NMR</name>
+						</term>			
+					</sub-terms>
+				</term>
+				<term id="spettroscopio-infrarosso">
+					<name lang="it">spettroscopio infrarosso</name>
+				</term>
+				<term id="tablet">
+					<name lang="it">tablet</name>
+				</term>
+				<term id="termobilancia-per-tg">
+					<name lang="it">termobilancia per TG</name>
+				</term>
+				<term id="termocamera">
+					<name lang="it">termocamera</name>
+				</term>
+				<term id="termoigrometro">
+					<name lang="it">termoigrometro</name>
+				</term>
+				<term id="tomografo">
+					<name lang="it">tomografo</name>
+				</term>
+				<term id="torcia-led">
+					<name lang="it">torcia led</name>
+				</term>
+				<term id="trasduttori-di-spostamento">
+					<name lang="it">trasduttori di spostamento</name>
+				</term>
+				<term id="video-endoscopio">
+					<name lang="it">video-endoscopio</name>
+				</term>
+				<term id="vortex">
+					<name lang="it">vortex</name>
+				</term>
+				<term id="altro">
+					<name lang="it">altro</name>
+				</term>
+            </sub-terms>
+		</term>
+    </vocabulary>
+		
+	<!-- Vocabolario TAFONOMIA E STATO DI CONSEERVAZIONE (19) -->
+    <vocabulary class="crm:E55_Type">
+		<term id="tafonomia-e-stato-di-conservazione">
+			<name lang="it">Tafonomia e stato di conservazione</name>
+            <sub-terms>
+				<term id="tafonomia"> 
+					<name lang="it">tafonomia</name> 
+					<sub-terms>
+						<term id="carbonizzato">
+							<name lang="it">carbonizzato</name>
+						</term>
+						<term id="congelato">
+							<name lang="it">congelato</name>
+						</term>
+						<term id="disidratato">
+							<name lang="it">disidratato</name>
+						</term>
+						<term id="metallizzato">
+							<name lang="it">metallizzato</name>
+						</term>
+						<term id="mineralizzato">
+							<name lang="it">mineralizzato</name>
+						</term>
+						<term id="mummificato">
+							<name lang="it">mummificato</name>
+						</term>
+						<term id="sommerso">
+							<name lang="it">sommerso</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="stato-di-conservazione">
+					<name lang="it">stato di conservazione</name>
+					<sub-terms>
+						<term id="degradato">
+							<name lang="it">degradato</name>
+						</term>
+						<term id="non-degradato">
+							<name lang="it">non degradato</name>
+						</term>
+					</sub-terms>
+				</term>
+            </sub-terms>
+		</term>
+	</vocabulary>
+	
+	<!-- Vocabolario TECNICA DIAGNOSTICA (20) -->
+    <vocabulary class="crm:E55_Type">
+        <term id="tecnica-diagnostica"> 
+			<name lang="it">Tecnica diagnostica</name> 
+            <sub-terms>
+				<term id="analitica-chimica-e-chimico-fisica">
+					<name lang="it">analitica chimica e chimico-fisica</name>
+					<sub-terms>	
+						<term id="analisi-termica-differenziale-dta">  
+							<name lang="it">analisi termica differenziale (DTA)</name>
+						</term>
+						<term id="calorimetria-differenziale-a-scansione-dsc">  
+							<name lang="it">calorimetria differenziale a scansione (DSC)</name>
+						</term>
+						<term id="calcimetria">  
+							<name lang="it">calcimetria</name>
+						</term>
+						<term id="conduttivimetria">  
+							<name lang="it">conduttivimetria</name>
+						</term>
+						<term id="cromatografia">  
+							<name lang="it">cromatografia</name>
+							<sub-terms>
+								<term id="su-carta">
+									<name lang="it">su carta</name>
+								</term>
+								<term id="su-strato-sottile-tlc">
+									<name lang="it">su strato sottile TLC</name>
+								</term>
+								<term id="liquida-lc">
+									<name lang="it">liquida LC</name>
+								</term>
+								<term id="gascromatografia-gc">
+									<name lang="it">gascromatografia GC</name>
+								</term>
+								<term id="a-scambio-ionico">
+									<name lang="it">a scambio ionico</name>
+								</term>
+							</sub-terms>
+						</term>
+						<term id="elettroforesi">  
+							<name lang="it">elettroforesi</name>
+						</term>
+						<term id="ph-metria">  
+							<name lang="it">pH-metria</name>
+						</term>
+						<term id="spettrometria-di-massa-al-plasma-icp-ms">  
+							<name lang="it">spettrometria di massa al Plasma (ICP-MS)</name>
+						</term>
+						<term id="termogravimetria-tg">  
+							<name lang="it">termogravimetria (TG)</name>
+						</term>
+						<term id="titolazione">  
+							<name lang="it">titolazione</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="archeobotanica">
+					<name lang="it">archeobotanica</name>
+					<sub-terms>
+						<term id="analisi-antracologica">  
+							<name lang="it">analisi antracologica</name>
+						</term>
+						<term id="analisi-carpologica">  
+							<name lang="it">analisi carpologica</name>
+						</term>
+						<term id="analisi-degli-isotopi-stabili">  
+							<name lang="it">analisi degli isotopi stabili</name>
+							<sub-terms>
+								<term id="del-carbonio">
+									<name lang="it">del Carbonio</name>
+								</term>
+								<term id="dellazoto">
+									<name lang="it">dell'Azoto</name>
+								</term>
+							</sub-terms>
+						</term>
+						<term id="analisi-pollinica">  
+							<name lang="it">analisi pollinica</name>
+						</term>
+						<term id="analisi-xilologica">  
+							<name lang="it">analisi xilologica</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="di-datazione">
+					<name lang="it">di datazione</name>
+					<sub-terms>
+						<term id="analisi-degli-isotopi-stabili">  
+							<name lang="it">analisi degli isotopi stabili</name>
+						</term>
+						<term id="archeomagnetismo">  
+							<name lang="it">archeomagnetismo</name>
+						</term>
+						<term id="datazione-kar-uth">  
+							<name lang="it">datazione K/Ar U/Th</name>
+						</term>
+						<term id="datazione-per-idratazione-dellossidiana">  
+							<name lang="it">datazione per idratazione dell'ossidiana</name>
+						</term>
+						<term id="dendrocronologia">  
+							<name lang="it">dendrocronologia</name>
+						</term>
+						<term id="luminescenza-otticamente-stimolata-osl">  
+							<name lang="it">luminescenza otticamente stimolata (OSL)</name>
+						</term>
+						<term id="radiocarbonio">  
+							<name lang="it">radiocarbonio</name>
+						</term>
+						<term id="termoluminescenza-tl">  
+							<name lang="it">termoluminescenza TL</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="di-diagnostica-strutturale">
+					<name lang="it">di diagnostica strutturale</name>
+					<sub-terms>
+						<term id="carotaggio">  
+							<name lang="it">carotaggio</name>
+						</term>
+						<term id="prova-di-carico-statico">  
+							<name lang="it">prova di carico statico</name>
+						</term>
+						<term id="prova-di-carico-dinamico">  
+							<name lang="it">prova di carico dinamico</name>
+						</term>
+						<term id="prova-di-durezza">  
+							<name lang="it">prova di durezza</name>
+						</term>
+						<term id="prova-con-martinetti-piatti">  
+							<name lang="it">prova con martinetti piatti</name>
+						</term>
+						<term id="prova-pull-out">  
+							<name lang="it">prova pull-out</name>
+						</term>
+						<term id="prova-screw-pull-out">  
+							<name lang="it">prova screw pull-out</name>
+						</term>
+						<term id="penetrometria">  
+							<name lang="it">penetrometria</name>
+							<sub-terms>
+								<term id="per-malte">
+									<name lang="it">per malte</name>
+								</term>
+								<term id="per-legno">
+									<name lang="it">per legno</name>
+								</term>
+							</sub-terms>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="di-imaging">
+					<name lang="it">di imaging</name>
+					<sub-terms>
+						<term id="fluorescenza-uv">  
+							<name lang="it">fluorescenza UV</name>
+						</term>
+						<term id="imaging-multispettrale-iperspettrale-msi-hsi">  
+							<name lang="it">imaging multispettrale/iperspettrale (MSI/HSI)</name>
+						</term>
+						<term id="riflettografia-infrarossa">  
+							<name lang="it">riflettografia infrarossa</name>
+						</term>
+						<term id="rti-refectance-trasformation-imaging">  
+							<name lang="it">RTI (Refectance Trasformation Imaging)</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="di-indagine-diretta-in-cantiere">
+					<name lang="it">di indagine diretta in cantiere</name>
+					<sub-terms>
+						<term id="bussatura-rintocco">  
+							<name lang="it">bussatura/rintocco</name>
+						</term>
+						<term id="scalettatura-cromatica">  
+							<name lang="it">scalettatura cromatica</name>
+						</term>
+						<term id="tassello-stratigrafico">  
+							<name lang="it">tassello stratigrafico</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="di-rilievo">
+					<name lang="it">di rilievo</name>
+					<sub-terms>
+						<term id="fotogrammetria">  
+							<name lang="it">fotogrammetria</name>
+						</term>
+						<term id="micro-fotogrammetria">  
+							<name lang="it">micro-fotogrammetria</name>
+						</term>
+						<term id="rilievo-laser-scanner">  
+							<name lang="it">rilievo Laser Scanner</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="geotecnica">
+					<name lang="it">geotecnica</name>
+					<sub-terms>
+						<term id="sondaggi-geognostici">  
+							<name lang="it">sondaggi geognostici</name>
+						</term>
+						<term id="prove-dinamichedpm-statiche-cpt">  
+							<name lang="it">prove dinamiche DPM/statiche CPT</name>
+						</term>
+						<term id="prove-di-carico-su-piastra">  
+							<name lang="it">prove di carico su piastra</name>
+						</term>
+						<term id="prove-pressiometriche">  
+							<name lang="it">prove pressiometriche</name>
+						</term>
+						<term id="prospezione-geoelettrica">  
+							<name lang="it">prospezione geoelettrica</name>
+						</term>
+						<term id="tomografia-sismica">  
+							<name lang="it">tomografia sismica</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="microclimatica">
+					<name lang="it">microclimatica</name>
+					<sub-terms>
+						<term id="igrometria">  
+							<name lang="it">igrometria</name>
+						</term>
+						<term id="termoigrometria">  
+							<name lang="it">termoigrometria</name>
+						</term>
+						<term id="metodo-del-carburo-di-calcio">  
+							<name lang="it">metodo del carburo di calcio</name>
+						</term>
+						<term id="metodo-ponderale">  
+							<name lang="it">metodo ponderale</name>
+						</term>
+						<term id="misura-della-pressione-di-vapore-tensione-di-vapore">  
+							<name lang="it">misura della pressione di vapore/tensione di vapore</name>
+						</term>
+						<term id="monitoraggio-climatico-a-lungo-termine">  
+							<name lang="it">monitoraggio climatico a lungo termine</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="ottica">
+					<name lang="it">ottica</name>
+					<sub-terms>
+						<term id="colorimetria">  
+							<name lang="it">colorimetria</name>
+						</term>
+						<term id="fotografia">  
+							<name lang="it">fotografia</name>
+						</term>
+						<term id="microscopia">  
+							<name lang="it">microscopia</name>
+							<sub-terms>
+								<term id="digitale-portatile">
+									<name lang="it">digitale portatile</name>
+								</term>
+								<term id="ottica-a-fluorescenza">
+									<name lang="it">ottica a fluorescenza</name>
+								</term>
+								<term id="ottica-in-campo-scuro-chiaro">
+									<name lang="it">ottica in campo scuro/chiaro</name>
+								</term>
+								<term id="ottica-metallografica">
+									<name lang="it">ottica metallografica</name>
+								</term>
+								<term id="ottica-petrografica">
+									<name lang="it">ottica petrografica</name>
+								</term>
+								<term id="ottica-stereo">
+									<name lang="it">ottica stereo</name>
+								</term>
+							</sub-terms>
+						</term>
+						<term id="osservazione">  
+							<name lang="it">osservazione</name>
+							<sub-terms>
+								<term id="in-luce-radente">
+									<name lang="it">in luce radente</name>
+								</term>
+								<term id="macroscopica">
+									<name lang="it">macroscopica</name>
+								</term>
+								<term id="mesoscopica">
+									<name lang="it">mesoscopica</name>
+								</term>
+							</sub-terms>
+						</term>
+						<term id="video-endoscopia">  
+							<name lang="it">video-endoscopia</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="radiologica">
+					<name lang="it">radiologica</name>
+					<sub-terms>
+						<term id="bomardamento-con-neutroni-lenti">  
+							<name lang="it">bomardamento con neutroni lenti</name>
+						</term>
+						<term id="gamma-grafia">  
+							<name lang="it">gamma-grafia</name>
+						</term>
+						<term id="radiografia-rx">  
+							<name lang="it">xxx</name>
+						</term>
+						<term id="tomografia-computerizzata-ct">  
+							<name lang="it">tomografia computerizzata CT</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="sonica-geofisica-elettrica-magnetica-termica">
+					<name lang="it">sonica, geofisica, elettrica, magnetica, termica</name>
+					<sub-terms>
+						<term id="controllo-a-correnti-indotte">  
+							<name lang="it">controllo a correnti indotte</name>
+						</term>
+						<term id="magnetometria">  
+							<name lang="it">magnetometria</name>
+						</term>
+						<term id="prospezione-georadar">  
+							<name lang="it">prospezione Georadar</name>
+						</term>
+						<term id="termografia">  
+							<name lang="it">termografia</name>
+						</term>
+						<term id="soniche">  
+							<name lang="it">soniche</name>
+						</term>
+						<term id="ultrasuoni">  
+							<name lang="it">ultrasuoni</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="spettroscopica">
+					<name lang="it">spettroscopica</name>
+					<sub-terms>
+						<term id="diffrazione-di-raggi-x-su-polveri-xrpd">  
+							<name lang="it">diffrazione di raggi X su polveri (XRPD)</name>
+						</term>
+						<term id="microscopia-avanzata">  
+							<name lang="it">microscopia avanzata</name>
+							<sub-terms>
+								<term id="a-forza-atomica-apm">
+									<name lang="it">a forza atomica AFM</name>
+								</term>
+								<term id="a-scansione-di-sonda-spm">
+									<name lang="it">a scansione di sonda SPM</name>
+								</term>
+								<term id="elettronica-a-scansione-sem">
+									<name lang="it">elettronica a scansione SEM</name>
+								</term>
+							</sub-terms>
+						</term>
+						<term id="micro-ftir">  
+							<name lang="it">micro-FTIR</name>
+						</term>
+						<term id="micro-raman">  
+							<name lang="it">micro-Raman</name>
+						</term>
+						<term id="microsonda-elettronica-empa">  
+							<name lang="it">microsonda elettronica (EMPA)</name>
+						</term>
+						<term id="spettrofotometria">  
+							<name lang="it">spettrofotometria</name>
+						</term>
+						<term id="spettrometria-di-massa">  
+							<name lang="it">spettrometria di massa</name>
+						</term>
+						<term id="spettroscopia">  
+							<name lang="it">spettroscopia</name>
+							<sub-terms>
+								<term id="di-assorbimento-atomico-aas">
+									<name lang="it">di assorbimento atomico (AAS)</name>
+								</term>
+								<term id="di-fluoresenza">
+									<name lang="it">di fluoresenza</name>
+									<sub-terms>
+										<term id="a-raggi-x-xrf">
+											<name lang="it">a raggi X (XRF)</name>
+											<sub-terms>
+												<term id="portatile">
+													<name lang="it">portatile</name>
+												</term>
+											</sub-terms>
+										</term>
+										<term id="raman">
+											<name lang="it">Raman</name>
+											<sub-terms>
+												<term id="portatile">
+													<name lang="it">portatile</name>
+												</term>
+											</sub-terms>
+										</term>
+										<term id="infrarossa-in-trasformata-di-fourier-ftir">
+											<name lang="it">infrarossa in trasformata di Fourier (FTIR)</name>
+											<sub-terms>
+												<term id="portatile">
+													<name lang="it">portatile</name>
+												</term>
+											</sub-terms>
+										</term>
+									</sub-terms>
+								</term>
+							</sub-terms>
+						</term>
+						<term id="di-risonanza-magnetica-nucleare-nmr">  
+							<name lang="it">di risonanza magnetica nucleare (NMR)</name>
+						</term>
+					</sub-terms>
+				</term>
+			</sub-terms>
+		</term>
+    </vocabulary>
+
+	<!-- Vocabolario TIPO CAMPIONE (21) -->
+    <vocabulary class="crm:E55_Type">
+        <term id="tipo-campione"> 
+			<name lang="it">Tipo campione</name> 
+            <sub-terms>
+				<term id="areale">
+					<name lang="it">areale</name>
+				</term>
+				<term id="dato-acquisito">
+					<name lang="it">dato acquisito</name>
+				</term>
+				<term id="estratto">
+					<name lang="it">estratto</name>
+				</term>
+				<term id="frammento">
+					<name lang="it">frammento</name>
+				</term>
+				<term id="intero">
+					<name lang="it">intero</name>
+				</term>
+				<term id="polvere">
+					<name lang="it">polvere</name>
+				</term>
+				<term id="puntuale">
+					<name lang="it">puntuale</name>
+				</term>
+				<term id="sedimento">
+					<name lang="it">sedimento</name>
+				</term>
+				<term id="segmento">
+					<name lang="it">segmento</name>
+				</term>
+				<term id="volume">
+					<name lang="it">volume</name>
+				</term>
+            </sub-terms>
+		</term>
+    </vocabulary>
+
+	<!-- Vocabolario TIPO INDAGINE (22) -->
+    <vocabulary class="crm:E55_Type">
+        <term id="tipo-indagine"> 
+			<name lang="it">Tipo indagine</name> 
+            <sub-terms>
+				<term id="biologica">
+					<name lang="it">biologica</name>
+				</term>
+				<term id="chimica">
+					<name lang="it">chimica</name>
+				</term>
+				<term id="costruttiva">
+					<name lang="it">costruttiva</name>
+				</term>
+				<term id="fisica">
+					<name lang="it">fisica</name>
+				</term>
+				<term id="strutturale">
+					<name lang="it">strutturale</name>
+				</term>
+            </sub-terms>
+		</term>
+    </vocabulary>
+
+	<!-- Vocabolario Tipo inquadramento cronologico (23) -->
+    <vocabulary class="base:I2_Belief">
+        <term id="tipologia-inquadramento-cronologico"> 
+			<name lang="it">Tipologia inquadramento cronologico</name> 
+            <sub-terms>
+				<term id="da-contesto">
+					<name lang="it">da contesto</name>
+				</term>
+				<term id="fonte">
+					<name lang="it">fonte</name>
+					<sub-terms>
+						<term id="archivistica">
+							<name lang="it">archivistica</name>
+						</term>
+						<term id="bibliografica">
+							<name lang="it">bibliografica</name>
+						</term>
+						<term id="epigrafica">
+							<name lang="it">epigrafica</name>
+						</term>
+						<term id="multipla">
+							<name lang="it">multipla</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="presunto">
+					<name lang="it">presunto</name>
+				</term>
+				<term id="assente">
+					<name lang="it">assente</name>
+				</term>
+            </sub-terms>
+		</term>
+    </vocabulary>
+	
+	<!-- Vocabolario INPUT (24) -->
+    <vocabulary class="crm:E55_Type">
+        <term id="input"> 
+			<name lang="it">Input</name> 
+            <sub-terms>
+				<term id="analisi-pregresse">
+					<name lang="it">analisi pregresse</name>
+				</term>
+				<term id="materiale-bibliografico">
+					<name lang="it">materiale bibliografico</name>
+				</term>
+				<term id="materiale-darchivio">
+					<name lang="it">materiale d'archivio</name>
+					<sub-terms>
+						<term id="fotografico">
+							<name lang="it">fotografico</name>
+						</term>
+						<term id="grafico">
+							<name lang="it">grafico</name>
+						</term>
+						<term id="documentale">
+							<name lang="it">documentale</name>
+						</term>
+					</sub-terms>
+				</term>
+				<term id="assente">
+					<name lang="it">assente</name>
+				</term>
+            </sub-terms>
+		</term>
+    </vocabulary>	
+
+	<!-- Vocabolario DISSESTI STRUTTURALI (25) -->
+	<vocabulary class="basecpm:CP43_Structural_Damage">
+        <term id="dissesti-strutturali">
+			<name lang="it">Dissesti strutturali</name>
+            <sub-terms>
+                <term id="modifica-della-geometria">
+					<name lang="it">modifica della geometria</name>
+					<sub-terms>
+						<term id="fuori-piombo">
+							<name lang="it">fuori piombo</name>
+						</term>
+						<term id="spanciamenti">
+							<name lang="it">spanciamenti</name>
+						</term>
+						<term id="deformazioni">
+							<name lang="it">deformazioni</name>
+						</term>
+					</sub-terms>
+				</term>
+                <term id="fenomeni-di-discontinuita">
+					<name lang="it">fenomeni di discontinuità</name>
+					<sub-terms>
+						<term id="lesioni">
+							<name lang="it">lesioni</name>
+							<sub-terms>
+								<term id="passanti">
+									<name lang="it">passanti</name>
+								</term>
+								<term id="non-passanti">
+									<name lang="it">non passanti</name>
+								</term>
+							</sub-terms>
+						</term>
+						<term id="spaccature">
+							<name lang="it">spaccature</name>
+						</term>
+						<term id="fori-gallerie-cavedi">
+							<name lang="it">fori/gallerie/cavedi</name>
+						</term>
+					</sub-terms>
+				</term>
+                <term id="distacchi">
+					<name lang="it">distacchi</name>
+					<sub-terms>
+						<term id="tra-componenti-verticali">
+							<name lang="it">tra componenti verticali</name>
+						</term>
+						<term id="tra-componenti-orizzontali">
+							<name lang="it">tra componenti orizzontali</name>
+						</term>
+						<term id="tra-componenti-verticali-e-orizzontali">
+							<name lang="it">tra componenti verticali e orizzontali</name>
+						</term>
+					</sub-terms>
+				</term>
+                <term id="instabilita">
+					<name lang="it">instabilità</name>
+					<sub-terms>
+						<term id="mancanza-coesione-tra-componenti-costruttive">
+							<name lang="it">mancanza coesione tra componenti costruttive</name>
+						</term>
+						<term id="inadeguatezza-della-componente-costruttiva">
+							<name lang="it">inadeguatezza della componente costruttiva</name>
+							<sub-terms>
+								<term id="inadeguatezza-materica">
+									<name lang="it">inadeguatezza materica</name>
+								</term>
+								<term id="inadeguatezza-dimensionale-e-costruttiva">
+									<name lang="it">inadeguatezza dimensionale e costruttiva</name>
+								</term>
+							</sub-terms>
+						</term>
+					</sub-terms>
+				</term>
+                <term id="crollo-parziale">
+					<name lang="it">crollo parziale</name>
+				</term>
+            </sub-terms>
+        </term>
+    </vocabulary>
+
+	<!-- Vocabolario NATURA OGGETTO (26) -->
+	<vocabulary class="crm:E55_Type">
+        <term id="natura-oggetto">
+			<name lang="it">Natura oggetto</name>
+            <sub-terms>
+                <term id="originale">
+					<name lang="it">originale</name>
+				</term>
+                <term id="copia">
+					<name lang="it">copia</name>
+				</term>
+            </sub-terms>
+        </term>
+    </vocabulary>
+
+</vocabularies>

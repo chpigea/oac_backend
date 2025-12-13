@@ -75,33 +75,61 @@ router.post('/upload/vocabularies', upload.array('files'), (req, res) => {
         deleteFiles(uploadedFiles)
         return res.status(400).json({ message: 'Uploaded XML file is not valid' });
     }
-    VocabParser.insertQuery(xmlFile.path).then(query => {
+    VocabParser.insertQuery(xmlFile.path).then(queries => {
         //console.log("Query to insert vocabularies: ", query);
-        
-        deleteFiles(uploadedFiles)
-        
-        axios.post(fusekiUrlUpdate, query, {
-            headers: {
-                'Content-Type': 'application/sparql-update',
-                'Accept': 'application/sparql-results+json'
+        let results = Array(queries.length, null);
+        let checkCompleted = function(){
+            console.log(results)
+            deleteFiles(uploadedFiles)
+            let failed = results.filter(r => r.status === false);
+            console.log(failed);
+            if(failed.length > 0){
+                let message = `Error inserting vocabularies in ${failed.length} files.`;
+                return res.status(500).json({ 
+                    message,
+                    files: uploadedFiles,
+                    results
+                });
+            }else{
+                res.json({
+                    message: 'File correctly uploaded and vocabularies updated in the triple store',
+                    files: uploadedFiles
+                });
             }
+        }
+        let fusekiCall = function(index){
+            return new Promise((resolve, reject) => {
+                let query = queries[index];
+                try{
+                    axios.post(fusekiUrlUpdate, query, {
+                        headers: {
+                            'Content-Type': 'application/sparql-update',
+                            'Accept': 'application/sparql-results+json'
+                        }
+                    })
+                    .then(() => {
+                        resolve({
+                            index, success: true, message: 'Vocabulary inserted correctly'
+                        });
+                    }).catch(error => {
+                        let msg = (error.response?.status + error.response?.data) || error.message
+                        resolve({
+                            index, success: false, message: `Error from SPARQL end-point: ${msg}`
+                        });
+                    });
+                }catch(e){
+                    resolve({
+                        index, success: false, message: `Error: ${e}`
+                    });
+                }
+            })
+        }
+        setTimeout(async ()=>{
+            for(let index=0; index<queries.length; index++){
+                results[index] = await fusekiCall(index);
+            }
+            checkCompleted();
         })
-        .then(response => {
-            res.json({
-                message: 'File correctly uploaded and vocabularies updated: ' + response.data,
-                files: uploadedFiles
-            });
-        }).catch(error => {
-            let message = (error.response?.status + error.response?.data) || error.message
-            console.log(message);
-            //fs.writeFileSync('/home/nicole/Scaricati/spqr_error.txt', query);   
-            res.status(500).json({ 
-                message: 'Error from SPARQL end-point: ' + message, 
-                files: uploadedFiles,
-                query
-            });
-        });
-        
     }).catch(err => {
         deleteFiles(uploadedFiles)
         console.error('Error transforming XML:', err);
