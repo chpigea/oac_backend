@@ -1,0 +1,136 @@
+@prefix sh:   <http://www.w3.org/ns/shacl#> .
+@prefix ex:   <http://example.org/shapes/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+ex:E7ActivityShape
+    a sh:NodeShape ;
+    sh:targetClass crm:E7_Activity ;
+	#rdfs:label "Indagine" ;
+    #sh:description "Indagine" ;
+	#sh:group ex:NameGroup ;
+	sh:property [
+        sh:path crm:P48_has_preferred_identifier ;
+		sh:node ex:E42IdentifierShape ;
+		sh:name "ID indagine" ;
+        sh:maxCount 1 ;
+        sh:minCount 1 ;
+    ] ;
+    sh:property [
+        sh:path crm:P2_has_type ;
+        sh:node ex:E55Type01Shape ;
+		sh:name "Tipo indagine" ;
+        sh:maxCount 1 ;
+        sh:minCount 1 ;
+    ] ;
+    sh:property [
+        sh:path crm:P17_was_motivated_by ;
+        sh:node ex:I12AdoptedBeliefShape ;
+		sh:name "Quesito diagnostico" ;
+        sh:maxCount 1 ;
+        sh:minCount 1 ;
+    ] ;
+    sh:property [
+        sh:path crm:P14_was_carried_out_by ;
+        sh:node ex:E29ActorShape ;
+		sh:name "Attori" ;
+        #sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path crm:P16_used_specific_object ;
+        sh:node ex:S13Sample ;
+		sh:name "Campione" ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path crm:xxx ;
+        sh:node ex:E7Activity1 ;
+		sh:name "Attività dignostica" ;
+        #sh:maxCount 1 ;
+    ] .
+	
+ex:E42IdentifierShape
+    a sh:NodeShape ;
+    sh:targetClass crm:E42_Identifier ;
+	sh:property [
+        sh:path ex:P48_has_preferred_identifier ;
+		sh:datatype xsd:string ;
+		sh:name "ID" ;
+        sh:nodeKind sh:IRI;
+		sh:description "http://diagnostica/indagine/$UUID$" ;
+        sh:maxCount 1 ;
+        sh:minCount 1 ;
+    ] .
+
+ex:E55Type01Shape
+    a sh:NodeShape ;
+    sh:targetClass crm:E55_Type ;
+    sh:property [
+        sh:class        owl:Class ;
+        sh:path         crm:P127_has_broader_term ;
+        owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/fase-di-analisi> ;
+		sh:name "Tipo" ;
+        sh:maxCount 1 ;
+        sh:minCount 1 ; 
+    ] .
+
+ex:I12AdoptedBeliefShape
+    a sh:NodeShape ;
+    sh:targetClass crm:I12_Adopted_Belief ;
+    sh:property [
+        sh:path crm:P2_has_type ;
+        sh:node ex:E55Type02Shape ;
+		sh:name "Tipo quesito diagnostico" ;
+        sh:maxCount 1 ;
+        sh:minCount 1 ; 
+    ] .
+
+ex:E55Type02Shape
+    a sh:NodeShape ;
+    sh:targetClass crm:E55_Type ;
+    sh:property [
+		sh:name "Tipo" ;
+        sh:maxCount 1 ;
+        sh:minCount 1 ; 
+        #sh:class       crm:E55_Type ;
+        sh:class        owl:Class ;
+        sh:path         crm:P127_has_broader_term ;
+        owl:imports     <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/quesito-diagnostico> ;
+
+        #sh:class       owl:Class ;
+        #sh:path        dcterms:subject ;
+        #owl:imports <https://raw.githubusercontent.com/tibonto/DFG-Fachsystematik-Ontology/refs/heads/main/dfgfo.ttl> ;
+
+    ] ;
+    sh:property [
+        sh:path crm:P3_has_note ;
+		sh:datatype xsd:string ;
+		sh:name "Altro" ;
+        sh:maxCount 1 ;
+    ] .
+
+ex:E29ActorShape
+    a sh:NodeShape ;
+    sh:targetClass crm:E29_Actor ;
+    sh:property [
+        sh:path ex:ente_richiedente ;
+        sh:datatype xsd:string ;
+		
+        #sh:name "Ente richiedente" ;
+        #sh:maxCount 1 ; 
+
+        sh:name "ID" ;
+        sh:nodeKind sh:IRI;
+		sh:description "http://diagnostica/actor/$SEQ3$" ;
+
+    ] ;
+    sh:property [
+        sh:path ex:schedatore ;
+		sh:datatype xsd:string ;
+		sh:name "Schedatore" ;
+        sh:maxCount 1 ; 
+        sh:minCount 1 ; 
+    ] .

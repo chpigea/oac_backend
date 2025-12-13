@@ -52,7 +52,14 @@
       </xs:element>
     </xs:sequence>
 
-    <xs:attribute name="id" type="xs:string" use="required"/>
+    <xs:attribute name="id" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[A-Za-z0-9_\-]+"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+
   </xs:complexType>
 
 </xs:schema>
