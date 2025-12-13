@@ -17,6 +17,83 @@ class Converter {
         })
     }
 
+    static termToSparql(term) {
+        if (!term) return '';
+        const t = term.termType || term.type; // some versions use .type
+        const value = term.value;
+        if (t === 'NamedNode' || t === 'IRI') {
+            return `<${value}>`;
+        }
+        if (t === 'BlankNode' || t === 'Blank') {
+            return `_:${value}`;
+        }
+        if (t === 'Literal' || t === 'literal') {
+            // escape per basic N-Triples rules
+            const esc = value
+                .replace(/\\/g, '\\\\')
+                .replace(/"/g, '\\"')
+                .replace(/\r/g, '\\r')
+                .replace(/\n/g, '\\n');
+            const lang = term.language;
+            const dt = term.datatype && term.datatype.value;
+            if (lang) return `"${esc}"@${lang}`;
+            if (dt && dt !== 'http://www.w3.org/2001/XMLSchema#string') 
+                return `"${esc}"^^<${dt}>`;
+            return `"${esc}"`;
+        }
+        return `${value}`;
+    }
+
+    static turtle2Sparql(turtle, opts={}){
+        const graph = opts.graph || null; // if null -> default graph
+        const parser = new Parser();
+        const quads = parser.parse(turtle);
+        const termToSparql = Converter.termToSparql;
+         // group objects by subject+predicate
+        const groups = new Map(); // key -> { subj, pred, objects: Set() }
+        for (const q of quads) {
+            const s = q.subject;
+            const p = q.predicate;
+            const o = q.object;
+            const key = `${termToSparql(s)} ${termToSparql(p)}`;
+            if (!groups.has(key)) groups.set(key, { subj: s, pred: p, objects: new Set() });
+            groups.get(key).objects.add(termToSparql(o));
+        }
+
+        // build SPARQL update parts
+        const parts = [];
+        for (const [, { subj, pred, objects }] of groups) {
+            const sStr = termToSparql(subj);
+            const pStr = termToSparql(pred);
+
+            // DELETE WHERE: remove any existing object for the subject/predicate
+            // we use a variable ?o to delete any existing triples with same s,p
+            let deleteBlock;
+            if (graph) {
+                deleteBlock = `DELETE WHERE { GRAPH <${graph}> { ${sStr} ${pStr} ?o } };`;
+            } else {
+                deleteBlock = `DELETE WHERE { ${sStr} ${pStr} ?o } ;`;
+            }
+
+            // INSERT DATA: insert the objects we parsed. If multiple objects, join with comma.
+            const objs = Array.from(objects);
+            const objectsList = objs.join(' ,\n      '); // pretty print
+            let insertBlock;
+            if (graph) {
+                insertBlock = `INSERT DATA { GRAPH <${graph}> { ${sStr} ${pStr} ${objectsList} . } };`;
+            } else {
+                insertBlock = `INSERT DATA { ${sStr} ${pStr} ${objectsList} . } ;`;
+            }
+
+            // append as one atomic unit (delete then insert)
+            parts.push(`${deleteBlock}\n${insertBlock}`);
+        }
+
+        // join with double newline for readability
+        return parts.join('\n\n');
+        
+    }
+
     static async turtle2RdfXml(inTurtlePath, outRdfXmlPath) {
         return new Promise((resolve, reject) => {
             const command = `rapper -i turtle -o rdfxml "${inTurtlePath}" > "${outRdfXmlPath}"`; 

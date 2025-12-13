@@ -3,16 +3,10 @@ const multer = require('multer');
 const router = express.Router();
 const path = require('path');
 const fs = require('fs');
-const config = require('../config')
-const configFuseki = config.fuseki || {
-    "protocol": "http",
-    "host": "127.0.0.1",
-    "port": "3030",
-    "dataset": "oac"
-}
-const fusekiUrlDataset = `${configFuseki.protocol}://${configFuseki.host}:${configFuseki.port}/${configFuseki.dataset}`;
-const fusekiUrl = `${fusekiUrlDataset}/sparql`;
-const fusekiUrlUpdate = `${fusekiUrlDataset}/update`;
+const {
+    fusekiUrl,
+    fusekiUrlUpdate
+} = require('../models/fusekiConfig');
 const axios = require('axios');
 const Fuseki = require('../models/fuseki');
 const { Parser, transformMode } = require('../models/vocabolaries/parser');
