@@ -43,7 +43,7 @@
       </xsl:if>
     </xsl:variable>
 
-    <xsl:variable name="vocab-id" select="normalize-space(@id)"/>
+    <xsl:variable name="vocab-id" select="translate(normalize-space(@id), ' ', '_')"/>
     <xsl:apply-templates select="term">
       <xsl:with-param name="path" select="concat('http://', $prefix, $vocab-id)"/>
       <xsl:with-param name="type" select="concat($type, ' ')"/>
@@ -54,7 +54,7 @@
   <xsl:template match="term">
     <xsl:param name="path"/>
     <xsl:param name="type"/>
-    <xsl:variable name="current-id" select="normalize-space(@id)"/>
+    <xsl:variable name="current-id" select="translate(normalize-space(@id), ' ', '_')"/>
     <xsl:variable name="new-path" select="concat($path, '/', $current-id)"/>
     <xsl:variable name="new-type" select="concat($type, ' ')"/>
 
@@ -76,7 +76,7 @@
       </xsl:when>
       <xsl:otherwise>
         
-        <xsl:variable name="cid" select="normalize-space(@id)"/>
+        <xsl:variable name="cid" select="translate(normalize-space(@id), ' ', '_')"/>
         <xsl:variable name="npath" select="concat($path, '/', $current-id)"/>
 
         <xsl:for-each select="name">

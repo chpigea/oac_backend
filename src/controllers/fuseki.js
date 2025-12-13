@@ -71,11 +71,14 @@ router.post('/upload/vocabularies', upload.array('files'), (req, res) => {
 
   if(xmlFiles.length == 1) {
     let xmlFile = uploadedFiles[0];
+    if(!xmlFile.valid){
+        deleteFiles(uploadedFiles)
+        return res.status(400).json({ message: 'Uploaded XML file is not valid' });
+    }
     VocabParser.insertQuery(xmlFile.path).then(query => {
-        console.log("Query to insert vocabularies: ", query);
+        //console.log("Query to insert vocabularies: ", query);
         
         deleteFiles(uploadedFiles)
-        
         
         axios.post(fusekiUrlUpdate, query, {
             headers: {
@@ -90,6 +93,8 @@ router.post('/upload/vocabularies', upload.array('files'), (req, res) => {
             });
         }).catch(error => {
             let message = (error.response?.status + error.response?.data) || error.message
+            console.log(message);
+            //fs.writeFileSync('/home/nicole/Scaricati/spqr_error.txt', query);   
             res.status(500).json({ 
                 message: 'Error from SPARQL end-point: ' + message, 
                 files: uploadedFiles,
@@ -108,7 +113,7 @@ router.post('/upload/vocabularies', upload.array('files'), (req, res) => {
     
   }else{
     deleteFiles(uploadedFiles);
-    let message = 'Multiple XML files is not supported';
+    let message = 'Multiple XML files are not supported';
     if(xmlFiles.length == 0)
       message = 'No XML files uploaded';        
     return res.status(400).json({ message });  
