@@ -228,7 +228,7 @@ router.post('/convert/:from/:to', (req, res) => {
     console.log(`Requesting conversion from ${from} to ${to}`); 
     let conversionFunction = null
     if(from === 'ttl' && to === 'xml'){
-        conversionFunction = Converter.turtle2RdfXml
+        conversionFunction = Converter.turtle2RdfXmlCustom
     }else if(from === 'xml' && to === 'ttl'){
         conversionFunction = Converter.rdfXml2Turtle
     }else if(from === to){
