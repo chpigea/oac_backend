@@ -27,13 +27,23 @@ describe('Converter', () => {
     });
   });
 
-it('should convert a turtle string to sparql UPSERT', (done) => {
+  it('should convert a turtle string to sparql UPSERT', (done) => {
     let inputTurtle = fs.readFileSync(__dirname + '/example-investigation-01.ttl', 'utf8');
     let sparql = converter.turtle2Sparql(inputTurtle)
     expect(sparql).to.be.a('string');
     expect(sparql.length).to.be.greaterThan(0);
-    console.log(sparql);
+    //console.log(sparql);
     done();
+  });
+
+  it('should convert a turtle string to Custom RDF/Xml', (done) => {
+    let inputTurtle = fs.readFileSync(__dirname + '/example-investigation-02.ttl', 'utf8');
+    converter.turtle2RdfXmlCustom(inputTurtle).then((sparql) => { 
+      expect(sparql).to.be.a('string');
+      expect(sparql.length).to.be.greaterThan(0);
+      console.log(sparql);
+      done();
+    })
   });
 
 })

@@ -12,6 +12,12 @@
 #@prefix skos: <http://www.w3.org/2004/02/skos/core> .
 #@prefix pref: <http://indagine/> .
 
+@prefix core: <http://data.sparna.fr/ontologies/sparnatural-config-core#> .
+@prefix dash: <http://datashapes.org/dash#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix skosxl: <http://www.w3.org/2008/05/skos-xl#> .
+@prefix volipi: <http://data.sparna.fr/ontologies/volipi#> .
+
 
 ex:E7ActivityShape # INDAGINE
     a sh:NodeShape, rdfs:Class ;
@@ -136,11 +142,13 @@ ex:E41Appellation02Shape # DENOMINAZIONE BENE
 ex:E55Type02Shape # TIPO QUESITO DIAGNOSTICO
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E55_Type ;
+    volipi:iconName "fa-solid fa-car" ;
     sh:property [
         sh:path ex:P2hastype02 ;
-		sh:class owl:Class ; # vocabolario QUESITO DIAGNOSTICO (8) id="quesito-diagnostico"
+        #dash:searchWidget core:TreeProperty ;
+        sh:class owl:Class ; # vocabolario QUESITO DIAGNOSTICO (8) id="quesito-diagnostico"
 		owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/quesito-diagnostico> ;
-		sh:name "Tipo" ;
+        sh:name "Tipo" ;
         sh:maxCount 1 ;
         sh:minCount 1 ; 
     ] ;
