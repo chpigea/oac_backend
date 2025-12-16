@@ -117,25 +117,35 @@ class Converter {
         // Determina tag principale dall'rdf:type
         const types = [...dataset.match(subject, rdf.namedNode('http://www.w3.org/1999/02/22-rdf-syntax-ns#type'))];
         const tagUri = types.length ? types[0].object.value : subject.value;
-        const tagName = Converter.qnameLocal(tagUri);
+        let tagName = Converter.qnameLocal(tagUri);
+        
+        const tagIsNumber = (typeof tagName === 'string' && tagName.trim() !== '' && !isNaN(tagName))
+        if(tagIsNumber) tagName = "_" + tagName; // Prefix numerici per XML
+        
+        //console.log("Building node: " + tagName + " for subject: " + subject.value)
 
         const elem = parent.ele(tagName).att('rdf:about', subject.value);
 
         // Itera predicati
-        const preds = new Set(dataset.match(subject).map(q => q.predicate.value));
+        const preds = new Set(dataset.match(subject).toArray().map(q => q.predicate.value));
         for (let p of Array.from(preds).sort()) {
             const predName = Converter.qnameLocal(p);
-            console.log("predName: " + predName)
-            const objects = dataset.match(subject, rdf.namedNode(p)).map(q => q.object);
+            //console.log(">>> predName: " + predName)
+            const objects = dataset.match(subject, rdf.namedNode(p)).toArray().map(q => q.object);
 
             for (let obj of objects) {
+                // Skip rdf:type as it's used for the tag name
+                if(predName === "type") continue;
+
                 const child = elem.ele(predName);
 
                 if (obj.termType === 'Literal') {
                     const lit = child.ele('rdfs:Literal').att('rdf:about', obj.value);
                     lit.ele('rdfs:label').txt(obj.value);
                 } else if (obj.termType === 'NamedNode' || obj.termType === 'BlankNode') {
+                    
                     Converter.buildNode(dataset, obj, child, visited);
+                    
                 } else {
                     child.txt(obj.value);
                 }
@@ -163,13 +173,32 @@ class Converter {
                 });
 
             const visited = new Set();
-            const subjects = Array.from(new Set(dataset.map(q => q.subject.value)))
-                .map(uri => rdf.namedNode(uri))
-                .sort((a, b) => a.value.localeCompare(b.value));
 
-            console.log(subjects)
+            const subjects = Array.from(
+                new Set(
+                    dataset.toArray().map(q => q.subject.value)
+                )
+            ).map(uri => rdf.namedNode(uri))
+            .sort((a, b) => a.value.localeCompare(b.value));
+
+            const objects = Array.from(
+                new Set(
+                    dataset.toArray().map(q => q.object.value)
+                )
+            ).map(uri => rdf.namedNode(uri))
+            .sort((a, b) => a.value.localeCompare(b.value));
+
             for (let s of subjects) {
-                Converter.buildNode(dataset, s, root, visited);
+                s["_isRoot"] = false;
+                if (objects.findIndex(o => o.value === s.value) == -1) {
+                    s["_isRoot"] = true;
+                    //console.log("Root subject: " + s.value);
+                }
+            }
+            
+            for (let s of subjects) {
+                if(s["_isRoot"])
+                    Converter.buildNode(dataset, s, root, visited);
             }
 
             const xml = root.end({ prettyPrint: true });
