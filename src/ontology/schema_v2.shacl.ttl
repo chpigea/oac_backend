@@ -61,7 +61,7 @@ ex:E29ActorShape # ATTORI
 
 ex:S13SampleShape # CAMPIONE
     a sh:NodeShape, rdfs:Class ;
-    sh:targetClass crm:S13_Sample ;
+    sh:targetClass j.0:S13_Sample ;
     sh:property [
         sh:path crm:P2_has_type ; 
         sh:node ex:E55Type05Shape ;
