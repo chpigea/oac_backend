@@ -29,6 +29,13 @@ const getSchema = function(format){
             filePath = 'schema_v2.shacl.ttl';
             fileType = 'text/turtle';
             break;
+        case 'fast_1':
+        case 'fast_2':
+        case 'fast_3':
+        case 'fast_4':
+            filePath = 'schema_' + format + '.ttl';
+            fileType = 'text/turtle';
+            break;
         case 'jsonld':
             filePath = 'schema_v1.shacl.jsonld';
             fileType = 'application/ld+json';
