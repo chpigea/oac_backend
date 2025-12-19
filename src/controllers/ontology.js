@@ -266,20 +266,26 @@ router.post('/convert/:from/:to', (req, res) => {
         }
     }
     let files = [inputFile.name];
-    conversionFunction(inputFile.name, outputFile.name).then(() => {
+    let input_data = inputFile.name;
+    if(from === 'ttl' && to === 'xml'){
+        input_data = content;
+    }
+    conversionFunction(input_data, outputFile.name).then(() => {
         let dt = new Date();
         let filename = `investigation-${dt.toISOString()}.${to}`;
         res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
         res.sendFile(outputFile.name, (err) => {
             if (err) {
+                console.log(err)
                 res.status(500).json({
                     success: false,
                     data: null,
                     message: `Error sending file: ${err}`   
                 });
-                files = [inputFile]
+                files = [inputFile.name]
+            }else{
+                files.push(outputFile.name)
             }
-            files.push(outputFile.name)
             removeFiles(files)
         });
     }).catch(err => {
