@@ -1,18 +1,16 @@
-@prefix sh:   <http://www.w3.org/ns/shacl#> .
-@prefix ex:   <http://example.org/shapes/> .
-@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
-@prefix owl:  <http://www.w3.org/2002/07/owl#> .
-@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
-@prefix basecpm: <http://ontome.net/ns/cpm/> .
-@prefix j.0: <http://www.cidoc-crm.org/extensions/crmsci/> . 
-@prefix crmsci: <http://www.ics.forth.gr/isl/CRMsci> .
-@prefix base: <http://www.ics.forth.gr/isl/CRMinf/> .
-@prefix volipi: <http://data.sparna.fr/ontologies/volipi#> .
-
-#@prefix skos: <http://www.w3.org/2004/02/skos/core> .
-#@prefix pref: <http://indagine/> .
+@prefix sh:   		<http://www.w3.org/ns/shacl#> .
+@prefix ex:   		<http://example.org/shapes/> .
+@prefix rdf:  		<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: 		<http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  		<http://www.w3.org/2001/XMLSchema#> .
+@prefix owl:  		<http://www.w3.org/2002/07/owl#> .
+@prefix crm:  		<http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix basecpm: 	<http://ontome.net/ns/cpm/> .
+@prefix j.0: 		<http://www.cidoc-crm.org/extensions/crmsci/> . 
+#@prefix crmsci: 	<http://www.ics.forth.gr/isl/CRMsci> .
+@prefix base: 		<http://www.ics.forth.gr/isl/CRMinf/> .
+#@prefix volipi: 	<http://data.sparna.fr/ontologies/volipi#> .
+#@prefix skos: 		<http://www.w3.org/2004/02/skos/core> .
 
 
 ex:E7Activity01Shape # INDAGINE
@@ -147,7 +145,7 @@ ex:E7Activity02Shape # ATTIVITA' DIAGNOSTICA
 ex:I4PropositionSetShape # ASSUNTI DI BASE 
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass base:I4_Proposition_Set ;
-	rdfs:label "Input" ;
+	rdfs:label "Assunti di base" ;
 	sh:property [
         sh:path base:J4i_is_subject_of ;
 		sh:node ex:I2Belief02Shape ; 
@@ -374,13 +372,13 @@ ex:S2SampleTaking01Shape # CAMPIONAMENTO
 		sh:maxCount 1 ;
     ] ;
     sh:property [
-        sh:path crmsci:O15_occupied ; 
+        sh:path j.0:O15_occupied ; 
         sh:node ex:S22SegmentofMatterShape ;
 		sh:name "Porzione identificata" ;
 		sh:maxCount 1 ;
     ] ;
     sh:property [
-        sh:path crmsci:O4_sampled_at ; 
+        sh:path j.0:O4_sampled_at ; 
         sh:node ex:E53Place01Shape ;
 		sh:name "Area di prelievo" ;
 		sh:maxCount 1 ;
@@ -469,7 +467,7 @@ ex:AllegatiGroup # RAGGRUPPAMENTO ALLEGATI
 	
 ex:S22SegmentofMatterShape # PORZIONE IDENTIFICATA
     a sh:NodeShape, rdfs:Class ;
-    sh:targetClass crmsci:S22_Segment_of_Matter ;
+    sh:targetClass j.0:S22_Segment_of_Matter ;
 	rdfs:label "Porzione identificata" ;
 	sh:property [
         sh:path ex:O15occupied ;
@@ -514,7 +512,7 @@ ex:E29DesignorProcedure01Shape # PROCESSO CAMPIONAMENTO
     sh:property [
         sh:path crm:P3_has_note ;
 		sh:datatype xsd:string ;
-		sh:name "Altro" ;
+		sh:name "Altro processo" ;
         sh:maxCount 1 ;
     ] .
 
@@ -540,7 +538,6 @@ ex:E29DesignorProcedure04Shape # PROCEDURA ASSOCIATA - PROCEDURA - ATTIVITA' DIA
         sh:maxCount 1 ;
         sh:minCount 1 ;
     ] .
-
 
 ex:S4ObservationShape # OSSERVAZIONE
     a sh:NodeShape, rdfs:Class ;
@@ -587,7 +584,6 @@ ex:S10MaterialSubstantial02Shape # MATERIALE PREVALENTE - SOTTOCAMPIONE
 		sh:name "Materiale prevalente" ;
         sh:maxCount 1 ;
     ] .
-
 
 ex:E14ConditionAssessmentShape # VALUTAZIONE CONDIZIONI
     a sh:NodeShape, rdfs:Class ;
@@ -919,8 +915,8 @@ ex:I2Belief01Shape # INQUADRAMENTO CRONOLOGICO
 	rdfs:label "Inquadramento cronologico" ;
     sh:property [
         sh:path ex:P140assignedattributeto ;
-		sh:class owl:Class ; # vocabolario INQUADRAMENTO CRONOLOGICO (9) id="unita-di-misura"
-		owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/unita-di-misura> ;
+		sh:class owl:Class ; # vocabolario INQUADRAMENTO CRONOLOGICO (9) id="inquadramento-cronologico"
+		owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/inquadramento-cronologico> ;
 		sh:name "Tipo" ;
         sh:maxCount 1 ;
     ] .
@@ -1001,14 +997,14 @@ ex:E55Type02Shape # TIPO QUESITO DIAGNOSTICO
         sh:path ex:P2hastype02 ;
 		sh:class owl:Class ; # vocabolario TIPO QUESITO DIAGNOSTICO (8) id="quesito-diagnostico"
 		owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/quesito-diagnostico> ;
-		sh:name "Tipo" ;
+		sh:name "Tipo quesito diagnostico" ;
         sh:maxCount 1 ;
         sh:minCount 1 ; 
     ] ;
     sh:property [
         sh:path crm:P3_has_note ;
 		sh:datatype xsd:string ;
-		sh:name "Altro" ;
+		sh:name "Altro quesito diagnostico" ;
         sh:maxCount 1 ;
     ] .
 
@@ -1020,7 +1016,7 @@ ex:E55Type03Shape # TIPOLOGIA ATTORI COINVOLTI
         sh:path crm:P1_is_defined_by ;
         sh:node ex:E41Appellation01Shape ;
 		sh:name "Tipologia attori" ;
-        #sh:maxCount 1 ; 
+        sh:maxCount 1 ; 
     ] .
 
 ex:E55Type04Shape # TIPOLOGIE CAMPIONE
@@ -1082,7 +1078,7 @@ ex:E55Type06Shape # TIPO CONDIZIONE AMBIENTALE
     sh:property [
         sh:path crm:P3_has_note ;
 		sh:datatype xsd:string ;
-		sh:name "Altro" ;
+		sh:name "Altra condizione ambientale" ;
         sh:maxCount 1 ;
     ] .
 
@@ -1111,7 +1107,7 @@ ex:E55Type08Shape # TIPO MATERIALE (in CAMPIONE, SOTTOCAMPIONE, ELEMENTO COSTRUT
     sh:property [
         sh:path crm:P3_has_note ;
 		sh:datatype xsd:string ;
-		sh:name "Altro" ;
+		sh:name "Altro materiale" ;
         sh:maxCount 1 ;
     ] .
 
@@ -1123,7 +1119,7 @@ ex:E55Type09Shape # TIPO CONTESTO
         sh:path ex:P2hastype09 ;
 		sh:class owl:Class ; # vocabolario TIPO CONTESTO (2) id="contesto"
 		owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/contesto> ;
-		sh:name "Tipo" ;
+		sh:name "Tipo contesto" ;
         sh:maxCount 1 ;
     ] .
 
@@ -1135,17 +1131,17 @@ ex:E55Type10Shape # TIPO ELEMENTO COSTRUTTIVO
         sh:path ex:P2hastype10 ;
 		sh:class owl:Class ; # vocabolario TIPO ELEMENTO COSTRUTTIVO (6) id="elemento-costruttivo"
 		owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/elemento-costruttivo> ;
-		sh:name "Tipo" ;
+		sh:name "Tipo elemento costruttivo" ;
         sh:maxCount 1 ;
     ] ;
     sh:property [
         sh:path crm:P3_has_note ;
 		sh:datatype xsd:string ;
-		sh:name "Altro" ;
+		sh:name "Altro elemento costruttivo" ;
         sh:maxCount 1 ;
     ] .
 
-ex:E55Type11Shape # TIPO CAMPIONE\SOTTOCAMPIONE
+ex:E55Type11Shape # TIPO SOTTOCAMPIONE (come CAMPIONE che è a parte)
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E55_Type ;
 	rdfs:label "Tipo campione-sottocampione" ;
@@ -1153,7 +1149,7 @@ ex:E55Type11Shape # TIPO CAMPIONE\SOTTOCAMPIONE
         sh:path ex:P2hastype11 ;
 		sh:class owl:Class ; # vocabolario TIPO CAMPIONE\SOTTOCAMPIONE (21) id="tipo-campione" NB: già usato ma in unico shape che raggruppava varie classi "tipologiche" quindi va ridefinito qui ...
 		owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/tipo-campione> ;
-		sh:name "Tipo" ;
+		sh:name "Tipo sottocampione" ;
         sh:maxCount 1 ;
     ] .
 
@@ -1165,7 +1161,7 @@ ex:E55Type12Shape # TIPO LUOGO ANALISI
         sh:path ex:P2hastype11 ;
 		sh:class owl:Class ; # vocabolario TIPO LUOGO ANALISI (10) id="luogo-di-analisi" 
 		owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/luogo-di-analisi> ;
-		sh:name "Tipo" ;
+		sh:name "Tipo luogo analisi" ;
         sh:maxCount 1 ;
     ] .
 
@@ -1177,7 +1173,7 @@ ex:E55Type13Shape # TIPOLOGIE ATTIVITA'
         sh:path ex:P2hastype13a ;
 		sh:class owl:Class ; # vocabolario FASE ANALISI (7) id="fase-di-analisi"
 		owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/fase-di-analisi> ;
-		sh:name "Fase_analisi" ;
+		sh:name "Fase analisi" ;
         sh:maxCount 1 ;
     ] ;
     sh:property [
@@ -1210,13 +1206,13 @@ ex:E55Type14Shape # TIPO MDALITA' INDAGINE
         sh:path ex:P2hastype14 ;
 		sh:class owl:Class ; # vocabolario TIPO MODALITA' INDAGINE (13) id="modalita-di-indagine"
 		owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/modalita-di-indagine> ;
-		sh:name "Tipo" ;
+		sh:name "Tipo modalità indagine" ;
         sh:maxCount 1 ;
     ] ;
     sh:property [
         sh:path crm:P3_has_note ;
 		sh:datatype xsd:string ;
-		sh:name "Altro" ;
+		sh:name "Altra modalità indagine" ;
         sh:maxCount 1 ;
     ] .
 
@@ -1228,13 +1224,13 @@ ex:E55Type15Shape # TIPO STRUMENTAZIONE
         sh:path ex:P2hastype15 ;
 		sh:class owl:Class ; # vocabolario STRUMENTAZIONE (18) id="strumentazione"
 		owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/strumentazione> ;
-		sh:name "Tipo" ;
+		sh:name "Tipo strumentazione" ;
         sh:maxCount 1 ;
     ] ;
     sh:property [
         sh:path crm:P3_has_note ;
 		sh:datatype xsd:string ;
-		sh:name "Altro" ;
+		sh:name "Altra strumentazione" ;
         sh:maxCount 1 ;
     ] .
 
@@ -1246,13 +1242,13 @@ ex:E55Type16Shape # TIPO MEDIUM
         sh:path ex:P2hastype16 ;
 		sh:class owl:Class ; # vocabolario MEDIUM (12) id="medium"
 		owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/medium> ;
-		sh:name "Tipo" ;
+		sh:name "Tipo medium" ;
         sh:maxCount 1 ;
     ] ;
     sh:property [
         sh:path crm:P3_has_note ;
 		sh:datatype xsd:string ;
-		sh:name "Altro" ;
+		sh:name "Altro medium" ;
         sh:maxCount 1 ;
     ] .
 
@@ -1264,7 +1260,7 @@ ex:E55Type17Shape # TIPO INPUT
         sh:path ex:P2hastype16 ;
 		sh:class owl:Class ; # vocabolario INPUT (24) id="input"
 		owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/input> ;
-		sh:name "Tipo" ;
+		sh:name "Tipo input" ;
         sh:maxCount 1 ;
     ] .
 #ex:S10MaterialSubstantial02Shape # MATERIALE PREVALENTE 1 - ELEMENTO COSTRUTTIVO
@@ -1309,13 +1305,13 @@ ex:CP42MaterialDecayShape # TIPO DEGRADO
         sh:path ex:PC51wasaffectedby ;
 		sh:class owl:Class ; # vocabolario TIPO DEGRADO (3) id="degrado"
 		owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/degrado> ;
-		sh:name "Tipo" ;
+		sh:name "Tipo degrado" ;
         sh:maxCount 1 ;
     ] ;
     sh:property [
         sh:path crm:P3_has_note ;
 		sh:datatype xsd:string ;
-		sh:name "Altro" ;
+		sh:name "Altro degrado" ;
         sh:maxCount 1 ;
     ] .
 
