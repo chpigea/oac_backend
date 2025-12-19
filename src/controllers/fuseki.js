@@ -262,6 +262,120 @@ router.post('/search/by-prefix', (req, res) => {
     });
     
 });
+//---------------------------------------------------
+router.get('/rdf/resourceOf', (req, res) => {
+    const iri = decodeURIComponent(req.query.iri);
+    const query = `
+        PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+        PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+        SELECT
+            ?predicate
+            ?object
+            (COALESCE(?skosLabel, ?rdfsLabel, STR(?object)) AS ?objectLabel)
+            (GROUP_CONCAT(DISTINCT STR(?objectClass); separator=", ") AS ?objectClasses)
+        WHERE {
+            BIND(${iri} AS ?subject)
+            ?subject ?predicate ?object .
+            # label dell’oggetto
+            OPTIONAL { ?object skos:prefLabel ?skosLabel }
+            OPTIONAL { ?object rdfs:label ?rdfsLabel }
+            # classi dell’oggetto (solo se è una IRI)
+            OPTIONAL {
+                FILTER(isIRI(?object))
+                ?object rdf:type ?objectClass .
+            }
+        }
+        GROUP BY ?predicate ?object ?skosLabel ?rdfsLabel
+        ORDER BY ?predicate
+    `
+    axios.post(fusekiUrl, `query=${encodeURIComponent(query)}`, {
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Accept': 'application/sparql-results+json'
+        }
+    }).then(response => {
+        const bindings = response.data.results.bindings;
+        let results = []
+        bindings.forEach(result => {
+            if(result.predicate){
+                results.push({
+                    predicate: result.predicate.value,
+                    object: {
+                        iri: result.object.value,
+                        label: result.objectLabel ? result.objectLabel.value : result.object.value,
+                        classes: result.objectClasses ? result.objectClasses.value : ""
+                    }
+                });
+            }
+        });
+        res.json({ 
+            success: true, 
+            data: results.sort((a, b) => a.predicate.localeCompare(b.predicate)),
+            message: null
+        });
+    }).catch(err => {
+        res.status(500).json({
+            success: false,
+            data: null,
+            message: `Error: ${err}`
+        });
+    });
+
+})
+
+router.get('/rdf/rootResource', (req, res) => {
+    const iri = decodeURIComponent(req.query.iri);
+    const query = `
+        PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+        PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+        SELECT
+        (COALESCE(?skosLabel, ?rdfsLabel, STR(?iri)) AS ?label)
+        (GROUP_CONCAT(DISTINCT STR(?class); separator=", ") AS ?classes)
+        WHERE {
+            BIND(${iri} AS ?iri)
+            OPTIONAL { ?iri rdf:type ?class }
+            OPTIONAL { ?iri skos:prefLabel ?skosLabel }
+            OPTIONAL { ?iri rdfs:label ?rdfsLabel }
+        }
+        GROUP BY ?iri ?skosLabel ?rdfsLabel`
+        console.log(query)
+    axios.post(fusekiUrl, `query=${encodeURIComponent(query)}`, {
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Accept': 'application/sparql-results+json'
+        }
+    }).then(response => {
+        const bindings = response.data.results.bindings;
+        let results = []
+        bindings.forEach(result => {
+            results.push({
+                label: result.label.value,
+                classes: result.classes.value
+            });
+        });
+        if(results.length > 0){
+            res.json({ 
+                success: true, 
+                data: results[0],
+                message: null
+            });
+        }else{
+            res.status(404).json({ 
+                success: false, 
+                data: null,
+                message: 'Resource not found'
+            });
+        }
+    }).catch(err => {
+        res.status(500).json({
+            success: false,
+            data: null,
+            message: `Error: ${err}`
+        });
+    });
+})
 //---------------------------------------------------------------
 router.get('/count/entities', (req, res) => {
     const query = `
