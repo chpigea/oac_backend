@@ -9,6 +9,7 @@ const {
 } = require('../models/fusekiConfig');
 const axios = require('axios');
 const Fuseki = require('../models/fuseki');
+const Attachments = require('../models/attachments');
 const { Parser, transformMode } = require('../models/vocabolaries/parser');
 const VocabParser = Parser.GET_INSTANCE();
 
@@ -38,6 +39,55 @@ const deleteFiles = function(files){
         });
     }
 }
+
+/**
+ * Upload a file inside the "attachments" table
+ */
+router.post('/attachment', upload.single('file'), (req, res) => {
+    if (!req.file) {
+        return res.status(400).json({ message: 'No file uploaded' });
+    }
+    const { mimetype, originalname, path } = req.file;
+    const buffer = fs.readFileSync(path);
+    const attachment = {
+        mimetype,
+        file: buffer
+    }
+    console.log("Attachment file: " + originalname)
+   Attachments.insert(attachment).then((resp)=>{
+        let protocol = process.env.OAC_EXPOSED_PROTOCOL || 'http';
+        let host = process.env.OAC_EXPOSED_HOST || '127.0.0.1';
+        if(host=="localhost") host="127.0.0.1";
+        let port = process.env.OAC_EXPOSED_PORT || '4000';
+        deleteFiles([req.file])
+        res.json({ 
+            success: resp.success,
+            data: protocol + '://' + host + ":" + port + "/backend/fuseki/attachment/" + resp.id
+        }); 
+   }).catch((e) => {
+        console.log(e)
+        deleteFiles([req.file]);
+        res.status(500).json({ 
+            message: 'Error uploading file [' + originalname + ']: '+ e.message
+        }); 
+   })
+})
+
+/**
+ * Retrieve an attachment given its ID
+ */
+router.get('/attachment/:id', (req, res) => {
+   let id = req.params.id || 0
+   Attachments.get(id).then((file)=>{
+        res.setHeader('Content-Type', file.mimetype);
+        res.send(file.file);
+   }).catch((e) => {
+        res.status(500).json({ 
+            message: 'Error retrieving file [' + id + ']: '+ e.message
+        }); 
+   })
+})
+
 /**
  * Route to upload vocabulary files
  * @route POST /fuseki/upload/vocabularies
