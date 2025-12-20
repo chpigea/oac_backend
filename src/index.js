@@ -16,7 +16,7 @@ const jwtLib = jwtLibFactory({
         `/${serviceName}/health`,
         `/${serviceName}/fuseki/upload/vocabularies`
     ],
-    signOptions: { expiresIn: '15m' }
+    signOptions: { expiresIn: '240m' }
 });
 
 const app = express();
