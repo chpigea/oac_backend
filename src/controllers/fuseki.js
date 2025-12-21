@@ -11,6 +11,7 @@ const axios = require('axios');
 const Fuseki = require('../models/fuseki');
 const Attachments = require('../models/attachments');
 const { Parser, transformMode } = require('../models/vocabolaries/parser');
+const CacheVocabularies = require('../models/vocabolaries/cache');
 const VocabParser = Parser.GET_INSTANCE();
 
 //---------------------------------------------------------------
@@ -30,14 +31,15 @@ const uploadStorage = multer.diskStorage({
 const upload = multer({ storage: uploadStorage });
 const deleteFiles = function(files){
     for(let i=0; i<files.length; i++){
-        fs.unlink(files[i].path, (err) => {
+        fs.unlinkSync(files[i].path, (err) => {
             if (err) {
-            console.error('Error deleting file:', files[i].path, err);
+                console.error('Error deleting file:', files[i].path, err);
             } else {
-            console.log('File deleted successfully:', files[i].path);
+                console.log('File deleted successfully:', files[i].path);
             }   
         });
     }
+    CacheVocabularies.clear()
 }
 
 /**
@@ -196,68 +198,76 @@ router.post('/upload/vocabularies', upload.array('files'), (req, res) => {
 //---------------------------------------------------------------
 router.get('/get-vocabolary-terms/:key', (req, res) => {
     const key = req.params.key;
-    const rootIRI = `<http://diagnostica/vocabularies/${key}>`;
-
-    let _query = `PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
-    CONSTRUCT {
-        ?concept ?p ?o .
-    }
-    WHERE {
-        ?concept (crm:P127_has_broader_term*) ${rootIRI} .
-        ?concept ?p ?o .
-    }`;
-
-    let query = `PREFIX crm:  <http://www.cidoc-crm.org/cidoc-crm/>
-        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-        PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-        PREFIX owl:  <http://www.w3.org/2002/07/owl#>
-
+    const cache = CacheVocabularies.check(key);
+    if(cache.exists){
+        res.setHeader('Content-Type', 'application/x-www-form-urlencoded');
+        res.sendFile(path.resolve(cache.path));
+    }else{
+        const rootIRI = `<http://diagnostica/vocabularies/${key}>`;
+        let _query = `PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
         CONSTRUCT {
-
-            ?concept a owl:Class ;
-                    rdfs:subClassOf ?parent ;
-                    skos:prefLabel ?label ;
-                    skos:closeMatch ?mappedConcept .
-
+            ?concept ?p ?o .
         }
         WHERE {
-
-            # Trovo tutti i concetti del vocabolario
             ?concept (crm:P127_has_broader_term*) ${rootIRI} .
+            ?concept ?p ?o .
+        }`;
 
-            # Recupero l'etichetta
-            OPTIONAL { ?concept rdfs:label ?label . }
+        let query = `PREFIX crm:  <http://www.cidoc-crm.org/cidoc-crm/>
+            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+            PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+            PREFIX owl:  <http://www.w3.org/2002/07/owl#>
 
-            # Prelevo il parent da broader term
-            OPTIONAL {
-                ?concept crm:P127_has_broader_term ?parent .
+            CONSTRUCT {
+
+                ?concept a owl:Class ;
+                        rdfs:subClassOf ?parent ;
+                        skos:prefLabel ?label ;
+                        skos:closeMatch ?mappedConcept .
+
             }
+            WHERE {
 
-            # Genero un mapping verso un URI esterno
-            BIND(
-                IRI(CONCAT("${rootIRI}", REPLACE(STR(?concept), "^.*[/#]", "")))
-                AS ?mappedConcept
-            )
+                # Trovo tutti i concetti del vocabolario
+                ?concept (crm:P127_has_broader_term*) ${rootIRI} .
 
-        }
-        ORDER BY ?label`
-    
-    axios.post(fusekiUrl, `query=${encodeURIComponent(query)}`,{
-        headers: {
-            'Accept': `text/turtle`,
-            'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        responseType: 'stream'
-    }).then(response => {
-        res.setHeader('Content-Type', response.headers['content-type']);
-        response.data.pipe(res);
-    }).catch(err => {
-        res.status(500).json({
-            success: false,
-            data: null,
-            message: `Error: ${err}`
+                # Recupero l'etichetta
+                OPTIONAL { ?concept rdfs:label ?label . }
+
+                # Prelevo il parent da broader term
+                OPTIONAL {
+                    ?concept crm:P127_has_broader_term ?parent .
+                }
+
+                # Genero un mapping verso un URI esterno
+                BIND(
+                    IRI(CONCAT("${rootIRI}", REPLACE(STR(?concept), "^.*[/#]", "")))
+                    AS ?mappedConcept
+                )
+
+            }
+            ORDER BY ?label`
+        
+        axios.post(fusekiUrl, `query=${encodeURIComponent(query)}`, {
+            headers: {
+                'Accept': `text/turtle`,
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            responseType: 'text'
+        }).then(response => {
+            res.setHeader('Content-Type', response.headers['content-type']);
+            CacheVocabularies.set(key, response.data); // salva come stringa
+            res.send(response.data);
+        }).catch(err => {
+            res.status(500).json({
+                success: false,
+                data: null,
+                message: `Error: ${err}`
+            });
         });
-    });
+    }
+
+    
 })
 //---------------------------------------------------------------
 
