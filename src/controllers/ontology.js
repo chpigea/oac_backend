@@ -124,11 +124,18 @@ router.post('/validate', (req, res) => {
 
 router.post('/form/save', (req, res) => {
     let dataset = req.body.turtle;
-    let uuid = req.body.uuid;
+    let id = req.body.uuid;
+    let uuid = null;
     try{
-        let updateQuery = Converter.turtle2Sparql(dataset);
+        const processQuad = function(quad){
+            if(quad.object.value == "http://indagine/" + id){
+                console.log(quad.subject.value + ' => ' + quad.object.value)
+                uuid = quad.subject.value.split("/").pop()
+            }
+        }
+        let updateQuery = Converter.turtle2Sparql(dataset, {processQuad});
         Investigations.save({
-            uuid, dataset, format: 'turtle'
+            id, uuid, dataset, format: 'turtle'
         }).then( () => {
             axios.post(fusekiUrlUpdate, updateQuery, {
                 headers: {

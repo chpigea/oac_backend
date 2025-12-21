@@ -51,12 +51,14 @@ class Converter {
         const parser = new Parser();
         const quads = parser.parse(turtle);
         const termToSparql = Converter.termToSparql;
+        const processQuad = opts.processQuad || null;
          // group objects by subject+predicate
         const groups = new Map(); // key -> { subj, pred, objects: Set() }
         for (const q of quads) {
             const s = q.subject;
             const p = q.predicate;
             const o = q.object;
+            if(processQuad) processQuad(q);
             const key = `${termToSparql(s)} ${termToSparql(p)}`;
             if (!groups.has(key)) groups.set(key, { subj: s, pred: p, objects: new Set() });
             groups.get(key).objects.add(termToSparql(o));
