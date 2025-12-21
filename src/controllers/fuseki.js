@@ -9,7 +9,9 @@ const {
 } = require('../models/fusekiConfig');
 const axios = require('axios');
 const Fuseki = require('../models/fuseki');
+const Attachments = require('../models/attachments');
 const { Parser, transformMode } = require('../models/vocabolaries/parser');
+const CacheVocabularies = require('../models/vocabolaries/cache');
 const VocabParser = Parser.GET_INSTANCE();
 
 //---------------------------------------------------------------
@@ -29,15 +31,65 @@ const uploadStorage = multer.diskStorage({
 const upload = multer({ storage: uploadStorage });
 const deleteFiles = function(files){
     for(let i=0; i<files.length; i++){
-        fs.unlink(files[i].path, (err) => {
+        fs.unlinkSync(files[i].path, (err) => {
             if (err) {
-            console.error('Error deleting file:', files[i].path, err);
+                console.error('Error deleting file:', files[i].path, err);
             } else {
-            console.log('File deleted successfully:', files[i].path);
+                console.log('File deleted successfully:', files[i].path);
             }   
         });
     }
+    CacheVocabularies.clear()
 }
+
+/**
+ * Upload a file inside the "attachments" table
+ */
+router.post('/attachment', upload.single('file'), (req, res) => {
+    if (!req.file) {
+        return res.status(400).json({ message: 'No file uploaded' });
+    }
+    const { mimetype, originalname, path } = req.file;
+    const buffer = fs.readFileSync(path);
+    const attachment = {
+        mimetype,
+        file: buffer
+    }
+    console.log("Attachment file: " + originalname)
+   Attachments.insert(attachment).then((resp)=>{
+        let protocol = process.env.OAC_EXPOSED_PROTOCOL || 'http';
+        let host = process.env.OAC_EXPOSED_HOST || '127.0.0.1';
+        if(host=="localhost") host="127.0.0.1";
+        let port = process.env.OAC_EXPOSED_PORT || '4000';
+        deleteFiles([req.file])
+        res.json({ 
+            success: resp.success,
+            data: protocol + '://' + host + ":" + port + "/backend/fuseki/attachment/" + resp.id
+        }); 
+   }).catch((e) => {
+        console.log(e)
+        deleteFiles([req.file]);
+        res.status(500).json({ 
+            message: 'Error uploading file [' + originalname + ']: '+ e.message
+        }); 
+   })
+})
+
+/**
+ * Retrieve an attachment given its ID
+ */
+router.get('/attachment/:id', (req, res) => {
+   let id = req.params.id || 0
+   Attachments.get(id).then((file)=>{
+        res.setHeader('Content-Type', file.mimetype);
+        res.send(file.file);
+   }).catch((e) => {
+        res.status(500).json({ 
+            message: 'Error retrieving file [' + id + ']: '+ e.message
+        }); 
+   })
+})
+
 /**
  * Route to upload vocabulary files
  * @route POST /fuseki/upload/vocabularies
@@ -146,68 +198,76 @@ router.post('/upload/vocabularies', upload.array('files'), (req, res) => {
 //---------------------------------------------------------------
 router.get('/get-vocabolary-terms/:key', (req, res) => {
     const key = req.params.key;
-    const rootIRI = `<http://diagnostica/vocabularies/${key}>`;
-
-    let _query = `PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
-    CONSTRUCT {
-        ?concept ?p ?o .
-    }
-    WHERE {
-        ?concept (crm:P127_has_broader_term*) ${rootIRI} .
-        ?concept ?p ?o .
-    }`;
-
-    let query = `PREFIX crm:  <http://www.cidoc-crm.org/cidoc-crm/>
-        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-        PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-        PREFIX owl:  <http://www.w3.org/2002/07/owl#>
-
+    const cache = CacheVocabularies.check(key);
+    if(cache.exists){
+        res.setHeader('Content-Type', 'application/x-www-form-urlencoded');
+        res.sendFile(path.resolve(cache.path));
+    }else{
+        const rootIRI = `<http://diagnostica/vocabularies/${key}>`;
+        let _query = `PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
         CONSTRUCT {
-
-            ?concept a owl:Class ;
-                    rdfs:subClassOf ?parent ;
-                    skos:prefLabel ?label ;
-                    skos:closeMatch ?mappedConcept .
-
+            ?concept ?p ?o .
         }
         WHERE {
-
-            # Trovo tutti i concetti del vocabolario
             ?concept (crm:P127_has_broader_term*) ${rootIRI} .
+            ?concept ?p ?o .
+        }`;
 
-            # Recupero l'etichetta
-            OPTIONAL { ?concept rdfs:label ?label . }
+        let query = `PREFIX crm:  <http://www.cidoc-crm.org/cidoc-crm/>
+            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+            PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+            PREFIX owl:  <http://www.w3.org/2002/07/owl#>
 
-            # Prelevo il parent da broader term
-            OPTIONAL {
-                ?concept crm:P127_has_broader_term ?parent .
+            CONSTRUCT {
+
+                ?concept a owl:Class ;
+                        rdfs:subClassOf ?parent ;
+                        skos:prefLabel ?label ;
+                        skos:closeMatch ?mappedConcept .
+
             }
+            WHERE {
 
-            # Genero un mapping verso un URI esterno
-            BIND(
-                IRI(CONCAT("${rootIRI}", REPLACE(STR(?concept), "^.*[/#]", "")))
-                AS ?mappedConcept
-            )
+                # Trovo tutti i concetti del vocabolario
+                ?concept (crm:P127_has_broader_term*) ${rootIRI} .
 
-        }
-        ORDER BY ?label`
-    
-    axios.post(fusekiUrl, `query=${encodeURIComponent(query)}`,{
-        headers: {
-            'Accept': `text/turtle`,
-            'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        responseType: 'stream'
-    }).then(response => {
-        res.setHeader('Content-Type', response.headers['content-type']);
-        response.data.pipe(res);
-    }).catch(err => {
-        res.status(500).json({
-            success: false,
-            data: null,
-            message: `Error: ${err}`
+                # Recupero l'etichetta
+                OPTIONAL { ?concept rdfs:label ?label . }
+
+                # Prelevo il parent da broader term
+                OPTIONAL {
+                    ?concept crm:P127_has_broader_term ?parent .
+                }
+
+                # Genero un mapping verso un URI esterno
+                BIND(
+                    IRI(CONCAT("${rootIRI}", REPLACE(STR(?concept), "^.*[/#]", "")))
+                    AS ?mappedConcept
+                )
+
+            }
+            ORDER BY ?label`
+        
+        axios.post(fusekiUrl, `query=${encodeURIComponent(query)}`, {
+            headers: {
+                'Accept': `text/turtle`,
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            responseType: 'text'
+        }).then(response => {
+            res.setHeader('Content-Type', response.headers['content-type']);
+            CacheVocabularies.set(key, response.data); // salva come stringa
+            res.send(response.data);
+        }).catch(err => {
+            res.status(500).json({
+                success: false,
+                data: null,
+                message: `Error: ${err}`
+            });
         });
-    });
+    }
+
+    
 })
 //---------------------------------------------------------------
 
@@ -262,6 +322,120 @@ router.post('/search/by-prefix', (req, res) => {
     });
     
 });
+//---------------------------------------------------
+router.get('/rdf/resourceOf', (req, res) => {
+    const iri = decodeURIComponent(req.query.iri);
+    const query = `
+        PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+        PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+        SELECT
+            ?predicate
+            ?object
+            (COALESCE(?skosLabel, ?rdfsLabel, STR(?object)) AS ?objectLabel)
+            (GROUP_CONCAT(DISTINCT STR(?objectClass); separator=", ") AS ?objectClasses)
+        WHERE {
+            BIND(${iri} AS ?subject)
+            ?subject ?predicate ?object .
+            # label dell’oggetto
+            OPTIONAL { ?object skos:prefLabel ?skosLabel }
+            OPTIONAL { ?object rdfs:label ?rdfsLabel }
+            # classi dell’oggetto (solo se è una IRI)
+            OPTIONAL {
+                FILTER(isIRI(?object))
+                ?object rdf:type ?objectClass .
+            }
+        }
+        GROUP BY ?predicate ?object ?skosLabel ?rdfsLabel
+        ORDER BY ?predicate
+    `
+    axios.post(fusekiUrl, `query=${encodeURIComponent(query)}`, {
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Accept': 'application/sparql-results+json'
+        }
+    }).then(response => {
+        const bindings = response.data.results.bindings;
+        let results = []
+        bindings.forEach(result => {
+            if(result.predicate){
+                results.push({
+                    predicate: result.predicate.value,
+                    object: {
+                        iri: result.object.value,
+                        label: result.objectLabel ? result.objectLabel.value : result.object.value,
+                        classes: result.objectClasses ? result.objectClasses.value : ""
+                    }
+                });
+            }
+        });
+        res.json({ 
+            success: true, 
+            data: results.sort((a, b) => a.predicate.localeCompare(b.predicate)),
+            message: null
+        });
+    }).catch(err => {
+        res.status(500).json({
+            success: false,
+            data: null,
+            message: `Error: ${err}`
+        });
+    });
+
+})
+
+router.get('/rdf/rootResource', (req, res) => {
+    const iri = decodeURIComponent(req.query.iri);
+    const query = `
+        PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+        PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+        SELECT
+        (COALESCE(?skosLabel, ?rdfsLabel, STR(?iri)) AS ?label)
+        (GROUP_CONCAT(DISTINCT STR(?class); separator=", ") AS ?classes)
+        WHERE {
+            BIND(${iri} AS ?iri)
+            OPTIONAL { ?iri rdf:type ?class }
+            OPTIONAL { ?iri skos:prefLabel ?skosLabel }
+            OPTIONAL { ?iri rdfs:label ?rdfsLabel }
+        }
+        GROUP BY ?iri ?skosLabel ?rdfsLabel`
+        console.log(query)
+    axios.post(fusekiUrl, `query=${encodeURIComponent(query)}`, {
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Accept': 'application/sparql-results+json'
+        }
+    }).then(response => {
+        const bindings = response.data.results.bindings;
+        let results = []
+        bindings.forEach(result => {
+            results.push({
+                label: result.label.value,
+                classes: result.classes.value
+            });
+        });
+        if(results.length > 0){
+            res.json({ 
+                success: true, 
+                data: results[0],
+                message: null
+            });
+        }else{
+            res.status(404).json({ 
+                success: false, 
+                data: null,
+                message: 'Resource not found'
+            });
+        }
+    }).catch(err => {
+        res.status(500).json({
+            success: false,
+            data: null,
+            message: `Error: ${err}`
+        });
+    });
+})
 //---------------------------------------------------------------
 router.get('/count/entities', (req, res) => {
     const query = `

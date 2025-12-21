@@ -14,6 +14,26 @@ class Investigations {
         }); 
     }
 
+    static search(text, limit=10, offset=0){
+        return new Promise(async (resolve, reject) => {
+            try{
+                const sql = `SELECT id, uuid
+                    FROM investigations
+                    WHERE dataset_search @@ to_tsquery('simple', ?)
+                        OR dataset ILIKE ?
+                    LIMIT ? OFFSET ?`;
+                const tsQuery = `${text}:*`;
+                const ilikeQuery = `%${text}%`;
+                const result = await db.raw(sql, 
+                    [tsQuery, ilikeQuery, limit, offset]
+                );
+                resolve(result.rows)
+            }catch(e){
+                reject(e)
+            }
+        }); 
+    }
+
     static getCounter(name){
         return new Promise(async (resolve, reject) => {
             try{

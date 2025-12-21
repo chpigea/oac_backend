@@ -51,12 +51,14 @@ class Converter {
         const parser = new Parser();
         const quads = parser.parse(turtle);
         const termToSparql = Converter.termToSparql;
+        const processQuad = opts.processQuad || null;
          // group objects by subject+predicate
         const groups = new Map(); // key -> { subj, pred, objects: Set() }
         for (const q of quads) {
             const s = q.subject;
             const p = q.predicate;
             const o = q.object;
+            if(processQuad) processQuad(q);
             const key = `${termToSparql(s)} ${termToSparql(p)}`;
             if (!groups.has(key)) groups.set(key, { subj: s, pred: p, objects: new Set() });
             groups.get(key).objects.add(termToSparql(o));
@@ -158,56 +160,63 @@ class Converter {
     static turtle2RdfXmlCustom(turtle, outRdfXmlPath=null) {
 
         return new Promise((resolve, reject) => {
-            const parser = new Parser();
-            const quads = parser.parse(turtle);
-            
-            const dataset = rdf.dataset();
-            for (const quad of quads) {
-                dataset.add(quad);
-            }
-
-            const root = create({ version: '1.0', encoding: 'UTF-8' })
-                .ele('rdf:RDF', {
-                    'xmlns:rdf': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
-                    'xmlns:rdfs': 'http://www.w3.org/2000/01/rdf-schema#'
-                });
-
-            const visited = new Set();
-
-            const subjects = Array.from(
-                new Set(
-                    dataset.toArray().map(q => q.subject.value)
-                )
-            ).map(uri => rdf.namedNode(uri))
-            .sort((a, b) => a.value.localeCompare(b.value));
-
-            const objects = Array.from(
-                new Set(
-                    dataset.toArray().map(q => q.object.value)
-                )
-            ).map(uri => rdf.namedNode(uri))
-            .sort((a, b) => a.value.localeCompare(b.value));
-
-            for (let s of subjects) {
-                s["_isRoot"] = false;
-                if (objects.findIndex(o => o.value === s.value) == -1) {
-                    s["_isRoot"] = true;
-                    //console.log("Root subject: " + s.value);
+            try{
+                const parser = new Parser();
+                const quads = parser.parse(turtle);
+                
+                const dataset = rdf.dataset();
+                for (const quad of quads) {
+                    dataset.add(quad);
                 }
+
+                const root = create({ version: '1.0', encoding: 'UTF-8' })
+                    .ele('rdf:RDF', {
+                        'xmlns:rdf': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
+                        'xmlns:rdfs': 'http://www.w3.org/2000/01/rdf-schema#'
+                    });
+
+                const visited = new Set();
+
+                const subjects = Array.from(
+                    new Set(
+                        dataset.toArray().map(q => q.subject.value)
+                    )
+                ).map(uri => rdf.namedNode(uri))
+                .sort((a, b) => a.value.localeCompare(b.value));
+
+                const objects = Array.from(
+                    new Set(
+                        dataset.toArray().map(q => q.object.value)
+                    )
+                ).map(uri => rdf.namedNode(uri))
+                .sort((a, b) => a.value.localeCompare(b.value));
+
+                for (let s of subjects) {
+                    s["_isRoot"] = false;
+                    if (objects.findIndex(o => o.value === s.value) == -1) {
+                        s["_isRoot"] = true;
+                        //console.log("Root subject: " + s.value);
+                    }
+                }
+                
+                for (let s of subjects) {
+                    if(s["_isRoot"])
+                        Converter.buildNode(dataset, s, root, visited);
+                }
+
+                const xml = root.end({ prettyPrint: true });
+                
+                console.log(xml)
+                if(outRdfXmlPath){
+                    fs.writeFileSync(outRdfXmlPath, xml, 'utf8');
+                }
+
+                resolve(xml) 
+            }catch(e){
+                console.log(e)
+                reject(e)    
             }
             
-            for (let s of subjects) {
-                if(s["_isRoot"])
-                    Converter.buildNode(dataset, s, root, visited);
-            }
-
-            const xml = root.end({ prettyPrint: true });
-            
-            if(outRdfXmlPath){
-                fs.writeFileSync(outRdfXmlPath, xml, 'utf8');
-            }
-
-            resolve(xml) 
         })
         
     }

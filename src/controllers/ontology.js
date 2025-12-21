@@ -124,11 +124,18 @@ router.post('/validate', (req, res) => {
 
 router.post('/form/save', (req, res) => {
     let dataset = req.body.turtle;
-    let uuid = req.body.uuid;
+    let id = req.body.uuid;
+    let uuid = null;
     try{
-        let updateQuery = Converter.turtle2Sparql(dataset);
+        const processQuad = function(quad){
+            if(quad.object.value == "http://indagine/" + id){
+                console.log(quad.subject.value + ' => ' + quad.object.value)
+                uuid = quad.subject.value.split("/").pop()
+            }
+        }
+        let updateQuery = Converter.turtle2Sparql(dataset, {processQuad});
         Investigations.save({
-            uuid, dataset, format: 'turtle'
+            id, uuid, dataset, format: 'turtle'
         }).then( () => {
             axios.post(fusekiUrlUpdate, updateQuery, {
                 headers: {
@@ -266,20 +273,26 @@ router.post('/convert/:from/:to', (req, res) => {
         }
     }
     let files = [inputFile.name];
-    conversionFunction(inputFile.name, outputFile.name).then(() => {
+    let input_data = inputFile.name;
+    if(from === 'ttl' && to === 'xml'){
+        input_data = content;
+    }
+    conversionFunction(input_data, outputFile.name).then(() => {
         let dt = new Date();
         let filename = `investigation-${dt.toISOString()}.${to}`;
         res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
         res.sendFile(outputFile.name, (err) => {
             if (err) {
+                console.log(err)
                 res.status(500).json({
                     success: false,
                     data: null,
                     message: `Error sending file: ${err}`   
                 });
-                files = [inputFile]
+                files = [inputFile.name]
+            }else{
+                files.push(outputFile.name)
             }
-            files.push(outputFile.name)
             removeFiles(files)
         });
     }).catch(err => {
