@@ -98,7 +98,7 @@ ex:E7Activity02Shape # ATTIVITA' DIAGNOSTICA
 		sh:path [sh:inversePath crm:P134i_was_continued_by] ; # usata proprietà inversa di P134_continued ...
         sh:node ex:E7Activity03Shape ;
 		sh:name "Analisi associata" ;
-        sh:maxCount 1 ;
+        #sh:maxCount 1 ;
     ] ;
     sh:property [
         sh:path crm:P33_used_specific_technique ;
@@ -370,8 +370,7 @@ ex:E29DesignorProcedure03Shape # PROCEDURA
         sh:path crm:P69_has_association_with ;
 		sh:node ex:E29DesignorProcedure04Shape ;
 		sh:name "Procedura associata" ;
-        sh:maxCount 1 ;
-        sh:minCount 1 ;
+        #sh:maxCount 1 ;
     ] .
 
 ex:E1CRMEntityShape # FINALITA' INDAGINE
@@ -696,7 +695,7 @@ ex:E29DesignorProcedure02Shape # PROCESSO SOTTOCAMPIONAMENTO
         sh:maxCount 1 ;
     ] .
 
-ex:E29DesignorProcedure04Shape # PROCEDURA ASSOCIATA - PROCEDURA - ATTIVITA' DIAGNOSTICA
+ex:E29DesignorProcedure04Shape # PROCEDURA ASSOCIATA (in PROCEDURA di ATTIVITA' DIAGNOSTICA)
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E29_Design_or_Procedure ;
 	rdfs:label "Protocollo procedura associata" ;
@@ -705,7 +704,6 @@ ex:E29DesignorProcedure04Shape # PROCEDURA ASSOCIATA - PROCEDURA - ATTIVITA' DIA
 		sh:node ex:E42Identifier09Shape ;
 		sh:name "Protocollo procedura associata" ;
         sh:maxCount 1 ;
-        sh:minCount 1 ;
     ] .
 ex:S4ObservationShape # OSSERVAZIONE
     a sh:NodeShape, rdfs:Class ;
@@ -811,7 +809,7 @@ ex:CP2ArchitectureWorkShape # BENE DI RIFERIMENTO
 	sh:property [
         sh:path crm:P48_has_preferred_identifier ;
 		sh:node ex:E42Identifier04Shape ;
-		sh:name "ID VIR" ;
+		sh:name "ID bene" ;
 		sh:maxCount 1 ;
     ] ;
 	sh:property [
@@ -1049,13 +1047,13 @@ ex:E42Identifier13Shape # ID COMPONENTE SPECIFICO
         sh:maxCount 1 ;
     ] .
 
-ex:E42Identifier14Shape # ID COMPONENTE SPECIFICO
+ex:E42Identifier14Shape # ID REPORT
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E42_Identifier ;
-	rdfs:label "ID componente specifico" ;
+	rdfs:label "ID report" ;
 	sh:property [
         sh:path indagine:id_report ;
-		sh:name "ID Report" ;
+		sh:name "ID report" ;
 		sh:description "http://indagine/attivita_diagnostica/report/$SEQ5$" ;
         sh:nodeKind sh:IRI ;
         sh:maxCount 1 ;
@@ -1264,7 +1262,7 @@ ex:E55Type01Shape # TIPO INDAGINE
 		#sh:in ( "Tipo indagine A" "Tipo indagine B" ) ;
 		sh:class owl:Class ; # vocabolario TIPO INDAGINE (22) id="tipo-indagine"
 		owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/tipo-indagine> ;
-		sh:name "Tipo" ;
+		sh:name "Tipo indagine" ;
         sh:maxCount 1 ;
         sh:minCount 1 ; 
     ] .
