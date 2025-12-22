@@ -111,14 +111,12 @@ ex:E41Appellation01Shape # ENTE E SCHEDATORE
     sh:targetClass crm:E41_Appellation ;
 	rdfs:label "Ente richiedente e schedatore" ;
     sh:property [
-        #sh:path ex:ente_richiedente ;
         sh:path indagine:ente_richiedente ;
 		sh:datatype xsd:string ;
 		sh:name "Ente richiedente" ;
         sh:maxCount 1 ; 
     ] ;
     sh:property [
-        #sh:path ex:schedatore ;
         sh:path indagine:schedatore ;
 		sh:datatype xsd:string ;
 		sh:name "Schedatore" ;
@@ -130,7 +128,6 @@ ex:E41Appellation02Shape # DENOMINAZIONE BENE
     sh:targetClass crm:E41_Appellation ;
 	rdfs:label "Denominazione bene" ;
 	sh:property [
-        #sh:path ex:P1isidentifiedby ;
         sh:path indagine:bene_di_riferimento ;
 		sh:datatype xsd:string ;
         sh:name "Denominazione bene" ;
@@ -143,7 +140,6 @@ ex:E55Type02Shape # TIPO QUESITO DIAGNOSTICO
 	rdfs:label "Tipo quesito diagnostico" ;
     #volipi:iconName "fa-solid fa-car" ;
     sh:property [
-        #sh:path ex:P2hastype02 ;
         sh:path indagine:tipo_quesito_diagnostico ;
         sh:class owl:Class ; # vocabolario QUESITO DIAGNOSTICO (8) id="quesito-diagnostico"
 		owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/quesito-diagnostico> ;
