@@ -326,7 +326,7 @@ ex:I5InferenceMakingShape # INFERENZA
 
 ex:E70ThingShape # STRUMENTO 
     a sh:NodeShape, rdfs:Class ;
-    sh:targetClass crm:E29_Design_or_Procedure ;
+    sh:targetClass crm:E70_Thing ;
 	rdfs:label "Strumento" ;
 	sh:property [
         sh:path crm:P2_has_type ;
@@ -728,33 +728,33 @@ ex:S4ObservationShape # OSSERVAZIONE
 ex:S10MaterialSubstantial01Shape # MATERIALE PREVALENTE - CAMPIONE
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass j.0:S10_Material_Substantial ;
-	rdfs:label "Materiale" ;
+	rdfs:label "Materiale campione" ;
     sh:property [
         sh:path crm:P2_has_type ;
         sh:node ex:E55Type08Shape ;
-		sh:name "Materiale" ;
+		sh:name "Materiale campione" ;
         sh:maxCount 1 ;
     ] .
 
 ex:S10MaterialSubstantial02Shape # MATERIALE PREVALENTE - SOTTOCAMPIONE
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass j.0:S10_Material_Substantial ;
-	rdfs:label "Materiale" ;
+	rdfs:label "Materiale sottocampione" ;
     sh:property [
         sh:path crm:P2_has_type ;
         sh:node ex:E55Type08Shape ;
-		sh:name "Materiale" ;
+		sh:name "Materiale sottocampione" ;
         sh:maxCount 1 ;
     ] .
 
 ex:S10MaterialSubstantial03Shape # MATERIALE SPECIFICO - OUTPUT
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass j.0:S10_Material_Substantial ;
-	rdfs:label "Materiale" ;
+	rdfs:label "Materiale output" ;
     sh:property [
         sh:path crm:P2_has_type ;
         sh:node ex:E55Type08Shape ;
-		sh:name "Materiale" ;
+		sh:name "Materiale output" ;
         #sh:maxCount 1 ;
     ] .
 
@@ -1248,12 +1248,6 @@ ex:E55Type01Shape # TIPO INDAGINE
 		#sh:class owl:Class ; # vocabolario TIPO INDAGINE (22) id="tipo-indagine"
 		sh:name "Tipo indagine" ;
         sh:maxCount 1 ;
-    ] ;
-    sh:property [
-        sh:path crm:P103_was_intended_for ;
-        sh:node ex:E55Type02Shape ;
-		sh:name "Tipo quesito diagnostico" ;
-        sh:maxCount 1 ; 
     ] .
 
 ex:E55Type02Shape # TIPO QUESITO DIAGNOSTICO
