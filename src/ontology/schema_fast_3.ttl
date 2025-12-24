@@ -70,7 +70,7 @@ ex:E7Activity02Shape # ATTIVITA' DIAGNOSTICA
 	
 ex:E70ThingShape # STRUMENTO 
     a sh:NodeShape, rdfs:Class ;
-    sh:targetClass crm:E29_Design_or_Procedure ;
+    sh:targetClass crm:E70_Thing ;
 	rdfs:label "Strumento" ;
 	sh:property [
         sh:path crm:P2_has_type ;
@@ -220,7 +220,6 @@ ex:E55Type13Shape # TECNICA DIAGNOSTICA
 		owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/tecnica-diagnostica> ;
 		sh:name "Tecnica diagnostica" ;
         sh:maxCount 1 ;
-        sh:minCount 1 ; 
     ] .
 
 ex:E55Type14Shape # TIPO MDALITA' INDAGINE
