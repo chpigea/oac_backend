@@ -29,6 +29,10 @@ const getSchema = function(format){
             filePath = 'schema_v2.shacl.ttl';
             fileType = 'text/turtle';
             break;
+        case 'advanced':
+            filePath = 'schema_full_search.ttl';
+            fileType = 'text/turtle';
+            break;
         case 'fast_1':
         case 'fast_2':
         case 'fast_3':
