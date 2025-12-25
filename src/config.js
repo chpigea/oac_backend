@@ -17,7 +17,8 @@ function loadConfig() {
   config.exposed.protocol = process.env.OAC_EXPOSED_PROTOCOL || config.exposed.protocol;
   config.exposed.host = process.env.OAC_EXPOSED_HOST || config.exposed.host;
   config.exposed.port = process.env.OAC_EXPOSED_PORT || config.exposed.port;
-
+  if(config.exposed.host == 'localhost') config.exposed.host = '127.0.0.1'
+  
   return config;
 }
 
