@@ -17,18 +17,25 @@ class Investigations {
     static search(text, limit=10, offset=0){
         return new Promise(async (resolve, reject) => {
             try{
-                const sql = `SELECT id, uuid
-                    FROM investigations
-                    WHERE dataset_search @@ to_tsquery('simple', ?)
-                        OR dataset ILIKE ?
-                    LIMIT ? OFFSET ?`;
+                const sql = `SELECT 
+                    id, uuid,
+                    array_to_string(
+                        regexp_split_to_array(?,'[^[:alnum:]_/:]+')
+                        ,','
+                    ) as label
+                FROM investigations
+                WHERE dataset_search @@ plainto_tsquery('simple', ?)
+                    OR dataset ILIKE ?
+                LIMIT ? OFFSET ?`
+                const txtQuery = `${text}`;
                 const tsQuery = `${text}:*`;
                 const ilikeQuery = `%${text}%`;
                 const result = await db.raw(sql, 
-                    [tsQuery, ilikeQuery, limit, offset]
+                    [txtQuery, tsQuery, ilikeQuery, limit, offset]
                 );
                 resolve(result.rows)
             }catch(e){
+                console.log(e)
                 reject(e)
             }
         }); 

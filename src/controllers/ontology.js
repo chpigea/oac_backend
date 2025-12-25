@@ -130,10 +130,14 @@ router.post('/form/save', (req, res) => {
         const processQuad = function(quad){
             if(quad.object.value == "http://indagine/" + id){
                 console.log(quad.subject.value + ' => ' + quad.object.value)
-                uuid = quad.subject.value.split("/").pop()
+                //uuid = quad.subject.value.split("/").pop()
             }
         }
-        let updateQuery = Converter.turtle2Sparql(dataset, {processQuad});
+        const processRoot = function(rootUuid){
+            console.log("rootUuid: " + rootUuid)
+            uuid = rootUuid
+        }
+        let updateQuery = Converter.turtle2Sparql(dataset, {processQuad, processRoot});
         Investigations.save({
             id, uuid, dataset, format: 'turtle'
         }).then( () => {
@@ -184,6 +188,32 @@ router.get('/form/:uuid', (req, res) => {
         });
     });    
 });
+
+router.post('/form/search', (req, res) => {
+    let query = req.body.query
+    let limit = req.body.limit
+    let offset = req.body.offset || 0
+    // Controlla se query è un numero intero (anche se stringa)
+    if(!isNaN(query) && Number.isInteger(Number(query))) {
+        query = 'indagine:' + query
+    }
+    if(limit < 1) limit = 1
+    console.log("request received: " + JSON.stringify(req.body))
+    Investigations.search(query, limit, offset).then((rows)=>{
+        res.status(200).json({
+            success: true,
+            data: rows,
+            message: null
+        });
+    }).catch((err)=>{
+        res.status(500).json({
+            success: false,
+            data: null,
+            message: `Error seraching data: ${err}`   
+        });
+    })
+    
+})
 
 router.get('/schema/:type/:what', (req, res) => {
     console.log(`Requesting SHACL schema in format: ${req.params.type}`); 

@@ -46,12 +46,15 @@ class Converter {
         return `${value}`;
     }
 
+
+
     static turtle2Sparql(turtle, opts={}){
         const graph = opts.graph || null; // if null -> default graph
         const parser = new Parser();
         const quads = parser.parse(turtle);
         const termToSparql = Converter.termToSparql;
         const processQuad = opts.processQuad || null;
+        const processRoot = opts.processRoot || null;
          // group objects by subject+predicate
         const groups = new Map(); // key -> { subj, pred, objects: Set() }
         for (const q of quads) {
@@ -62,6 +65,14 @@ class Converter {
             const key = `${termToSparql(s)} ${termToSparql(p)}`;
             if (!groups.has(key)) groups.set(key, { subj: s, pred: p, objects: new Set() });
             groups.get(key).objects.add(termToSparql(o));
+        }
+
+        if(processRoot){
+            const rootQuads = Converter.findRootSubjects(quads);
+            if(rootQuads.length){
+                const rootUuid = rootQuads[0].id.split("/").pop()
+                processRoot(rootUuid);
+            }
         }
 
         // build SPARQL update parts
@@ -96,6 +107,34 @@ class Converter {
         // join with double newline for readability
         return parts.join('\n\n');
         
+    }
+
+    //------------------------------------------------------------------------------------
+    // Trova i soggetti "root" di una lista di quads (soggetti che non sono oggetto di nessun altro quad)
+
+    static findRootSubjects(quads) {
+        const subjects = new Set();
+        const objects = new Set();
+
+        for (const quad of quads) {
+            subjects.add(quad.subject.value);
+            if (quad.object.termType === 'NamedNode' || quad.object.termType === 'BlankNode') {
+                objects.add(quad.object.value);
+            }
+        }
+
+        // Root = soggetti che non appaiono mai come oggetto
+        const rootValues = [...subjects].filter(s => !objects.has(s));
+
+        // Ritorna i NamedNode originali
+        const subjectMap = new Map();
+        for (const quad of quads) {
+            if (!subjectMap.has(quad.subject.value)) {
+                subjectMap.set(quad.subject.value, quad.subject);
+            }
+        }
+
+        return rootValues.map(v => subjectMap.get(v)).sort((a, b) => a.value.localeCompare(b.value));
     }
 
     //------------------------------------------------------------------------------------
