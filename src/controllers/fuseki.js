@@ -256,6 +256,7 @@ router.get('/get-vocabolary-terms/:key', (req, res) => {
             responseType: 'text'
         }).then(response => {
             res.setHeader('Content-Type', response.headers['content-type']);
+            res.header('Access-Control-Allow-Origin', '*');
             CacheVocabularies.set(key, response.data); // salva come stringa
             res.send(response.data);
         }).catch(err => {
