@@ -138,6 +138,18 @@ ex:E7Activity02Shape # ATTIVITA' DIAGNOSTICA
         sh:node ex:E31DocumentShape ;
 		sh:name "Report" ;
 		sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path basecpm:PC43i_uses ;
+        sh:node ex:CP2ArchitectureWorkShape ;
+		sh:name "Bene di riferimento" ;
+		sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path crm:P12_occurred_in_the_presence_of ;
+        sh:node ex:S13Sample01Shape ;
+		sh:name "Campione" ;
+        sh:maxCount 1 ;
     ] .
 
 ex:E31DocumentShape # REPORT 
@@ -219,6 +231,12 @@ ex:E13AttributeAssignmentShape # OUTPUT
         sh:node ex:E39Actor03Shape ; 
 		sh:name "Competenza attore" ;
 		sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path crm:P67i_is_referred_to_by ; 
+        sh:node ex:E31DocumentShape ;
+		sh:name "Report" ;
+		sh:maxCount 1 ;
     ] .
 
 ex:E18PhysicalThingShape # COMPONENTI SPECIFICI 
@@ -266,10 +284,34 @@ ex:E73InformationObject02Shape # MEDIUM
         sh:maxCount 1 ;
     ] ;
 	sh:property [
-        sh:path [sh:inversePath crm:P67_refers_to] ; # usata proprietà inversa di P67i_is_referred_to_by ...
+        sh:path crm:P67i_is_referred_to_by ;
 		sh:node ex:E73InformationObject01Shape ;
 		sh:name "Link" ;
         sh:maxCount 1 ;
+    ] ;
+	sh:property [
+        sh:path crm:P67_refers_to ;
+		sh:node ex:E42Identifier10Shape ;
+		sh:name "Specifiche tecniche" ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path crm:P15i_influenced ;
+        sh:node ex:E13AttributeAssignmentShape ; 
+		sh:name "Output" ;
+        sh:maxCount 1 ;
+    #] ;
+	#sh:property [
+    #    sh:path crm:P67_refers_to ;
+	#	sh:node ex:I5InferenceMakingShape ;
+	#	sh:name "Inferenza" ;
+    #    sh:maxCount 1 ;
+    #] ;
+	#sh:property [
+    #    sh:path crm:P67_refers_to ;
+	#	sh:node ex:S5InferenceMakingShape ;
+	#	sh:name "Inferenza" ;
+    #    sh:maxCount 1 ;
     ] .
 	
 ex:E73InformationObject03Shape # SOFTWARE 
@@ -280,12 +322,6 @@ ex:E73InformationObject03Shape # SOFTWARE
         sh:path crm:P48_has_preferred_identifier ;
 		sh:node ex:E42Identifier11Shape ;
 		sh:name "Codifica software" ;
-        sh:maxCount 1 ;
-    ] ;
-	sh:property [
-        sh:path crm:P67_refers_to ;
-		sh:node ex:S5InferenceMakingShape ;
-		sh:name "Inferenza" ;
         sh:maxCount 1 ;
     ] .
 
@@ -301,31 +337,31 @@ ex:E73InformationObject04Shape # ALLEGATO REPORT
         sh:maxCount 1 ;
     ] .
 
-ex:S5InferenceMakingShape # INFERENZA 
-    a sh:NodeShape, rdfs:Class ;
-    sh:targetClass j.0:S5_Inference_Making ;
-	rdfs:label "Inferenza" ;
-	sh:property [
-        sh:path indagine:inferenza ;
-		sh:datatype xsd:string ;
-		sh:name "Inferenza" ;
-        sh:maxCount 1 ;
-    ] .
-
-ex:I5InferenceMakingShape # INFERENZA 
-    a sh:NodeShape, rdfs:Class ;
-    sh:targetClass base:S5_Inference_Making ;
-	rdfs:label "Inferenza" ;
-	sh:property [
-        sh:path indagine:inferenza ;
-		sh:datatype xsd:string ;
-		sh:name "Inferenza" ;
-        sh:maxCount 1 ;
-    ] .
+#ex:S5InferenceMakingShape # INFERENZA 
+#    a sh:NodeShape, rdfs:Class ;
+#    sh:targetClass j.0:S5_Inference_Making ;
+#	rdfs:label "Inferenza" ;
+#	sh:property [
+#        sh:path indagine:inferenza ;
+#		sh:datatype xsd:string ;
+#		sh:name "Inferenza" ;
+#        sh:maxCount 1 ;
+#    ] .
+#
+#ex:I5InferenceMakingShape # INFERENZA 
+#    a sh:NodeShape, rdfs:Class ;
+#    sh:targetClass base:S5_Inference_Making ;
+#	rdfs:label "Inferenza" ;
+#	sh:property [
+#        sh:path indagine:inferenza ;
+#		sh:datatype xsd:string ;
+#		sh:name "Inferenza" ;
+#        sh:maxCount 1 ;
+#    ] .
 
 ex:E70ThingShape # STRUMENTO 
     a sh:NodeShape, rdfs:Class ;
-    sh:targetClass crm:E29_Design_or_Procedure ;
+    sh:targetClass crm:E70_Thing ;
 	rdfs:label "Strumento" ;
 	sh:property [
         sh:path crm:P2_has_type ;
@@ -366,6 +402,12 @@ ex:E29DesignorProcedure03Shape # PROCEDURA
         sh:path crm:P69_has_association_with ;
 		sh:node ex:E29DesignorProcedure04Shape ;
 		sh:name "Procedura associata" ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path crm:P67_refers_to ; 
+        sh:node ex:E70ThingShape ; 
+		sh:name "Strumento" ;
         sh:maxCount 1 ;
     ] .
 
@@ -522,6 +564,12 @@ ex:S2SampleTaking01Shape # CAMPIONAMENTO
         sh:path j.0:O4_sampled_at ; 
         sh:node ex:E53Place01Shape ;
 		sh:name "Area di prelievo" ;
+		sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path crm:P8_took_place_on_or_within ; 
+        sh:node ex:CP20ConstructionWorkShape ;
+		sh:name "Elemento costruttivo" ;
 		sh:maxCount 1 ;
     ] .
 
@@ -722,33 +770,51 @@ ex:S4ObservationShape # OSSERVAZIONE
 ex:S10MaterialSubstantial01Shape # MATERIALE PREVALENTE - CAMPIONE
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass j.0:S10_Material_Substantial ;
-	rdfs:label "Materiale" ;
+	rdfs:label "Materiale campione" ;
     sh:property [
         sh:path crm:P2_has_type ;
         sh:node ex:E55Type08Shape ;
-		sh:name "Materiale" ;
+		sh:name "Materiale campione" ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+		sh:path [sh:inversePath j.0:O25i_is_contained_in] ; # usata proprietà inversa di O25_contains ...
+        sh:node ex:S10MaterialSubstantial03Shape ; # verificare se invece punta anch'esso a ex:E55Type08Shape ...
+		sh:name "Materiale output" ;
         sh:maxCount 1 ;
     ] .
 
 ex:S10MaterialSubstantial02Shape # MATERIALE PREVALENTE - SOTTOCAMPIONE
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass j.0:S10_Material_Substantial ;
-	rdfs:label "Materiale" ;
+	rdfs:label "Materiale prevalente" ;
     sh:property [
         sh:path crm:P2_has_type ;
         sh:node ex:E55Type08Shape ;
-		sh:name "Materiale" ;
+		sh:name "Materiale prevalente" ;
         sh:maxCount 1 ;
     ] .
 
 ex:S10MaterialSubstantial03Shape # MATERIALE SPECIFICO - OUTPUT
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass j.0:S10_Material_Substantial ;
-	rdfs:label "Materiale" ;
+	rdfs:label "Materiale specifico" ;
     sh:property [
         sh:path crm:P2_has_type ;
         sh:node ex:E55Type08Shape ;
-		sh:name "Materiale" ;
+		sh:name "Materiale specifico" ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path j.0:O25i_is_contained_in ;
+        sh:node ex:CP2ArchitectureWorkShape ;
+		sh:name "Bene riferimento" ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path [sh:inversePath j.0:O25_contains] ; # usata proprietà inversa di O25i_is_contained_in ...
+        sh:node ex:S13Sample01Shape ;
+		sh:name "Campione" ;
         sh:maxCount 1 ;
     ] .
 
@@ -783,6 +849,12 @@ ex:CP41EnvironmentalObservableEntity01Shape # STATO CONSERVAZIONE - CONDIZIONE A
         sh:node ex:E55Type06Shape ;
 		sh:name "Condizione ambientale" ;
         sh:maxCount 1 ;
+    ] ;
+	sh:property [
+        sh:path basecpm:PC1_affects ;
+        sh:node ex:E55Type13aShape ;
+		sh:name "Tecnica diagnostica" ;
+		sh:maxCount 1 ;
     ] .
 
 ex:CP2ArchitectureWorkShape # BENE DI RIFERIMENTO
@@ -1174,12 +1246,6 @@ ex:I2Belief02Shape # INPUT
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass base:I2_Belief ;
 	rdfs:label "Input" ;
-	sh:property [
-        sh:path base:J1i_was_premise_for ;
-		sh:node ex:I5InferenceMakingShape ;
-		sh:name "Inferenza" ;
-        sh:maxCount 1 ;
-    ] ;
     sh:property [
         sh:path crm:P2_has_type ;
 		sh:node ex:E55Type17Shape ;
@@ -1251,6 +1317,12 @@ ex:E55Type01Shape # TIPO INDAGINE
 		owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/tipo-indagine> ;
 		sh:name "Tipo indagine" ;
         sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path crm:P103_was_intended_for ;
+        sh:node ex:E55Type02Shape ;
+		sh:name "Tipo quesito diagnostico" ;
+        sh:maxCount 1 ; 
     ] .
 
 ex:E55Type02Shape # TIPO QUESITO DIAGNOSTICO
@@ -1513,11 +1585,17 @@ ex:E55Type18Shape # TIPO OUTPUT
 ex:S10CP9MaterialShape # MATERIALE PREVALENTE - ELEMENTO COSTRUTTIVO
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass j.0:S10_Material_Substantial, basecpm:CP9_Building_Material ;
-	rdfs:label "Materiale" ;
+	rdfs:label "Materiale prevalente" ;
     sh:property [
         sh:path crm:P2_has_type ;
         sh:node ex:E55Type08Shape ;
-		sh:name "Materiale" ;
+		sh:name "Materiale prevalente" ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path j.0:O25_contains ;
+        sh:node ex:S10MaterialSubstantial03Shape ;
+		sh:name "Materiale specifico" ;
         sh:maxCount 1 ;
     ] ;
     sh:property [

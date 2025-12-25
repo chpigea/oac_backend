@@ -328,7 +328,7 @@ ex:I5InferenceMakingShape # INFERENZA
 
 ex:E70ThingShape # STRUMENTO 
     a sh:NodeShape, rdfs:Class ;
-    sh:targetClass crm:E29_Design_or_Procedure ;
+    sh:targetClass crm:E70_Thing ;
 	rdfs:label "Strumento" ;
 	sh:property [
         sh:path crm:P2_has_type ;
@@ -705,6 +705,7 @@ ex:E29DesignorProcedure04Shape # PROCEDURA ASSOCIATA (in PROCEDURA di ATTIVITA' 
 		sh:name "Protocollo procedura associata" ;
         sh:maxCount 1 ;
     ] .
+
 ex:S4ObservationShape # OSSERVAZIONE
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass j.0:S4_Observation ;
