@@ -16,7 +16,7 @@ const axios = require('axios');
 
 let SCHEMAS = {}
 
-const getSchema = function(format){
+const getSchema = function(format, req){
     let fileContent = null;
     let filePath = null;
     let fileType = null;
@@ -25,8 +25,8 @@ const getSchema = function(format){
             filePath = 'config.shacl.ttl'; //'schema_v1.shacl.ttl';
             fileType = 'text/turtle';
             break;
-        case 'ttl2':
-            filePath = 'schema_v2.shacl.ttl';
+        case 'editing':
+            filePath = 'schema_editing.ttl';
             fileType = 'text/turtle';
             break;
         case 'advanced':
@@ -59,6 +59,11 @@ const getSchema = function(format){
         let protocol = process.env.OAC_EXPOSED_PROTOCOL || 'http';
         let host = process.env.OAC_EXPOSED_HOST || '127.0.0.1';
         if(host=="localhost") host="127.0.0.1";
+
+        const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+        if(host=="127.0.0.1" && ip.includes("localhost"))
+            host="localhost"
+
         let port = process.env.OAC_EXPOSED_PORT || '4000';
         fileContent = fileContent.replace(/OAC_EXPOSED_PROTOCOL/g, protocol);
         fileContent = fileContent.replace(/OAC_EXPOSED_HOST/g, host);
@@ -71,7 +76,7 @@ const getSchema = function(format){
 router.get('/schema/:format', (req, res) => {
     console.log(`Requesting SHACL schema in format: ${req.params.format}`); 
     let format = req.params.format || 'ttl';
-    let schema = getSchema(format);
+    let schema = getSchema(format, req);
     let fileContent = schema.content;
     res.setHeader('Content-Type', schema.type);
     const tempFile = tmp.fileSync({ postfix: schema.path });
@@ -107,7 +112,7 @@ router.get('/counter/:name', (req, res) => {
 
 router.post('/validate', (req, res) => {
     let turtle = req.body.turtle;
-    let schema = getSchema('ttl2');
+    let schema = getSchema('editing', req);
     console.log("validate...")
     let shacl = schema.content.replace(/owl:imports/g, '#owl:imports');
     Validator.validateDataSyntax(turtle, shacl).then( (result) => {
