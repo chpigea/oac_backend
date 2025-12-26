@@ -38,6 +38,12 @@ module.exports = function(jwtLib){
   }
 
   router.get('/exposed_config', (req, res) => {  
+      const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+      if(ip.includes("127.0.0.1"))
+        EXPOSED.host = "127.0.0.1"
+      else if(ip.includes("localhost"))
+        EXPOSED.host = "localhost"
+
       res.json({ 
           success: true, 
           data: EXPOSED
