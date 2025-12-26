@@ -41,7 +41,7 @@ ex:E7Activity01Shape # INDAGINE
     sh:property [
         sh:path crm:P14_carried_out_by ;
         sh:node ex:E39Actor01Shape ;
-		sh:name "Attori" ;
+		sh:name "Attori coinvolti" ;
         sh:maxCount 1 ;
     ] ;
     sh:property [
@@ -56,7 +56,7 @@ ex:E7Activity01Shape # INDAGINE
 		sh:name "Attività diagnostica" ;
         sh:maxCount 1 ;
     ] .
-
+	
 ex:E7Activity02Shape # ATTIVITA' DIAGNOSTICA
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E7_Activity ;
@@ -81,8 +81,20 @@ ex:E7Activity02Shape # ATTIVITA' DIAGNOSTICA
     ] ;
     sh:property [
         sh:path crm:P2_has_type ;
-        sh:node ex:E55Type13Shape ;
-		sh:name "Tipologie nell'attività" ; 
+        sh:node ex:E55Type13aShape ;
+		sh:name "Fase analisi" ; 
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path [sh:inversePath crm:P2i_is_type_of] ; # usata proprietà inversa di P2_has_type 
+        sh:node ex:E55Type13bShape ;
+		sh:name "Preparazione campione" ; 
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path [sh:inversePath crm:P2i_is_type_of] ; # usata proprietà inversa di P2_has_type 
+        sh:node ex:E55Type13cShape ;
+		sh:name "Tecnica diagnostica" ; 
         sh:maxCount 1 ;
     ] ;
 	sh:property [
@@ -383,7 +395,7 @@ ex:E29DesignorProcedure03Shape # PROCEDURA
 	sh:property [
         sh:path crm:P2_has_type ;
 		sh:node ex:E55Type14Shape ; 
-		sh:name "Modalita d'indagine" ;
+		sh:name "Modalita indagine" ;
         sh:maxCount 1 ;
     ] ;
 	sh:property [
@@ -395,7 +407,7 @@ ex:E29DesignorProcedure03Shape # PROCEDURA
 	sh:property [
         sh:path crm:P129_is_about ;
 		sh:node ex:E1CRMEntityShape ;
-		sh:name "Finalità" ;
+		sh:name "Finalità indagine" ;
         sh:maxCount 1 ;
     ] ;
 	sh:property [
@@ -414,12 +426,12 @@ ex:E29DesignorProcedure03Shape # PROCEDURA
 ex:E1CRMEntityShape # FINALITA'
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E1_CRM_Entity ;
-	rdfs:label "Finalità" ;
+	rdfs:label "Descrizione finalità" ;
 	sh:property [
-        sh:path indagine:finalita ;
+        sh:path indagine:descrizone_finalita_indagine ;
 		sh:datatype xsd:string ;
-		sh:name "Finalità" ;
-		sh:maxCount 1 ;			   
+		sh:name "Descrizione finalità" ;
+        sh:maxCount 1 ;
     ] .
 	
 ex:E7Activity03Shape # ANALISI ASSOCIATA-PREGRESSA
@@ -456,15 +468,27 @@ ex:S13Sample01Shape # CAMPIONE
     ] ;
     sh:property [
         sh:path crm:P2_has_type ;
-        sh:node ex:E55Type04Shape ;
-		sh:name "Tipologie campione" ; 
+        sh:node ex:E55Type04aShape ;
+		sh:name "Descrizione campione" ; 
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path [sh:inversePath crm:P2i_is_type_of] ; # usata proprietà inversa di P2_has_type 
+        sh:node ex:E55Type04bShape ;
+		sh:name "Tipo campione" ; 
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path [sh:inversePath crm:P2i_is_type_of] ; # usata proprietà inversa di P2_has_type 
+        sh:node ex:E55Type04cShape ;
+		sh:name "Natura oggetto" ; 
         sh:maxCount 1 ;
     ] ;
     sh:property [
         sh:path crm:P43_has_dimension ;
         sh:node ex:E54DimensionShape ;
 		sh:name "Dimensioni" ;
-		sh:maxCount 1 ;			   
+		sh:maxCount 1 ;
     ] ;
     sh:property [
         sh:path j.0:O8i_was_observed_by ; 
@@ -755,15 +779,9 @@ ex:S4ObservationShape # OSSERVAZIONE
 		sh:maxCount 1 ;
     ] ;
 	sh:property [
-        sh:path crm:P2_has_type ;
-        sh:node ex:E55Type05Shape ;
-		sh:name "Tipo inquadramento cronologico" ;
-		sh:maxCount 1 ;
-    ] ;
-	sh:property [
         sh:path j.0:O16_observed_value ;
         sh:node ex:CP41EnvironmentalObservableEntity01Shape ;
-		sh:name "Condizione ambientale" ;
+		sh:name "Stato conservazione - Condizione ambientale" ;
 		sh:maxCount 1 ;
     ] .
 
@@ -818,10 +836,10 @@ ex:S10MaterialSubstantial03Shape # MATERIALE SPECIFICO - OUTPUT
         sh:maxCount 1 ;
     ] .
 
-ex:E14ConditionAssessmentShape # VALUTAZIONE CONDIZIONI
+ex:E14ConditionAssessmentShape # VALUTAZIONE STATO CONSERVAZIONE
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E14_Condition_Assessment ;
-	rdfs:label "Valutazione condizioni" ;
+	rdfs:label "Valutazione stato conservazione" ;
     sh:property [
         sh:path crm:P35_has_identified ;
         sh:node ex:E3ConditionStateShape ;
@@ -843,7 +861,7 @@ ex:E3ConditionStateShape # TAFONOMIA E STATO CONSERVAZIONE
 ex:CP41EnvironmentalObservableEntity01Shape # STATO CONSERVAZIONE - CONDIZIONE AMBIENTALE
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass basecpm:CP41_Environmental_Observable_Entity ;
-	rdfs:label "Condizione ambientale" ;
+	rdfs:label "Stato conservazione - Condizione ambientale" ;
     sh:property [
         sh:path crm:P2_has_type ;
         sh:node ex:E55Type06Shape ;
@@ -958,8 +976,7 @@ ex:E42Identifier01Shape # ID INDAGINE
         sh:path indagine:id_indagine ;
 		#sh:datatype xsd:string ;
 		sh:name "ID indagine" ;
-		sh:description "http://indagine/$SEQ1$" ;
-        sh:nodeKind sh:IRI ;
+		sh:datatype xsd:string ;
 		sh:maxCount 1 ;
     ] .
 
@@ -971,8 +988,7 @@ ex:E42Identifier02Shape # ID CAMPIONE
         sh:path indagine:id_campione ;
 		#sh:datatype xsd:string ;
 		sh:name "ID campione" ;
-		sh:description "http://indagine/campione/$SEQ2$" ;
-        sh:nodeKind sh:IRI ;
+		sh:datatype xsd:string ;
         sh:maxCount 1 ;
     ] .
 
@@ -1005,8 +1021,7 @@ ex:E42Identifier05Shape # ID SOTTOCAMPIONE
 	sh:property [
         sh:path indagine:id_sottocampione ;
 		sh:name "ID sottocampione" ;
-		sh:description "http://indagine/campione/sottocampione/$SEQ3$" ;
-        sh:nodeKind sh:IRI ;
+		sh:datatype xsd:string ;
         sh:maxCount 1 ;
     ] .
 
@@ -1017,8 +1032,7 @@ ex:E42Identifier06Shape # ID ATTIVITA' DIAGNOSTICA
 	sh:property [
         sh:path indagine:id_attivita_diagnostica ;
 		sh:name "ID attività diagnostica" ;
-		sh:description "http://indagine/attivita_diagnostica/$SEQ4$" ;
-        sh:nodeKind sh:IRI ;
+		sh:datatype xsd:string ;
         sh:maxCount 1 ;
     ] .
 
@@ -1058,28 +1072,28 @@ ex:E42Identifier09Shape # PROTOCOLLO - PROCEDURA ASSOCIATA
 		#sh:class owl:Class ; # lista delle Procedure già create (E29_Design_or_Procedure), per stessa Indagine o per tutte le esistenti ???
 		#owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/xxx> ; # FARE QUALCOSA DI SIMILE AI VOCABOLARI
 		#owl:imports <https://raw.githubusercontent.com/tibonto/DFG-Fachsystematik-Ontology/refs/heads/main/dfgfo.ttl>;
-		sh:maxCount 1 ;			   
+        sh:maxCount 1 ;
     ] .
 
 ex:E42Identifier10Shape # SPECIFICHE TECNICHE
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E42_Identifier ;
-	rdfs:label "Codifica specifiche tecniche" ;
+	rdfs:label "Codice specifiche tecniche" ;
 	sh:property [
         sh:path indagine:specifiche_tecniche ;
 		sh:datatype xsd:string ;
-		sh:name "Codifica" ;
+		sh:name "Codice" ;
         sh:maxCount 1 ;
     ] .
 
 ex:E42Identifier11Shape # SOFTWARE
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E42_Identifier ;
-	rdfs:label "ID software" ;
+	rdfs:label "Codice software" ;
 	sh:property [
         sh:path indagine:software ;
 		sh:datatype xsd:string ;
-		sh:name "ID software" ;
+		sh:name "Codice software" ;
         sh:maxCount 1 ;
     ] .
 
@@ -1112,8 +1126,7 @@ ex:E42Identifier14Shape # ID REPORT
 	sh:property [
         sh:path indagine:id_report ;
 		sh:name "ID report" ;
-		sh:description "http://indagine/attivita_diagnostica/report/$SEQ5$" ;
-        sh:nodeKind sh:IRI ;
+		sh:datatype xsd:string ;
         sh:maxCount 1 ;
     ] .
 
@@ -1129,10 +1142,10 @@ ex:I12AdoptedBeliefShape # QUESITO DIAGNOSTICO
         sh:maxCount 1 ;
     ] .
 
-ex:E39Actor01Shape # ATTORI
+ex:E39Actor01Shape # ATTORI COINVOLTI
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E39_Actor ;
-	rdfs:label "Attori" ;
+	rdfs:label "Attori coinvolti" ;
     sh:property [
         sh:path crm:P2_has_type ;
         sh:node ex:E55Type03Shape ;
@@ -1165,7 +1178,6 @@ ex:E39Actor03Shape # COMPETENZA ATTORE
     sh:property [
         sh:path indagine:competenze_attore ;
 		sh:class owl:Class ; # vocabolario COMPETENZA (5) id="competenza"
-		#owl:imports <https://raw.githubusercontent.com/tibonto/DFG-Fachsystematik-Ontology/refs/heads/main/dfgfo.ttl>;
 		owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/competenza> ;
 		sh:name "Conpetenza attore" ;
         sh:maxCount 1 ;
@@ -1210,7 +1222,7 @@ ex:E54DimensionShape # DIMENSIONI
         sh:maxCount 1 ; 
     ] ;
     sh:property [
-        sh:path indagine:dimensione ;
+        sh:path crm:P90_has_value ;
 		sh:node ex:E62String19Shape ;
 		sh:name "Dimensione" ;
         sh:maxCount 1 ; 
@@ -1223,7 +1235,6 @@ ex:E58MeasurementUnitShape # UNITA' MISURA
     sh:property [
         sh:path indagine:unita_misura ;
 		sh:class owl:Class ; # vocabolario UNITA' MISURA (14) id="unita-di-misura"
-		#owl:imports <https://raw.githubusercontent.com/tibonto/DFG-Fachsystematik-Ontology/refs/heads/main/dfgfo.ttl>;
 		owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/unita-di-misura> ;
 		sh:name "Unità di misura" ;
         sh:maxCount 1 ;
@@ -1236,10 +1247,15 @@ ex:I2Belief01Shape # INQUADRAMENTO CRONOLOGICO
     sh:property [
         sh:path indagine:inquadramento_cronologico ;
 		sh:class owl:Class ; # vocabolario INQUADRAMENTO CRONOLOGICO (9) id="inquadramento-cronologico"
-		#owl:imports <https://raw.githubusercontent.com/tibonto/DFG-Fachsystematik-Ontology/refs/heads/main/dfgfo.ttl>;
 		owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/inquadramento-cronologico> ;
 		sh:name "Tipo" ;
         sh:maxCount 1 ;
+    ] ;
+	sh:property [
+        sh:path crm:P2_has_type ;
+        sh:node ex:E55Type05Shape ;
+		sh:name "Tipo inquadramento cronologico" ;
+		sh:maxCount 1 ;
     ] .
 
 ex:I2Belief02Shape # INPUT
@@ -1265,16 +1281,21 @@ ex:I2Belief02Shape # INPUT
         sh:maxCount 1 ;
     ] .
 
-ex:E41Appellation01Shape # ENTE RICHIEDENTE E SCHEDATORE
+ex:E41Appellation01aShape # ENTE RICHIEDENTE
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E41_Appellation ;
-	rdfs:label "Ente richiedente e schedatore" ;
+	rdfs:label "Ente richiedente" ;
     sh:property [
         sh:path indagine:ente_richiedente ;
 		sh:datatype xsd:string ;
 		sh:name "Ente richiedente" ;
         sh:maxCount 1 ; 
-    ] ;
+    ] .
+
+ex:E41Appellation01bShape # SCHEDATORE
+    a sh:NodeShape, rdfs:Class ;
+    sh:targetClass crm:E41_Appellation ;
+	rdfs:label "Schedatore" ;
     sh:property [
         sh:path indagine:schedatore ;
 		sh:datatype xsd:string ;
@@ -1313,7 +1334,6 @@ ex:E55Type01Shape # TIPO INDAGINE
         #sh:class ex:E55Type01 ;
 		#sh:in ( "Tipo indagine A" "Tipo indagine B" ) ;
 		sh:class owl:Class ; # vocabolario TIPO INDAGINE (22) id="tipo-indagine"
-		#owl:imports <https://w3id.org/nfdi4ing/metadata4ing/> ; 
 		owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/tipo-indagine> ;
 		sh:name "Tipo indagine" ;
         sh:maxCount 1 ;
@@ -1332,46 +1352,66 @@ ex:E55Type02Shape # TIPO QUESITO DIAGNOSTICO
     sh:property [
         sh:path indagine:tipo_quesito_diagnostico ;
 		sh:class owl:Class ; # vocabolario TIPO QUESITO DIAGNOSTICO (8) id="quesito-diagnostico"
-		#owl:imports <https://raw.githubusercontent.com/tibonto/DFG-Fachsystematik-Ontology/refs/heads/main/dfgfo.ttl>;
 		owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/quesito-diagnostico> ;
 		sh:name "Tipo quesito diagnostico" ;
         sh:maxCount 1 ;
     ] .
 
-ex:E55Type03Shape # TIPOLOGIA ATTORI COINVOLTI
+ex:E55Type03Shape # TIPOLOGIA ATTORI
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E55_Type ;
 	rdfs:label "Tipo attori" ;
     sh:property [
         sh:path crm:P1_is_defined_by ;
-        sh:node ex:E41Appellation01Shape ;
-		sh:name "Tipologia attori" ;
+        sh:node ex:E41Appellation01aShape ;
+		sh:name "Ente richiedente" ;
+        sh:maxCount 1 ; 
+    ] ;
+    sh:property [
+        sh:path [sh:inversePath crm:P1i_identifies] ; # usata proprietà inversa di P1_is_defined_by ;
+        sh:node ex:E41Appellation01bShape ;
+		sh:name "Schedatore" ;
         sh:maxCount 1 ; 
     ] .
 
-ex:E55Type04Shape # TIPOLOGIE CAMPIONE
+ex:E55Type04aShape # DESCRIZIONE CAMPIONE
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E55_Type ;
-	rdfs:label "Tipologie campione" ;
+	rdfs:label "Descrizione campione" ;
     sh:property [
         sh:path indagine:descrizione_campione ;
 		sh:class owl:Class ; # vocabolario TIPO DESCRIZIONE CAMPIONE (4) id="descrizione-del-campione"
-		#owl:imports <https://raw.githubusercontent.com/tibonto/DFG-Fachsystematik-Ontology/refs/heads/main/dfgfo.ttl>;
 		owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/descrizione-del-campione> ;
+		sh:name "Descrizione campione" ;
         sh:maxCount 1 ;
     ] ;
+    sh:property [
+        sh:path crm:P3_has_note ;
+		sh:node ex:E62String08Shape ;
+		sh:name "Altra descrizione campione" ;
+        sh:maxCount 1 ;
+    ] .
+
+ex:E55Type04bShape # TIPO CAMPIONE
+    a sh:NodeShape, rdfs:Class ;
+    sh:targetClass crm:E55_Type ;
+	rdfs:label "Tipo campione" ;
     sh:property [
         sh:path indagine:tipo_campione ;
 		sh:class owl:Class ; # vocabolario TIPO CAMPIONE (21) id="tipo-campione"
-		#owl:imports <https://raw.githubusercontent.com/tibonto/DFG-Fachsystematik-Ontology/refs/heads/main/dfgfo.ttl>;
 		owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/tipo-campione> ;
 		sh:name "Tipo campione" ;
         sh:maxCount 1 ;
-    ] ;
+        sh:minCount 1 ; 
+    ] .
+	
+ex:E55Type04cShape # NATURA OGGETTO
+    a sh:NodeShape, rdfs:Class ;
+    sh:targetClass crm:E55_Type ;
+	rdfs:label "Natura oggetto" ;
     sh:property [
-        sh:path indagine:natura_soggetto ;
+        sh:path indagine:natura_oggetto ;
 		sh:class owl:Class ; # vocabolario NATURA OGGETTO (26) id="natura-oggetto"
-		#owl:imports <https://raw.githubusercontent.com/tibonto/DFG-Fachsystematik-Ontology/refs/heads/main/dfgfo.ttl>;
 		owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/natura-oggetto> ;
 		sh:name "Natura oggetto" ;
         sh:maxCount 1 ;
@@ -1384,7 +1424,6 @@ ex:E55Type05Shape # TIPO INQUADRAMENTO CRONOLOGICO
     sh:property [
         sh:path indagine:tipo_inquadramento_cronologico ;
 		sh:class owl:Class ; # vocabolario TIPO INQUADRAMENTO CRONOLOGICO (23) id="tipologia-inquadramento-cronologico"
-		#owl:imports <https://raw.githubusercontent.com/tibonto/DFG-Fachsystematik-Ontology/refs/heads/main/dfgfo.ttl>;
 		owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/tipologia-inquadramento-cronologico> ;
 		sh:name "Tipo inquadramento cronologico" ;
         sh:maxCount 1 ;
@@ -1397,7 +1436,6 @@ ex:E55Type06Shape # TIPO CONDIZIONE AMBIENTALE
     sh:property [
         sh:path indagine:tipo_condizione_ambientale ;
 		sh:class owl:Class ; # vocabolario TIPO CONDIZIONE AMBIENTALE (1) id="condizioni-ambientali"
-		#owl:imports <https://raw.githubusercontent.com/tibonto/DFG-Fachsystematik-Ontology/refs/heads/main/dfgfo.ttl>;
 		owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/condizioni-ambientali> ;
 		sh:name "Tipo condizione ambientale" ;
         sh:maxCount 1 ;
@@ -1410,10 +1448,9 @@ ex:E55Type07Shape # TIPO TAFONOMIA E STATO CONSERVAZIONE
     sh:property [
         sh:path indagine:tipo_tafonomia_e_stato_conservazione ;
 		sh:class owl:Class ; # vocabolario TIPO TAFONOMIA E STATO CONSERVAZIONE (19) id="tafonomia-e-stato-di-conservazione"
-		#owl:imports <https://raw.githubusercontent.com/tibonto/DFG-Fachsystematik-Ontology/refs/heads/main/dfgfo.ttl>;
 		owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/tafonomia-e-stato-di-conservazione> ;
 		sh:name "Tipo tafonomia e stato conservazione" ;
-		sh:maxCount 1 ;			   
+        sh:maxCount 1 ;
     ] .
 
 ex:E55Type08Shape # TIPO MATERIALE (in CAMPIONE, SOTTOCAMPIONE, ELEMENTO COSTRUTTIVO, OUTPUT, ...)
@@ -1423,7 +1460,6 @@ ex:E55Type08Shape # TIPO MATERIALE (in CAMPIONE, SOTTOCAMPIONE, ELEMENTO COSTRUT
     sh:property [
         sh:path indagine:tipo_materiale ;
 		sh:class owl:Class ; # vocabolario TIPO MATERIALE (11) id="materiale"
-		#owl:imports <https://raw.githubusercontent.com/tibonto/DFG-Fachsystematik-Ontology/refs/heads/main/dfgfo.ttl>;
 		owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/materiale> ;
 		sh:name "Tipo materiale" ;
         sh:maxCount 1 ;
@@ -1436,7 +1472,6 @@ ex:E55Type09Shape # TIPO CONTESTO
     sh:property [
         sh:path indagine:tipo_contesto ;
 		sh:class owl:Class ; # vocabolario TIPO CONTESTO (2) id="contesto"
-		#owl:imports <https://raw.githubusercontent.com/tibonto/DFG-Fachsystematik-Ontology/refs/heads/main/dfgfo.ttl>;
 		owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/contesto> ;
 		sh:name "Tipo contesto" ;
         sh:maxCount 1 ;
@@ -1449,7 +1484,6 @@ ex:E55Type10Shape # TIPO ELEMENTO COSTRUTTIVO
     sh:property [
         sh:path indagine:tipo_elemento_costruttivo ;
 		sh:class owl:Class ; # vocabolario TIPO ELEMENTO COSTRUTTIVO (6) id="elemento-costruttivo"
-		#owl:imports <https://raw.githubusercontent.com/tibonto/DFG-Fachsystematik-Ontology/refs/heads/main/dfgfo.ttl>;
 		owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/elemento-costruttivo> ;
 		sh:name "Tipo elemento costruttivo" ;
         sh:maxCount 1 ;
@@ -1462,7 +1496,6 @@ ex:E55Type11Shape # TIPO SOTTOCAMPIONE (come CAMPIONE che è a parte)
     sh:property [
         sh:path indagine:tipo_sottocampione ;
 		sh:class owl:Class ; # vocabolario TIPO CAMPIONE\SOTTOCAMPIONE (21) id="tipo-campione" NB: già usato ma in unico shape che raggruppava varie classi "tipologiche" quindi va ridefinito qui ...
-		#owl:imports <https://raw.githubusercontent.com/tibonto/DFG-Fachsystematik-Ontology/refs/heads/main/dfgfo.ttl>;
 		owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/tipo-campione> ;
 		sh:name "Tipo sottocampione" ;
         sh:maxCount 1 ;
@@ -1475,28 +1508,30 @@ ex:E55Type12Shape # TIPO LUOGO ANALISI
     sh:property [
         sh:path indagine:tipo_luogo_analisi ;
 		sh:class owl:Class ; # vocabolario TIPO LUOGO ANALISI (10) id="luogo-di-analisi" 
-		#owl:imports <https://raw.githubusercontent.com/tibonto/DFG-Fachsystematik-Ontology/refs/heads/main/dfgfo.ttl>;
 		owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/luogo-di-analisi> ;
 		sh:name "Tipo luogo analisi" ;
         sh:maxCount 1 ;
     ] .
 
-ex:E55Type13Shape # TIPOLOGIE ATTIVITA'
+ex:E55Type13aShape # FASE ANALISI
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E55_Type ;
-	rdfs:label "Tipologie attività diagnostica" ;
+	rdfs:label "Fase analisi" ;
     sh:property [
         sh:path indagine:fase_analisi ;
 		sh:class owl:Class ; # vocabolario FASE ANALISI (7) id="fase-di-analisi"
-		#owl:imports <https://raw.githubusercontent.com/tibonto/DFG-Fachsystematik-Ontology/refs/heads/main/dfgfo.ttl>;
 		owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/fase-di-analisi> ;
 		sh:name "Fase analisi" ;
         sh:maxCount 1 ;
-    ] ;
+    ] .
+
+ex:E55Type13bShape # PREPARAZIONE CAMPIONE
+    a sh:NodeShape, rdfs:Class ;
+    sh:targetClass crm:E55_Type ;
+	rdfs:label "Preparazione campione" ;
     sh:property [
         sh:path indagine:preparazione_campione ;
 		sh:class owl:Class ; # vocabolario PREPARAZIONE CAMPIONE (16) id="preparazione-campione"
-		#owl:imports <https://raw.githubusercontent.com/tibonto/DFG-Fachsystematik-Ontology/refs/heads/main/dfgfo.ttl>;
 		owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/preparazione-campione> ;
 		sh:name "Preparazione campione" ;
         sh:maxCount 1 ;
@@ -1506,14 +1541,19 @@ ex:E55Type13Shape # TIPOLOGIE ATTIVITA'
 		sh:node ex:E62String05Shape ;
 		sh:name "Note preparazione campione" ;
         sh:maxCount 1 ;
-    ] ;
+    ] .
+	
+ex:E55Type13cShape # TECNICA DIAGNOSTICA
+    a sh:NodeShape, rdfs:Class ;
+    sh:targetClass crm:E55_Type ;
+	rdfs:label "Tecnica diagnostica" ;
     sh:property [
         sh:path indagine:tecnica_diagnostica ;
 		sh:class owl:Class ; # vocabolario TECNICA DIAGNOSTICA (20) id="tecnica-diagnostica"
-		#owl:imports <https://raw.githubusercontent.com/tibonto/DFG-Fachsystematik-Ontology/refs/heads/main/dfgfo.ttl>;
 		owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/tecnica-diagnostica> ;
 		sh:name "Tecnica diagnostica" ;
         sh:maxCount 1 ;
+        sh:minCount 1 ; 
     ] .
 
 ex:E55Type14Shape # TIPO MDALITA' INDAGINE
@@ -1523,7 +1563,6 @@ ex:E55Type14Shape # TIPO MDALITA' INDAGINE
     sh:property [
         sh:path indagine:tipo_modalita_indagine ;
 		sh:class owl:Class ; # vocabolario TIPO MODALITA' INDAGINE (13) id="modalita-di-indagine"
-		#owl:imports <https://raw.githubusercontent.com/tibonto/DFG-Fachsystematik-Ontology/refs/heads/main/dfgfo.ttl>;
 		owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/modalita-di-indagine> ;
 		sh:name "Tipo modalità indagine" ;
         sh:maxCount 1 ;
@@ -1536,7 +1575,6 @@ ex:E55Type15Shape # TIPO STRUMENTAZIONE
     sh:property [
         sh:path indagine:tipo_strumentazione ;
 		sh:class owl:Class ; # vocabolario STRUMENTAZIONE (18) id="strumentazione"
-		#owl:imports <https://raw.githubusercontent.com/tibonto/DFG-Fachsystematik-Ontology/refs/heads/main/dfgfo.ttl>;
 		owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/strumentazione> ;
 		sh:name "Tipo strumentazione" ;
         sh:maxCount 1 ;
@@ -1549,7 +1587,6 @@ ex:E55Type16Shape # TIPO MEDIUM
     sh:property [
         sh:path indagine:tipo_medium ;
 		sh:class owl:Class ; # vocabolario MEDIUM (12) id="medium"
-		#owl:imports <https://raw.githubusercontent.com/tibonto/DFG-Fachsystematik-Ontology/refs/heads/main/dfgfo.ttl>;
 		owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/medium> ;
 		sh:name "Tipo medium" ;
         sh:maxCount 1 ;
@@ -1562,7 +1599,6 @@ ex:E55Type17Shape # TIPO INPUT
     sh:property [
         sh:path indagine:tipo_input ;
 		sh:class owl:Class ; # vocabolario INPUT (24) id="input"
-		#owl:imports <https://raw.githubusercontent.com/tibonto/DFG-Fachsystematik-Ontology/refs/heads/main/dfgfo.ttl>;
 		owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/input> ;
 		sh:name "Tipo input" ;
         sh:maxCount 1 ;
@@ -1575,7 +1611,6 @@ ex:E55Type18Shape # TIPO OUTPUT
     sh:property [
         sh:path indagine:tipo_output ;
 		sh:class owl:Class ; # vocabolario OUTPUT (15) id="output"
-		#owl:imports <https://raw.githubusercontent.com/tibonto/DFG-Fachsystematik-Ontology/refs/heads/main/dfgfo.ttl>;
 		owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/output> ;
 		sh:name "Tipo output" ;
         sh:maxCount 1 ;
@@ -1628,7 +1663,6 @@ ex:CP42MaterialDecayShape # TIPO DEGRADO
     sh:property [
         sh:path indagine:tipo_degrado ;
 		sh:class owl:Class ; # vocabolario TIPO DEGRADO (3) id="degrado"
-		#owl:imports <https://raw.githubusercontent.com/tibonto/DFG-Fachsystematik-Ontology/refs/heads/main/dfgfo.ttl>;
 		owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/degrado> ;
 		sh:name "Tipo degrado" ;
         sh:maxCount 1 ;
