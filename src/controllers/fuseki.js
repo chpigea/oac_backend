@@ -60,6 +60,11 @@ router.post('/attachment', upload.single('file'), (req, res) => {
         let protocol = process.env.OAC_EXPOSED_PROTOCOL || 'http';
         let host = process.env.OAC_EXPOSED_HOST || '127.0.0.1';
         if(host=="localhost") host="127.0.0.1";
+        
+        const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+        if(host=="127.0.0.1" && ip.includes("localhost"))
+            host="localhost"
+        
         let port = process.env.OAC_EXPOSED_PORT || '4000';
         deleteFiles([req.file])
         res.json({ 
