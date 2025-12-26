@@ -142,8 +142,7 @@ ex:E42Identifier06Shape # ID ATTIVITA' DIAGNOSTICA
 	sh:property [
         sh:path indagine:id_attivita_diagnostica ;
 		sh:name "ID attività diagnostica" ;
-		sh:description "http://indagine/attivita_diagnostica/$SEQ4$" ;
-        sh:nodeKind sh:IRI ;
+		sh:datatype xsd:string ;
         sh:maxCount 1 ;
     ] .
 
