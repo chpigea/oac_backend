@@ -70,10 +70,9 @@ ex:E42Identifier02Shape # ID CAMPIONE
     sh:targetClass crm:E42_Identifier ;
 	rdfs:label "ID campione" ;
 	sh:property [
-        sh:path indagine:id_campione ;
+		sh:path indagine:id_campione ;
 		sh:name "ID campione" ;
-		sh:description "http://indagine/campione/$SEQ2$" ;
-        sh:nodeKind sh:IRI ;
+		sh:datatype xsd:string ;
         sh:maxCount 1 ;
     ] .
 
@@ -111,5 +110,4 @@ ex:E55Type08Shape # TIPO MATERIALE (in CAMPIONE, SOTTOCAMPIONE, ELEMENTO COSTRUT
 		sh:name "Tipo materiale" ;
         sh:maxCount 1 ;
     ] .
-
 

@@ -33,7 +33,7 @@ ex:E7ActivityShape # INDAGINE
     sh:property [
         sh:path crm:P14_carried_out_by ;
         sh:node ex:E29ActorShape ;
-		sh:name "Attori" ;
+		sh:name "Attori coinvolti" ;
         sh:maxCount 1 ;
     ] ;
     sh:property [
@@ -46,11 +46,11 @@ ex:E7ActivityShape # INDAGINE
 ex:E29ActorShape # ATTORI
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E29_Actor ;
-	rdfs:label "Attori" ;
+	rdfs:label "Attori coinvolti" ;
     sh:property [
         sh:path crm:P2_has_type ;
         sh:node ex:E55Type03Shape ;
-		sh:name "Attori coinvolti" ;
+		sh:name "Attori" ;
         sh:maxCount 1 ;
     ] .
 
@@ -90,8 +90,7 @@ ex:E42Identifier01Shape #ID INDAGINE
         #sh:path ex:P48haspreferredidentifier01 ;
         sh:path indagine:id_indagine ;
 		sh:name "ID Indagine" ;
-		sh:description "http://indagine/$SEQ1$" ;
-        sh:nodeKind sh:IRI ;
+		sh:datatype xsd:string ;
 		sh:maxCount 1 ;
     ] .
 
@@ -106,16 +105,21 @@ ex:I12AdoptedBeliefShape # QUESITO DIAGNOSTICO
         sh:maxCount 1 ;
     ] .
 
-ex:E41Appellation01Shape # ENTE E SCHEDATORE
+eex:E41Appellation01aShape # ENTE RICHIEDENTE
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E41_Appellation ;
-	rdfs:label "Ente richiedente e schedatore" ;
+	rdfs:label "Ente richiedente" ;
     sh:property [
         sh:path indagine:ente_richiedente ;
 		sh:datatype xsd:string ;
 		sh:name "Ente richiedente" ;
         sh:maxCount 1 ; 
-    ] ;
+    ] .
+
+ex:E41Appellation01bShape # SCHEDATORE
+    a sh:NodeShape, rdfs:Class ;
+    sh:targetClass crm:E41_Appellation ;
+	rdfs:label "Schedatore" ;
     sh:property [
         sh:path indagine:schedatore ;
 		sh:datatype xsd:string ;
@@ -147,14 +151,21 @@ ex:E55Type02Shape # TIPO QUESITO DIAGNOSTICO
         sh:maxCount 1 ;
     ] .
 
-ex:E55Type03Shape # TIPOLOGIA ATTORI COINVOLTI
+ex:E55Type03Shape # TIPOLOGIA ATTORI
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E55_Type ;
 	rdfs:label "Tipo attori" ;
     sh:property [
         sh:path crm:P1_is_defined_by ;
-        sh:node ex:E41Appellation01Shape ;
-		sh:name "Tipologia attori" ;
+        sh:node ex:E41Appellation01aShape ;
+		sh:name "Ente richiedente" ;
+        sh:maxCount 1 ; 
+    ] ;
+    sh:property [
+        sh:path [sh:inversePath crm:P1i_identifies] ; # usata proprietà inversa di P1_is_defined_by ;
+        sh:node ex:E41Appellation01bShape ;
+		sh:name "Schedatore" ;
+        sh:maxCount 1 ; 
         sh:maxCount 1 ; 
     ] .
 
