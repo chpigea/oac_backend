@@ -14,7 +14,7 @@
 @prefix indagine: 	<http://indagine/> .
 
 
-ex:E7Activity01Shape # INDAGINE
+ex:E7Activity01Shape # INDAGINE *** livello iniziale
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E7_Activity ;
 	rdfs:label "Indagine" ;
