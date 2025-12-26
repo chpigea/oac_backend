@@ -84,8 +84,20 @@ ex:E7Activity02Shape # ATTIVITA' DIAGNOSTICA
     ] ;
     sh:property [
         sh:path crm:P2_has_type ;
-        sh:node ex:E55Type13Shape ;
-		sh:name "Tipologie nell'attività" ; 
+        sh:node ex:E55Type13aShape ;
+		sh:name "Fase analisi" ; 
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path [sh:inversePath crm:P2i_is_type_of] ; # usata proprietà inversa di P2_has_type 
+        sh:node ex:E55Type13bShape ;
+		sh:name "Preparazione campione" ; 
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path [sh:inversePath crm:P2i_is_type_of] ; # usata proprietà inversa di P2_has_type 
+        sh:node ex:E55Type13cShape ;
+		sh:name "Tecnica diagnostica" ; 
         sh:maxCount 1 ;
     ] ;
 	sh:property [
@@ -350,7 +362,7 @@ ex:E29DesignorProcedure03Shape # PROCEDURA
 	sh:property [
         sh:path crm:P2_has_type ;
 		sh:node ex:E55Type14Shape ; 
-		sh:name "Modalita d'indagine" ;
+		sh:name "Modalita indagine" ;
         sh:maxCount 1 ;
     ] ;
 	sh:property [
@@ -418,8 +430,20 @@ ex:S13Sample01Shape # CAMPIONE
     ] ;
     sh:property [
         sh:path crm:P2_has_type ;
-        sh:node ex:E55Type04Shape ;
-		sh:name "Tipologie campione" ; 
+        sh:node ex:E55Type04aShape ;
+		sh:name "Descrizione campione" ; 
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path [sh:inversePath crm:P2i_is_type_of] ; # usata proprietà inversa di P2_has_type 
+        sh:node ex:E55Type04bShape ;
+		sh:name "Tipo campione" ; 
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path [sh:inversePath crm:P2i_is_type_of] ; # usata proprietà inversa di P2_has_type 
+        sh:node ex:E55Type04cShape ;
+		sh:name "Natura oggetto" ; 
         sh:maxCount 1 ;
     ] ;
     sh:property [
@@ -749,11 +773,11 @@ ex:S10MaterialSubstantial02Shape # MATERIALE PREVALENTE - SOTTOCAMPIONE
 ex:S10MaterialSubstantial03Shape # MATERIALE SPECIFICO - OUTPUT
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass j.0:S10_Material_Substantial ;
-	rdfs:label "Materiale output" ;
+	rdfs:label "Materiale specifico" ;
     sh:property [
         sh:path crm:P2_has_type ;
         sh:node ex:E55Type08Shape ;
-		sh:name "Materiale output" ;
+		sh:name "Materiale specifico" ;
         #sh:maxCount 1 ;
     ] .
 
@@ -970,6 +994,7 @@ ex:E42Identifier07Shape # ID ANALISI ASSOCIATA-PREGRESSA - (ATTIVITA' DIAGNOSTIC
 		sh:datatype xsd:string ;
 		#sh:class owl:Class ; # lista delle Attività diagnostiche già create (E7_Activity) da distinguere da Indagini ed altri oggetti con stessa classe ??? per stessa Indagine o per tutte le esistenti???
 		#owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/xxx> ; # FARE QUALCOSA DI SIMILE AI VOCABOLARI
+		#owl:imports <https://w3id.org/nfdi4ing/metadata4ing/>;
         sh:maxCount 1 ;
     ] .
 
@@ -995,6 +1020,7 @@ ex:E42Identifier09Shape # PROTOCOLLO - PROCEDURA ASSOCIATA
 		sh:datatype xsd:string ;
 		#sh:class owl:Class ; # lista delle Procedure già create (E29_Design_or_Procedure), per stessa Indagine o per tutte le esistenti ???
 		#owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/xxx> ; # FARE QUALCOSA DI SIMILE AI VOCABOLARI
+		#owl:imports <https://w3id.org/nfdi4ing/metadata4ing/>;
         #sh:minCount 1 ;
     ] .
 
@@ -1054,7 +1080,6 @@ ex:E42Identifier14Shape # ID REPORT
         sh:maxCount 1 ;
         sh:minCount 1 ;
     ] .
-
 
 ex:I12AdoptedBeliefShape # QUESITO DIAGNOSTICO
     a sh:NodeShape, rdfs:Class ;
@@ -1212,16 +1237,21 @@ ex:I2Belief02Shape # INPUT
         sh:maxCount 1 ;
     ] .
 
-ex:E41Appellation01Shape # ENTE RICHIEDENTE E SCHEDATORE
+ex:E41Appellation01aShape # ENTE RICHIEDENTE
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E41_Appellation ;
-	rdfs:label "Ente richiedente e schedatore" ;
+	rdfs:label "Ente richiedente" ;
     sh:property [
         sh:path indagine:ente_richiedente ;
 		sh:datatype xsd:string ;
 		sh:name "Ente richiedente" ;
         sh:maxCount 1 ; 
-    ] ;
+    ] .
+
+ex:E41Appellation01bShape # SCHEDATORE
+    a sh:NodeShape, rdfs:Class ;
+    sh:targetClass crm:E41_Appellation ;
+	rdfs:label "Schedatore" ;
     sh:property [
         sh:path indagine:schedatore ;
 		sh:datatype xsd:string ;
@@ -1262,7 +1292,7 @@ ex:E55Type01Shape # TIPO INDAGINE
         #sh:class ex:E55Type01 ;
 		#sh:in ( "Tipo indagine A" "Tipo indagine B" ) ;
 		sh:class owl:Class ; # vocabolario TIPO INDAGINE (22) id="tipo-indagine"
-		owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/tipo-indagine> ;
+		owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/oac/get-vocabolary-terms/tipo-indagine> ;
 		sh:name "Tipo indagine" ;
         sh:maxCount 1 ;
         sh:minCount 1 ; 
@@ -1293,15 +1323,21 @@ ex:E55Type03Shape # TIPOLOGIA ATTORI
 	rdfs:label "Tipo attori" ;
     sh:property [
         sh:path crm:P1_is_defined_by ;
-        sh:node ex:E41Appellation01Shape ;
-		sh:name "Tipologia attori" ;
+        sh:node ex:E41Appellation01aShape ;
+		sh:name "Ente richiedente" ;
+        sh:maxCount 1 ; 
+    ] ;
+    sh:property [
+        sh:path [sh:inversePath crm:P1i_identifies] ; # usata proprietà inversa di P1_is_defined_by ;
+        sh:node ex:E41Appellation01bShape ;
+		sh:name "Schedatore" ;
         sh:maxCount 1 ; 
     ] .
 
-ex:E55Type04Shape # TIPOLOGIE CAMPIONE
+ex:E55Type04aShape # DESCRIZIONE CAMPIONE
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E55_Type ;
-	rdfs:label "Tipologie campione" ;
+	rdfs:label "Descrizione campione" ;
     sh:property [
         sh:path indagine:descrizione_campione ;
 		sh:class owl:Class ; # vocabolario TIPO DESCRIZIONE CAMPIONE (4) id="descrizione-del-campione"
@@ -1314,7 +1350,12 @@ ex:E55Type04Shape # TIPOLOGIE CAMPIONE
 		sh:node ex:E62String08Shape ;
 		sh:name "Altra descrizione campione" ;
         sh:maxCount 1 ;
-    ] ;
+    ] .
+
+ex:E55Type04bShape # TIPO CAMPIONE
+    a sh:NodeShape, rdfs:Class ;
+    sh:targetClass crm:E55_Type ;
+	rdfs:label "Tipo campione" ;
     sh:property [
         sh:path indagine:tipo_campione ;
 		sh:class owl:Class ; # vocabolario TIPO CAMPIONE (21) id="tipo-campione"
@@ -1322,7 +1363,12 @@ ex:E55Type04Shape # TIPOLOGIE CAMPIONE
 		sh:name "Tipo campione" ;
         sh:maxCount 1 ;
         sh:minCount 1 ; 
-    ] ;
+    ] .
+	
+ex:E55Type04cShape # NATURA OGGETTO
+    a sh:NodeShape, rdfs:Class ;
+    sh:targetClass crm:E55_Type ;
+	rdfs:label "Natura oggetto" ;
     sh:property [
         sh:path indagine:natura_oggetto ;
 		sh:class owl:Class ; # vocabolario NATURA OGGETTO (26) id="natura-oggetto"
@@ -1444,17 +1490,22 @@ ex:E55Type12Shape # TIPO LUOGO ANALISI
         sh:maxCount 1 ;
     ] .
 
-ex:E55Type13Shape # TIPOLOGIE ATTIVITA'
+ex:E55Type13aShape # FASE ANALISI
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E55_Type ;
-	rdfs:label "Tipologie attività diagnostica" ;
+	rdfs:label "Fase analisi" ;
     sh:property [
         sh:path indagine:fase_analisi ;
 		sh:class owl:Class ; # vocabolario FASE ANALISI (7) id="fase-di-analisi"
 		owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/fase-di-analisi> ;
 		sh:name "Fase analisi" ;
         sh:maxCount 1 ;
-    ] ;
+    ] .
+
+ex:E55Type13bShape # TIPOLOGIE ATTIVITA'
+    a sh:NodeShape, rdfs:Class ;
+    sh:targetClass crm:E55_Type ;
+	rdfs:label "Preparazione campione" ;
     sh:property [
         sh:path indagine:preparazione_campione ;
 		sh:class owl:Class ; # vocabolario PREPARAZIONE CAMPIONE (16) id="preparazione-campione"
@@ -1467,7 +1518,12 @@ ex:E55Type13Shape # TIPOLOGIE ATTIVITA'
 		sh:node ex:E62String05Shape ;
 		sh:name "Note preparazione campione" ;
         sh:maxCount 1 ;
-    ] ;
+    ] .
+	
+ex:E55Type13cShape # TECNICA DIAGNOSTICA
+    a sh:NodeShape, rdfs:Class ;
+    sh:targetClass crm:E55_Type ;
+	rdfs:label "Tecnica diagnostica" ;
     sh:property [
         sh:path indagine:tecnica_diagnostica ;
 		sh:class owl:Class ; # vocabolario TECNICA DIAGNOSTICA (20) id="tecnica-diagnostica"
@@ -1565,11 +1621,11 @@ ex:E55Type18Shape # TIPO OUTPUT
 ex:S10CP9MaterialShape # MATERIALE PREVALENTE - ELEMENTO COSTRUTTIVO
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass j.0:S10_Material_Substantial, basecpm:CP9_Building_Material ;
-	rdfs:label "Materiale" ;
+	rdfs:label "Materiale prevalente" ;
     sh:property [
         sh:path crm:P2_has_type ;
         sh:node ex:E55Type08Shape ;
-		sh:name "Materiale" ;
+		sh:name "Materiale prevalente" ;
         sh:maxCount 1 ;
     ] ;
     sh:property [
@@ -1744,6 +1800,7 @@ ex:E62String12Shape # ALTRA MODALITA' INDAGINE
 		sh:name "Altra modalità indagine" ;
         sh:maxCount 1 ;
     ] .
+
 
 ex:E62String13Shape # ALTRA STRUMENTAZIONE
     a sh:NodeShape, rdfs:Class ;
