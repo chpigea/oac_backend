@@ -102,8 +102,7 @@ ex:E42Identifier02Shape # ID CAMPIONE
         sh:path indagine:id_campione ;
 		#sh:datatype xsd:string ;
 		sh:name "ID campione" ;
-		sh:description "http://indagine/campione/$SEQ2$" ;
-        sh:nodeKind sh:IRI ;
+		sh:datatype xsd:string ;
         sh:maxCount 1 ;
     ] .
 
