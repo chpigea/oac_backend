@@ -7,6 +7,8 @@ const Converter = require('../models/converter');
 const Validator = require('../models/validator');
 const tmp = require('tmp');
 const Investigations = require('../models/investigations');
+const EditLocks = require('../models/editLocks');
+
 const {
     fusekiUrlDataset,
     fusekiUrl,
@@ -149,7 +151,7 @@ router.post('/form/save', (req, res) => {
         let updateQuery = Converter.turtle2Sparql(dataset, {processQuad, processRoot});
         Investigations.save({
             id, uuid, dataset, format: 'turtle'
-        }).then( () => {
+        }).then( (dbResponse) => {
             axios.post(fusekiUrlUpdate, updateQuery, {
                 headers: {
                     'Content-Type': 'application/sparql-update',
@@ -158,7 +160,7 @@ router.post('/form/save', (req, res) => {
             }).then(response => {
                 console.log(response.data);
                 res.status(200).json({
-                    success: true
+                    success: true, data: dbResponse.data
                 });
             }).catch(error => {
                 //TODO: rollback investigation save
@@ -223,7 +225,69 @@ router.post('/form/search', (req, res) => {
     })
     
 })
+//-----------------------------------------------------------------
 
+router.get('/form/lock/:row_id/:client_uuid', (req, res) => {
+    const row_id = parseInt(req.params.row_id)
+    const client_uuid = req.params.client_uuid
+    EditLocks.lock('investigation', row_id, client_uuid).then((success)=>{
+        res.status(200).json({
+            success,
+            message: success ? null : 'Record is locked by another user'
+        });
+    }).catch((err)=>{
+        res.status(500).json({
+            success: false,
+            data: null,
+            message: `Error locking record: ${row_id}`   
+        });
+    })
+})
+
+router.get('/form/lock-keep/:row_id/:client_uuid', (req, res) => {
+    const row_id = parseInt(req.params.row_id)
+    const client_uuid = req.params.client_uuid
+    EditLocks.extendLock('investigation', row_id, client_uuid).then((success)=>{
+        res.status(200).json({
+            success,
+            message: success ? null : 'Lock not owned or expired'
+        });
+    }).catch((err)=>{
+        res.status(500).json({
+            success: false,
+            data: null,
+            message: `Error keeping lock on record: ${row_id}`   
+        });
+    })
+})
+
+function _unlock(req, res){
+    const row_id = parseInt(req.params.row_id)
+    const client_uuid = req.params.client_uuid
+    EditLocks.delete('investigation', row_id, client_uuid).then((success)=>{
+        res.status(200).json({
+            success
+        });
+    }).catch((err)=>{
+        res.status(500).json({
+            success: false,
+            data: null,
+            message: `Error unlocking record ${row_id}: ${err}`   
+        });
+    })
+}
+
+router.get('/form/unlock/:row_id/:client_uuid', (req, res) => {
+    _unlock(req, res)
+})
+
+router.post('/form/unlock/:row_id/:client_uuid', (req, res) => {
+    _unlock(req, res)
+})
+
+
+
+//-----------------------------------------------------------------
 router.get('/schema/:type/:what', (req, res) => {
     console.log(`Requesting SHACL schema in format: ${req.params.type}`); 
     let type = req.params.type || 'config';
