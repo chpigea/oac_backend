@@ -8,7 +8,7 @@ sudo apt install xsltproc
 ```
 
 ## ENV variables
-Env variables overwrites parameters from the config file
+Env variables overwrite parameters from the config file
 
 ### Database
 
