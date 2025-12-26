@@ -61,6 +61,7 @@ class Investigations {
         item.format = item.format || 'turtle'
         return new Promise(async (resolve, reject) => {
             try {
+                let _id = null
                 const existing = await db(table)
                     .where({uuid: item.uuid})
                     .first();
@@ -71,10 +72,11 @@ class Investigations {
                         .where({uuid: item.uuid})
                         .update(item);
                 }else{
-                    await db(table).insert(item);
+                    const [{id}] = await db(table).insert(item).returning('id');
+                    _id = id;
                 }    
                 resolve({
-                    success: true, operation
+                    success: true, operation, data: _id
                 })
             }catch(e){
                 reject(e)
