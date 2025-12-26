@@ -19,10 +19,13 @@ class Investigations {
             try{
                 const sql = `SELECT 
                     id, uuid,
-                    array_to_string(
-                        regexp_split_to_array(?,'[^[:alnum:]_/:]+')
-                        ,','
-                    ) as label
+                    array_to_string(ARRAY(
+                        SELECT token
+                            FROM unnest(
+                                regexp_split_to_array(dataset, '[^[:alnum:]_/:]+')
+                            ) AS token
+                        WHERE token ILIKE ?
+                    ), ',') AS label
                 FROM investigations
                 WHERE dataset_search @@ plainto_tsquery('simple', ?)
                     OR dataset ILIKE ?
@@ -31,7 +34,7 @@ class Investigations {
                 const tsQuery = `${text}:*`;
                 const ilikeQuery = `%${text}%`;
                 const result = await db.raw(sql, 
-                    [txtQuery, tsQuery, ilikeQuery, limit, offset]
+                    [ilikeQuery, tsQuery, ilikeQuery, limit, offset]
                 );
                 resolve(result.rows)
             }catch(e){
@@ -63,6 +66,7 @@ class Investigations {
                     .first();
                 let operation = existing ? 'UPDATE' : 'INSERT';
                 if(existing){
+                    delete item["id"]
                     await db(table)
                         .where({uuid: item.uuid})
                         .update(item);
