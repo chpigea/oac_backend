@@ -16,7 +16,7 @@
     "type": "git",
     "url": "git+https://github.com/chpigea/oac_backend.git"
   },
-  "author": "Christian R. Picone",
+  "author": "Christian R. Picone <ch.picone@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/chpigea/oac_backend/issues"
