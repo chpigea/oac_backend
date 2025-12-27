@@ -147,7 +147,7 @@ ex:E55Type02Shape # TIPO QUESITO DIAGNOSTICO
         sh:path indagine:tipo_quesito_diagnostico ;
         #sh:class owl:Class ; # vocabolario QUESITO DIAGNOSTICO (8) id="quesito-diagnostico"
 		#owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/quesito-diagnostico> ;
-		sh:nodeKind sh:Literal;
+		#sh:nodeKind sh:Literal;
 		sh:datatype xsd:string;
         sh:name "Tipo quesito diagnostico" ;
         sh:maxCount 1 ;
@@ -180,7 +180,7 @@ ex:E55Type05Shape # TIPO CAMPIONE
 		#sh:class owl:Class ; # vocabolario TIPO CAMPIONE (21) id="tipo-campione
 		#sh:in ( "Tipo campione A" "Tipo campione B" ) ;
 		#owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/tipo-campione> ;
-		sh:nodeKind sh:Literal;
+		#sh:nodeKind sh:Literal;
 		sh:datatype xsd:string;
 		sh:name "Tipo campione" ;
         sh:maxCount 1 ;
