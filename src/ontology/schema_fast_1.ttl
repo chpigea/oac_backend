@@ -105,7 +105,7 @@ ex:I12AdoptedBeliefShape # QUESITO DIAGNOSTICO
         sh:maxCount 1 ;
     ] .
 
-eex:E41Appellation01aShape # ENTE RICHIEDENTE
+ex:E41Appellation01aShape # ENTE RICHIEDENTE
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E41_Appellation ;
 	rdfs:label "Ente richiedente" ;
