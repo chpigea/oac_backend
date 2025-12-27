@@ -114,7 +114,7 @@ ex:I2Belief01Shape # INQUADRAMENTO CRONOLOGICO
         sh:path indagine:inquadramento_cronologico ;
 		#sh:class owl:Class ; # vocabolario INQUADRAMENTO CRONOLOGICO (9) id="inquadramento-cronologico"
 		#owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/inquadramento-cronologico> ;
-		sh:nodeKind sh:Literal;
+		#sh:nodeKind sh:Literal;
 		sh:datatype xsd:string;
 		sh:name "Tipo" ;
         sh:maxCount 1 ;
@@ -139,7 +139,7 @@ ex:E55Type04Shape # TIPO CAMPIONE
         sh:path indagine:tipo_campione ;
 		#sh:class owl:Class ; # vocabolario TIPO CAMPIONE (21) id="tipo-campione"
 		#owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/tipo-campione> ;
-		sh:nodeKind sh:Literal;
+		#sh:nodeKind sh:Literal;
 		sh:datatype xsd:string;
 		sh:name "Tipo campione" ;
         sh:maxCount 1 ;
@@ -153,7 +153,7 @@ ex:E55Type08Shape # TIPO MATERIALE (in CAMPIONE, SOTTOCAMPIONE, ELEMENTO COSTRUT
         sh:path indagine:tipo_materiale ;
 		#sh:class owl:Class ; # vocabolario TIPO MATERIALE (11) id="materiale"
 		#owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/materiale> ;
-		sh:nodeKind sh:Literal;
+		#sh:nodeKind sh:Literal;
 		sh:datatype xsd:string;
 		sh:name "Tipo materiale" ;
         sh:maxCount 1 ;
