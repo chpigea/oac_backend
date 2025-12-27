@@ -35,6 +35,7 @@ class EditLocks {
                 console.log(reserver_uuid)
                 resolve(reserver_uuid == client_uuid)
             }catch(e){
+                console.log(e)
                 reject(e)
             }
         }); 
