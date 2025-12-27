@@ -1292,7 +1292,7 @@ ex:E55Type01Shape # TIPO INDAGINE
         #sh:class ex:E55Type01 ;
 		#sh:in ( "Tipo indagine A" "Tipo indagine B" ) ;
 		sh:class owl:Class ; # vocabolario TIPO INDAGINE (22) id="tipo-indagine"
-		owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/oac/get-vocabolary-terms/tipo-indagine> ;
+		owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/tipo-indagine> ;
 		sh:name "Tipo indagine" ;
         sh:maxCount 1 ;
         sh:minCount 1 ; 
