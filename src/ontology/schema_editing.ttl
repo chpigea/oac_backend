@@ -762,11 +762,11 @@ ex:S10MaterialSubstantial01Shape # MATERIALE PREVALENTE - CAMPIONE
 ex:S10MaterialSubstantial02Shape # MATERIALE PREVALENTE - SOTTOCAMPIONE
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass j.0:S10_Material_Substantial ;
-	rdfs:label "Materiale sottocampione" ;
+	rdfs:label "Materiale prevalente" ;
     sh:property [
         sh:path crm:P2_has_type ;
         sh:node ex:E55Type08Shape ;
-		sh:name "Materiale sottocampione" ;
+		sh:name "Materiale prevalente" ;
         sh:maxCount 1 ;
     ] .
 
@@ -812,6 +812,12 @@ ex:CP41EnvironmentalObservableEntity01Shape # STATO CONSERVAZIONE - CONDIZIONE A
         sh:node ex:E55Type06Shape ;
 		sh:name "Condizione ambientale" ;
         #sh:maxCount 1 ;
+	] ;
+    sh:property [
+        sh:path crm:P3_has_note ;
+		sh:node ex:E62String09Shape ;
+		sh:name "Note condizione ambientale" ;
+        sh:maxCount 1 ;
     ] .
 
 ex:CP2ArchitectureWorkShape # BENE DI RIFERIMENTO
@@ -1088,7 +1094,7 @@ ex:I12AdoptedBeliefShape # QUESITO DIAGNOSTICO
     sh:property [
         sh:path crm:P2_has_type ;
         sh:node ex:E55Type02Shape ;
-		sh:name "Quesito diagnostico" ;
+		sh:name "Tipo quesito diagnostico" ;
         sh:maxCount 1 ;
         sh:minCount 1 ; 
     ] .
@@ -1399,12 +1405,6 @@ ex:E55Type06Shape # TIPO CONDIZIONE AMBIENTALE
 		owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/condizioni-ambientali> ;
 		sh:name "Tipo condizione ambientale" ;
         sh:maxCount 1 ;
-    ] ;
-    sh:property [
-        sh:path crm:P3_has_note ;
-		sh:node ex:E62String09Shape ;
-		sh:name "Altra condizione ambientale" ;
-        sh:maxCount 1 ;
     ] .
 
 ex:E55Type07Shape # TIPO TAFONOMIA E STATO CONSERVAZIONE
@@ -1502,7 +1502,7 @@ ex:E55Type13aShape # FASE ANALISI
         sh:maxCount 1 ;
     ] .
 
-ex:E55Type13bShape # TIPOLOGIE ATTIVITA'
+ex:E55Type13bShape # PREPARAZIONE CAMPIONE
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E55_Type ;
 	rdfs:label "Preparazione campione" ;
@@ -1633,6 +1633,12 @@ ex:S10CP9MaterialShape # MATERIALE PREVALENTE - ELEMENTO COSTRUTTIVO
         sh:node ex:CP42MaterialDecayShape ;
 		sh:name "Degrado" ;
         #sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path crm:P3_has_note ;
+		sh:node ex:E62String15Shape ;
+		sh:name "Note degrado" ;
+        sh:maxCount 1 ;
     ] .
 
 #ex:CP9BuildingMaterialShape # MATERIALE PREVALENTE 2 - ELEMENTO COSTRUTTIVO
@@ -1660,12 +1666,6 @@ ex:CP42MaterialDecayShape # TIPO DEGRADO
 		sh:class owl:Class ; # vocabolario TIPO DEGRADO (3) id="degrado"
 		owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/degrado> ;
 		sh:name "Tipo degrado" ;
-        sh:maxCount 1 ;
-    ] ;
-    sh:property [
-        sh:path crm:P3_has_note ;
-		sh:node ex:E62String15Shape ;
-		sh:name "Altro degrado" ;
         sh:maxCount 1 ;
     ] .
 
@@ -1757,14 +1757,14 @@ ex:E62String08Shape # ALTRA DESCRIZIONE CAMPIONE
         sh:maxCount 1 ;
     ] .
 
-ex:E62String09Shape # ALTRA CONDIZIONE AMBIENTALE
+ex:E62String09Shape # NOTE CONDIZIONE AMBIENTALE
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E62_String ;
-	rdfs:label "Altra condizione ambientale" ;
+	rdfs:label "Note condizione ambientale" ;
     sh:property [
         sh:path indagine:altra_condizione_ambientale ;
 		sh:datatype xsd:string ;
-		sh:name "Altra condizione ambientale" ;
+		sh:name "Note condizione ambientale" ;
         sh:maxCount 1 ;
     ] .
 
@@ -1801,7 +1801,6 @@ ex:E62String12Shape # ALTRA MODALITA' INDAGINE
         sh:maxCount 1 ;
     ] .
 
-
 ex:E62String13Shape # ALTRA STRUMENTAZIONE
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E62_String ;
@@ -1824,14 +1823,14 @@ ex:E62String14Shape # ALTRO MEDIUM
         sh:maxCount 1 ;
     ] .
 
-ex:E62String15Shape # ALTRO DEGRADO
+ex:E62String15Shape # NOTE DEGRADO
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E62_String ;
-	rdfs:label "Altro degrado" ;
+	rdfs:label "Note degrado" ;
     sh:property [
         sh:path indagine:altro_degrado ;
 		sh:datatype xsd:string ;
-		sh:name "Altro degrado" ;
+		sh:name "Note degrado" ;
         sh:maxCount 1 ;
     ] .
 
