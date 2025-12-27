@@ -236,6 +236,7 @@ router.get('/form/lock/:row_id/:client_uuid', (req, res) => {
             message: success ? null : 'Record is locked by another user'
         });
     }).catch((err)=>{
+        console.log(err)
         res.status(500).json({
             success: false,
             data: null,
