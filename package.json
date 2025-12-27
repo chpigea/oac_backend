@@ -1,6 +1,6 @@
 {
   "name": "@igea/oac_backend",
-  "version": "1.0.83",
+  "version": "1.0.84",
   "description": "Backend service for the OAC project",
   "main": "src/index.js",
   "bin": {
