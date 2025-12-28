@@ -116,7 +116,7 @@ ex:I2Belief01Shape # INQUADRAMENTO CRONOLOGICO
 		#owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/inquadramento-cronologico> ;
 		#sh:nodeKind sh:Literal;
 		sh:datatype xsd:string;
-		sh:name "Tipo" ;
+		sh:name "Inquadramento cronologico" ;
         sh:maxCount 1 ;
     ] .
 
