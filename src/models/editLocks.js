@@ -1,6 +1,6 @@
 const {db, schema } = require('./db')
 const table = `${schema}.edit_locks`
-const expiration_seconds = 300 // 5 mjinutes
+const expiration_seconds = 180 // 3 minutes
 
 
 class EditLocks {
