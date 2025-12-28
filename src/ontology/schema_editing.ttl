@@ -1322,13 +1322,13 @@ ex:E55Type03Shape # TIPOLOGIA ATTORI
     sh:targetClass crm:E55_Type ;
 	rdfs:label "Tipo attori" ;
     sh:property [
-        sh:path crm:P1_is_defined_by ;
+        sh:path crm:P1_is_identified_by ;
         sh:node ex:E41Appellation01Shape ;
 		sh:name "Ente richiedente - Schedatore" ;
         sh:maxCount 1 ; 
     #] ;
     #sh:property [
-    #    sh:path [sh:inversePath crm:P1i_identifies] ; # usata proprietà inversa di P1_is_defined_by ;
+    #    sh:path [sh:inversePath crm:P1i_identifies] ; # usata proprietà inversa di P1_is_identified_by ;
     #    sh:node ex:E41Appellation01bShape ;
 	#	sh:name "Schedatore" ;
     #    sh:maxCount 1 ; 
