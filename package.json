@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/chpigea/oac_backend#readme",
   "dependencies": {
-    "@igea/oac_jwt_helpers": "1.0.10",
+    "@igea/oac_jwt_helpers": "1.0.13",
     "@rdfjs/data-model": "1.1.2",
     "@rdfjs/types": "1.1.0",
     "axios": "1.10.0",
