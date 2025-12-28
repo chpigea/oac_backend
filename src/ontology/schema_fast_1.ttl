@@ -14,7 +14,7 @@
 @prefix indagine: 	<http://indagine/> .
 
 
-ex:E7ActivityShape # INDAGINE
+ex:E7activity01Shape # INDAGINE
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E7_Activity ;
 	rdfs:label "Indagine" ;
@@ -32,7 +32,7 @@ ex:E7ActivityShape # INDAGINE
     ] ;
     sh:property [
         sh:path crm:P14_carried_out_by ;
-        sh:node ex:E29ActorShape ;
+        sh:node ex:E39ActorShape ;
 		sh:name "Attori coinvolti" ;
         sh:maxCount 1 ;
     ] ;
@@ -43,9 +43,9 @@ ex:E7ActivityShape # INDAGINE
         sh:maxCount 1 ;
     ] .
 
-ex:E29ActorShape # ATTORI
+ex:E39ActorShape # ATTORI
     a sh:NodeShape, rdfs:Class ;
-    sh:targetClass crm:E29_Actor ;
+    sh:targetClass crm:E39_Actor ;
 	rdfs:label "Attori coinvolti" ;
     sh:property [
         sh:path crm:P2_has_type ;
@@ -104,21 +104,16 @@ ex:I12AdoptedBeliefShape # QUESITO DIAGNOSTICO
         sh:maxCount 1 ;
     ] .
 
-ex:E41Appellation01aShape # ENTE RICHIEDENTE
+ex:E41Appellation01Shape # ENTE RICHIEDENTE
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E41_Appellation ;
-	rdfs:label "Ente richiedente" ;
+	rdfs:label "Ente richiedente - Schedatore" ;
     sh:property [
         sh:path indagine:ente_richiedente ;
 		sh:datatype xsd:string ;
 		sh:name "Ente richiedente" ;
         sh:maxCount 1 ; 
-    ] .
-
-ex:E41Appellation01bShape # SCHEDATORE
-    a sh:NodeShape, rdfs:Class ;
-    sh:targetClass crm:E41_Appellation ;
-	rdfs:label "Schedatore" ;
+    ] ;
     sh:property [
         sh:path indagine:schedatore ;
 		sh:datatype xsd:string ;
