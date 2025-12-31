@@ -204,6 +204,12 @@ router.post('/upload/vocabularies', upload.array('files'), (req, res) => {
 router.get('/get-vocabolary-terms/:key', (req, res) => {
     const key = req.params.key;
     const cache = CacheVocabularies.check(key);
+    res.set({
+       'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+       'Pragma': 'no-cache',
+       'Expires': '0',
+       'Surrogate-Control': 'no-store'
+    });
     if(cache.exists){
         res.setHeader('Content-Type', 'application/x-www-form-urlencoded');
         res.sendFile(path.resolve(cache.path));
