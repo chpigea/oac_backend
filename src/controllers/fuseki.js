@@ -200,6 +200,25 @@ router.post('/upload/vocabularies', upload.array('files'), (req, res) => {
 
 });
 
+
+    const key = req.params.key;
+    const cache = CacheVocabularies.check(key);
+	
+	if (cache.exists) {
+        //res.setHeader('Content-Type', 'application/x-www-form-urlencoded');
+        //res.sendFile(path.resolve(cache.path));
+		res.type('text/turtle');
+		console.log("nuova versione "+filePath);
+		fs.createReadStream(filePath)
+			.on('error', err => {
+				console.error('STREAM ERROR:', err.code);
+				if (!res.headersSent) {
+					res.status(404).send('Cache missing');
+				}
+			})
+			.pipe(res);
+
+
 //---------------------------------------------------------------
 router.get('/get-vocabolary-terms/:key', (req, res) => {
     const key = req.params.key;
@@ -211,8 +230,19 @@ router.get('/get-vocabolary-terms/:key', (req, res) => {
        'Surrogate-Control': 'no-store'
     });
     if(cache.exists){
-        res.setHeader('Content-Type', 'application/x-www-form-urlencoded');
-        res.sendFile(path.resolve(cache.path));
+        //res.setHeader('Content-Type', 'application/x-www-form-urlencoded');
+        //res.sendFile(path.resolve(cache.path));
+        const filePath = cache.path;
+        res.type('text/turtle');
+		//console.log("nuova versione "+filePath);
+		fs.createReadStream(filePath)
+			.on('error', err => {
+				console.error('STREAM ERROR:', err.code);
+				if (!res.headersSent) {
+					res.status(404).send('Cache missing');
+				}
+			})
+			.pipe(res);
     }else{
         const rootIRI = `<http://diagnostica/vocabularies/${key}>`;
         let _query = `PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
