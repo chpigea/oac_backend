@@ -316,10 +316,10 @@ ex:E73InformationObject04Shape # ALLEGATO REPORT
         sh:maxCount 1 ;
     ] .
 
-ex:S5InferenceMakingShape # INFERENZA 
+ex:S5InferenceMakingShape # INFERENZA SOFTWARE
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass j.0:S5_Inference_Making ;
-	rdfs:label "Inferenza" ;
+	rdfs:label "Inferenza software" ;
 	sh:property [
         sh:path indagine:inferenza ;
 		sh:datatype xsd:string ;
@@ -327,10 +327,10 @@ ex:S5InferenceMakingShape # INFERENZA
         sh:maxCount 1 ;
     ] .
 
-ex:I5InferenceMakingShape # INFERENZA 
+ex:I5InferenceMakingShape # INFERENZA INPUT
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass base:S5_Inference_Making ;
-	rdfs:label "Inferenza" ;
+	rdfs:label "Inferenza input" ;
 	sh:property [
         sh:path indagine:inferenza ;
 		sh:datatype xsd:string ;
@@ -722,7 +722,7 @@ ex:E29DesignorProcedure02Shape # PROCESSO SOTTOCAMPIONAMENTO
 ex:E29DesignorProcedure04Shape # PROCEDURA ASSOCIATA (in PROCEDURA di ATTIVITA' DIAGNOSTICA)
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E29_Design_or_Procedure ;
-	rdfs:label "Protocollo procedura associata" ;
+	rdfs:label "Procedura associata" ;
 	sh:property [
         sh:path crm:P48_has_preferred_identifier ;
 		sh:node ex:E42Identifier09Shape ;
@@ -750,7 +750,7 @@ ex:S4ObservationShape # OSSERVAZIONE
 ex:S10MaterialSubstantial01Shape # MATERIALE PREVALENTE - CAMPIONE
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass j.0:S10_Material_Substantial ;
-	rdfs:label "Materiale campione" ;
+	rdfs:label "Materiale campione campione" ;
     sh:property [
         sh:path crm:P2_has_type ;
         sh:node ex:E55Type08Shape ;
@@ -762,7 +762,7 @@ ex:S10MaterialSubstantial01Shape # MATERIALE PREVALENTE - CAMPIONE
 ex:S10MaterialSubstantial02Shape # MATERIALE PREVALENTE - SOTTOCAMPIONE
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass j.0:S10_Material_Substantial ;
-	rdfs:label "Materiale prevalente" ;
+	rdfs:label "Materiale prevalente sottocampione" ;
     sh:property [
         sh:path crm:P2_has_type ;
         sh:node ex:E55Type08Shape ;
@@ -886,13 +886,13 @@ ex:CP20ConstructionWorkShape # ELEMENTO COSTRUTTIVO
     ] ;
 	sh:property [
         sh:path j.0:O25_contains ;
-		sh:node ex:S10CP9MaterialShape ; # ex:S10MaterialSubstantial02Shape ;
+		sh:node ex:S10CP9MaterialShape ; 
 		sh:name "Materiale prevalente 1" ;
 		sh:maxCount 1 ;
     ] ;
 	sh:property [
         sh:path basecpm:PC41_shows_as_main_material ;
-		sh:node ex:S10CP9MaterialShape ; # ex:CP9BuildingMaterialShape ;
+		sh:node ex:S10CP9MaterialShape ;
 		sh:name "Materiale prevalente 2" ;
 		sh:maxCount 1 ;
     ] ;
@@ -1180,7 +1180,7 @@ ex:E54DimensionShape # DIMENSIONI
     sh:property [
         sh:path crm:P90_has_value ;
 		sh:node ex:E62String19Shape ;
-		sh:name "Dimensione" ;
+		sh:name "Misura" ;
         sh:maxCount 1 ; 
     ] .
     
@@ -1608,11 +1608,10 @@ ex:E55Type18Shape # TIPO OUTPUT
         sh:maxCount 1 ;
     ] .
 
-#ex:S10MaterialSubstantial02Shape # MATERIALE PREVALENTE 1 - ELEMENTO COSTRUTTIVO
 ex:S10CP9MaterialShape # MATERIALE PREVALENTE - ELEMENTO COSTRUTTIVO
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass j.0:S10_Material_Substantial, basecpm:CP9_Building_Material ;
-	rdfs:label "Materiale prevalente" ;
+	rdfs:label "Materiale prevalente elemento costruttivo" ;
     sh:property [
         sh:path crm:P2_has_type ;
         sh:node ex:E55Type08Shape ;
@@ -1858,13 +1857,13 @@ ex:E62String18Shape # RUOLO ATTORE
         sh:maxCount 1 ;
     ] .
 
-ex:E62String19Shape # DIMENSIONE
+ex:E62String19Shape # MISURA
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E62_String ;
-	rdfs:label "Dimensione" ;
+	rdfs:label "Misura" ;
     sh:property [
-        sh:path indagine:dimensione ;
+        sh:path indagine:misura ;
 		sh:datatype xsd:string ;
-		sh:name "Dimensione" ;
+		sh:name "Misura" ;
         sh:maxCount 1 ;
     ] .
