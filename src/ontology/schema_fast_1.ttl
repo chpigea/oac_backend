@@ -32,18 +32,18 @@ ex:E7activity01Shape # INDAGINE
     ] ;
     sh:property [
         sh:path crm:P14_carried_out_by ;
-        sh:node ex:E39ActorShape ;
+        sh:node ex:E39Actor01Shape ;
 		sh:name "Attori coinvolti" ;
         sh:maxCount 1 ;
     ] ;
     sh:property [
         sh:path crm:P16_used_specific_object ;
-        sh:node ex:S13SampleShape ;
+        sh:node ex:S13Sample01Shape ;
 		sh:name "Campione" ;
         sh:maxCount 1 ;
     ] .
 
-ex:E39ActorShape # ATTORI
+ex:E39Actor01Shape # ATTORI
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E39_Actor ;
 	rdfs:label "Attori coinvolti" ;
@@ -54,7 +54,7 @@ ex:E39ActorShape # ATTORI
         sh:maxCount 1 ;
     ] .
 
-ex:S13SampleShape # CAMPIONE
+ex:S13Sample01Shape # CAMPIONE
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass j.0:S13_Sample ;
 	rdfs:label "Campione" ;
