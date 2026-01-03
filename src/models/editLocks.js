@@ -5,11 +5,49 @@ const expiration_seconds = 180 // 3 minutes
 
 class EditLocks {
 
-    static lock(table_name, row_id, client_uuid){
+    static sleep(delay_ms=100) {
+        return new Promise(resolve => setTimeout(resolve, delay_ms));
+    }
+
+    static lockWithRetry(
+        table_name,
+        row_id,
+        client_uuid,
+        {
+            timeoutMs = 5000, // timeout totale
+            expirationMs = 10000, // expiration of the lock
+            retryDelayMs = 100 // delay minimo tra i tentativi
+        } = {}
+    ) {
+        return new Promise(async (resolve, reject) => {
+            const startTs = (new Date).getTime();
+            let continueLocking = true;
+            const exp_sec = Math.ceil(expirationMs / 1000)
+            while (continueLocking) {
+                try {
+                    console.log("Lock with retry for " + table_name + "@" + row_id)
+                    const acquired = await EditLocks.lock(table_name, row_id, client_uuid, exp_sec);
+                    if (acquired === true) {
+                        resolve(true); // 🔐 lock acquisito
+                        return;
+                    }
+                } catch (err) {
+                    console.log(err)
+                }
+                await EditLocks.sleep(retryDelayMs);
+                const curTs = (new Date).getTime();
+                continueLocking = (curTs > startTs + timeoutMs)
+            }
+            // ⛔ timeout raggiunto
+            resolve(false)
+        })
+    }
+
+    static lock(table_name, row_id, client_uuid, exp_sec = expiration_seconds){
         return new Promise(async (resolve, reject) => {
             try{
                 let start_ts = Math.ceil(new Date().getTime()/1000)
-                let end_ts = start_ts + expiration_seconds
+                let end_ts = start_ts + exp_sec
                 let sql = `INSERT INTO ${table}(
                     table_name, row_id, client_uuid,
                     locked_at_ts, expires_at_ts
@@ -63,6 +101,7 @@ class EditLocks {
 
     static delete(table_name, row_id, client_uuid){
         return new Promise(async (resolve, reject) => {
+            console.log("Unlock for " + table_name + "@" + row_id)
             try {
                 await db(table).where(
                     {table_name, row_id, client_uuid}
