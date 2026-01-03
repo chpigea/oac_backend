@@ -12,6 +12,7 @@ const Fuseki = require('../models/fuseki');
 const Attachments = require('../models/attachments');
 const { Parser, transformMode } = require('../models/vocabolaries/parser');
 const CacheVocabularies = require('../models/vocabolaries/cache');
+const EditLocks = require('../models/editLocks');
 const VocabParser = Parser.GET_INSTANCE();
 
 //---------------------------------------------------------------
@@ -278,8 +279,22 @@ router.get('/get-vocabolary-terms/:key', (req, res) => {
         }).then(response => {
             res.setHeader('Content-Type', response.headers['content-type']);
             res.header('Access-Control-Allow-Origin', '*');
-            CacheVocabularies.set(key, response.data); // salva come stringa
-            res.send(response.data);
+            const client_uuid = crypto.randomUUID();
+            const table = 'vocabulary-cache'
+            EditLocks.lockWithRetry(table, key, client_uuid).then( async (success) =>{
+                try{
+                    if(success){
+                        CacheVocabularies.set(key, response.data); // salva come stringa
+                        await EditLocks.delete(table, key, client_uuid)
+                    }
+                }catch(ex){
+                    console.log(ex)
+                }
+                res.send(response.data);
+            }).catch((e)=>{
+                console.log(e)
+                res.send(response.data);
+            })
         }).catch(err => {
             res.status(500).json({
                 success: false,
