@@ -226,85 +226,74 @@ router.get('/get-vocabolary-terms/:key', (req, res) => {
 			.pipe(res);
     }else{
         const rootIRI = `<http://diagnostica/vocabularies/${key}>`;
-        let _query = `PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
-        CONSTRUCT {
-            ?concept ?p ?o .
-        }
-        WHERE {
-            ?concept (crm:P127_has_broader_term*) ${rootIRI} .
-            ?concept ?p ?o .
-        }`;
-
         let query = `PREFIX crm:  <http://www.cidoc-crm.org/cidoc-crm/>
             PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-            PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-            PREFIX owl:  <http://www.w3.org/2002/07/owl#>
-
-            CONSTRUCT {
-
-                ?concept a owl:Class ;
-                        rdfs:subClassOf ?parent ;
-                        skos:prefLabel ?label ;
-                        skos:closeMatch ?mappedConcept .
-
-            }
+            SELECT ?concept ?parent ?label
             WHERE {
-
-                # Trovo tutti i concetti del vocabolario
                 ?concept (crm:P127_has_broader_term*) ${rootIRI} .
-
-                # Recupero l'etichetta
                 OPTIONAL { ?concept rdfs:label ?label . }
-
-                # Prelevo il parent da broader term
-                OPTIONAL {
-                    ?concept crm:P127_has_broader_term ?parent .
-                }
-
-                # Genero un mapping verso un URI esterno
+                OPTIONAL { ?concept crm:P127_has_broader_term ?parent . }
                 BIND(
                     IRI(CONCAT("${rootIRI}", REPLACE(STR(?concept), "^.*[/#]", "")))
                     AS ?mappedConcept
                 )
-
             }
-            ORDER BY ?label`
-        
+            ORDER BY ?concept`
         axios.post(fusekiUrl, `query=${encodeURIComponent(query)}`, {
             headers: {
-                'Accept': `text/turtle`,
+                'Accept': `application/sparql-results+json`,
                 'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            responseType: 'text'
+            }
         }).then(response => {
-            res.setHeader('Content-Type', response.headers['content-type']);
+            res.setHeader('Content-Type', 'text/turtle');
             res.header('Access-Control-Allow-Origin', '*');
+            const bindings = response.data.results.bindings;
             const client_uuid = crypto.randomUUID();
             const table = 'vocabulary-cache'
+            let data_turtle = `PREFIX base:   <http://www.ics.forth.gr/isl/CRMinf/>
+            PREFIX cpm:    <http://ontome.net/ns/cpm/>
+            PREFIX crm:    <http://www.cidoc-crm.org/cidoc-crm/>
+            PREFIX crmsci: <http://www.cidoc-crm.org/extensions/crmsci/>
+            PREFIX owl:    <http://www.w3.org/2002/07/owl#>
+            PREFIX pref:   <http://diagnostica/>
+            PREFIX rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+            PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+            PREFIX skos:   <http://www.w3.org/2004/02/skos/core#>
+            PREFIX xsd:    <http://www.w3.org/2001/XMLSchema#>
+            `
+            for(let i=0; i<bindings.length; i++){
+                let item = bindings[i]
+                data_turtle += `
+                <${item.concept.value}>
+                    rdf:type         owl:Class;
+                    rdfs:subClassOf  <${item.parent.value}>;
+                    skos:prefLabel   "${item.label.value}"@${item.label["xml:lang"]} . 
+                `
+            }
+
             EditLocks.lockWithRetry(table, key, client_uuid).then( async (success) =>{
                 try{
                     if(success){
-                        CacheVocabularies.set(key, response.data); // salva come stringa
+                        CacheVocabularies.set(key, data_turtle); // salva come stringa
                         await EditLocks.delete(table, key, client_uuid)
                     }
                 }catch(ex){
                     console.log(ex)
                 }
-                res.send(response.data);
+                res.send(data_turtle);
             }).catch((e)=>{
                 console.log(e)
                 res.send(response.data);
             })
         }).catch(err => {
+            console.log(err)
             res.status(500).json({
                 success: false,
                 data: null,
                 message: `Error: ${err}`
             });
         });
-    }
-
-    
+    }    
 })
 //---------------------------------------------------------------
 
