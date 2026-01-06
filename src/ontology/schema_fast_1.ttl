@@ -1,5 +1,5 @@
 @prefix sh:   		<http://www.w3.org/ns/shacl#> .
-@prefix ex:   		<http://example.org/shapes/> .
+#@prefix ex:   		<http://example.org/shapes/> .
 @prefix rdf:  		<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: 		<http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:  		<http://www.w3.org/2001/XMLSchema#> .
@@ -12,169 +12,203 @@
 #@prefix volipi: 	<http://data.sparna.fr/ontologies/volipi#> .
 #@prefix skos: 		<http://www.w3.org/2004/02/skos/core> .
 @prefix indagine: 	<http://indagine/> .
+@prefix this: 		<http://data.mydomain.com/sparnatural-page/sparnatural-config/> .
 
+#@prefix dash: <http://datashapes.org/dash#> .
+#@prefix core: <http://data.sparna.fr/ontologies/sparnatural-config-core#> .
+#
+#this:E7Activity01Shape_label sh:path rdfs:label ;
+#  #sh:order "1" ;
+#  sh:name "Label" ; 
+#  #sh:description "Specifies the name of the object."@en, "Spécifie le nom du Sympôme"@fr ;
+#  sh:maxCount 1 ;
+#  sh:nodeKind sh:Literal ;
+#  sh:datatype rdf:string ;
+#  dash:searchWidget core:SearchProperty ;
+#  dash:propertyRole dash:LabelRole ;
+#  core:enableOptional "false"^^xsd:boolean ;
+#  core:enableNegation "false"^^xsd:boolean .
+#
+#this:E42Identifier01Shape_label sh:path rdfs:label ;
+#  #sh:order "1" ;
+#  sh:name "Label" ; 
+#  #sh:description "Specifies the name of the object."@en, "Spécifie le nom du Sympôme"@fr ;
+#  sh:maxCount 1 ;
+#  sh:nodeKind sh:Literal ;
+#  sh:datatype rdf:string ;
+#  dash:searchWidget core:SearchProperty ;
+#  dash:propertyRole dash:LabelRole ;
+#  core:enableOptional "false"^^xsd:boolean ;
+#  core:enableNegation "false"^^xsd:boolean .
 
-ex:E7activity01Shape # INDAGINE
+this:E7Activity01Shape # INDAGINE
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E7_Activity ;
-	rdfs:label "Indagine" ;
+	rdfs:label "Indagine" ; 
+    #sh:description "Indagine" ;
 	sh:property [
         sh:path crm:P48_has_preferred_identifier ;
-		sh:node ex:E42Identifier01Shape ;
-		sh:name "ID indagine" ;
+		sh:node this:E42Identifier01Shape ;
+		sh:name "ha identificativo" ;
         sh:maxCount 1 ;
     ] ;
     sh:property [
         sh:path crm:P17_was_motivated_by ;
-        sh:node ex:I12AdoptedBeliefShape ;
-		sh:name "Quesito diagnostico" ;
+        sh:node this:I12AdoptedBeliefShape ;
+		sh:name "è motivato da" ;
         sh:maxCount 1 ;
     ] ;
     sh:property [
         sh:path crm:P14_carried_out_by ;
-        sh:node ex:E39Actor01Shape ;
-		sh:name "Attori coinvolti" ;
+        sh:node this:E39Actor01Shape ;
+		sh:name "eseguito da" ;
         sh:maxCount 1 ;
     ] ;
     sh:property [
         sh:path crm:P16_used_specific_object ;
-        sh:node ex:S13Sample01Shape ;
-		sh:name "Campione" ;
+        sh:node this:S13Sample01Shape ;
+		sh:name "ha usato un oggetto specifico" ;
         sh:maxCount 1 ;
     ] .
+#    ] ;
+#    sh:property this:E7Activity01Shape_label .
 
-ex:E39Actor01Shape # ATTORI
+this:E39Actor01Shape # ATTORI
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E39_Actor ;
 	rdfs:label "Attori coinvolti" ;
     sh:property [
         sh:path crm:P2_has_type ;
-        sh:node ex:E55Type03Shape ;
-		sh:name "Attori" ;
+        sh:node this:E55Type03Shape ;
+		sh:name "ha tipo" ;
         sh:maxCount 1 ;
     ] .
 
-ex:S13Sample01Shape # CAMPIONE
+this:S13Sample01Shape # CAMPIONE
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass j.0:S13_Sample ;
 	rdfs:label "Campione" ;
     sh:property [
         sh:path crm:P2_has_type ; 
-        sh:node ex:E55Type05Shape ;
-		sh:name "Tipo campione" ;
+        sh:node this:E55Type05Shape ;
+		sh:name "ha tipo" ;
         sh:maxCount 1 ;
     ] ;
     sh:property [
         sh:path basecpm:Pc43i_uses ;
-        sh:node ex:CP2ArchitectureWorkShape ;
-		sh:name "Bene di riferimento" ;
+        sh:node this:CP2ArchitectureWorkShape ;
+		sh:name "utilizza" ;
 		sh:maxCount 1 ;
     ] .
 
-ex:CP2ArchitectureWorkShape # BENE DI RIFERIMENTO
+this:CP2ArchitectureWorkShape # BENE DI RIFERIMENTO
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass basecpm:CP2_Architecture_Work ;
 	rdfs:label "Bene di riferimento" ;
 	sh:property [
         sh:path crm:P1_is_identified_by ;
-        sh:node ex:E41Appellation02Shape ;
-		sh:name "Denominazione bene" ;
+        sh:node this:E41Appellation02Shape ;
+		sh:name "è identificato da" ;
 		sh:maxCount 1 ;
     ] .
 
-ex:E42Identifier01Shape #ID INDAGINE
+this:E42Identifier01Shape #ID INDAGINE
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E42_Identifier ;
 	rdfs:label "ID Indagine" ;
 	sh:property [
         sh:path indagine:id_indagine ;
-		sh:name "ID indagine" ;
+		sh:name "ID" ;
 		sh:datatype xsd:string ;
 		sh:maxCount 1 ;
     ] .
+#    ] ;
+#    sh:property this:E42Identifier01Shape_label .
 
-ex:I12AdoptedBeliefShape # QUESITO DIAGNOSTICO
+this:I12AdoptedBeliefShape # QUESITO DIAGNOSTICO
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass base:I12_Adopted_Belief ;
 	rdfs:label "Quesito diagnostico" ;
     sh:property [
         sh:path crm:P2_has_type ;
-        sh:node ex:E55Type02Shape ;
-		sh:name "Tipo quesito diagnostico" ;
+        sh:node this:E55Type02Shape ;
+		sh:name "ha tipo" ;
         sh:maxCount 1 ;
     ] .
 
-ex:E41Appellation01Shape # ENTE RICHIEDENTE
+this:E41Appellation01Shape # ENTE RICHIEDENTE
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E41_Appellation ;
 	rdfs:label "Ente richiedente - Schedatore" ;
     sh:property [
         sh:path indagine:ente_richiedente ;
 		sh:datatype xsd:string ;
-		sh:name "Ente richiedente" ;
+		#sh:nodeKind sh:Literal ;
+		sh:name "ente richiedente" ;
         sh:maxCount 1 ; 
     ] ;
     sh:property [
         sh:path indagine:schedatore ;
 		sh:datatype xsd:string ;
-		sh:name "Schedatore" ;
+		#sh:nodeKind sh:Literal ;
+		sh:name "schedatore" ;
         sh:maxCount 1 ; 
     ] .
 
-ex:E41Appellation02Shape # DENOMINAZIONE BENE
+this:E41Appellation02Shape # DENOMINAZIONE BENE
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E41_Appellation ;
 	rdfs:label "Denominazione bene" ;
 	sh:property [
         sh:path indagine:bene_di_riferimento ;
 		sh:datatype xsd:string ;
-        sh:name "Denominazione bene" ;
+		#sh:nodeKind sh:Literal ;
+        sh:name "denominazione" ;
 		sh:maxCount 1 ;
     ] .
 	
-ex:E55Type02Shape # TIPO QUESITO DIAGNOSTICO
+this:E55Type02Shape # TIPO QUESITO DIAGNOSTICO
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E55_Type ;
 	rdfs:label "Tipo quesito diagnostico" ;
     #volipi:iconName "fa-solid fa-car" ;
     sh:property [
         sh:path indagine:tipo_quesito_diagnostico ;
-        #sh:class owl:Class ; # vocabolario QUESITO DIAGNOSTICO (8) id="quesito-diagnostico"
+		#sh:class owl:Class ; # vocabolario QUESITO DIAGNOSTICO (8) id="quesito-diagnostico"
+		#owl:imports <https://raw.githubusercontent.com/tibonto/DFG-Fachsystematik-Ontology/refs/heads/main/dfgfo.ttl>;
 		#owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/quesito-diagnostico> ;
-		#sh:nodeKind sh:Literal;
-		sh:datatype xsd:string;
-        sh:name "Tipo quesito diagnostico" ;
+		sh:datatype xsd:string ;
+		sh:name "tipo" ;
         sh:maxCount 1 ;
     ] .
 
-ex:E55Type03Shape # TIPOLOGIA ATTORI
+this:E55Type03Shape # TIPOLOGIA ATTORI
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E55_Type ;
 	rdfs:label "Tipo attori" ;
     sh:property [
         sh:path crm:P1_is_identified_by ;
-        sh:node ex:E41Appellation01Shape ;
-		sh:name "Ente richiedente - Schedatore" ;
+        sh:node this:E41Appellation01Shape ;
+		sh:name "è identificato da" ;
         sh:maxCount 1 ; 
     #] ;
     #sh:property [
     #    sh:path [sh:inversePath crm:P1i_identifies] ; # usata proprietà inversa di P1_is_defined_by ;
-    #    sh:node ex:E41Appellation01bShape ;
+    #    sh:node this:E41Appellation01bShape ;
 	#	sh:name "Schedatore" ;
     #    sh:maxCount 1 ; 
     ] .
 
-ex:E55Type05Shape # TIPO CAMPIONE
+this:E55Type05Shape # TIPO CAMPIONE
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E55_Type ;
 	rdfs:label "Tipo campione" ;
     sh:property [
 		sh:path indagine:tipo_campione ;
 		#sh:class owl:Class ; # vocabolario TIPO CAMPIONE (21) id="tipo-campione
-		#sh:in ( "Tipo campione A" "Tipo campione B" ) ;
+		#owl:imports <https://raw.githubusercontent.com/tibonto/DFG-Fachsystematik-Ontology/refs/heads/main/dfgfo.ttl>;
 		#owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/tipo-campione> ;
-		#sh:nodeKind sh:Literal;
-		sh:datatype xsd:string;
-		sh:name "Tipo campione" ;
+		sh:datatype xsd:string ;
+		sh:name "tipo" ;
         sh:maxCount 1 ;
     ] .
