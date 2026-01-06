@@ -211,7 +211,6 @@ router.get('/get-vocabolary-terms/:key', (req, res) => {
        'Surrogate-Control': 'no-store'
     });
     if(cache.exists){
-        console.log("QUI")
         //res.setHeader('Content-Type', 'application/x-www-form-urlencoded');
         //res.sendFile(path.resolve(cache.path));
         const filePath = cache.path;
@@ -226,7 +225,6 @@ router.get('/get-vocabolary-terms/:key', (req, res) => {
 			})
 			.pipe(res);
     }else{
-        console.log("QUA")
         const rootIRI = `<http://diagnostica/vocabularies/${key}>`;
         let query = `PREFIX crm:  <http://www.cidoc-crm.org/cidoc-crm/>
             PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
