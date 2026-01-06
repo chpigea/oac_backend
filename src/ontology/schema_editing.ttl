@@ -1150,7 +1150,7 @@ ex:E39Actor04Shape # AUTORE - REPORT
     sh:targetClass crm:E39_Actor ;
 	rdfs:label "Autore report" ;
     sh:property [
-        sh:path indagine:autore ;
+        sh:path crm:P1_is_identified_by ;
         sh:node ex:E41Appellation03Shape ;
 		sh:name "Autore report" ;
         sh:maxCount 1 ;
