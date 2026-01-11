@@ -14,6 +14,23 @@
 @prefix indagine: 	<http://indagine/> .
 @prefix this: 		<http://data.mydomain.com/sparnatural-page/sparnatural-config/> .
 
+@prefix dash: 		<http://datashapes.org/dash#> .
+@prefix core: 		<http://data.sparna.fr/ontologies/sparnatural-config-core#> .
+
+
+this:S13Sample01Shape_label sh:path rdfs:label ;
+	#sh:order "1" ;
+	sh:name "Label campione" ; 
+	#sh:path indagine:label_campione ;
+	sh:nodeKind sh:Literal ;
+	sh:datatype rdf:string ;
+	sh:maxCount 1 ;
+	sh:minCount 1 ;
+	dash:searchWidget core:NonSelectableProperty;
+	#dash:searchWidget core:SearchProperty ;
+	dash:propertyRole dash:LabelRole ;
+	core:enableOptional "false"^^xsd:boolean ;
+	core:enableNegation "false"^^xsd:boolean .
 
 this:S13Sample01Shape # CAMPIONE
     a sh:NodeShape, rdfs:Class ;
@@ -42,12 +59,14 @@ this:S13Sample01Shape # CAMPIONE
         sh:node this:CP2ArchitectureWorkShape ;
 		sh:name "utilizza" ;
 		sh:maxCount 1 ;
-    ] .
+    ] ; 
+		sh:property this:S13Sample01Shape_label .
 
 this:S10MaterialSubstantial01Shape # MATERIALE PREVALENTE - CAMPIONE
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass j.0:S10_Material_Substantial ;
 	rdfs:label "Materiale" ;
+	sh:deactivated "true"^^xsd:boolean ;
     sh:property [
         sh:path crm:P2_has_type ;
         sh:node this:E55Type08Shape ;
@@ -59,6 +78,7 @@ this:CP2ArchitectureWorkShape # BENE DI RIFERIMENTO
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass basecpm:CP2_Architecture_Work ;
 	rdfs:label "Bene di riferimento" ;
+	sh:deactivated "true"^^xsd:boolean ;
 	sh:property [
         sh:path crm:P1_is_identified_by ;
         sh:node this:E41Appellation02Shape ;
@@ -70,6 +90,7 @@ this:E42Identifier02Shape # ID CAMPIONE
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E42_Identifier ;
 	rdfs:label "ID campione" ;
+	sh:deactivated "true"^^xsd:boolean ;
 	sh:property [
 		sh:path indagine:id_campione ;
 		sh:name "ID" ;
@@ -81,6 +102,7 @@ this:E41Appellation02Shape # DENOMINAZIONE BENE
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E41_Appellation ;
 	rdfs:label "Denominazione bene" ;
+	sh:deactivated "true"^^xsd:boolean ;
 	sh:property [
 		sh:path indagine:bene_di_riferimento ;
 		sh:datatype xsd:string ;
@@ -92,6 +114,7 @@ this:E55Type04Shape # TIPO CAMPIONE
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E55_Type ;
 	rdfs:label "Tipo campione" ;
+	sh:deactivated "true"^^xsd:boolean ;
     sh:property [
 		sh:path indagine:tipo_campione ;
 		#sh:class owl:Class ; # vocabolario TIPO CAMPIONE (21) id="tipo-campione"
@@ -106,6 +129,7 @@ this:E55Type08Shape # TIPO MATERIALE (in CAMPIONE, SOTTOCAMPIONE, ELEMENTO COSTR
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E55_Type ;
 	rdfs:label "Tipo materiale" ;
+	sh:deactivated "true"^^xsd:boolean ;
     sh:property [
 		sh:path indagine:materiale ;
 		#sh:class owl:Class ; # vocabolario TIPO MATERIALE (11) id="materiale"
