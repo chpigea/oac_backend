@@ -12,7 +12,53 @@
 #@prefix volipi: 	<http://data.sparna.fr/ontologies/volipi#> .
 #@prefix skos: 		<http://www.w3.org/2004/02/skos/core> .
 @prefix indagine: 	<http://indagine/> .
+#@prefix this: 		<http://data.mydomain.com/sparnatural-page/sparnatural-config/> .
 
+@prefix dash: 		<http://datashapes.org/dash#> .
+@prefix core: 		<http://data.sparna.fr/ontologies/sparnatural-config-core#> .
+
+
+ex:E7Activity01Shape_label sh:path rdfs:label ;
+	#sh:order "1" ;
+	sh:name "Label indagine" ; 
+	#sh:path indagine:label_indagine ;
+	sh:nodeKind sh:Literal ;
+	sh:datatype rdf:string ;
+	sh:maxCount 1 ;
+	sh:minCount 1 ;
+	dash:searchWidget core:NonSelectableProperty;
+	#dash:searchWidget core:SearchProperty ;
+	dash:propertyRole dash:LabelRole ;
+	core:enableOptional "false"^^xsd:boolean ;
+	core:enableNegation "false"^^xsd:boolean .
+
+ex:S13Sample01Shape_label sh:path rdfs:label ;
+	#sh:order "1" ;
+	sh:name "Label campione" ; 
+	#sh:path indagine:label_campione ;
+	sh:nodeKind sh:Literal ;
+	sh:datatype rdf:string ;
+	sh:maxCount 1 ;
+	sh:minCount 1 ;
+	dash:searchWidget core:NonSelectableProperty;
+	#dash:searchWidget core:SearchProperty ;
+	dash:propertyRole dash:LabelRole ;
+	core:enableOptional "false"^^xsd:boolean ;
+	core:enableNegation "false"^^xsd:boolean .
+
+ex:E7Activity02Shape_label sh:path rdfs:label ;
+	#sh:order "1" ;
+	sh:name "Label attività diagnostica" ; 
+	#sh:path indagine:label_attivita_diagnostica ;
+	sh:nodeKind sh:Literal ;
+	sh:datatype rdf:string ;
+	sh:maxCount 1 ;
+	sh:minCount 1 ;
+	dash:searchWidget core:NonSelectableProperty;
+	#dash:searchWidget core:SearchProperty ;
+	dash:propertyRole dash:LabelRole ;
+	core:enableOptional "false"^^xsd:boolean ;
+	core:enableNegation "false"^^xsd:boolean .
 
 ex:E7Activity01Shape # INDAGINE *** livello iniziale
     a sh:NodeShape, rdfs:Class ;
@@ -58,7 +104,8 @@ ex:E7Activity01Shape # INDAGINE *** livello iniziale
         sh:node ex:E7Activity02Shape ;
 		sh:name "Attività diagnostica" ;
         #sh:maxCount 1 ;
-    ] .
+    ] ; # .
+		sh:property ex:E7Activity01Shape_label .
 
 ex:E7Activity02Shape # ATTIVITA' DIAGNOSTICA
     a sh:NodeShape, rdfs:Class ;
@@ -85,21 +132,9 @@ ex:E7Activity02Shape # ATTIVITA' DIAGNOSTICA
     sh:property [
         sh:path crm:P2_has_type ;
         sh:node ex:E55Type13Shape ;
-		sh:name "Tipologie attività" ; 
+		sh:name "Attività" ; 
         sh:maxCount 1 ;
     ] ;
-    #sh:property [
-    #    sh:path [sh:inversePath crm:P2i_is_type_of] ; # usata proprietà inversa di P2_has_type 
-    #    sh:node ex:E55Type13bShape ;
-	#	sh:name "Preparazione campione" ; 
-    #    sh:maxCount 1 ;
-    #] ;
-    #sh:property [
-    #    sh:path [sh:inversePath crm:P2i_is_type_of] ; # usata proprietà inversa di P2_has_type 
-    #    sh:node ex:E55Type13cShape ;
-	#	sh:name "Tecnica diagnostica" ; 
-    #    sh:maxCount 1 ;
-    #] ;
 	sh:property [
         sh:path crm:P160_has_temporal_projection ;
         sh:node ex:E52TimespanShape ; 
@@ -153,7 +188,8 @@ ex:E7Activity02Shape # ATTIVITA' DIAGNOSTICA
         sh:node ex:E31DocumentShape ;
 		sh:name "Report" ;
        #sh:maxCount 1 ;
-    ] .
+    ] ;
+		sh:property ex:E7Activity02Shape_label .
 
 ex:E31DocumentShape # REPORT 
     a sh:NodeShape, rdfs:Class ;
@@ -434,22 +470,10 @@ ex:S13Sample01Shape # CAMPIONE
 		sh:name "Tipologie campione" ; 
         sh:maxCount 1 ;
     ] ;
-    #sh:property [
-    #    sh:path [sh:inversePath crm:P2i_is_type_of] ; # usata proprietà inversa di P2_has_type 
-    #    sh:node ex:E55Type04bShape ;
-	#	sh:name "Tipo campione" ; 
-    #    sh:maxCount 1 ;
-    #] ;
-    #sh:property [
-    #    sh:path [sh:inversePath crm:P2i_is_type_of] ; # usata proprietà inversa di P2_has_type 
-    #    sh:node ex:E55Type04cShape ;
-	#	sh:name "Natura oggetto" ; 
-    #    sh:maxCount 1 ;
-    #] ;
     sh:property [
         sh:path crm:P43_has_dimension ;
         sh:node ex:E54DimensionShape ;
-		sh:name "Dimensioni" ;
+		sh:name "Valore dimensionale" ;
     ] ;
     sh:property [
         sh:path j.0:O8i_was_observed_by ; 
@@ -486,7 +510,8 @@ ex:S13Sample01Shape # CAMPIONE
         sh:node ex:CP2ArchitectureWorkShape ;
 		sh:name "Bene di riferimento" ;
 		sh:maxCount 1 ;
-    ] .
+    ] ;
+    sh:property ex:S13Sample01Shape_label .
 
 ex:S13Sample02Shape # SOTTOCAMPIONE
     a sh:NodeShape, rdfs:Class ;
@@ -887,13 +912,13 @@ ex:CP20ConstructionWorkShape # ELEMENTO COSTRUTTIVO
 	sh:property [
         sh:path j.0:O25_contains ;
 		sh:node ex:S10CP9MaterialShape ; 
-		sh:name "Materiale prevalente 1" ;
+		sh:name "Materiale prevalente" ;
 		sh:maxCount 1 ;
     ] ;
 	sh:property [
         sh:path basecpm:PC41_shows_as_main_material ;
 		sh:node ex:S10CP9MaterialShape ;
-		sh:name "Materiale prevalente 2" ;
+		sh:name "Materiale prevalente costruttivo" ;
 		sh:maxCount 1 ;
     ] ;
 	sh:property [
@@ -1130,12 +1155,12 @@ ex:E39Actor02Shape # AUTORI
 ex:E39Actor03Shape # COMPETENZA ATTORE
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E39_Actor ;
-	rdfs:label "Conpetenza attore" ;
+	rdfs:label "Competenza attore" ;
     sh:property [
         sh:path indagine:competenze_attore ;
 		sh:class owl:Class ; # vocabolario COMPETENZA (5) id="competenza"
 		owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/competenza> ;
-		sh:name "Conpetenza attore" ;
+		sh:name "Competenza attore" ;
         sh:maxCount 1 ;
     ] ;
     sh:property [
@@ -1167,10 +1192,16 @@ ex:E74GroupShape # ENTE AUTORE
         sh:maxCount 1 ; 
     ] .
     
-ex:E54DimensionShape # DIMENSIONI
+ex:E54DimensionShape # VALORE DIMENSIONALE
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E54_Dimension ;
-	rdfs:label "Dimensioni" ;
+	rdfs:label "Valore dimensionale" ;
+    sh:property [
+        sh:path indagine:dimensione ;
+		sh:datatype xsd:string ;
+		sh:name "dimensione" ;
+        sh:maxCount 1 ;
+    ] ;
     sh:property [
         sh:path crm:P91_has_unit ;
         sh:node ex:E58MeasurementUnitShape ;
@@ -1326,13 +1357,6 @@ ex:E55Type03Shape # TIPOLOGIA ATTORI
         sh:node ex:E41Appellation01Shape ;
 		sh:name "Ente richiedente - Schedatore" ;
         sh:maxCount 1 ; 
-    #] ;
-    #sh:property [
-    #    sh:path [sh:inversePath crm:P1i_identifies] ; # usata proprietà inversa di P1_is_identified_by ;
-    #    sh:node ex:E41Appellation01bShape ;
-	#	sh:name "Schedatore" ;
-    #    sh:maxCount 1 ; 
-    #    sh:maxCount 1 ; 
     ] .
 
 ex:E55Type04Shape # TIPOLOGIE CAMPIONE (8DESCRIZIONE, TIPO, NATURA OGGETTO)
@@ -1352,10 +1376,6 @@ ex:E55Type04Shape # TIPOLOGIE CAMPIONE (8DESCRIZIONE, TIPO, NATURA OGGETTO)
 		sh:name "Altra descrizione campione" ;
         sh:maxCount 1 ;
     ] ;
-#ex:E55Type04bShape # TIPO CAMPIONE
-#    a sh:NodeShape, rdfs:Class ;
-#    sh:targetClass crm:E55_Type ;
-#	rdfs:label "Tipo campione" ;
     sh:property [
         sh:path indagine:tipo_campione ;
 		sh:class owl:Class ; # vocabolario TIPO CAMPIONE (21) id="tipo-campione"
@@ -1364,10 +1384,6 @@ ex:E55Type04Shape # TIPOLOGIE CAMPIONE (8DESCRIZIONE, TIPO, NATURA OGGETTO)
         sh:maxCount 1 ;
         sh:minCount 1 ; 
     ] ;
-#ex:E55Type04cShape # NATURA OGGETTO
-#    a sh:NodeShape, rdfs:Class ;
-#    sh:targetClass crm:E55_Type ;
-#	rdfs:label "Natura oggetto" ;
     sh:property [
         sh:path indagine:natura_oggetto ;
 		sh:class owl:Class ; # vocabolario NATURA OGGETTO (26) id="natura-oggetto"
@@ -1486,7 +1502,7 @@ ex:E55Type12Shape # TIPO LUOGO ANALISI
 ex:E55Type13Shape # TIPOLOGIE ATTIVITA' (FASE ANALISI, PREPARAZIONE CAMPIONE, TECNICA DIAGNOSTICA)
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E55_Type ;
-	rdfs:label "Tiplogie attività analisi" ;
+	rdfs:label "Attività" ;
     sh:property [
         sh:path indagine:fase_analisi ;
 		sh:class owl:Class ; # vocabolario FASE ANALISI (7) id="fase-di-analisi"
@@ -1494,10 +1510,6 @@ ex:E55Type13Shape # TIPOLOGIE ATTIVITA' (FASE ANALISI, PREPARAZIONE CAMPIONE, TE
 		sh:name "Fase analisi" ;
         sh:maxCount 1 ;
     ] ;
-#ex:E55Type13bShape # PREPARAZIONE CAMPIONE
-#    a sh:NodeShape, rdfs:Class ;
-#    sh:targetClass crm:E55_Type ;
-#	rdfs:label "Preparazione campione" ;
     sh:property [
         sh:path indagine:preparazione_campione ;
 		sh:class owl:Class ; # vocabolario PREPARAZIONE CAMPIONE (16) id="preparazione-campione"
@@ -1511,10 +1523,6 @@ ex:E55Type13Shape # TIPOLOGIE ATTIVITA' (FASE ANALISI, PREPARAZIONE CAMPIONE, TE
 		sh:name "Note preparazione campione" ;
         sh:maxCount 1 ;
     ] ;
-#ex:E55Type13cShape # TECNICA DIAGNOSTICA
-#    a sh:NodeShape, rdfs:Class ;
-#    sh:targetClass crm:E55_Type ;
-#	rdfs:label "Tecnica diagnostica" ;
     sh:property [
         sh:path indagine:tecnica_diagnostica ;
 		sh:class owl:Class ; # vocabolario TECNICA DIAGNOSTICA (20) id="tecnica-diagnostica"
@@ -1631,22 +1639,6 @@ ex:S10CP9MaterialShape # MATERIALE PREVALENTE - ELEMENTO COSTRUTTIVO
         sh:maxCount 1 ;
     ] .
 
-#ex:CP9BuildingMaterialShape # MATERIALE PREVALENTE 2 - ELEMENTO COSTRUTTIVO
-#    a sh:NodeShape, rdfs:Class ;
-#    sh:targetClass basecpm:CP9_Building_Material ;
-#    sh:property [
-#        sh:path crm:P2_has_type ;
-#        sh:node ex:E55Type08Shape ;
-#		sh:name "Materiale" ;
-#        sh:maxCount 1 ;
-#    ] ;
-#    sh:property [
-#        sh:path basecpm:PC51_was_affected_by ;
-#        sh:node ex:CP42MaterialDecayShape ;
-#		sh:name "Degrado" ;
-#        #sh:maxCount 1 ;
-#    ] .
-		
 ex:CP42MaterialDecayShape # TIPO DEGRADO
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass basecpm:CP42_Material_Decay ;

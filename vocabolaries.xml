@@ -755,7 +755,7 @@
 							<name lang="it">del materiale</name>
 						</term>
 						<term id="della-morfologia">
-							<name lang="it">della-morfologia</name>
+							<name lang="it">della morfologia</name>
 						</term>
 						<term id="morfometrica">
 							<name lang="it">morfometrica</name>
@@ -960,7 +960,7 @@
 			<name lang="it">Luogo di analisi</name>
             <sub-terms>
                 <term id="in-laboratorio">
-					<name lang="it">in-laboratorio</name>
+					<name lang="it">in laboratorio</name>
 				</term>
                 <term id="in-situ">
 					<name lang="it">in situ</name>

@@ -494,7 +494,7 @@ this:S13Sample01Shape # CAMPIONE
     sh:property [
         sh:path crm:P43_has_dimension ;
         sh:node this:E54DimensionShape ;
-		sh:name "ha dimensioni" ;
+		sh:name "ha dimensione" ;
 		sh:maxCount 1 ;
     ] ;
     sh:property [
@@ -594,7 +594,7 @@ this:S2SampleTaking01Shape # CAMPIONAMENTO
     sh:property [
         sh:path j.0:O4_sampled_at ; 
         sh:node this:E53Place01Shape ;
-		sh:name "cmpionato a" ;
+		sh:name "campionato a" ;
 		sh:maxCount 1 ;
     ] ;
     sh:property [
@@ -1170,10 +1170,10 @@ this:E39Actor01Shape # ATTORI COINVOLTI
         sh:maxCount 1 ;
     ] .
 
-this:E39Actor02Shape # AUTORI
+this:E39Actor02Shape # AUTORE
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E39_Actor ;
-	rdfs:label "Autori" ;
+	rdfs:label "Autore" ;
     sh:property [
         sh:path indagine:autore ;
 		sh:datatype xsd:string ;
@@ -1190,7 +1190,7 @@ this:E39Actor02Shape # AUTORI
 this:E39Actor03Shape # COMPETENZA ATTORE
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E39_Actor ;
-	rdfs:label "Conpetenza attore" ;
+	rdfs:label "Competenza attore" ;
     sh:property [
         sh:path indagine:competenze_attore ;
  		#sh:nodeKind sh:Literal ;
@@ -1229,10 +1229,16 @@ this:E74GroupShape # ENTE AUTORE
         sh:maxCount 1 ; 
     ] .
     
-this:E54DimensionShape # DIMENSIONI
+this:E54DimensionShape # VALORE DIMENSIONALE
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E54_Dimension ;
-	rdfs:label "Dimensioni" ;
+	rdfs:label "Valore dimensionale" ;
+    sh:property [
+        sh:path indagine:dimensione ;
+		sh:datatype xsd:string ;
+		sh:name "dimensione" ;
+        sh:maxCount 1 ;
+    ] ;
     sh:property [
         sh:path crm:P91_has_unit ;
         sh:node this:E58MeasurementUnitShape ;
@@ -1405,7 +1411,7 @@ this:E55Type04Shape # TIPOLOGIE CAMPIONE (8DESCRIZIONE, TIPO, NATURA OGGETTO)
 		sh:datatype xsd:string ;
 		#sh:class owl:Class ; # vocabolario TIPO DESCRIZIONE CAMPIONE (4) id="descrizione-del-campione"
 		#owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/descrizione-del-campione> ;
-		sh:name "descrizione" ;
+		sh:name "descrizione campione" ;
         sh:maxCount 1 ;
     ] ;
 #this:E55Type04bShape # TIPO CAMPIONE
@@ -1418,7 +1424,7 @@ this:E55Type04Shape # TIPOLOGIE CAMPIONE (8DESCRIZIONE, TIPO, NATURA OGGETTO)
 		sh:datatype xsd:string ;
 		#sh:class owl:Class ; # vocabolario TIPO CAMPIONE (21) id="tipo-campione"
 		#owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/tipo-campione> ;
-		sh:name "tipo" ;
+		sh:name "tipo campione" ;
         sh:maxCount 1 ;
         #sh:minCount 1 ; 
     ] ;
@@ -1432,7 +1438,7 @@ this:E55Type04Shape # TIPOLOGIE CAMPIONE (8DESCRIZIONE, TIPO, NATURA OGGETTO)
 		sh:datatype xsd:string ;
 		#sh:class owl:Class ; # vocabolario NATURA OGGETTO (26) id="natura-oggetto"
 		#owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/natura-oggetto> ;
-		sh:name "natura" ;
+		sh:name "natura oggetto" ;
         sh:maxCount 1 ;
     ] .
 
@@ -1551,7 +1557,7 @@ this:E55Type12Shape # TIPO LUOGO ANALISI
 this:E55Type13Shape # TIPOLOGIE ATTIVITA' (FASE ANALISI, PREPARAZIONE CAMPIONE, TECNICA DIAGNOSTICA)
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E55_Type ;
-	rdfs:label "Tipologie attività" ;
+	rdfs:label "Attività" ;
     sh:property [
         sh:path indagine:fase_analisi ;
  		#sh:nodeKind sh:Literal ;
@@ -1820,5 +1826,16 @@ this:E62String19Shape # MISURA
         sh:path indagine:misura ;
 		sh:datatype xsd:string ;
 		sh:name "misura" ;
+        sh:maxCount 1 ;
+    ] .
+
+ex:E62String20Shape # GRANDEZZA
+    a sh:NodeShape, rdfs:Class ;
+    sh:targetClass crm:E62_String ;
+	rdfs:label "Grandezza" ;
+    sh:property [
+        sh:path indagine:grandezza ;
+		sh:datatype xsd:string ;
+		sh:name "grandezza" ;
         sh:maxCount 1 ;
     ] .

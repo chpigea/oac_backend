@@ -14,25 +14,23 @@
 @prefix indagine: 	<http://indagine/> .
 @prefix this: 		<http://data.mydomain.com/sparnatural-page/sparnatural-config/> .
 
+@prefix dash: 		<http://datashapes.org/dash#> .
+@prefix core: 		<http://data.sparna.fr/ontologies/sparnatural-config-core#> .
 
-this:E7Activity01Shape # INDAGINE
-    a sh:NodeShape, rdfs:Class ;
-    sh:targetClass crm:E7_Activity ;
-	rdfs:label "Indagine" ;
-	#volipi:iconName "fa-solid fa-car" ;
-    #sh:description "Indagine" ;
-    sh:property [
-        sh:path crm:P16_used_specific_object ;
-        sh:node this:S13Sample01Shape ;
-		sh:name "ha usato un oggetto specifico" ;
-        sh:maxCount 1 ;
-    ] ;
-    sh:property [
-        sh:path crm:P134_continued ;
-        sh:node this:E7Activity02Shape ;
-		sh:name "ha continuazione" ;
-        sh:maxCount 1 ;
-    ] .
+
+this:E7Activity02Shape_label sh:path rdfs:label ;
+	#sh:order "1" ;
+	sh:name "Label attività diagnostica" ; 
+	#sh:path indagine:label_attivita_diagnostica ;
+	sh:nodeKind sh:Literal ;
+	sh:datatype rdf:string ;
+	sh:maxCount 1 ;
+	sh:minCount 1 ;
+	dash:searchWidget core:NonSelectableProperty;
+	#dash:searchWidget core:SearchProperty ;
+	dash:propertyRole dash:LabelRole ;
+	core:enableOptional "false"^^xsd:boolean ;
+	core:enableNegation "false"^^xsd:boolean .
 
 this:E7Activity02Shape # ATTIVITA' DIAGNOSTICA
     a sh:NodeShape, rdfs:Class ;
@@ -67,12 +65,20 @@ this:E7Activity02Shape # ATTIVITA' DIAGNOSTICA
         sh:node this:E70ThingShape ; 
 		sh:name "ha usato un oggetto specifico" ;
         sh:maxCount 1 ;
-    ] .
+    ] ;
+    sh:property [
+        sh:path crm:P16_used_specific_object ;
+        sh:node this:S13Sample01Shape ;
+		sh:name "avvenuto in presenza di" ;
+        sh:maxCount 1 ;
+    ] ;
+		sh:property this:E7Activity02Shape_label .
 	
 this:E70ThingShape # STRUMENTO 
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E70_Thing ;
 	rdfs:label "Strumento" ;
+	sh:deactivated "true"^^xsd:boolean ;
 	sh:property [
         sh:path crm:P2_has_type ;
 		sh:node this:E55Type15Shape ; 
@@ -84,6 +90,7 @@ this:E29DesignorProcedure03Shape # PROCEDURA
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E29_Design_or_Procedure ;
 	rdfs:label "Procedura" ;
+	sh:deactivated "true"^^xsd:boolean ;
 	sh:property [
         sh:path crm:P2_has_type ;
 		sh:node this:E55Type14Shape ; 
@@ -95,10 +102,11 @@ this:S13Sample01Shape # CAMPIONE
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass j.0:S13_Sample ;
 	rdfs:label "Campione" ;
+	sh:deactivated "true"^^xsd:boolean ;
     sh:property [
         sh:path crm:P2_has_type ;
         sh:node this:E55Type04Shape ;
-		sh:name "ha tipo" ; 
+		sh:name "ha tipo" ;
         sh:maxCount 1 ;
     ] ;
 	sh:property [
@@ -118,6 +126,7 @@ this:S10MaterialSubstantial01Shape # MATERIALE PREVALENTE - CAMPIONE
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass j.0:S10_Material_Substantial ;
 	rdfs:label "Materiale" ;
+	sh:deactivated "true"^^xsd:boolean ;
     sh:property [
         sh:path crm:P2_has_type ;
         sh:node this:E55Type08Shape ;
@@ -129,6 +138,7 @@ this:CP2ArchitectureWorkShape # BENE DI RIFERIMENTO
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass basecpm:CP2_Architecture_Work ;
 	rdfs:label "Bene di riferimento" ;
+	sh:deactivated "true"^^xsd:boolean ;
 	sh:property [
         sh:path crm:P1_is_identified_by ;
         sh:node this:E41Appellation02Shape ;
@@ -140,6 +150,7 @@ this:E42Identifier06Shape # ID ATTIVITA' DIAGNOSTICA
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E42_Identifier ;
 	rdfs:label "ID attività diagnostica" ;
+	sh:deactivated "true"^^xsd:boolean ;
 	sh:property [
         sh:path indagine:id_attivita_diagnostica ;
 		sh:name "ID" ;
@@ -147,10 +158,11 @@ this:E42Identifier06Shape # ID ATTIVITA' DIAGNOSTICA
         sh:maxCount 1 ;
     ] .
 
-this:E39Actor02Shape # AUTORI
+this:E39Actor02Shape # AUTORE
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E39_Actor ;
-	rdfs:label "Autori" ;
+	rdfs:label "Autore" ;
+	sh:deactivated "true"^^xsd:boolean ;
     sh:property [
         sh:path indagine:autore ;
 		sh:datatype xsd:string ;
@@ -168,6 +180,7 @@ this:E74GroupShape # ENTE AUTORE
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E74_Group ;
 	rdfs:label "Ente autore" ;
+	sh:deactivated "true"^^xsd:boolean ;
     sh:property [
         sh:path indagine:ente_autore ;
 		sh:datatype xsd:string ;
@@ -179,6 +192,7 @@ this:E41Appellation02Shape # DENOMINAZIONE BENE
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E41_Appellation ;
 	rdfs:label "Denominazione bene" ;
+	sh:deactivated "true"^^xsd:boolean ;
 	sh:property [
         sh:path indagine:denominazione_bene ;
 		sh:datatype xsd:string ;
@@ -190,6 +204,7 @@ this:E55Type04Shape # TIPO CAMPIONE
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E55_Type ;
 	rdfs:label "Tipo campione" ;
+	sh:deactivated "true"^^xsd:boolean ;
     sh:property [
         sh:path indagine:tipo_campione ;
 		#sh:class owl:Class ; # vocabolario TIPO CAMPIONE (21) id="tipo-campione"
@@ -204,6 +219,7 @@ this:E55Type08Shape # TIPO MATERIALE (in CAMPIONE, SOTTOCAMPIONE, ELEMENTO COSTR
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E55_Type ;
 	rdfs:label "Tipo materiale" ;
+	sh:deactivated "true"^^xsd:boolean ;
     sh:property [
         sh:path indagine:tipo_materiale ;
 		#sh:class owl:Class ; # vocabolario TIPO MATERIALE (11) id="materiale"
@@ -218,6 +234,7 @@ this:E55Type13Shape # TECNICA DIAGNOSTICA
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E55_Type ;
 	rdfs:label "Tecnica diagnostica" ;
+	sh:deactivated "true"^^xsd:boolean ;
     sh:property [
         sh:path indagine:tecnica_diagnostica ;
 		#sh:class owl:Class ; # vocabolario TECNICA DIAGNOSTICA (20) id="tecnica-diagnostica"
@@ -232,6 +249,7 @@ this:E55Type14Shape # TIPO MDALITA' INDAGINE
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E55_Type ;
 	rdfs:label "Tipo modalità indagine" ;
+	sh:deactivated "true"^^xsd:boolean ;
     sh:property [
         sh:path indagine:tipo_modalita_indagine ;
 		#sh:class owl:Class ; # vocabolario TIPO MODALITA' INDAGINE (13) id="modalita-di-indagine"
@@ -246,6 +264,7 @@ this:E55Type15Shape # TIPO STRUMENTAZIONE
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E55_Type ;
 	rdfs:label "Tipo strumentazione" ;
+	sh:deactivated "true"^^xsd:boolean ;
     sh:property [
         sh:path indagine:tipo_strumentazione ;
 		#sh:class owl:Class ; # vocabolario STRUMENTAZIONE (18) id="strumentazione"
