@@ -1828,14 +1828,3 @@ this:E62String19Shape # MISURA
 		sh:name "misura" ;
         sh:maxCount 1 ;
     ] .
-
-ex:E62String20Shape # GRANDEZZA
-    a sh:NodeShape, rdfs:Class ;
-    sh:targetClass crm:E62_String ;
-	rdfs:label "Grandezza" ;
-    sh:property [
-        sh:path indagine:grandezza ;
-		sh:datatype xsd:string ;
-		sh:name "grandezza" ;
-        sh:maxCount 1 ;
-    ] .
