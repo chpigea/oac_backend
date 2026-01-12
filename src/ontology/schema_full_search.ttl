@@ -1828,3 +1828,4 @@ this:E62String19Shape # MISURA
 		sh:name "misura" ;
         sh:maxCount 1 ;
     ] .
+
