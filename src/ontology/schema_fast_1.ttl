@@ -16,6 +16,7 @@
 
 @prefix dash: 		<http://datashapes.org/dash#> .
 @prefix core: 		<http://data.sparna.fr/ontologies/sparnatural-config-core#> .
+@prefix datasources: <http://data.sparna.fr/ontologies/sparnatural-config-datasources#> .
 
 
 this:E7Activity01Shape_label sh:path rdfs:label ;
@@ -85,7 +86,7 @@ this:S13Sample01Shape # CAMPIONE
         sh:maxCount 1 ;
     ] ;
     sh:property [
-        sh:path basecpm:Pc43i_uses ;
+        sh:path basecpm:PC43i_uses ;
         sh:node this:CP2ArchitectureWorkShape ;
 		sh:name "utilizza" ;
 		sh:maxCount 1 ;
