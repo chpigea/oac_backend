@@ -19,14 +19,15 @@
 @prefix datasources: <http://data.sparna.fr/ontologies/sparnatural-config-datasources#> .
 
 
-this:E7Activity01Shape_label sh:path rdfs:label ;
+this:E7Activity01Shape_label # LABEL INDAGINE 
+	sh:path rdfs:label ; 
 	#sh:order "1" ;
 	sh:name "Label indagine" ; 
 	sh:maxCount 1 ;
 	sh:nodeKind sh:Literal ;
 	sh:datatype rdf:string ;
-	dash:searchWidget core:NonSelectableProperty;
-	#dash:searchWidget core:SearchProperty ;
+	dash:searchWidget core:NonSelectableProperty ; # ???
+	#dash:searchWidget core:AutocompleteProperty ;
 	dash:propertyRole dash:LabelRole ;
 	core:enableOptional "false"^^xsd:boolean ;
 	core:enableNegation "false"^^xsd:boolean .
@@ -109,11 +110,12 @@ this:E42Identifier01Shape # ID INDAGINE
     sh:targetClass crm:E42_Identifier ;
 	rdfs:label "ID Indagine" ;
 	sh:deactivated "true"^^xsd:boolean ;
-	#sh:property this:E7Activity01Shape_label .
 	sh:property [
        sh:path indagine:id_indagine ;
 		sh:name "ID" ;
 		sh:datatype xsd:string ;
+		#dash:searchWidget core:AutocompleteProperty;
+		#dash:propertyRole dash:LabelRole;
 		sh:maxCount 1 ;
     ] .
 
@@ -126,6 +128,8 @@ this:I12AdoptedBeliefShape # QUESITO DIAGNOSTICO
         sh:path crm:P2_has_type ;
         sh:node this:E55Type02Shape ;
 		sh:name "ha tipo" ;
+		#dash:searchWidget core:AutocompleteProperty;
+		#dash:propertyRole dash:LabelRole;
         sh:maxCount 1 ;
     ] .
 
@@ -137,15 +141,23 @@ this:E41Appellation01Shape # ENTE RICHIEDENTE
     sh:property [
         sh:path indagine:ente_richiedente ;
 		sh:datatype xsd:string ;
-		#sh:nodeKind sh:Literal ;
+		sh:nodeKind sh:Literal ;
 		sh:name "ente richiedente" ;
+		dash:searchWidget core:AutocompleteProperty;
+		dash:propertyRole dash:LabelRole;
+		core:enableOptional "true"^^xsd:boolean ;
+		core:enableNegation "true"^^xsd:boolean ;
         sh:maxCount 1 ; 
     ] ;
     sh:property [
         sh:path indagine:schedatore ;
 		sh:datatype xsd:string ;
-		#sh:nodeKind sh:Literal ;
+		sh:nodeKind sh:Literal ;
 		sh:name "schedatore" ;
+		dash:searchWidget core:AutocompleteProperty;
+		dash:propertyRole dash:LabelRole;
+		core:enableOptional "true"^^xsd:boolean ;
+		core:enableNegation "true"^^xsd:boolean ;
         sh:maxCount 1 ; 
     ] .
 
@@ -155,10 +167,14 @@ this:E41Appellation02Shape # DENOMINAZIONE BENE
 	rdfs:label "Denominazione bene" ;
 	sh:deactivated "true"^^xsd:boolean ;
 	sh:property [
-        sh:path indagine:bene_di_riferimento ;
+		sh:path indagine:denominazione_bene ;
 		sh:datatype xsd:string ;
-		#sh:nodeKind sh:Literal ;
-        sh:name "denominazione" ;
+		sh:nodeKind sh:Literal ;
+		sh:name "denominazione" ;
+		dash:searchWidget core:AutocompleteProperty;
+		dash:propertyRole dash:LabelRole;
+		core:enableOptional "true"^^xsd:boolean ;
+		core:enableNegation "true"^^xsd:boolean ;
 		sh:maxCount 1 ;
     ] .
 	
@@ -175,6 +191,8 @@ this:E55Type02Shape # TIPO QUESITO DIAGNOSTICO
 		#owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/quesito-diagnostico> ;
 		sh:datatype xsd:string ;
 		sh:name "tipo" ;
+		#dash:searchWidget core:AutocompleteProperty;
+		#dash:propertyRole dash:LabelRole;
         sh:maxCount 1 ;
     ] .
 
@@ -202,5 +220,7 @@ this:E55Type05Shape # TIPO CAMPIONE
 		#owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/tipo-campione> ;
 		sh:datatype xsd:string ;
 		sh:name "tipo" ;
+		#dash:searchWidget core:AutocompleteProperty;
+		#dash:propertyRole dash:LabelRole;
         sh:maxCount 1 ;
     ] .
