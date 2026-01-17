@@ -26,7 +26,7 @@ this:S13Sample01Shape_label sh:path rdfs:label ;
 	sh:datatype rdf:string ;
 	sh:maxCount 1 ;
 	sh:minCount 1 ;
-	dash:searchWidget core:NonSelectableProperty;
+	dash:searchWidget core:NonSelectableProperty ; # ???
 	#dash:searchWidget core:SearchProperty ;
 	dash:propertyRole dash:LabelRole ;
 	core:enableOptional "false"^^xsd:boolean ;
@@ -104,12 +104,17 @@ this:E41Appellation02Shape # DENOMINAZIONE BENE
 	rdfs:label "Denominazione bene" ;
 	sh:deactivated "true"^^xsd:boolean ;
 	sh:property [
-		sh:path indagine:bene_di_riferimento ;
+		sh:path indagine:denominazione_bene ;
 		sh:datatype xsd:string ;
-        sh:name "denominazione" ;
+		sh:nodeKind sh:Literal ;
+		sh:name "denominazione" ;
+		dash:searchWidget core:AutocompleteProperty;
+		dash:propertyRole dash:LabelRole;
+		core:enableOptional "true"^^xsd:boolean ;
+		core:enableNegation "true"^^xsd:boolean ;
 		sh:maxCount 1 ;
     ] .
-	
+		
 this:E55Type04Shape # TIPO CAMPIONE
     a sh:NodeShape, rdfs:Class ;
     sh:targetClass crm:E55_Type ;

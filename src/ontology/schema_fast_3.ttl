@@ -166,7 +166,12 @@ this:E39Actor02Shape # AUTORE
     sh:property [
         sh:path indagine:autore ;
 		sh:datatype xsd:string ;
+		sh:nodeKind sh:Literal ;
 		sh:name "autore" ;
+		dash:searchWidget core:AutocompleteProperty;
+		dash:propertyRole dash:LabelRole;
+		core:enableOptional "true"^^xsd:boolean ;
+		core:enableNegation "true"^^xsd:boolean ;
         sh:maxCount 1 ;
     ] ;
     sh:property [
@@ -184,7 +189,12 @@ this:E74GroupShape # ENTE AUTORE
     sh:property [
         sh:path indagine:ente_autore ;
 		sh:datatype xsd:string ;
+		sh:nodeKind sh:Literal ;
 		sh:name "ente" ;
+		dash:searchWidget core:AutocompleteProperty;
+		dash:propertyRole dash:LabelRole;
+		core:enableOptional "true"^^xsd:boolean ;
+		core:enableNegation "true"^^xsd:boolean ;
         sh:maxCount 1 ; 
     ] .
     
@@ -194,9 +204,14 @@ this:E41Appellation02Shape # DENOMINAZIONE BENE
 	rdfs:label "Denominazione bene" ;
 	sh:deactivated "true"^^xsd:boolean ;
 	sh:property [
-        sh:path indagine:denominazione_bene ;
+		sh:path indagine:denominazione_bene ;
 		sh:datatype xsd:string ;
-        sh:name "denominazione" ;
+		sh:nodeKind sh:Literal ;
+		sh:name "denominazione" ;
+		dash:searchWidget core:AutocompleteProperty;
+		dash:propertyRole dash:LabelRole;
+		core:enableOptional "true"^^xsd:boolean ;
+		core:enableNegation "true"^^xsd:boolean ;
 		sh:maxCount 1 ;
     ] .
 	
