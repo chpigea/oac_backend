@@ -16,15 +16,16 @@
 
 @prefix dash: 		<http://datashapes.org/dash#> .
 @prefix core: 		<http://data.sparna.fr/ontologies/sparnatural-config-core#> .
+@prefix datasources: <http://data.sparna.fr/ontologies/sparnatural-config-datasources#> .
 
 
-this:S13Sample01Shape_label sh:path rdfs:label ;
+this:S13SampleCampioneLabel sh:path rdfs:label ;
 	#sh:order "1" ;
 	sh:name "Label campione" ; 
 	#sh:path indagine:label_campione ;
 	sh:nodeKind sh:Literal ;
 	sh:datatype rdf:string ;
-	sh:maxCount 1 ;
+	#sh:maxCount 1 ;
 	sh:minCount 1 ;
 	dash:searchWidget core:NonSelectableProperty ; # ???
 	#dash:searchWidget core:SearchProperty ;
@@ -32,62 +33,62 @@ this:S13Sample01Shape_label sh:path rdfs:label ;
 	core:enableOptional "false"^^xsd:boolean ;
 	core:enableNegation "false"^^xsd:boolean .
 
-this:S13Sample01Shape # CAMPIONE
-    a sh:NodeShape, rdfs:Class ;
+this:S13SampleCampione # CAMPIONE
+    a sh:NodeShape ;
     sh:targetClass j.0:S13_Sample ;
 	rdfs:label "Campione" ;
 	sh:property [
         sh:path crm:P48_has_preferred_identifier ;
-		sh:node this:E42Identifier02Shape ;
+		sh:node this:E42IdentifierCampione ;
 		sh:name "ha identificativo" ;
-        sh:maxCount 1 ;
+        #sh:maxCount 1 ;
     ] ;
     sh:property [
         sh:path crm:P2_has_type ;
-        sh:node this:E55Type04Shape ;
+        sh:node this:E55TypeCampione ;
 		sh:name "ha tipo" ; 
-        sh:maxCount 1 ;
+        #sh:maxCount 1 ;
     ] ;
 	sh:property [
         sh:path j.0:O25_contains ;
-        sh:node this:S10MaterialSubstantial01Shape ;
+        sh:node this:S10MaterialSubstantial ;
 		sh:name "contiene" ;
-		sh:maxCount 1 ;
+		#sh:maxCount 1 ;
     ] ;
     sh:property [
         sh:path basecpm:PC43i_uses ;
-        sh:node this:CP2ArchitectureWorkShape ;
+        sh:node this:CP2ArchitectureWork ;
 		sh:name "utilizza" ;
-		sh:maxCount 1 ;
+		#sh:maxCount 1 ;
     ] ; 
-		sh:property this:S13Sample01Shape_label .
+		sh:property this:S13SampleCampioneLabel .
 
-this:S10MaterialSubstantial01Shape # MATERIALE PREVALENTE - CAMPIONE
-    a sh:NodeShape, rdfs:Class ;
+this:S10MaterialSubstantial # MATERIALE PREVALENTE - CAMPIONE
+    a sh:NodeShape ;
     sh:targetClass j.0:S10_Material_Substantial ;
 	rdfs:label "Materiale" ;
 	sh:deactivated "true"^^xsd:boolean ;
     sh:property [
         sh:path crm:P2_has_type ;
-        sh:node this:E55Type08Shape ;
+        sh:node this:E55TypeMateriale ;
 		sh:name "ha tipo" ;
-        sh:maxCount 1 ;
+        #sh:maxCount 1 ;
     ] .
 
-this:CP2ArchitectureWorkShape # BENE DI RIFERIMENTO
-    a sh:NodeShape, rdfs:Class ;
+this:CP2ArchitectureWork # BENE DI RIFERIMENTO
+    a sh:NodeShape ;
     sh:targetClass basecpm:CP2_Architecture_Work ;
 	rdfs:label "Bene di riferimento" ;
 	sh:deactivated "true"^^xsd:boolean ;
 	sh:property [
         sh:path crm:P1_is_identified_by ;
-        sh:node this:E41Appellation02Shape ;
+        sh:node this:E41AppellationBene ;
 		sh:name "è identificato da" ;
-		sh:maxCount 1 ;
+		#sh:maxCount 1 ;
     ] .
 
-this:E42Identifier02Shape # ID CAMPIONE
-    a sh:NodeShape, rdfs:Class ;
+this:E42IdentifierCampione # ID CAMPIONE
+    a sh:NodeShape ;
     sh:targetClass crm:E42_Identifier ;
 	rdfs:label "ID campione" ;
 	sh:deactivated "true"^^xsd:boolean ;
@@ -95,11 +96,11 @@ this:E42Identifier02Shape # ID CAMPIONE
 		sh:path indagine:id_campione ;
 		sh:name "ID" ;
 		sh:datatype xsd:string ;
-        sh:maxCount 1 ;
+        #sh:maxCount 1 ;
     ] .
 
-this:E41Appellation02Shape # DENOMINAZIONE BENE
-    a sh:NodeShape, rdfs:Class ;
+this:E41AppellationBene # DENOMINAZIONE BENE
+    a sh:NodeShape ;
     sh:targetClass crm:E41_Appellation ;
 	rdfs:label "Denominazione bene" ;
 	sh:deactivated "true"^^xsd:boolean ;
@@ -112,36 +113,73 @@ this:E41Appellation02Shape # DENOMINAZIONE BENE
 		dash:propertyRole dash:LabelRole;
 		core:enableOptional "true"^^xsd:boolean ;
 		core:enableNegation "true"^^xsd:boolean ;
-		sh:maxCount 1 ;
+		#sh:maxCount 1 ;
     ] .
 		
-this:E55Type04Shape # TIPO CAMPIONE
-    a sh:NodeShape, rdfs:Class ;
+this:E55TypeCampione # TIPO CAMPIONE
+    a sh:NodeShape ;
     sh:targetClass crm:E55_Type ;
-	rdfs:label "Tipo campione" ;
-	sh:deactivated "true"^^xsd:boolean ;
+    rdfs:label "Tipo campione" ;
+    sh:deactivated "true"^^xsd:boolean ;
     sh:property [
-		sh:path indagine:tipo_campione ;
-		#sh:class owl:Class ; # vocabolario TIPO CAMPIONE (21) id="tipo-campione"
-		#owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/tipo-campione> ;
-		#sh:nodeKind sh:Literal ;
-		sh:datatype xsd:string ;
-		sh:name "tipo" ;
-        sh:maxCount 1 ;
+        sh:path indagine:tipo_campione ;
+        sh:name "tipo" ;
+        dash:searchWidget core:TreeProperty;
+        core:enableOptional "true"^^xsd:boolean;
+        core:enableNegation "true"^^xsd:boolean;
+        datasources:treeRootsDatasource this:tree_root_tipo_campione ;
+        datasources:treeChildrenDatasource this:tree_children_broader_term ;
+        #sh:maxCount 1 ;
     ] .
 
-this:E55Type08Shape # TIPO MATERIALE (in CAMPIONE, SOTTOCAMPIONE, ELEMENTO COSTRUTTIVO, ...)
-    a sh:NodeShape, rdfs:Class ;
+this:E55TypeMateriale # TIPO MATERIALE
+    a sh:NodeShape ;
     sh:targetClass crm:E55_Type ;
-	rdfs:label "Tipo materiale" ;
-	sh:deactivated "true"^^xsd:boolean ;
+    rdfs:label "Tipo materiale" ;
+    sh:deactivated "true"^^xsd:boolean ;
     sh:property [
-		sh:path indagine:materiale ;
-		#sh:class owl:Class ; # vocabolario TIPO MATERIALE (11) id="materiale"
-		#owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/materiale> ;
-		#sh:nodeKind sh:Literal;
-		sh:datatype xsd:string ;
-		sh:name "tipo" ;
-        sh:maxCount 1 ;
+        sh:path indagine:materiale ;
+        sh:name "tipo" ;
+        dash:searchWidget core:TreeProperty;
+        core:enableOptional "true"^^xsd:boolean;
+        core:enableNegation "true"^^xsd:boolean;
+        datasources:treeRootsDatasource this:tree_root_tipo_materiale ;
+        datasources:treeChildrenDatasource this:tree_children_broader_term ;
+        #sh:maxCount 1 ;
     ] .
 
+
+# DATASOURCE DEI TERMINI DI VOCABOLARIO "TIPO CAMPIONE" (21)
+this:tree_root_tipo_campione a datasources:SparqlTreeRootDatasource;
+    datasources:queryString """
+PREFIX crm:  <http://www.cidoc-crm.org/cidoc-crm/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT (?concept AS ?uri) ?label (EXISTS { ?child crm:P127_has_broader_term ?concept } AS ?hasChildren)
+WHERE {
+    BIND(<http://diagnostica/vocabularies/tipo-campione> AS ?concept)
+    OPTIONAL { ?concept rdfs:label ?label . }
+}""" .
+
+# DATASOURCE DEI TERMINI DI VOCABOLARIO "TIPO MATERIALE" (11)
+this:tree_root_tipo_materiale a datasources:SparqlTreeRootDatasource;
+    datasources:queryString """
+PREFIX crm:  <http://www.cidoc-crm.org/cidoc-crm/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT (?concept AS ?uri) ?label (EXISTS { ?child crm:P127_has_broader_term ?concept } AS ?hasChildren)
+WHERE {
+    BIND(<http://diagnostica/vocabularies/materiale> AS ?concept)
+    OPTIONAL { ?concept rdfs:label ?label . }
+}""" .
+
+# DATASOURCE DEI TERMINI DI VOCABOLARIO SUCCESSIVI 1° LIVELLO (vale per tutti i vocabolari)
+this:tree_children_broader_term a datasources:SparqlTreeChildrenDatasource;
+    datasources:queryString """
+PREFIX crm:  <http://www.cidoc-crm.org/cidoc-crm/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?uri ?label (EXISTS { ?child crm:P127_has_broader_term ?uri } AS ?hasChildren)
+WHERE {
+    ?uri crm:P127_has_broader_term $node .
+    OPTIONAL { ?uri rdfs:label ?label . }
+}
+ORDER BY ?label
+""" .    

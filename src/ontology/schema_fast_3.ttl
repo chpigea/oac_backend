@@ -16,138 +16,138 @@
 
 @prefix dash: 		<http://datashapes.org/dash#> .
 @prefix core: 		<http://data.sparna.fr/ontologies/sparnatural-config-core#> .
+@prefix datasources: <http://data.sparna.fr/ontologies/sparnatural-config-datasources#> .
 
 
-this:E7Activity02Shape_label sh:path rdfs:label ;
+this:E7ActivityDiagnosticaLabel sh:path rdfs:label ;
 	#sh:order "1" ;
 	sh:name "Label attività diagnostica" ; 
 	#sh:path indagine:label_attivita_diagnostica ;
 	sh:nodeKind sh:Literal ;
 	sh:datatype rdf:string ;
-	sh:maxCount 1 ;
+	#sh:maxCount 1 ;
 	sh:minCount 1 ;
 	dash:searchWidget core:NonSelectableProperty;
-	#dash:searchWidget core:SearchProperty ;
 	dash:propertyRole dash:LabelRole ;
 	core:enableOptional "false"^^xsd:boolean ;
 	core:enableNegation "false"^^xsd:boolean .
 
-this:E7Activity02Shape # ATTIVITA' DIAGNOSTICA
-    a sh:NodeShape, rdfs:Class ;
+this:E7ActivityDiagnostica # ATTIVITA' DIAGNOSTICA
+    a sh:NodeShape ;
     sh:targetClass crm:E7_Activity ;
 	rdfs:label "Attività diagnostica" ;
 	sh:property [
         sh:path crm:P48_has_preferred_identifier ;
-		sh:node this:E42Identifier06Shape ;
+		sh:node this:E42IdentifierAttivitaDiagnostica ;
 		sh:name "ha identificativo" ;
-        sh:maxCount 1 ;
+        #sh:maxCount 1 ;
     ] ;
     sh:property [
         sh:path crm:P14_carried_out_by ;
-        sh:node this:E39Actor02Shape ;
+        sh:node this:E39ActorDiagnostica ;
 		sh:name "eseguito da" ;
-        sh:maxCount 1 ;
+        #sh:maxCount 1 ;
     ] ;
     sh:property [
         sh:path crm:P2_has_type ;
-        sh:node this:E55Type13Shape ;
+        sh:node this:E55TypeTecnica ;
 		sh:name "ha tipo" ; 
-        sh:maxCount 1 ;
+        #sh:maxCount 1 ;
     ] ;
     sh:property [
         sh:path crm:P33_used_specific_technique ;
-        sh:node this:E29DesignorProcedure03Shape ; 
+        sh:node this:E29DesignorProcedureDiagnostica ; 
 		sh:name "ha usato tecnica specifica" ;
-        sh:maxCount 1 ;
+        #sh:maxCount 1 ;
     ] ;
     sh:property [
         sh:path crm:P16_used_specific_object ; 
-        sh:node this:E70ThingShape ; 
+        sh:node this:E70ThingStrumento ; 
 		sh:name "ha usato un oggetto specifico" ;
-        sh:maxCount 1 ;
+        #sh:maxCount 1 ;
     ] ;
     sh:property [
-        sh:path crm:P16_used_specific_object ;
-        sh:node this:S13Sample01Shape ;
+        sh:path crm:P12_occurred_in_the_presence_of ;
+        sh:node this:S13SampleCampione ;
 		sh:name "avvenuto in presenza di" ;
-        sh:maxCount 1 ;
+        #sh:maxCount 1 ;
     ] ;
-		sh:property this:E7Activity02Shape_label .
+		sh:property this:E7ActivityDiagnosticaLabel .
 	
-this:E70ThingShape # STRUMENTO 
-    a sh:NodeShape, rdfs:Class ;
+this:E70ThingStrumento # STRUMENTO 
+    a sh:NodeShape ;
     sh:targetClass crm:E70_Thing ;
 	rdfs:label "Strumento" ;
 	sh:deactivated "true"^^xsd:boolean ;
 	sh:property [
         sh:path crm:P2_has_type ;
-		sh:node this:E55Type15Shape ; 
+		sh:node this:E55TypeStrumentazione ; 
 		sh:name "ha tipo" ;
-        sh:maxCount 1 ;
+        #sh:maxCount 1 ;
     ] .
 	
-this:E29DesignorProcedure03Shape # PROCEDURA 
-    a sh:NodeShape, rdfs:Class ;
+this:E29DesignorProcedureDiagnostica # PROCEDURA 
+    a sh:NodeShape ;
     sh:targetClass crm:E29_Design_or_Procedure ;
 	rdfs:label "Procedura" ;
 	sh:deactivated "true"^^xsd:boolean ;
 	sh:property [
         sh:path crm:P2_has_type ;
-		sh:node this:E55Type14Shape ; 
+		sh:node this:E55TypeModalitaIndagine ; 
 		sh:name "ha tipo" ;
-        sh:maxCount 1 ;
+        #sh:maxCount 1 ;
     ] .
 
-this:S13Sample01Shape # CAMPIONE
-    a sh:NodeShape, rdfs:Class ;
+this:S13SampleCampione # CAMPIONE
+    a sh:NodeShape ;
     sh:targetClass j.0:S13_Sample ;
 	rdfs:label "Campione" ;
 	sh:deactivated "true"^^xsd:boolean ;
     sh:property [
         sh:path crm:P2_has_type ;
-        sh:node this:E55Type04Shape ;
+        sh:node this:E55TypeCampione ;
 		sh:name "ha tipo" ;
-        sh:maxCount 1 ;
+        #sh:maxCount 1 ;
     ] ;
 	sh:property [
         sh:path j.0:O25_contains ;
-        sh:node this:S10MaterialSubstantial01Shape ;
+        sh:node this:S10MaterialSubstantial ;
 		sh:name "contiene" ;
-		sh:maxCount 1 ;
+		#sh:maxCount 1 ;
     ] ;
     sh:property [
         sh:path basecpm:PC43i_uses ;
-        sh:node this:CP2ArchitectureWorkShape ;
+        sh:node this:CP2ArchitectureWork ;
 		sh:name "utilizza" ;
-		sh:maxCount 1 ;
+		#sh:maxCount 1 ;
     ] .
 
-this:S10MaterialSubstantial01Shape # MATERIALE PREVALENTE - CAMPIONE
-    a sh:NodeShape, rdfs:Class ;
+this:S10MaterialSubstantial # MATERIALE PREVALENTE - CAMPIONE
+    a sh:NodeShape ;
     sh:targetClass j.0:S10_Material_Substantial ;
 	rdfs:label "Materiale" ;
 	sh:deactivated "true"^^xsd:boolean ;
     sh:property [
         sh:path crm:P2_has_type ;
-        sh:node this:E55Type08Shape ;
+        sh:node this:E55TypeMateriale ;
 		sh:name "ha tipo" ;
-        sh:maxCount 1 ;
+        #sh:maxCount 1 ;
     ] .
 
-this:CP2ArchitectureWorkShape # BENE DI RIFERIMENTO
-    a sh:NodeShape, rdfs:Class ;
+this:CP2ArchitectureWork # BENE DI RIFERIMENTO
+    a sh:NodeShape ;
     sh:targetClass basecpm:CP2_Architecture_Work ;
 	rdfs:label "Bene di riferimento" ;
 	sh:deactivated "true"^^xsd:boolean ;
 	sh:property [
         sh:path crm:P1_is_identified_by ;
-        sh:node this:E41Appellation02Shape ;
+        sh:node this:E41AppellationBene ;
 		sh:name "è identificato da" ;
-		sh:maxCount 1 ;
+		#sh:maxCount 1 ;
     ] .
 
-this:E42Identifier06Shape # ID ATTIVITA' DIAGNOSTICA
-    a sh:NodeShape, rdfs:Class ;
+this:E42IdentifierAttivitaDiagnostica # ID ATTIVITA' DIAGNOSTICA
+    a sh:NodeShape ;
     sh:targetClass crm:E42_Identifier ;
 	rdfs:label "ID attività diagnostica" ;
 	sh:deactivated "true"^^xsd:boolean ;
@@ -155,11 +155,11 @@ this:E42Identifier06Shape # ID ATTIVITA' DIAGNOSTICA
         sh:path indagine:id_attivita_diagnostica ;
 		sh:name "ID" ;
 		sh:datatype xsd:string ;
-        sh:maxCount 1 ;
+        #sh:maxCount 1 ;
     ] .
 
-this:E39Actor02Shape # AUTORE
-    a sh:NodeShape, rdfs:Class ;
+this:E39ActorDiagnostica # AUTORE
+    a sh:NodeShape ;
     sh:targetClass crm:E39_Actor ;
 	rdfs:label "Autore" ;
 	sh:deactivated "true"^^xsd:boolean ;
@@ -172,17 +172,17 @@ this:E39Actor02Shape # AUTORE
 		dash:propertyRole dash:LabelRole;
 		core:enableOptional "true"^^xsd:boolean ;
 		core:enableNegation "true"^^xsd:boolean ;
-        sh:maxCount 1 ;
+        #sh:maxCount 1 ;
     ] ;
     sh:property [
         sh:path crm:P107i_is_current_or_former_member_of ;
-        sh:node this:E74GroupShape ;
+        sh:node this:E74GroupEnte ;
 		sh:name "è membro di" ;
-        sh:maxCount 1 ;
+        #sh:maxCount 1 ;
     ] .
 
-this:E74GroupShape # ENTE AUTORE
-    a sh:NodeShape, rdfs:Class ;
+this:E74GroupEnte # ENTE AUTORE
+    a sh:NodeShape ;
     sh:targetClass crm:E74_Group ;
 	rdfs:label "Ente autore" ;
 	sh:deactivated "true"^^xsd:boolean ;
@@ -195,11 +195,11 @@ this:E74GroupShape # ENTE AUTORE
 		dash:propertyRole dash:LabelRole;
 		core:enableOptional "true"^^xsd:boolean ;
 		core:enableNegation "true"^^xsd:boolean ;
-        sh:maxCount 1 ; 
+        #sh:maxCount 1 ; 
     ] .
     
-this:E41Appellation02Shape # DENOMINAZIONE BENE
-    a sh:NodeShape, rdfs:Class ;
+this:E41AppellationBene # DENOMINAZIONE BENE
+    a sh:NodeShape ;
     sh:targetClass crm:E41_Appellation ;
 	rdfs:label "Denominazione bene" ;
 	sh:deactivated "true"^^xsd:boolean ;
@@ -212,80 +212,154 @@ this:E41Appellation02Shape # DENOMINAZIONE BENE
 		dash:propertyRole dash:LabelRole;
 		core:enableOptional "true"^^xsd:boolean ;
 		core:enableNegation "true"^^xsd:boolean ;
-		sh:maxCount 1 ;
+		#sh:maxCount 1 ;
     ] .
 	
-this:E55Type04Shape # TIPO CAMPIONE
-    a sh:NodeShape, rdfs:Class ;
+this:E55TypeCampione # TIPO CAMPIONE
+    a sh:NodeShape ;
     sh:targetClass crm:E55_Type ;
-	rdfs:label "Tipo campione" ;
-	sh:deactivated "true"^^xsd:boolean ;
+    rdfs:label "Tipo campione" ;
+    sh:deactivated "true"^^xsd:boolean ;
     sh:property [
         sh:path indagine:tipo_campione ;
-		#sh:class owl:Class ; # vocabolario TIPO CAMPIONE (21) id="tipo-campione"
-		#owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/tipo-campione> ;
-		#sh:nodeKind sh:Literal ;
-		sh:datatype xsd:string ;
-		sh:name "tipo" ;
-        sh:maxCount 1 ;
+        sh:name "tipo" ;
+        dash:searchWidget core:TreeProperty;
+        core:enableOptional "true"^^xsd:boolean;
+        core:enableNegation "true"^^xsd:boolean;
+        datasources:treeRootsDatasource this:tree_root_tipo_campione ;
+        datasources:treeChildrenDatasource this:tree_children_broader_term ;
+        #sh:maxCount 1 ;
     ] .
 
-this:E55Type08Shape # TIPO MATERIALE (in CAMPIONE, SOTTOCAMPIONE, ELEMENTO COSTRUTTIVO, OUTPUT, ...)
-    a sh:NodeShape, rdfs:Class ;
+this:E55TypeMateriale # TIPO MATERIALE
+    a sh:NodeShape ;
     sh:targetClass crm:E55_Type ;
-	rdfs:label "Tipo materiale" ;
-	sh:deactivated "true"^^xsd:boolean ;
+    rdfs:label "Tipo materiale" ;
+    sh:deactivated "true"^^xsd:boolean ;
     sh:property [
-        sh:path indagine:tipo_materiale ;
-		#sh:class owl:Class ; # vocabolario TIPO MATERIALE (11) id="materiale"
-		#owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/materiale> ;
-		#sh:nodeKind sh:Literal ;
-		sh:datatype xsd:string ;
-		sh:name "tipo" ;
-        sh:maxCount 1 ;
+        sh:path indagine:materiale ;
+        sh:name "tipo" ;
+        dash:searchWidget core:TreeProperty;
+        core:enableOptional "true"^^xsd:boolean;
+        core:enableNegation "true"^^xsd:boolean;
+        datasources:treeRootsDatasource this:tree_root_tipo_materiale ;
+        datasources:treeChildrenDatasource this:tree_children_broader_term ;
+        #sh:maxCount 1 ;
     ] .
 
-this:E55Type13Shape # TECNICA DIAGNOSTICA
-    a sh:NodeShape, rdfs:Class ;
+this:E55TypeTecnica # TECNICA DIAGNOSTICA
+    a sh:NodeShape ;
     sh:targetClass crm:E55_Type ;
 	rdfs:label "Tecnica diagnostica" ;
 	sh:deactivated "true"^^xsd:boolean ;
     sh:property [
         sh:path indagine:tecnica_diagnostica ;
-		#sh:class owl:Class ; # vocabolario TECNICA DIAGNOSTICA (20) id="tecnica-diagnostica"
-		#owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/tecnica-diagnostica> ;
-		#sh:nodeKind sh:Literal;
-		sh:datatype xsd:string ;
-		sh:name "tipo" ;
-        sh:maxCount 1 ;
+        sh:name "tipo" ;
+        dash:searchWidget core:TreeProperty;
+        core:enableOptional "true"^^xsd:boolean;
+        core:enableNegation "true"^^xsd:boolean;
+        datasources:treeRootsDatasource this:tree_root_tecnica_diagnostica ;
+        datasources:treeChildrenDatasource this:tree_children_broader_term ;
+        #sh:maxCount 1 ;
     ] .
 
-this:E55Type14Shape # TIPO MDALITA' INDAGINE
-    a sh:NodeShape, rdfs:Class ;
+this:E55TypeModalitaIndagine # TIPO MODALITA' INDAGINE
+    a sh:NodeShape ;
     sh:targetClass crm:E55_Type ;
 	rdfs:label "Tipo modalità indagine" ;
 	sh:deactivated "true"^^xsd:boolean ;
     sh:property [
         sh:path indagine:tipo_modalita_indagine ;
-		#sh:class owl:Class ; # vocabolario TIPO MODALITA' INDAGINE (13) id="modalita-di-indagine"
-		#owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/modalita-di-indagine> ;
-		#sh:nodeKind sh:Literal ;
-		sh:datatype xsd:string ;
-		sh:name "tipo" ;
-        sh:maxCount 1 ;
+        sh:name "tipo" ;
+        dash:searchWidget core:TreeProperty;
+        core:enableOptional "true"^^xsd:boolean;
+        core:enableNegation "true"^^xsd:boolean;
+        datasources:treeRootsDatasource this:tree_root_modalita_indagine ;
+        datasources:treeChildrenDatasource this:tree_children_broader_term ;
+        #sh:maxCount 1 ;
     ] .
 
-this:E55Type15Shape # TIPO STRUMENTAZIONE
-    a sh:NodeShape, rdfs:Class ;
+this:E55TypeStrumentazione # TIPO STRUMENTAZIONE
+    a sh:NodeShape ;
     sh:targetClass crm:E55_Type ;
 	rdfs:label "Tipo strumentazione" ;
 	sh:deactivated "true"^^xsd:boolean ;
     sh:property [
         sh:path indagine:tipo_strumentazione ;
-		#sh:class owl:Class ; # vocabolario STRUMENTAZIONE (18) id="strumentazione"
-		#owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/strumentazione> ;
-		#sh:nodeKind sh:Literal ;
-		sh:datatype xsd:string ;
-		sh:name "tipo" ;
-        sh:maxCount 1 ;
+        sh:name "tipo" ;
+        dash:searchWidget core:TreeProperty;
+        core:enableOptional "true"^^xsd:boolean;
+        core:enableNegation "true"^^xsd:boolean;
+        datasources:treeRootsDatasource this:tree_root_strumentazione ;
+        datasources:treeChildrenDatasource this:tree_children_broader_term ;
+        #sh:maxCount 1 ;
     ] .
+
+
+# DATASOURCE DEI TERMINI DI VOCABOLARIO "STRUMENTAZIONE" (18)
+this:tree_root_strumentazione a datasources:SparqlTreeRootDatasource;
+    datasources:queryString """
+PREFIX crm:  <http://www.cidoc-crm.org/cidoc-crm/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT (?concept AS ?uri) ?label (EXISTS { ?child crm:P127_has_broader_term ?concept } AS ?hasChildren)
+WHERE {
+    BIND(<http://diagnostica/vocabularies/strumentazione> AS ?concept)
+    OPTIONAL { ?concept rdfs:label ?label . }
+}""" .
+
+# DATASOURCE DEI TERMINI DI VOCABOLARIO "MODALITA' INDAGINE" (13)
+this:tree_root_modalita_indagine a datasources:SparqlTreeRootDatasource;
+    datasources:queryString """
+PREFIX crm:  <http://www.cidoc-crm.org/cidoc-crm/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT (?concept AS ?uri) ?label (EXISTS { ?child crm:P127_has_broader_term ?concept } AS ?hasChildren)
+WHERE {
+    BIND(<http://diagnostica/vocabularies/modalita-di-indagine> AS ?concept)
+    OPTIONAL { ?concept rdfs:label ?label . }
+}""" .
+
+# DATASOURCE DEI TERMINI DI VOCABOLARIO "TECNICA DIAGNOSTICA" (20)
+this:tree_root_tecnica_diagnostica a datasources:SparqlTreeRootDatasource;
+    datasources:queryString """
+PREFIX crm:  <http://www.cidoc-crm.org/cidoc-crm/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT (?concept AS ?uri) ?label (EXISTS { ?child crm:P127_has_broader_term ?concept } AS ?hasChildren)
+WHERE {
+    BIND(<http://diagnostica/vocabularies/tecnica-diagnostica> AS ?concept)
+    OPTIONAL { ?concept rdfs:label ?label . }
+}""" .
+
+# DATASOURCE DEI TERMINI DI VOCABOLARIO "TIPO CAMPIONE" (21)
+this:tree_root_tipo_campione a datasources:SparqlTreeRootDatasource;
+    datasources:queryString """
+PREFIX crm:  <http://www.cidoc-crm.org/cidoc-crm/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT (?concept AS ?uri) ?label (EXISTS { ?child crm:P127_has_broader_term ?concept } AS ?hasChildren)
+WHERE {
+    BIND(<http://diagnostica/vocabularies/tipo-campione> AS ?concept)
+    OPTIONAL { ?concept rdfs:label ?label . }
+}""" .
+
+# DATASOURCE DEI TERMINI DI VOCABOLARIO "TIPO MATERIALE" (11)
+this:tree_root_tipo_materiale a datasources:SparqlTreeRootDatasource;
+    datasources:queryString """
+PREFIX crm:  <http://www.cidoc-crm.org/cidoc-crm/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT (?concept AS ?uri) ?label (EXISTS { ?child crm:P127_has_broader_term ?concept } AS ?hasChildren)
+WHERE {
+    BIND(<http://diagnostica/vocabularies/materiale> AS ?concept)
+    OPTIONAL { ?concept rdfs:label ?label . }
+}""" .
+
+# DATASOURCE DEI TERMINI DI VOCABOLARIO SUCCESSIVI 1° LIVELLO (vale per tutti i vocabolari)
+this:tree_children_broader_term a datasources:SparqlTreeChildrenDatasource;
+    datasources:queryString """
+PREFIX crm:  <http://www.cidoc-crm.org/cidoc-crm/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?uri ?label (EXISTS { ?child crm:P127_has_broader_term ?uri } AS ?hasChildren)
+WHERE {
+    ?uri crm:P127_has_broader_term $node .
+    OPTIONAL { ?uri rdfs:label ?label . }
+}
+ORDER BY ?label
+""" .    
