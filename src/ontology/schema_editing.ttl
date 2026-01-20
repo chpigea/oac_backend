@@ -61,7 +61,7 @@ ex:E7Activity02Shape_label sh:path rdfs:label ;
 	core:enableNegation "false"^^xsd:boolean .
 
 ex:E7Activity01Shape # INDAGINE *** livello iniziale
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E7_Activity ;
 	rdfs:label "Indagine" ;
 	#volipi:iconName "fa-solid fa-car" ;
@@ -104,11 +104,11 @@ ex:E7Activity01Shape # INDAGINE *** livello iniziale
         sh:node ex:E7Activity02Shape ;
 		sh:name "Attività diagnostica" ;
         #sh:maxCount 1 ;
-    ] ; # .
+    ] ;
 		sh:property ex:E7Activity01Shape_label .
 
 ex:E7Activity02Shape # ATTIVITA' DIAGNOSTICA
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E7_Activity ;
 	rdfs:label "Attività diagnostica" ;
 	sh:property [
@@ -142,7 +142,7 @@ ex:E7Activity02Shape # ATTIVITA' DIAGNOSTICA
 		sh:maxCount 1 ;
     ] ;
     sh:property [
-		sh:path [sh:inversePath crm:P134i_was_continued_by] ; # usata proprietà inversa di P134_continued ...
+		sh:path crm:P134_continued ; # prima è stata usata proprietà inversa ...
         sh:node ex:E7Activity03Shape ;
 		sh:name "Analisi associata" ;
         #sh:maxCount 1 ;
@@ -192,7 +192,7 @@ ex:E7Activity02Shape # ATTIVITA' DIAGNOSTICA
 		sh:property ex:E7Activity02Shape_label .
 
 ex:E31DocumentShape # REPORT 
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E13_Attribute_Assignment ;
 	rdfs:label "Report" ;
 	sh:property [
@@ -221,7 +221,7 @@ ex:E31DocumentShape # REPORT
     ] .
 
 ex:E65CreationShape # DATE REPORT 
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E65_Creation ;
 	rdfs:label "Date report" ;
 	sh:property [
@@ -238,7 +238,7 @@ ex:E65CreationShape # DATE REPORT
     ] .
 
 ex:E13AttributeAssignmentShape # OUTPUT 
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E13_Attribute_Assignment ;
 	rdfs:label "Output" ;
 	sh:property [
@@ -273,7 +273,7 @@ ex:E13AttributeAssignmentShape # OUTPUT
     ] .
 
 ex:E18PhysicalThingShape # COMPONENTI SPECIFICI 
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E18_Physical_Thing ;
 	rdfs:label "Componente specifico" ;
 	sh:property [
@@ -296,7 +296,7 @@ ex:E18PhysicalThingShape # COMPONENTI SPECIFICI
     ] .
 	
 ex:I4PropositionSetShape # ASSUNTI DI BASE 
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass base:I4_Proposition_Set ;
 	rdfs:label "Assunti di base" ;
 	sh:property [
@@ -307,7 +307,7 @@ ex:I4PropositionSetShape # ASSUNTI DI BASE
     ] .
 
 ex:E73InformationObject02Shape # MEDIUM 
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E73_Information_Object ;
 	rdfs:label "Medium" ;
 	sh:property [
@@ -324,7 +324,7 @@ ex:E73InformationObject02Shape # MEDIUM
     ] .
 	
 ex:E73InformationObject03Shape # SOFTWARE 
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E73_Information_Object ;
 	rdfs:label "Software" ;
 	sh:property [
@@ -341,7 +341,7 @@ ex:E73InformationObject03Shape # SOFTWARE
     ] .
 
 ex:E73InformationObject04Shape # ALLEGATO REPORT 
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E73_Information_Object ;
 	rdfs:label "Allegato" ;
 	sh:property [
@@ -353,7 +353,7 @@ ex:E73InformationObject04Shape # ALLEGATO REPORT
     ] .
 
 ex:S5InferenceMakingShape # INFERENZA SOFTWARE
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass j.0:S5_Inference_Making ;
 	rdfs:label "Inferenza software" ;
 	sh:property [
@@ -364,7 +364,7 @@ ex:S5InferenceMakingShape # INFERENZA SOFTWARE
     ] .
 
 ex:I5InferenceMakingShape # INFERENZA INPUT
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass base:S5_Inference_Making ;
 	rdfs:label "Inferenza input" ;
 	sh:property [
@@ -375,7 +375,7 @@ ex:I5InferenceMakingShape # INFERENZA INPUT
     ] .
 
 ex:E70ThingShape # STRUMENTO 
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E70_Thing ;
 	rdfs:label "Strumento" ;
 	sh:property [
@@ -392,7 +392,7 @@ ex:E70ThingShape # STRUMENTO
     ] .
 	
 ex:E29DesignorProcedure03Shape # PROCEDURA 
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E29_Design_or_Procedure ;
 	rdfs:label "Procedura" ;
 	sh:property [
@@ -422,7 +422,7 @@ ex:E29DesignorProcedure03Shape # PROCEDURA
     ] .
 
 ex:E1CRMEntityShape # FINALITA' INDAGINE
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E1_CRM_Entity ;
 	rdfs:label "Finalità indagine" ;
 	sh:property [
@@ -433,18 +433,18 @@ ex:E1CRMEntityShape # FINALITA' INDAGINE
     ] .
 	
 ex:E7Activity03Shape # ANALISI ASSOCIATA-PREGRESSA
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E7_Activity ;
 	rdfs:label "Analisi" ;
 	sh:property [
         sh:path crm:P48_has_preferred_identifier ;
 		sh:node ex:E42Identifier07Shape ;
-		sh:name "ID attività diagnostica esistenti" ;
+		sh:name "ID attività diagnostica esistente" ;
         sh:maxCount 1 ;
     ] .
 
 ex:E53Place02Shape # LUOGO ANALISI
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E53_Place ;
 	rdfs:label "Luogo analisi" ;
 	sh:property [
@@ -455,7 +455,7 @@ ex:E53Place02Shape # LUOGO ANALISI
     ] .
 
 ex:S13Sample01Shape # CAMPIONE
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass j.0:S13_Sample ;
 	rdfs:label "Campione" ;
 	sh:property [
@@ -514,7 +514,7 @@ ex:S13Sample01Shape # CAMPIONE
     sh:property ex:S13Sample01Shape_label .
 
 ex:S13Sample02Shape # SOTTOCAMPIONE
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass j.0:S13_Sample ;
 	rdfs:label "Sottocampione" ;
 	sh:property [
@@ -550,7 +550,7 @@ ex:S13Sample02Shape # SOTTOCAMPIONE
     ] .
 
 ex:S2SampleTaking01Shape # CAMPIONAMENTO
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass j.0:S2_Sample_Taking ;
 	rdfs:label "Campionamento" ;
 	sh:property [
@@ -579,7 +579,7 @@ ex:S2SampleTaking01Shape # CAMPIONAMENTO
     ] .
 
 ex:S2SampleTaking02Shape # SOTTOCAMPIONAMENTO
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass j.0:S2_Sample_Taking ;
 	rdfs:label "Sottocampionamento" ;
 	sh:property [
@@ -596,7 +596,7 @@ ex:S2SampleTaking02Shape # SOTTOCAMPIONAMENTO
     ] .
 
 ex:E53Place01Shape # AREA DI PRELIEVO
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E53_Place ;
 	rdfs:label "Area di prelievo" ;
     sh:property [
@@ -633,7 +633,7 @@ ex:E53Place01Shape # AREA DI PRELIEVO
     ] .
 
 ex:E73InformationObject01Shape # ALLEGATO - LINK
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E73_Information_Object ;
 	rdfs:label "Allegato - Link" ;
 	sh:property [
@@ -645,7 +645,7 @@ ex:E73InformationObject01Shape # ALLEGATO - LINK
     ] .
 
 ex:CP38ArchitectureRepresentationObjectShape # ALLEGATO - OGGETTO
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass basecpm:CP38_Architecture_Representation_Object ;
 	rdfs:label "Allegato - Oggetto" ;
 	sh:property [
@@ -661,7 +661,7 @@ ex:AllegatiGroup # RAGGRUPPAMENTO ALLEGATI
 	rdfs:label "Allegati" .
 	
 ex:S22SegmentofMatterShape # PORZIONE IDENTIFICATA
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass j.0:S22_Segment_of_Matter ;
 	rdfs:label "Porzione identificata" ;
 	sh:property [
@@ -672,7 +672,7 @@ ex:S22SegmentofMatterShape # PORZIONE IDENTIFICATA
     ] .
 
 ex:E2TemporalEntity01Shape # DATA CAMPIONAMENTO
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E2_Temporal_Entity ;
 	rdfs:label "Data campionamento" ;
 	sh:property [
@@ -683,7 +683,7 @@ ex:E2TemporalEntity01Shape # DATA CAMPIONAMENTO
     ] .
 
 ex:E2TemporalEntity02Shape # DATA CREAZIONE REPORT
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E2_Temporal_Entity ;
 	rdfs:label "Data creazione" ;
 	sh:property [
@@ -694,7 +694,7 @@ ex:E2TemporalEntity02Shape # DATA CREAZIONE REPORT
     ] .
 
 ex:E2TemporalEntity03Shape # DATA AGGIORNAMENTO REPORT
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E2_Temporal_Entity ;
 	rdfs:label "Data aggiornamento" ;
 	sh:property [
@@ -705,7 +705,7 @@ ex:E2TemporalEntity03Shape # DATA AGGIORNAMENTO REPORT
     ] .
 
 ex:E52TimespanShape # DATA SOTTOCAMPIONAMENTO, OUTPUT
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass j.0:E52_Time-span ; 
 	rdfs:label "Datazione" ;
 	sh:property [
@@ -716,7 +716,7 @@ ex:E52TimespanShape # DATA SOTTOCAMPIONAMENTO, OUTPUT
     ] .
 
 ex:E29DesignorProcedure01Shape # PROCESSO CAMPIONAMENTO
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E29_Design_or_Procedure ;
 	rdfs:label "Processo campionamento" ;
     sh:property [
@@ -734,7 +734,7 @@ ex:E29DesignorProcedure01Shape # PROCESSO CAMPIONAMENTO
     ] .
 
 ex:E29DesignorProcedure02Shape # PROCESSO SOTTOCAMPIONAMENTO
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E29_Design_or_Procedure ;
 	rdfs:label "Procedura sottocampionamento" ;
     sh:property [
@@ -745,7 +745,7 @@ ex:E29DesignorProcedure02Shape # PROCESSO SOTTOCAMPIONAMENTO
     ] .
 
 ex:E29DesignorProcedure04Shape # PROCEDURA ASSOCIATA (in PROCEDURA di ATTIVITA' DIAGNOSTICA)
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E29_Design_or_Procedure ;
 	rdfs:label "Procedura associata" ;
 	sh:property [
@@ -756,7 +756,7 @@ ex:E29DesignorProcedure04Shape # PROCEDURA ASSOCIATA (in PROCEDURA di ATTIVITA' 
     ] .
 
 ex:S4ObservationShape # OSSERVAZIONE
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass j.0:S4_Observation ;
 	rdfs:label "Osservazione" ;
 	sh:property [
@@ -773,9 +773,9 @@ ex:S4ObservationShape # OSSERVAZIONE
     ] .
 
 ex:S10MaterialSubstantial01Shape # MATERIALE PREVALENTE - CAMPIONE
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass j.0:S10_Material_Substantial ;
-	rdfs:label "Materiale campione campione" ;
+	rdfs:label "Materiale prevalente campione" ;
     sh:property [
         sh:path crm:P2_has_type ;
         sh:node ex:E55Type08Shape ;
@@ -785,7 +785,7 @@ ex:S10MaterialSubstantial01Shape # MATERIALE PREVALENTE - CAMPIONE
     ] .
 
 ex:S10MaterialSubstantial02Shape # MATERIALE PREVALENTE - SOTTOCAMPIONE
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass j.0:S10_Material_Substantial ;
 	rdfs:label "Materiale prevalente sottocampione" ;
     sh:property [
@@ -796,7 +796,7 @@ ex:S10MaterialSubstantial02Shape # MATERIALE PREVALENTE - SOTTOCAMPIONE
     ] .
 
 ex:S10MaterialSubstantial03Shape # MATERIALE SPECIFICO - OUTPUT
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass j.0:S10_Material_Substantial ;
 	rdfs:label "Materiale specifico" ;
     sh:property [
@@ -807,7 +807,7 @@ ex:S10MaterialSubstantial03Shape # MATERIALE SPECIFICO - OUTPUT
     ] .
 
 ex:E14ConditionAssessmentShape # VALUTAZIONE STATO CONSERVAZIONE
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E14_Condition_Assessment ;
 	rdfs:label "Valutazione stato conservazione" ;
     sh:property [
@@ -818,7 +818,7 @@ ex:E14ConditionAssessmentShape # VALUTAZIONE STATO CONSERVAZIONE
     ] .
 
 ex:E3ConditionStateShape # TAFONOMIA E STATO CONSERVAZIONE
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E3_Condition_State ;
 	rdfs:label "Tafonomia e Stato di conservazione" ;
     sh:property [
@@ -829,7 +829,7 @@ ex:E3ConditionStateShape # TAFONOMIA E STATO CONSERVAZIONE
     ] .
 
 ex:CP41EnvironmentalObservableEntity01Shape # STATO CONSERVAZIONE - CONDIZIONE AMBIENTALE
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass basecpm:CP41_Environmental_Observable_Entity ;
 	rdfs:label "Stato conservazione - Condizione ambientale" ;
     sh:property [
@@ -846,7 +846,7 @@ ex:CP41EnvironmentalObservableEntity01Shape # STATO CONSERVAZIONE - CONDIZIONE A
     ] .
 
 ex:CP2ArchitectureWorkShape # BENE DI RIFERIMENTO
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass basecpm:CP2_Architecture_Work ;
 	rdfs:label "Bene di riferimento" ;
 	sh:property [
@@ -888,7 +888,7 @@ ex:CP2ArchitectureWorkShape # BENE DI RIFERIMENTO
     ] .
 
 ex:CP43StructuralDamageShape # TIPO DISSESTI STRUTTURALI
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass basecpm:CP43_Structural_Damage ;
 	rdfs:label "Tipo dissesti strutturali" ;
 	sh:property [
@@ -900,7 +900,7 @@ ex:CP43StructuralDamageShape # TIPO DISSESTI STRUTTURALI
     ] .
 
 ex:CP20ConstructionWorkShape # ELEMENTO COSTRUTTIVO
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass basecpm:CP20_Construction_Work ;
 	rdfs:label "Elemento costruttivo" ;
 	sh:property [
@@ -911,13 +911,13 @@ ex:CP20ConstructionWorkShape # ELEMENTO COSTRUTTIVO
     ] ;
 	sh:property [
         sh:path j.0:O25_contains ;
-		sh:node ex:S10CP9MaterialShape ; 
+		sh:node ex:S10CP9Material01Shape ;
 		sh:name "Materiale prevalente" ;
 		sh:maxCount 1 ;
     ] ;
 	sh:property [
         sh:path basecpm:PC41_shows_as_main_material ;
-		sh:node ex:S10CP9MaterialShape ;
+		sh:node ex:S10CP9Material02Shape ;
 		sh:name "Materiale prevalente costruttivo" ;
 		sh:maxCount 1 ;
     ] ;
@@ -929,7 +929,7 @@ ex:CP20ConstructionWorkShape # ELEMENTO COSTRUTTIVO
     ] .
 
 ex:CP41EnvironmentalObservableEntity02Shape # FENOMENO OSSERVATO
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass basecpm:CP41_Environmental_Observable_Entity ;
 	rdfs:label "Fenomeno osservato" ;
 	sh:property [
@@ -940,7 +940,7 @@ ex:CP41EnvironmentalObservableEntity02Shape # FENOMENO OSSERVATO
     ] .
 
 ex:E42Identifier01Shape # ID INDAGINE
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E42_Identifier ;
 	rdfs:label "ID indagine" ;
 	sh:property [
@@ -954,7 +954,7 @@ ex:E42Identifier01Shape # ID INDAGINE
     ] .
 
 ex:E42Identifier02Shape # ID CAMPIONE
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E42_Identifier ;
 	rdfs:label "ID campione" ;
 	sh:property [
@@ -968,7 +968,7 @@ ex:E42Identifier02Shape # ID CAMPIONE
     ] .
 
 ex:E42Identifier03Shape # ID AREA PRELIEVO
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E42_Identifier ;
 	rdfs:label "ID area prelievo" ;
 	sh:property [
@@ -979,7 +979,7 @@ ex:E42Identifier03Shape # ID AREA PRELIEVO
     ] .
 
 ex:E42Identifier04Shape # ID BENE VIR
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E42_Identifier ;
 	rdfs:label "ID bene VIR" ;
 	sh:property [
@@ -990,7 +990,7 @@ ex:E42Identifier04Shape # ID BENE VIR
     ] .
 	
 ex:E42Identifier05Shape # ID SOTTOCAMPIONE
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E42_Identifier ;
 	rdfs:label "ID sottocampione" ;
 	sh:property [
@@ -1003,7 +1003,7 @@ ex:E42Identifier05Shape # ID SOTTOCAMPIONE
     ] .
 
 ex:E42Identifier06Shape # ID ATTIVITA' DIAGNOSTICA
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E42_Identifier ;
 	rdfs:label "ID attività diagnostica" ;
 	sh:property [
@@ -1016,7 +1016,7 @@ ex:E42Identifier06Shape # ID ATTIVITA' DIAGNOSTICA
     ] .
 
 ex:E42Identifier07Shape # ID ANALISI ASSOCIATA-PREGRESSA - (ATTIVITA' DIAGNOSTICA GIA' ESISTENTE)
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E42_Identifier ;
 	rdfs:label "ID analisi" ;
 	sh:property [
@@ -1030,7 +1030,7 @@ ex:E42Identifier07Shape # ID ANALISI ASSOCIATA-PREGRESSA - (ATTIVITA' DIAGNOSTIC
     ] .
 
 ex:E42Identifier08Shape # PROTOCOLLO - PROCEDURA
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E42_Identifier ;
 	rdfs:label "Protocollo procedura" ;
 	sh:property [
@@ -1042,7 +1042,7 @@ ex:E42Identifier08Shape # PROTOCOLLO - PROCEDURA
     ] .
 
 ex:E42Identifier09Shape # PROTOCOLLO - PROCEDURA ASSOCIATA
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E42_Identifier ;
 	rdfs:label "Protocollo procedura associata" ;
 	sh:property [
@@ -1056,7 +1056,7 @@ ex:E42Identifier09Shape # PROTOCOLLO - PROCEDURA ASSOCIATA
     ] .
 
 ex:E42Identifier10Shape # SPECIFICHE TECNICHE
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E42_Identifier ;
 	rdfs:label "Codice specifiche tecniche" ;
 	sh:property [
@@ -1067,7 +1067,7 @@ ex:E42Identifier10Shape # SPECIFICHE TECNICHE
     ] .
 
 ex:E42Identifier11Shape # SOFTWARE
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E42_Identifier ;
 	rdfs:label "Codice software" ;
 	sh:property [
@@ -1078,7 +1078,7 @@ ex:E42Identifier11Shape # SOFTWARE
     ] .
 
 ex:E42Identifier12Shape # CODICE COMPONENTE SPECIFICO
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E42_Identifier ;
 	rdfs:label "Codice componente specifico" ;
 	sh:property [
@@ -1089,7 +1089,7 @@ ex:E42Identifier12Shape # CODICE COMPONENTE SPECIFICO
     ] .
 
 ex:E42Identifier13Shape # ID COMPONENTE SPECIFICO
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E42_Identifier ;
 	rdfs:label "ID componente specifico" ;
 	sh:property [
@@ -1100,7 +1100,7 @@ ex:E42Identifier13Shape # ID COMPONENTE SPECIFICO
     ] .
 
 ex:E42Identifier14Shape # ID REPORT
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E42_Identifier ;
 	rdfs:label "ID report" ;
 	sh:property [
@@ -1113,7 +1113,7 @@ ex:E42Identifier14Shape # ID REPORT
     ] .
 
 ex:I12AdoptedBeliefShape # QUESITO DIAGNOSTICO
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass base:I12_Adopted_Belief ;
 	rdfs:label "Quesito diagnostico" ;
     sh:property [
@@ -1125,7 +1125,7 @@ ex:I12AdoptedBeliefShape # QUESITO DIAGNOSTICO
     ] .
 
 ex:E39Actor01Shape # ATTORI COINVOLTI
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E39_Actor ;
 	rdfs:label "Attori coinvolti" ;
     sh:property [
@@ -1136,7 +1136,7 @@ ex:E39Actor01Shape # ATTORI COINVOLTI
     ] .
 
 ex:E39Actor02Shape # AUTORI
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E39_Actor ;
 	rdfs:label "Autori" ;
     sh:property [
@@ -1153,11 +1153,11 @@ ex:E39Actor02Shape # AUTORI
     ] .
 
 ex:E39Actor03Shape # COMPETENZA ATTORE
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E39_Actor ;
 	rdfs:label "Competenza attore" ;
     sh:property [
-        sh:path indagine:competenze_attore ;
+        sh:path indagine:competenza_attore ;
 		sh:class owl:Class ; # vocabolario COMPETENZA (5) id="competenza"
 		owl:imports <OAC_EXPOSED_PROTOCOL://OAC_EXPOSED_HOST:OAC_EXPOSED_PORT/backend/fuseki/get-vocabolary-terms/competenza> ;
 		sh:name "Competenza attore" ;
@@ -1171,7 +1171,7 @@ ex:E39Actor03Shape # COMPETENZA ATTORE
     ] .
 
 ex:E39Actor04Shape # AUTORE - REPORT
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E39_Actor ;
 	rdfs:label "Autore report" ;
     sh:property [
@@ -1182,7 +1182,7 @@ ex:E39Actor04Shape # AUTORE - REPORT
     ] .
 
 ex:E74GroupShape # ENTE AUTORE
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E74_Group ;
 	rdfs:label "Ente autore" ;
     sh:property [
@@ -1193,7 +1193,7 @@ ex:E74GroupShape # ENTE AUTORE
     ] .
     
 ex:E54DimensionShape # VALORE DIMENSIONALE
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E54_Dimension ;
 	rdfs:label "Valore dimensionale" ;
     sh:property [
@@ -1216,7 +1216,7 @@ ex:E54DimensionShape # VALORE DIMENSIONALE
     ] .
     
 ex:E58MeasurementUnitShape # UNITA' MISURA
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E58_Measurement_Unit ;
 	rdfs:label "Unità di misura" ;
     sh:property [
@@ -1228,7 +1228,7 @@ ex:E58MeasurementUnitShape # UNITA' MISURA
     ] .
 
 ex:I2Belief01Shape # INQUADRAMENTO CRONOLOGICO
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass base:I2_Belief ;
 	rdfs:label "Inquadramento cronologico" ;
 	sh:property [
@@ -1246,7 +1246,7 @@ ex:I2Belief01Shape # INQUADRAMENTO CRONOLOGICO
     ] .
 
 ex:I2Belief02Shape # INPUT
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass base:I2_Belief ;
 	rdfs:label "Input" ;
     sh:property [
@@ -1275,7 +1275,7 @@ ex:I2Belief02Shape # INPUT
     ] .
 
 ex:E41Appellation01Shape # ENTE RICHIEDENTE - SCHEDATORE
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E41_Appellation ;
 	rdfs:label "Ente richiedente - schedatore" ;
     sh:property [
@@ -1292,7 +1292,7 @@ ex:E41Appellation01Shape # ENTE RICHIEDENTE - SCHEDATORE
     ] .
 
 ex:E41Appellation02Shape # DENOMINAZIONE BENE
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E41_Appellation ;
 	rdfs:label "Denominazione bene" ;
 	sh:property [
@@ -1304,7 +1304,7 @@ ex:E41Appellation02Shape # DENOMINAZIONE BENE
     ] .
 	
 ex:E41Appellation03Shape # AUTORE - REPORT
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E41_Appellation ;
 	rdfs:label "Autore" ;
     sh:property [
@@ -1315,7 +1315,7 @@ ex:E41Appellation03Shape # AUTORE - REPORT
     ] .
 
 ex:E55Type01Shape # TIPO INDAGINE
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E55_Type ;
 	rdfs:label "Tipo indagine" ;
     sh:property [
@@ -1330,7 +1330,7 @@ ex:E55Type01Shape # TIPO INDAGINE
     ] .
 
 ex:E55Type02Shape # TIPO QUESITO DIAGNOSTICO
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E55_Type ;
 	rdfs:label "Tipo quesito diagnostico" ;
     sh:property [
@@ -1349,7 +1349,7 @@ ex:E55Type02Shape # TIPO QUESITO DIAGNOSTICO
     ] .
 
 ex:E55Type03Shape # TIPOLOGIA ATTORI
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E55_Type ;
 	rdfs:label "Tipo attori" ;
     sh:property [
@@ -1360,7 +1360,7 @@ ex:E55Type03Shape # TIPOLOGIA ATTORI
     ] .
 
 ex:E55Type04Shape # TIPOLOGIE CAMPIONE (8DESCRIZIONE, TIPO, NATURA OGGETTO)
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E55_Type ;
 	rdfs:label "Tipologie campione" ;
     sh:property [
@@ -1393,7 +1393,7 @@ ex:E55Type04Shape # TIPOLOGIE CAMPIONE (8DESCRIZIONE, TIPO, NATURA OGGETTO)
     ] .
 
 ex:E55Type05Shape # TIPO INQUADRAMENTO CRONOLOGICO
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E55_Type ;
 	rdfs:label "Tipo inquadramento cronologico" ;
     sh:property [
@@ -1405,7 +1405,7 @@ ex:E55Type05Shape # TIPO INQUADRAMENTO CRONOLOGICO
     ] .
 
 ex:E55Type06Shape # TIPO CONDIZIONE AMBIENTALE
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E55_Type ;
 	rdfs:label "Tipo condizione ambientale" ;
     sh:property [
@@ -1417,7 +1417,7 @@ ex:E55Type06Shape # TIPO CONDIZIONE AMBIENTALE
     ] .
 
 ex:E55Type07Shape # TIPO TAFONOMIA E STATO CONSERVAZIONE
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E55_Type ;
 	rdfs:label "Tipo tafonomia e stato conservazione" ;
     sh:property [
@@ -1428,7 +1428,7 @@ ex:E55Type07Shape # TIPO TAFONOMIA E STATO CONSERVAZIONE
     ] .
 
 ex:E55Type08Shape # TIPO MATERIALE (in CAMPIONE, SOTTOCAMPIONE, ELEMENTO COSTRUTTIVO, OUTPUT, ...)
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E55_Type ;
 	rdfs:label "Tipo materiale" ;
     sh:property [
@@ -1446,7 +1446,7 @@ ex:E55Type08Shape # TIPO MATERIALE (in CAMPIONE, SOTTOCAMPIONE, ELEMENTO COSTRUT
     ] .
 
 ex:E55Type09Shape # TIPO CONTESTO
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E55_Type ;
 	rdfs:label "Tipo contesto" ;
     sh:property [
@@ -1458,7 +1458,7 @@ ex:E55Type09Shape # TIPO CONTESTO
     ] .
 
 ex:E55Type10Shape # TIPO ELEMENTO COSTRUTTIVO
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E55_Type ;
 	rdfs:label "Tipo elemento costruttivo" ;
     sh:property [
@@ -1476,7 +1476,7 @@ ex:E55Type10Shape # TIPO ELEMENTO COSTRUTTIVO
     ] .
 
 ex:E55Type11Shape # TIPO SOTTOCAMPIONE (come CAMPIONE che è a parte)
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E55_Type ;
 	rdfs:label "Tipo sottocampione" ;
     sh:property [
@@ -1488,7 +1488,7 @@ ex:E55Type11Shape # TIPO SOTTOCAMPIONE (come CAMPIONE che è a parte)
     ] .
 
 ex:E55Type12Shape # TIPO LUOGO ANALISI
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E55_Type ;
 	rdfs:label "Tipo luogo analisi" ;
     sh:property [
@@ -1500,7 +1500,7 @@ ex:E55Type12Shape # TIPO LUOGO ANALISI
     ] .
 
 ex:E55Type13Shape # TIPOLOGIE ATTIVITA' (FASE ANALISI, PREPARAZIONE CAMPIONE, TECNICA DIAGNOSTICA)
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E55_Type ;
 	rdfs:label "Attività" ;
     sh:property [
@@ -1533,7 +1533,7 @@ ex:E55Type13Shape # TIPOLOGIE ATTIVITA' (FASE ANALISI, PREPARAZIONE CAMPIONE, TE
     ] .
 
 ex:E55Type14Shape # TIPO MDALITA' INDAGINE
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E55_Type ;
 	rdfs:label "Tipo modalità indagine" ;
     sh:property [
@@ -1551,7 +1551,7 @@ ex:E55Type14Shape # TIPO MDALITA' INDAGINE
     ] .
 
 ex:E55Type15Shape # TIPO STRUMENTAZIONE
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E55_Type ;
 	rdfs:label "Tipo strumentazione" ;
     sh:property [
@@ -1569,7 +1569,7 @@ ex:E55Type15Shape # TIPO STRUMENTAZIONE
     ] .
 
 ex:E55Type16Shape # TIPO MEDIUM
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E55_Type ;
 	rdfs:label "Tipo medium" ;
     sh:property [
@@ -1587,7 +1587,7 @@ ex:E55Type16Shape # TIPO MEDIUM
     ] .
 
 ex:E55Type17Shape # TIPO INPUT
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E55_Type ;
 	rdfs:label "Tipo input" ;
     sh:property [
@@ -1599,7 +1599,7 @@ ex:E55Type17Shape # TIPO INPUT
     ] .
 
 ex:E55Type18Shape # TIPO OUTPUT
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E55_Type ;
 	rdfs:label "Tipo output" ;
     sh:property [
@@ -1616,10 +1616,33 @@ ex:E55Type18Shape # TIPO OUTPUT
         sh:maxCount 1 ;
     ] .
 
-ex:S10CP9MaterialShape # MATERIALE PREVALENTE - ELEMENTO COSTRUTTIVO
-    a sh:NodeShape, rdfs:Class ;
-    sh:targetClass j.0:S10_Material_Substantial, basecpm:CP9_Building_Material ;
-	rdfs:label "Materiale prevalente elemento costruttivo" ;
+ex:S10CP9Material01Shape # MATERIALE PREVALENTE - ELEMENTO COSTRUTTIVO
+    a sh:NodeShape ;
+    sh:targetClass j.0:S10_Material_Substantial ;
+	rdfs:label "Materiale prevalente - elemento costruttivo" ;
+    sh:property [
+        sh:path crm:P2_has_type ;
+        sh:node ex:E55Type08Shape ;
+		sh:name "Materiale prevalente" ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path basecpm:PC51_was_affected_by ;
+        sh:node ex:CP42MaterialDecayShape ;
+		sh:name "Degrado" ;
+        #sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path crm:P3_has_note ;
+		sh:node ex:E62String15Shape ;
+		sh:name "Note degrado" ;
+        sh:maxCount 1 ;
+    ] .
+
+ex:S10CP9Material02Shape # MATERIALE PREVALENTE COSRTUTTIVO - ELEMENTO COSTRUTTIVO
+    a sh:NodeShape ;
+    sh:targetClass basecpm:CP9_Building_Material ;
+	rdfs:label "Materiale prevalente costruttivo - elemento costruttivo" ;
     sh:property [
         sh:path crm:P2_has_type ;
         sh:node ex:E55Type08Shape ;
@@ -1640,7 +1663,7 @@ ex:S10CP9MaterialShape # MATERIALE PREVALENTE - ELEMENTO COSTRUTTIVO
     ] .
 
 ex:CP42MaterialDecayShape # TIPO DEGRADO
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass basecpm:CP42_Material_Decay ;
 	rdfs:label "Tipo degrado" ;
     sh:property [
@@ -1652,7 +1675,7 @@ ex:CP42MaterialDecayShape # TIPO DEGRADO
     ] .
 
 ex:E62String01Shape # NOTE SOTTOCAMPIONE
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E62_String ;
 	rdfs:label "Note sottocampione" ;
     sh:property [
@@ -1663,7 +1686,7 @@ ex:E62String01Shape # NOTE SOTTOCAMPIONE
     ] .
 
 ex:E62String02Shape # LOCALIZZAZIONE COORDINATE
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E62_String ;
 	rdfs:label "Localizzazione coordinate" ;
     sh:property [
@@ -1674,7 +1697,7 @@ ex:E62String02Shape # LOCALIZZAZIONE COORDINATE
     ] .
 	
 ex:E62String03Shape # LOCALIZZAZIONE AREA
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E62_String ;
 	rdfs:label "Localizzazione area" ;
     sh:property [
@@ -1685,7 +1708,7 @@ ex:E62String03Shape # LOCALIZZAZIONE AREA
     ] .
 	
 ex:E62String04Shape # NOTE INPUT
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E62_String ;
 	rdfs:label "Note input" ;
     sh:property [
@@ -1696,7 +1719,7 @@ ex:E62String04Shape # NOTE INPUT
     ] .
 
 ex:E62String05Shape # NOTE PREPARAZIONE CAMPIONE
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E62_String ;
 	rdfs:label "Note preparazione campione" ;
     sh:property [
@@ -1707,7 +1730,7 @@ ex:E62String05Shape # NOTE PREPARAZIONE CAMPIONE
     ] .
 
 ex:E62String06Shape # ALTRO PROCESSO CAMPIONAMENTO
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E62_String ;
 	rdfs:label "Altro processo campionamento" ;
     sh:property [
@@ -1718,7 +1741,7 @@ ex:E62String06Shape # ALTRO PROCESSO CAMPIONAMENTO
     ] .
 
 ex:E62String07Shape # ALTRO QUESITO DIAGNOSTICO
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E62_String ;
 	rdfs:label "Altro quesito diagnostico" ;
     sh:property [
@@ -1729,7 +1752,7 @@ ex:E62String07Shape # ALTRO QUESITO DIAGNOSTICO
     ] .
 
 ex:E62String08Shape # ALTRA DESCRIZIONE CAMPIONE
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E62_String ;
 	rdfs:label "Altra descrizione campione" ;
     sh:property [
@@ -1740,7 +1763,7 @@ ex:E62String08Shape # ALTRA DESCRIZIONE CAMPIONE
     ] .
 
 ex:E62String09Shape # NOTE CONDIZIONE AMBIENTALE
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E62_String ;
 	rdfs:label "Note condizione ambientale" ;
     sh:property [
@@ -1751,7 +1774,7 @@ ex:E62String09Shape # NOTE CONDIZIONE AMBIENTALE
     ] .
 
 ex:E62String10Shape # ALTRO MATERIALE
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E62_String ;
 	rdfs:label "Altro materiale" ;
     sh:property [
@@ -1762,7 +1785,7 @@ ex:E62String10Shape # ALTRO MATERIALE
     ] .
 
 ex:E62String11Shape # ALTRO ELEMENTO COSTRUTTIVO
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E62_String ;
 	rdfs:label "Altro elemento costruttivo" ;
     sh:property [
@@ -1773,7 +1796,7 @@ ex:E62String11Shape # ALTRO ELEMENTO COSTRUTTIVO
     ] .
 
 ex:E62String12Shape # ALTRA MODALITA' INDAGINE
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E62_String ;
 	rdfs:label "Altra modalità indagine" ;
     sh:property [
@@ -1784,7 +1807,7 @@ ex:E62String12Shape # ALTRA MODALITA' INDAGINE
     ] .
 
 ex:E62String13Shape # ALTRA STRUMENTAZIONE
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E62_String ;
 	rdfs:label "Altra strumentazione" ;
     sh:property [
@@ -1795,7 +1818,7 @@ ex:E62String13Shape # ALTRA STRUMENTAZIONE
     ] .
 
 ex:E62String14Shape # ALTRO MEDIUM
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E62_String ;
 	rdfs:label "Altro medium" ;
     sh:property [
@@ -1806,7 +1829,7 @@ ex:E62String14Shape # ALTRO MEDIUM
     ] .
 
 ex:E62String15Shape # NOTE DEGRADO
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E62_String ;
 	rdfs:label "Note degrado" ;
     sh:property [
@@ -1817,7 +1840,7 @@ ex:E62String15Shape # NOTE DEGRADO
     ] .
 
 ex:E62String16Shape # ALTRO OUTPUT
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E62_String ;
 	rdfs:label "Altro output" ;
     sh:property [
@@ -1828,7 +1851,7 @@ ex:E62String16Shape # ALTRO OUTPUT
     ] .
 
 ex:E62String17Shape # NOTE COMPONENTE SPECIFICO
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E62_String ;
 	rdfs:label "Note componente specifico" ;
     sh:property [
@@ -1839,7 +1862,7 @@ ex:E62String17Shape # NOTE COMPONENTE SPECIFICO
     ] .
 
 ex:E62String18Shape # RUOLO ATTORE
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E62_String ;
 	rdfs:label "Ruolo attore" ;
     sh:property [
@@ -1850,7 +1873,7 @@ ex:E62String18Shape # RUOLO ATTORE
     ] .
 
 ex:E62String19Shape # MISURA
-    a sh:NodeShape, rdfs:Class ;
+    a sh:NodeShape ;
     sh:targetClass crm:E62_String ;
 	rdfs:label "Misura" ;
     sh:property [
