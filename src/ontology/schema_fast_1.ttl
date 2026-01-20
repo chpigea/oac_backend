@@ -21,9 +21,7 @@
 
 this:E7ActivityIndagineLabel # LABEL INDAGINE
 	sh:path rdfs:label ;
-	#sh:order "1" ;
 	sh:name "Label indagine" ;
-	#sh:maxCount 1 ;
 	sh:nodeKind sh:Literal ;
 	sh:datatype rdf:string ;
 	dash:searchWidget core:NonSelectableProperty ; # ???
@@ -39,25 +37,21 @@ this:E7ActivityIndagine # INDAGINE
         sh:path crm:P48_has_preferred_identifier ;
 		sh:node this:E42IdentifierIndagine ;
 		sh:name "ha identificativo" ;
-        #sh:maxCount 1 ;
     ] ;
     sh:property [
         sh:path crm:P17_was_motivated_by ;
         sh:node this:I12AdoptedBelief ;
 		sh:name "è motivato da" ;
-        #sh:maxCount 1 ;
     ] ;
     sh:property [
         sh:path crm:P14_carried_out_by ;
         sh:node this:E39ActorIndagine ;
 		sh:name "eseguito da" ;
-        #sh:maxCount 1 ;
     ] ;
     sh:property [
         sh:path crm:P16_used_specific_object ;
         sh:node this:S13SampleCampione ;
 		sh:name "ha usato un oggetto specifico" ;
-        #sh:maxCount 1 ;
     ] ; 
 		sh:property this:E7ActivityIndagineLabel .
 
@@ -70,7 +64,6 @@ this:E39ActorIndagine # ATTORI
         sh:path crm:P2_has_type ;
         sh:node this:E55TypeAttori ;
 		sh:name "ha tipo" ;
-        #sh:maxCount 1 ;
     ] .
 
 this:S13SampleCampione # CAMPIONE
@@ -82,13 +75,11 @@ this:S13SampleCampione # CAMPIONE
         sh:path crm:P2_has_type ; 
         sh:node this:E55TypeCampione ;
 		sh:name "ha tipo" ;
-        #sh:maxCount 1 ;
     ] ;
     sh:property [
         sh:path basecpm:PC43i_uses ;
         sh:node this:CP2ArchitectureWork ;
 		sh:name "utilizza" ;
-		#sh:maxCount 1 ;
     ] .
 
 this:CP2ArchitectureWork # BENE DI RIFERIMENTO
@@ -100,7 +91,6 @@ this:CP2ArchitectureWork # BENE DI RIFERIMENTO
         sh:path crm:P1_is_identified_by ;
         sh:node this:E41AppellationBene ;
 		sh:name "è identificato da" ;
-		#sh:maxCount 1 ;
     ] .
 
 this:E42IdentifierIndagine # ID INDAGINE
@@ -112,9 +102,11 @@ this:E42IdentifierIndagine # ID INDAGINE
        sh:path indagine:id_indagine ;
 		sh:name "ID" ;
 		sh:datatype xsd:string ;
-		#dash:searchWidget core:AutocompleteProperty;
-		#dash:propertyRole dash:LabelRole;
-		#sh:maxCount 1 ;
+		sh:nodeKind sh:Literal ;
+		dash:searchWidget core:AutocompleteProperty ;
+		dash:propertyRole dash:LabelRole ;
+		core:enableOptional "true"^^xsd:boolean ;
+		core:enableNegation "true"^^xsd:boolean ;
     ] .
 
 this:I12AdoptedBelief # QUESITO DIAGNOSTICO
@@ -126,9 +118,8 @@ this:I12AdoptedBelief # QUESITO DIAGNOSTICO
         sh:path crm:P2_has_type ;
         sh:node this:E55TypeQuesito ;
 		sh:name "ha tipo" ;
-		#dash:searchWidget core:AutocompleteProperty;
-		#dash:propertyRole dash:LabelRole;
-        #sh:maxCount 1 ;
+		#dash:searchWidget core:AutocompleteProperty ;
+		#dash:propertyRole dash:LabelRole ;
     ] .
 
 this:E41AppellationEnteRichSchedatore # ENTE RICHIEDENTE
@@ -141,8 +132,8 @@ this:E41AppellationEnteRichSchedatore # ENTE RICHIEDENTE
 		sh:datatype xsd:string ;
 		sh:nodeKind sh:Literal ;
 		sh:name "ente richiedente" ;
-		dash:searchWidget core:AutocompleteProperty;
-		dash:propertyRole dash:LabelRole;
+		dash:searchWidget core:AutocompleteProperty ;
+		dash:propertyRole dash:LabelRole ;
 		core:enableOptional "true"^^xsd:boolean ;
 		core:enableNegation "true"^^xsd:boolean ;
         #sh:maxCount 1 ; 
@@ -152,8 +143,8 @@ this:E41AppellationEnteRichSchedatore # ENTE RICHIEDENTE
 		sh:datatype xsd:string ;
 		sh:nodeKind sh:Literal ;
 		sh:name "schedatore" ;
-		dash:searchWidget core:AutocompleteProperty;
-		dash:propertyRole dash:LabelRole;
+		dash:searchWidget core:AutocompleteProperty ;
+		dash:propertyRole dash:LabelRole ;
 		core:enableOptional "true"^^xsd:boolean ;
 		core:enableNegation "true"^^xsd:boolean ;
         #sh:maxCount 1 ; 
@@ -169,11 +160,10 @@ this:E41AppellationBene # DENOMINAZIONE BENE
 		sh:datatype xsd:string ;
 		sh:nodeKind sh:Literal ;
 		sh:name "denominazione" ;
-		dash:searchWidget core:AutocompleteProperty;
-		dash:propertyRole dash:LabelRole;
+		dash:searchWidget core:AutocompleteProperty ;
+		dash:propertyRole dash:LabelRole ;
 		core:enableOptional "true"^^xsd:boolean ;
 		core:enableNegation "true"^^xsd:boolean ;
-		#sh:maxCount 1 ;
     ] .
 	
 this:E55TypeQuesito # TIPO QUESITO DIAGNOSTICO
@@ -184,12 +174,11 @@ this:E55TypeQuesito # TIPO QUESITO DIAGNOSTICO
     sh:property [
         sh:path indagine:tipo_quesito_diagnostico ;
 		sh:name "tipo" ;
-        dash:searchWidget core:TreeProperty;
+        dash:searchWidget core:TreeProperty ;
         core:enableOptional "true"^^xsd:boolean;
         core:enableNegation "true"^^xsd:boolean;
-        datasources:treeRootsDatasource this:tree_root_quesito_diagnostico ;
+        datasources:treeRootsDatasource this:tree_root_tipo_quesito_diagnostico ;
         datasources:treeChildrenDatasource this:tree_children_broader_term ;
-        #sh:maxCount 1 ;
     ] .
 
 this:E55TypeAttori # TIPOLOGIA ATTORI
@@ -212,12 +201,11 @@ this:E55TypeCampione # TIPO CAMPIONE
     sh:property [
         sh:path indagine:tipo_campione ;
         sh:name "tipo" ;
-        dash:searchWidget core:TreeProperty;
+        dash:searchWidget core:TreeProperty ;
         core:enableOptional "true"^^xsd:boolean;
         core:enableNegation "true"^^xsd:boolean;
         datasources:treeRootsDatasource this:tree_root_tipo_campione ;
         datasources:treeChildrenDatasource this:tree_children_broader_term ;
-        #sh:maxCount 1 ;
     ] .
 
 
@@ -232,8 +220,8 @@ WHERE {
     OPTIONAL { ?concept rdfs:label ?label . }
 }""" .
 
-# DATASOURCE DEI TERMINI DI VOCABOLARIO "QUESITO DIAGNOSTICO" (8)
-this:tree_root_quesito_diagnostico a datasources:SparqlTreeRootDatasource;
+# DATASOURCE DEI TERMINI DI VOCABOLARIO "TIPO QUESITO DIAGNOSTICO" (8)
+this:tree_root_tipo_quesito_diagnostico a datasources:SparqlTreeRootDatasource;
     datasources:queryString """
 PREFIX crm:  <http://www.cidoc-crm.org/cidoc-crm/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>

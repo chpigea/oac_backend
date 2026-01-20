@@ -20,13 +20,9 @@
 
 
 this:S13SampleCampioneLabel sh:path rdfs:label ;
-	#sh:order "1" ;
 	sh:name "Label campione" ; 
-	#sh:path indagine:label_campione ;
 	sh:nodeKind sh:Literal ;
 	sh:datatype rdf:string ;
-	#sh:maxCount 1 ;
-	sh:minCount 1 ;
 	dash:searchWidget core:NonSelectableProperty ; # ???
 	#dash:searchWidget core:SearchProperty ;
 	dash:propertyRole dash:LabelRole ;
@@ -41,25 +37,21 @@ this:S13SampleCampione # CAMPIONE
         sh:path crm:P48_has_preferred_identifier ;
 		sh:node this:E42IdentifierCampione ;
 		sh:name "ha identificativo" ;
-        #sh:maxCount 1 ;
     ] ;
     sh:property [
         sh:path crm:P2_has_type ;
         sh:node this:E55TypeCampione ;
 		sh:name "ha tipo" ; 
-        #sh:maxCount 1 ;
     ] ;
 	sh:property [
         sh:path j.0:O25_contains ;
         sh:node this:S10MaterialSubstantial ;
 		sh:name "contiene" ;
-		#sh:maxCount 1 ;
     ] ;
     sh:property [
         sh:path basecpm:PC43i_uses ;
         sh:node this:CP2ArchitectureWork ;
 		sh:name "utilizza" ;
-		#sh:maxCount 1 ;
     ] ; 
 		sh:property this:S13SampleCampioneLabel .
 
@@ -72,7 +64,6 @@ this:S10MaterialSubstantial # MATERIALE PREVALENTE - CAMPIONE
         sh:path crm:P2_has_type ;
         sh:node this:E55TypeMateriale ;
 		sh:name "ha tipo" ;
-        #sh:maxCount 1 ;
     ] .
 
 this:CP2ArchitectureWork # BENE DI RIFERIMENTO
@@ -84,7 +75,6 @@ this:CP2ArchitectureWork # BENE DI RIFERIMENTO
         sh:path crm:P1_is_identified_by ;
         sh:node this:E41AppellationBene ;
 		sh:name "è identificato da" ;
-		#sh:maxCount 1 ;
     ] .
 
 this:E42IdentifierCampione # ID CAMPIONE
@@ -96,7 +86,11 @@ this:E42IdentifierCampione # ID CAMPIONE
 		sh:path indagine:id_campione ;
 		sh:name "ID" ;
 		sh:datatype xsd:string ;
-        #sh:maxCount 1 ;
+		sh:nodeKind sh:Literal ;
+		dash:searchWidget core:AutocompleteProperty ;
+		dash:propertyRole dash:LabelRole ;
+		core:enableOptional "true"^^xsd:boolean ;
+		core:enableNegation "true"^^xsd:boolean ;
     ] .
 
 this:E41AppellationBene # DENOMINAZIONE BENE
@@ -109,11 +103,10 @@ this:E41AppellationBene # DENOMINAZIONE BENE
 		sh:datatype xsd:string ;
 		sh:nodeKind sh:Literal ;
 		sh:name "denominazione" ;
-		dash:searchWidget core:AutocompleteProperty;
-		dash:propertyRole dash:LabelRole;
+		dash:searchWidget core:AutocompleteProperty ;
+		dash:propertyRole dash:LabelRole ;
 		core:enableOptional "true"^^xsd:boolean ;
 		core:enableNegation "true"^^xsd:boolean ;
-		#sh:maxCount 1 ;
     ] .
 		
 this:E55TypeCampione # TIPO CAMPIONE
@@ -124,12 +117,11 @@ this:E55TypeCampione # TIPO CAMPIONE
     sh:property [
         sh:path indagine:tipo_campione ;
         sh:name "tipo" ;
-        dash:searchWidget core:TreeProperty;
+        dash:searchWidget core:TreeProperty ;
         core:enableOptional "true"^^xsd:boolean;
         core:enableNegation "true"^^xsd:boolean;
         datasources:treeRootsDatasource this:tree_root_tipo_campione ;
         datasources:treeChildrenDatasource this:tree_children_broader_term ;
-        #sh:maxCount 1 ;
     ] .
 
 this:E55TypeMateriale # TIPO MATERIALE
@@ -140,12 +132,11 @@ this:E55TypeMateriale # TIPO MATERIALE
     sh:property [
         sh:path indagine:materiale ;
         sh:name "tipo" ;
-        dash:searchWidget core:TreeProperty;
+        dash:searchWidget core:TreeProperty ;
         core:enableOptional "true"^^xsd:boolean;
         core:enableNegation "true"^^xsd:boolean;
         datasources:treeRootsDatasource this:tree_root_tipo_materiale ;
         datasources:treeChildrenDatasource this:tree_children_broader_term ;
-        #sh:maxCount 1 ;
     ] .
 
 
