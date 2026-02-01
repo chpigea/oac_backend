@@ -103,7 +103,7 @@ module.exports = function(jwtLib){
         console.log(`Send email to ${email} with recovery instructions`)
         const token = randomUUID();
         await Users.setPasswordRecoveryToken(response.id, token)
-        const activationLink = `${EXPOSED.protocol}://${EXPOSED.host}:${EXPOSED.port}/frontend/users/reset_password/${response.id}/${token}`
+        const activationLink = `${EXPOSED.protocol}://${EXPOSED.host}:${EXPOSED.port}/frontend/v2/users/reset_password/${response.id}/${token}`
         EmailSender.sendPasswordRecoveryEmail(
           email, activationLink
         ).then( () => {
