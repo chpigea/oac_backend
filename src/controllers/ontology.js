@@ -225,6 +225,48 @@ router.post('/form/search', (req, res) => {
     })
     
 })
+
+
+router.post('/form/searchindagini', async (req, res) => {
+    try {
+        let { tokens, limit = 10, offset = 0 } = req.body;
+
+        if (!Array.isArray(tokens) || tokens.length === 0) {
+            return res.json({
+                success: true,
+                data: []
+            });
+        }
+
+        // Normalizza: stringhe, niente null
+        tokens = tokens
+            .map(t => String(t).trim())
+            .filter(Boolean);
+
+        if (!tokens.length) {
+            return res.json({
+                success: true,
+                data: []
+            });
+        }
+
+        const rows = await Investigations.searchindagini(tokens, limit, offset);
+
+        res.json({
+            success: true,
+            data: rows
+        });
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({
+            success: false,
+            data: null,
+            message: `Error searchindagini: ${err}`
+        });
+    }
+});
+
 //-----------------------------------------------------------------
 
 router.get('/form/lock/:row_id/:client_uuid', (req, res) => {

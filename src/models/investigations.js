@@ -44,6 +44,38 @@ class Investigations {
         }); 
     }
 
+    static async searchindagini(tokens, limit = 10, offset = 0) {
+        const likes = tokens.map(() => `dataset ILIKE ?`).join(' OR ');
+        const tsQueries = tokens.map(() => `dataset_search @@ plainto_tsquery('simple', ?)`).join(' OR ');
+
+        const sql = `
+            SELECT DISTINCT
+                id,
+                uuid,
+                COALESCE(
+                    substring(dataset from 'rdfs:label\\s+"([^"]+)"'),
+                    uuid
+                ) AS label
+            FROM investigations
+            WHERE
+                (${tsQueries})
+                OR
+                (${likes})
+            LIMIT ? OFFSET ?
+        `;
+
+        const params = [
+            ...tokens.map(t => `${t}:*`),
+            ...tokens.map(t => `%${t}%`),
+            limit,
+            offset
+        ];
+
+        const result = await db.raw(sql, params);
+        return result.rows;
+    }
+
+
     static getCounter(name){
         return new Promise(async (resolve, reject) => {
             try{
