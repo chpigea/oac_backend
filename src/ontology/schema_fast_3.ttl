@@ -19,7 +19,7 @@
 @prefix datasources: <http://data.sparna.fr/ontologies/sparnatural-config-datasources#> .
 
 
-this:E7ActivityDiagnosticaLabel sh:path rdfs:label ;
+this:E7ActivityDiagnosticaLabel sh:path rdfs:label ; # LABEL ATTIVITA' DIAGNOSTICA
 	sh:name "Label attività diagnostica" ; 
 	sh:nodeKind sh:Literal ;
 	sh:datatype rdf:string ;
@@ -138,11 +138,6 @@ this:E42IdentifierAttivitaDiagnostica # ID ATTIVITA' DIAGNOSTICA
         sh:path indagine:id_attivita_diagnostica ;
 		sh:name "ID" ;
 		sh:datatype xsd:string ;
-		sh:nodeKind sh:Literal ;
-		dash:searchWidget core:AutocompleteProperty ;
-		dash:propertyRole dash:LabelRole ;
-		core:enableOptional "true"^^xsd:boolean ;
-		core:enableNegation "true"^^xsd:boolean ;
     ] .
 
 this:E39ActorDiagnostica # AUTORE
