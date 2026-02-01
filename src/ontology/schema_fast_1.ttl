@@ -61,9 +61,9 @@ this:E39ActorIndagine # ATTORI
 	rdfs:label "Attori coinvolti" ;
 	sh:deactivated "true"^^xsd:boolean ;
     sh:property [
-        sh:path crm:P2_has_type ;
-        sh:node this:E55TypeAttori ;
-		sh:name "ha tipo" ;
+        sh:path crm:P1_is_identified_by ;
+        sh:node this:E41AppellationEnteRichSchedatore ;
+		sh:name "è identificato da" ;
     ] .
 
 this:S13SampleCampione # CAMPIONE
@@ -102,11 +102,6 @@ this:E42IdentifierIndagine # ID INDAGINE
        sh:path indagine:id_indagine ;
 		sh:name "ID" ;
 		sh:datatype xsd:string ;
-		sh:nodeKind sh:Literal ;
-		dash:searchWidget core:AutocompleteProperty ;
-		dash:propertyRole dash:LabelRole ;
-		core:enableOptional "true"^^xsd:boolean ;
-		core:enableNegation "true"^^xsd:boolean ;
     ] .
 
 this:I12AdoptedBelief # QUESITO DIAGNOSTICO
@@ -179,18 +174,6 @@ this:E55TypeQuesito # TIPO QUESITO DIAGNOSTICO
         core:enableNegation "true"^^xsd:boolean;
         datasources:treeRootsDatasource this:tree_root_tipo_quesito_diagnostico ;
         datasources:treeChildrenDatasource this:tree_children_broader_term ;
-    ] .
-
-this:E55TypeAttori # TIPOLOGIA ATTORI
-    a sh:NodeShape ;
-    sh:targetClass crm:E55_Type ;
-	rdfs:label "Tipo attori" ;
-	sh:deactivated "true"^^xsd:boolean ;
-    sh:property [
-        sh:path crm:P1_is_identified_by ;
-        sh:node this:E41AppellationEnteRichSchedatore ;
-		sh:name "è identificato da" ;
-        #sh:maxCount 1 ; 
     ] .
 
 this:E55TypeCampione # TIPO CAMPIONE
