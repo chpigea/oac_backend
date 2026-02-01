@@ -19,7 +19,7 @@
 @prefix datasources: <http://data.sparna.fr/ontologies/sparnatural-config-datasources#> .
 
 
-this:S13SampleCampioneLabel sh:path rdfs:label ;
+this:S13SampleCampioneLabel sh:path rdfs:label ; # LABEL CAMPIONE
 	sh:name "Label campione" ; 
 	sh:nodeKind sh:Literal ;
 	sh:datatype rdf:string ;
@@ -86,11 +86,6 @@ this:E42IdentifierCampione # ID CAMPIONE
 		sh:path indagine:id_campione ;
 		sh:name "ID" ;
 		sh:datatype xsd:string ;
-		sh:nodeKind sh:Literal ;
-		dash:searchWidget core:AutocompleteProperty ;
-		dash:propertyRole dash:LabelRole ;
-		core:enableOptional "true"^^xsd:boolean ;
-		core:enableNegation "true"^^xsd:boolean ;
     ] .
 
 this:E41AppellationBene # DENOMINAZIONE BENE
