@@ -18,44 +18,74 @@
 @prefix core: 		<http://data.sparna.fr/ontologies/sparnatural-config-core#> .
 
 
-ex:E7Activity01Shape_label sh:path rdfs:label ;
-	#sh:order "1" ;
+ex:E7Activity01Shape_label # LABEL INDAGINE
+	sh:path rdfs:label ;
 	sh:name "Label indagine" ; 
-	#sh:path indagine:label_indagine ;
 	sh:nodeKind sh:Literal ;
 	sh:datatype rdf:string ;
 	sh:maxCount 1 ;
 	sh:minCount 1 ;
 	dash:searchWidget core:NonSelectableProperty;
-	#dash:searchWidget core:SearchProperty ;
 	dash:propertyRole dash:LabelRole ;
 	core:enableOptional "false"^^xsd:boolean ;
 	core:enableNegation "false"^^xsd:boolean .
 
-ex:S13Sample01Shape_label sh:path rdfs:label ;
-	#sh:order "1" ;
+ex:S13Sample01Shape_label # LABEL CAMPIONE
+	sh:path rdfs:label ;
 	sh:name "Label campione" ; 
-	#sh:path indagine:label_campione ;
 	sh:nodeKind sh:Literal ;
 	sh:datatype rdf:string ;
 	sh:maxCount 1 ;
 	sh:minCount 1 ;
 	dash:searchWidget core:NonSelectableProperty;
-	#dash:searchWidget core:SearchProperty ;
 	dash:propertyRole dash:LabelRole ;
 	core:enableOptional "false"^^xsd:boolean ;
 	core:enableNegation "false"^^xsd:boolean .
 
-ex:E7Activity02Shape_label sh:path rdfs:label ;
-	#sh:order "1" ;
+ex:E7Activity02Shape_label # LABEL ATTIVITA' DIAGNOSTICA
+	sh:path rdfs:label ;
 	sh:name "Label attività diagnostica" ; 
-	#sh:path indagine:label_attivita_diagnostica ;
 	sh:nodeKind sh:Literal ;
 	sh:datatype rdf:string ;
 	sh:maxCount 1 ;
 	sh:minCount 1 ;
 	dash:searchWidget core:NonSelectableProperty;
-	#dash:searchWidget core:SearchProperty ;
+	dash:propertyRole dash:LabelRole ;
+	core:enableOptional "false"^^xsd:boolean ;
+	core:enableNegation "false"^^xsd:boolean .
+
+ex:S10MaterialSubstantial01Shape_label # LABEL MATERIALE PREVALENTE - CAMPIONE
+	sh:path rdfs:label ;
+	sh:name "Label materiale" ;
+	sh:nodeKind sh:Literal ;
+	sh:datatype rdf:string ;
+	sh:maxCount 1 ;
+	sh:minCount 1 ;
+	dash:searchWidget core:NonSelectableProperty ; # ???
+	dash:propertyRole dash:LabelRole ;
+	core:enableOptional "false"^^xsd:boolean ;
+	core:enableNegation "false"^^xsd:boolean .
+
+#ex:S10MaterialSubstantial02Shape_label # LABEL MATERIALE PREVALENTE COSTRUTTIVO - ELEMENTO COSTRUTTIVO
+#	sh:path rdfs:label ;
+#	sh:name "Label materiale" ;
+#	sh:nodeKind sh:Literal ;
+#	sh:datatype rdf:string ;
+#	sh:maxCount 1 ;
+#	sh:minCount 1 ;
+#	dash:searchWidget core:NonSelectableProperty ; # ???
+#	dash:propertyRole dash:LabelRole ;
+#	core:enableOptional "false"^^xsd:boolean ;
+#	core:enableNegation "false"^^xsd:boolean .
+
+ex:CP9BuildingMaterialShape_label # LABEL MATERIALE PREVALENTE COSTRUTTIVO - ELEMENTO COSTRUTTIVO
+	sh:path rdfs:label ;
+	sh:name "Label materiale costruttivo" ;
+	sh:nodeKind sh:Literal ;
+	sh:datatype rdf:string ;
+	sh:maxCount 1 ;
+	sh:minCount 1 ;
+	dash:searchWidget core:NonSelectableProperty ; # ???
 	dash:propertyRole dash:LabelRole ;
 	core:enableOptional "false"^^xsd:boolean ;
 	core:enableNegation "false"^^xsd:boolean .
@@ -137,12 +167,12 @@ ex:E7Activity02Shape # ATTIVITA' DIAGNOSTICA
     ] ;
 	sh:property [
         sh:path crm:P160_has_temporal_projection ;
-        sh:node ex:E52TimespanShape ; 
+        sh:node ex:E52Timespan01Shape ; 
 		sh:name "Data di inzio attività" ; #verificare se corretto il nome ...
 		sh:maxCount 1 ;
     ] ;
     sh:property [
-		sh:path crm:P134_continued ; # prima è stata usata proprietà inversa ...
+		sh:path crm:P134_continued ;
         sh:node ex:E7Activity03Shape ;
 		sh:name "Analisi associata" ;
         #sh:maxCount 1 ;
@@ -166,7 +196,7 @@ ex:E7Activity02Shape # ATTIVITA' DIAGNOSTICA
         #sh:maxCount 1 ;
     ] ;
     sh:property [
-        sh:path [sh:inversePath crm:P16i_was_used_for] ; # usata proprietà inversa di P16_used_specific_object ...
+        sh:path [sh:inversePath crm:P16i_was_used_for] ; # *** NON FUNZIONA: P16i_was_used_for proprietà inversa di P16_used_specific_object
         sh:node ex:E73InformationObject03Shape ;
 		sh:name "Software" ;
         sh:maxCount 1 ;
@@ -193,7 +223,7 @@ ex:E7Activity02Shape # ATTIVITA' DIAGNOSTICA
 
 ex:E31DocumentShape # REPORT 
     a sh:NodeShape ;
-    sh:targetClass crm:E13_Attribute_Assignment ;
+    sh:targetClass crm:E31_Document ;
 	rdfs:label "Report" ;
 	sh:property [
         sh:path crm:P48_has_preferred_identifier ;
@@ -249,20 +279,20 @@ ex:E13AttributeAssignmentShape # OUTPUT
     ] ;
     sh:property [
         sh:path crm:P140_assigned_attribute_to ;
-        sh:node ex:S10MaterialSubstantial03Shape ; 
+        sh:node ex:S10MaterialSubstantial04Shape ; 
 		sh:name "Materiale specifico" ;
         sh:maxCount 1 ;
     ] ;
     sh:property [
-        sh:path [sh:inversePath crm:P140i_was_attributed_by] ; # usata proprietà inversa di P140_assigned_attribute_to ... 
+        sh:path [sh:inversePath crm:P140i_was_attributed_by] ; # NON FUNZIONA: P140i_was_attributed_by proprietà inversa di P140_assigned_attribute_to
         sh:node ex:E18PhysicalThingShape ; 
 		sh:name "Componenti specifici" ;
         #sh:maxCount 1 ;
     ] ;
 	sh:property [
         sh:path crm:P160_has_temporal_projection ;
-        sh:node ex:E52TimespanShape ; 
-		sh:name "Datazione" ;
+        sh:node ex:E52Timespan03Shape ; 
+		sh:name "Data output" ;
 		sh:maxCount 1 ;
     ] ;
 	sh:property [
@@ -317,7 +347,7 @@ ex:E73InformationObject02Shape # MEDIUM
         sh:maxCount 1 ;
     ] ;
 	sh:property [
-        sh:path [sh:inversePath crm:P67_refers_to] ; # usata proprietà inversa di P67i_is_referred_to_by ...
+        sh:path crm:P67i_is_referred_to_by ; # VERIFICA SE FUNZIONA (proprietà inversa di P67_refers_to)
 		sh:node ex:E73InformationObject01Shape ;
 		sh:name "Link" ;
         sh:maxCount 1 ;
@@ -332,12 +362,6 @@ ex:E73InformationObject03Shape # SOFTWARE
 		sh:node ex:E42Identifier11Shape ;
 		sh:name "Codice software" ;
         sh:maxCount 1 ;
-    ] ;
-	sh:property [
-        sh:path crm:P67_refers_to ;
-		sh:node ex:S5InferenceMakingShape ;
-		sh:name "Inferenza" ;
-        sh:maxCount 1 ;
     ] .
 
 ex:E73InformationObject04Shape # ALLEGATO REPORT 
@@ -349,28 +373,6 @@ ex:E73InformationObject04Shape # ALLEGATO REPORT
 		sh:datatype xsd:string ;
 		sh:name "Allegato" ;
 		sh:description "$UPLOAD$" ;
-        sh:maxCount 1 ;
-    ] .
-
-ex:S5InferenceMakingShape # INFERENZA SOFTWARE
-    a sh:NodeShape ;
-    sh:targetClass j.0:S5_Inference_Making ;
-	rdfs:label "Inferenza software" ;
-	sh:property [
-        sh:path indagine:inferenza ;
-		sh:datatype xsd:string ;
-		sh:name "Inferenza" ;
-        sh:maxCount 1 ;
-    ] .
-
-ex:I5InferenceMakingShape # INFERENZA INPUT
-    a sh:NodeShape ;
-    sh:targetClass base:S5_Inference_Making ;
-	rdfs:label "Inferenza input" ;
-	sh:property [
-        sh:path indagine:inferenza ;
-		sh:datatype xsd:string ;
-		sh:name "Inferenza" ;
         sh:maxCount 1 ;
     ] .
 
@@ -488,8 +490,8 @@ ex:S13Sample01Shape # CAMPIONE
 		sh:maxCount 1 ;
     ] ;
 	sh:property [
-        sh:path j.0:O25_contains ;
-        sh:node ex:S10MaterialSubstantial01Shape ;
+        sh:path [ sh:inversePath j.0:O25i_is_contained_in ] ; # *** NON FUNZIONA: O25i_is_contained_in proprietà inversa di O25_contains
+		sh:node ex:S10MaterialSubstantial01Shape ;
 		sh:name "Materiale prevalente" ;
 		sh:maxCount 1 ;
     ] ;
@@ -500,7 +502,7 @@ ex:S13Sample01Shape # CAMPIONE
 		sh:maxCount 1 ;
     ] ;
     sh:property [
-        sh:path [sh:inversePath j.0:O25i_is_contained_in] ; # usata proprietà inversa di O25_contains ...
+        sh:path j.0:O25_contains ;
         sh:node ex:S13Sample02Shape ; 
 		sh:name "Sottocampione" ;
 		sh:maxCount 1 ;
@@ -584,7 +586,7 @@ ex:S2SampleTaking02Shape # SOTTOCAMPIONAMENTO
 	rdfs:label "Sottocampionamento" ;
 	sh:property [
         sh:path crm:P160_has_temporal_projection ;
-        sh:node ex:E52TimespanShape ; 
+        sh:node ex:E52Timespan02Shape ; 
 		sh:name "Data di analisi" ;
 		sh:maxCount 1 ;
     ] ;
@@ -671,47 +673,70 @@ ex:S22SegmentofMatterShape # PORZIONE IDENTIFICATA
 		sh:maxCount 1 ;
     ] .
 
+ex:E52Timespan01Shape # DATA ATTIVITA' DIAGNOSTICA
+    a sh:NodeShape ;
+    sh:targetClass j.0:E52_Time-span ; 
+	rdfs:label "Data attività diagnostica" ;
+	sh:property [
+        sh:path indagine:data_attivita_diagnostica ;
+		sh:datatype xsd:dateTime ;
+		#sh:datatype xsd:date ;
+		sh:name "Data" ;
+		sh:maxCount 1 ;
+    ] .
+
+ex:E52Timespan02Shape # DATA SOTTOCAMPIONAMENTO
+    a sh:NodeShape ;
+    sh:targetClass j.0:E52_Time-span ; 
+	rdfs:label "Data sottocampionamento" ;
+	sh:property [
+        sh:path indagine:data_sottocampionamento ;
+		sh:datatype xsd:dateTime ;
+		sh:name "Data" ;
+		sh:maxCount 1 ;
+    ] .
+
+ex:E52Timespan03Shape # DATA OUTPUT
+    a sh:NodeShape ;
+    sh:targetClass j.0:E52_Time-span ; 
+	rdfs:label "Data" ;
+	sh:property [
+        sh:path indagine:data_ouput ;
+		sh:datatype xsd:dateTime ;
+		sh:name "Data" ;
+		sh:maxCount 1 ;
+    ] .
+
 ex:E2TemporalEntity01Shape # DATA CAMPIONAMENTO
     a sh:NodeShape ;
     sh:targetClass crm:E2_Temporal_Entity ;
 	rdfs:label "Data campionamento" ;
 	sh:property [
         sh:path indagine:data_campionamento ;
-		sh:datatype xsd:date ;
-		sh:name "Data campionamento" ;
+		sh:datatype xsd:dateTime ;
+		sh:name "Data" ;
 		sh:maxCount 1 ;
     ] .
 
 ex:E2TemporalEntity02Shape # DATA CREAZIONE REPORT
     a sh:NodeShape ;
     sh:targetClass crm:E2_Temporal_Entity ;
-	rdfs:label "Data creazione" ;
+	rdfs:label "Data creazione report" ;
 	sh:property [
         sh:path indagine:data_creazione_report ;
-		sh:datatype xsd:date ;
-		sh:name "Data creazione" ;
+		sh:datatype xsd:dateTime ;
+		sh:name "Data" ;
 		sh:maxCount 1 ;
     ] .
 
 ex:E2TemporalEntity03Shape # DATA AGGIORNAMENTO REPORT
     a sh:NodeShape ;
     sh:targetClass crm:E2_Temporal_Entity ;
-	rdfs:label "Data aggiornamento" ;
+	rdfs:label "Data aggiornamento report" ;
 	sh:property [
         sh:path indagine:data_aggiornamento_report ;
-		sh:datatype xsd:date ;
-		sh:name "Data aggiornamento" ;
-		sh:maxCount 1 ;
-    ] .
-
-ex:E52TimespanShape # DATA SOTTOCAMPIONAMENTO, OUTPUT
-    a sh:NodeShape ;
-    sh:targetClass j.0:E52_Time-span ; 
-	rdfs:label "Datazione" ;
-	sh:property [
-        sh:path indagine:datazione ;
-		sh:datatype xsd:date ;
-		sh:name "Datazione" ;
+		sh:datatype xsd:dateTime ;
+		sh:name "Data" ;
 		sh:maxCount 1 ;
     ] .
 
@@ -782,7 +807,8 @@ ex:S10MaterialSubstantial01Shape # MATERIALE PREVALENTE - CAMPIONE
 		sh:name "Materiale campione" ;
         sh:maxCount 1 ;
         sh:minCount 1 ;
-    ] .
+    ] ;
+		sh:property ex:S10MaterialSubstantial01Shape_label .
 
 ex:S10MaterialSubstantial02Shape # MATERIALE PREVALENTE - SOTTOCAMPIONE
     a sh:NodeShape ;
@@ -791,11 +817,60 @@ ex:S10MaterialSubstantial02Shape # MATERIALE PREVALENTE - SOTTOCAMPIONE
     sh:property [
         sh:path crm:P2_has_type ;
         sh:node ex:E55Type08Shape ;
-		sh:name "Materiale prevalente" ;
+		sh:name "Materiale sottocampione" ;
         sh:maxCount 1 ;
     ] .
 
-ex:S10MaterialSubstantial03Shape # MATERIALE SPECIFICO - OUTPUT
+ex:S10MaterialSubstantial03Shape # MATERIALE PREVALENTE - ELEMENTO COSTRUTTIVO
+    a sh:NodeShape ;
+    sh:targetClass j.0:S10_Material_Substantial ;
+	rdfs:label "Materiale prevalente - elemento costruttivo" ;
+    sh:property [
+        sh:path crm:P2_has_type ;
+        sh:node ex:E55Type08Shape ;
+		sh:name "Materiale prevalente" ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path basecpm:PC51_was_affected_by ;
+        sh:node ex:CP42MaterialDecayShape ;
+		sh:name "Degrado" ;
+        #sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path crm:P3_has_note ;
+		sh:node ex:E62String15Shape ;
+		sh:name "Note degrado" ;
+        sh:maxCount 1 ;
+    ] ;
+		sh:property ex:S10MaterialSubstantial01Shape_label .
+		#sh:property ex:S10MaterialSubstantial02Shape_label .
+
+ex:CP9BuildingMaterialShape # MATERIALE PREVALENTE COSTRUTTIVO - ELEMENTO COSTRUTTIVO
+    a sh:NodeShape ;
+    sh:targetClass basecpm:CP9_Building_Material ;
+	rdfs:label "Materiale prevalente costruttivo - elemento costruttivo" ;
+    sh:property [
+        sh:path crm:P2_has_type ;
+        sh:node ex:E55Type08Shape ;
+		sh:name "Materiale prevalente" ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path basecpm:PC51_was_affected_by ;
+        sh:node ex:CP42MaterialDecayShape ;
+		sh:name "Degrado" ;
+        #sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path crm:P3_has_note ;
+		sh:node ex:E62String15Shape ;
+		sh:name "Note degrado" ;
+        sh:maxCount 1 ;
+    ] ;
+		sh:property ex:CP9BuildingMaterialShape_label .
+
+ex:S10MaterialSubstantial04Shape # MATERIALE SPECIFICO - OUTPUT
     a sh:NodeShape ;
     sh:targetClass j.0:S10_Material_Substantial ;
 	rdfs:label "Materiale specifico" ;
@@ -875,7 +950,7 @@ ex:CP2ArchitectureWorkShape # BENE DI RIFERIMENTO
 		sh:maxCount 1 ;
     ] ;
 	sh:property [
-        sh:path crm:P46_is_composed_of ;
+        sh:path crm:P46_is_composed_of ; # NON POSSIBILE CREARE RELAZIONE INVERSA *** P46i_forms_part_of proprietà inversa di P46_is_composed_of
 		sh:node ex:CP20ConstructionWorkShape ;
 		sh:name "Elemento costruttivo" ;
 		sh:maxCount 1 ;
@@ -911,13 +986,13 @@ ex:CP20ConstructionWorkShape # ELEMENTO COSTRUTTIVO
     ] ;
 	sh:property [
         sh:path j.0:O25_contains ;
-		sh:node ex:S10CP9Material01Shape ;
+		sh:node ex:S10MaterialSubstantial03Shape ;
 		sh:name "Materiale prevalente" ;
 		sh:maxCount 1 ;
     ] ;
 	sh:property [
-        sh:path basecpm:PC41_shows_as_main_material ;
-		sh:node ex:S10CP9Material02Shape ;
+        sh:path basecpm:PC41_shows_as_main_material ; # *** NON FUNZIONA CREAZIONE COLLEGAMENTO BIDIREZIONALE: PC41i_is_shown_as_main_material_of proprietà inversa di PC41_shows_as_main_material
+		sh:node ex:CP9BuildingMaterialShape ;
 		sh:name "Materiale prevalente costruttivo" ;
 		sh:maxCount 1 ;
     ] ;
@@ -1066,14 +1141,14 @@ ex:E42Identifier10Shape # SPECIFICHE TECNICHE
         sh:maxCount 1 ;
     ] .
 
-ex:E42Identifier11Shape # SOFTWARE
+ex:E42Identifier11Shape # ID SOFTWARE
     a sh:NodeShape ;
     sh:targetClass crm:E42_Identifier ;
-	rdfs:label "Codice software" ;
+	rdfs:label "ID software" ;
 	sh:property [
-        sh:path indagine:software ;
+        sh:path indagine:id_software ;
 		sh:datatype xsd:string ;
-		sh:name "Codice software" ;
+		sh:name "ID software" ;
         sh:maxCount 1 ;
     ] .
 
@@ -1129,9 +1204,9 @@ ex:E39Actor01Shape # ATTORI COINVOLTI
     sh:targetClass crm:E39_Actor ;
 	rdfs:label "Attori coinvolti" ;
     sh:property [
-        sh:path crm:P2_has_type ;
-        sh:node ex:E55Type03Shape ;
-		sh:name "Attori" ;
+        sh:path crm:P1_is_identified_by ;
+        sh:node ex:E41Appellation01Shape ;
+		sh:name "Ente richiedente - Schedatore" ;
         sh:maxCount 1 ;
     ] .
 
@@ -1266,12 +1341,6 @@ ex:I2Belief02Shape # INPUT
 		sh:node ex:E7Activity03Shape ;
 		sh:name "Analisi pregressa" ;
         sh:maxCount 1 ;
-    ] ;
-	sh:property [
-        sh:path base:J1i_was_premise_for ;
-		sh:node ex:I5InferenceMakingShape ;
-		sh:name "Inferenza" ;
-        sh:maxCount 1 ;
     ] .
 
 ex:E41Appellation01Shape # ENTE RICHIEDENTE - SCHEDATORE
@@ -1346,17 +1415,6 @@ ex:E55Type02Shape # TIPO QUESITO DIAGNOSTICO
 		sh:node ex:E62String07Shape ;
 		sh:name "Altro quesito diagnostico" ;
         sh:maxCount 1 ;
-    ] .
-
-ex:E55Type03Shape # TIPOLOGIA ATTORI
-    a sh:NodeShape ;
-    sh:targetClass crm:E55_Type ;
-	rdfs:label "Tipo attori" ;
-    sh:property [
-        sh:path crm:P1_is_identified_by ;
-        sh:node ex:E41Appellation01Shape ;
-		sh:name "Ente richiedente - Schedatore" ;
-        sh:maxCount 1 ; 
     ] .
 
 ex:E55Type04Shape # TIPOLOGIE CAMPIONE (8DESCRIZIONE, TIPO, NATURA OGGETTO)
@@ -1613,52 +1671,6 @@ ex:E55Type18Shape # TIPO OUTPUT
         sh:path crm:P3_has_note ;
 		sh:node ex:E62String16Shape ;
 		sh:name "Altro output" ;
-        sh:maxCount 1 ;
-    ] .
-
-ex:S10CP9Material01Shape # MATERIALE PREVALENTE - ELEMENTO COSTRUTTIVO
-    a sh:NodeShape ;
-    sh:targetClass j.0:S10_Material_Substantial ;
-	rdfs:label "Materiale prevalente - elemento costruttivo" ;
-    sh:property [
-        sh:path crm:P2_has_type ;
-        sh:node ex:E55Type08Shape ;
-		sh:name "Materiale prevalente" ;
-        sh:maxCount 1 ;
-    ] ;
-    sh:property [
-        sh:path basecpm:PC51_was_affected_by ;
-        sh:node ex:CP42MaterialDecayShape ;
-		sh:name "Degrado" ;
-        #sh:maxCount 1 ;
-    ] ;
-    sh:property [
-        sh:path crm:P3_has_note ;
-		sh:node ex:E62String15Shape ;
-		sh:name "Note degrado" ;
-        sh:maxCount 1 ;
-    ] .
-
-ex:S10CP9Material02Shape # MATERIALE PREVALENTE COSRTUTTIVO - ELEMENTO COSTRUTTIVO
-    a sh:NodeShape ;
-    sh:targetClass basecpm:CP9_Building_Material ;
-	rdfs:label "Materiale prevalente costruttivo - elemento costruttivo" ;
-    sh:property [
-        sh:path crm:P2_has_type ;
-        sh:node ex:E55Type08Shape ;
-		sh:name "Materiale prevalente" ;
-        sh:maxCount 1 ;
-    ] ;
-    sh:property [
-        sh:path basecpm:PC51_was_affected_by ;
-        sh:node ex:CP42MaterialDecayShape ;
-		sh:name "Degrado" ;
-        #sh:maxCount 1 ;
-    ] ;
-    sh:property [
-        sh:path crm:P3_has_note ;
-		sh:node ex:E62String15Shape ;
-		sh:name "Note degrado" ;
         sh:maxCount 1 ;
     ] .
 
