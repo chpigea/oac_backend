@@ -45,7 +45,7 @@ this:S13SampleCampione # CAMPIONE
     ] ;
 	sh:property [
         sh:path j.0:O25_contains ;
-        sh:node this:S10MaterialSubstantial ;
+        sh:node this:S10MaterialSubstantialCampione ;
 		sh:name "contiene" ;
     ] ;
     sh:property [
@@ -55,7 +55,7 @@ this:S13SampleCampione # CAMPIONE
     ] ; 
 		sh:property this:S13SampleCampioneLabel .
 
-this:S10MaterialSubstantial # MATERIALE PREVALENTE - CAMPIONE
+this:S10MaterialSubstantialCampione # MATERIALE PREVALENTE - CAMPIONE
     a sh:NodeShape ;
     sh:targetClass j.0:S10_Material_Substantial ;
 	rdfs:label "Materiale" ;
@@ -125,7 +125,7 @@ this:E55TypeMateriale # TIPO MATERIALE
     rdfs:label "Tipo materiale" ;
     sh:deactivated "true"^^xsd:boolean ;
     sh:property [
-        sh:path indagine:materiale ;
+        sh:path indagine:tipo_materiale ;
         sh:name "tipo" ;
         dash:searchWidget core:TreeProperty ;
         core:enableOptional "true"^^xsd:boolean;

@@ -1,5 +1,5 @@
 @prefix sh:   		<http://www.w3.org/ns/shacl#> .
-#@prefix ex:   		<http://example.org/shapes/> .
+#@prefix ex:		<http://example.org/shapes/> .
 @prefix rdf:  		<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: 		<http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:  		<http://www.w3.org/2001/XMLSchema#> .
@@ -49,12 +49,12 @@ this:S10MaterialSubstantial # MATERIALE PREVALENTE - CAMPIONE-ELEMENTO COSTRUTTI
 		sh:name "ha tipo" ;
     ] ;
     sh:property [
-        sh:path [ sh:inversePath j.0:O25_contains ] ; # proprietà inversa di j.0:O25i_is_contained_in *** CERCASI ALTRA PROPR. VEDI SOTTO ... ES. j.0:O3i_was_sample_by
+        sh:path [ sh:inversePath j.0:O25_contains ] ; # proprietà inversa: j.0:O25i_is_contained_in
         sh:node this:S13SampleCampione ;
 		sh:name "è campionato da" ; 
     ] ; 
     sh:property [
-        sh:path [ sh:inversePath j.0:O25_contains ] ; # proprietà inversa di j.0:O25i_is_contained_in *** CERCASI ALTRA PROPR. ... VEDI SOPRA
+        sh:path [ sh:inversePath j.0:O25_contains ] ; # proprietà inversa: j.0:O25i_is_contained_in
         sh:node this:CP20ConstructionWork ;
 		sh:name "è contenuto in" ;
     ] ; 
@@ -70,7 +70,7 @@ this:CP9Material # MATERIALE PREVALENTE COSTRUTTIVO - ELEMENTO COSTRUTTIVO
 		sh:name "ha tipo" ;
     ] ;
     sh:property [
-        sh:path [ sh:inversePath basecpm:PC41_shows_as_main_material_of ] ; # proprietà inversa di basecpm:PC41i_is_shown_as_main_material_of 
+        sh:path [ sh:inversePath basecpm:PC41_shows_as_main_material ] ; # proprietà inversa: basecpm:PC41i_is_shown_as_main_material
         sh:node this:CP20ConstructionWork ;
 		sh:name "è contenuto in" ;
     ] ; 
@@ -103,7 +103,7 @@ this:CP20ConstructionWork # ELEMENTO COSTRUTTIVO
 	rdfs:label "Elemento costruttivo" ;
 	sh:deactivated "true"^^xsd:boolean ;
 	sh:property [
-        sh:path [ sh:inversePath crm:P46_is_composed_of ] ; # proprietà inversa di crm:P46i_forms_part_of
+        sh:path [ sh:inversePath crm:P46_is_composed_of ] ; # proprietà inversa: crm:P46i_forms_part_of
 		sh:node this:CP2ArchitectureWork ;
 		sh:name "è parte di" ;
     ] ;

@@ -29,7 +29,32 @@ this:E7ActivityIndagineLabel # LABEL INDAGINE
 	core:enableOptional "false"^^xsd:boolean ;
 	core:enableNegation "false"^^xsd:boolean .
 
-this:S13SampleCampioneLabel sh:path rdfs:label ; # LABEL CAMPIONE
+this:E55TypeIndagine_label # LABEL TIPO INDAGINE
+	sh:path rdfs:label ;
+	sh:name "Label tipo indagine" ;
+	sh:nodeKind sh:Literal ;
+	sh:datatype rdf:string ;
+	sh:maxCount 1 ;
+	sh:minCount 1 ;
+	dash:searchWidget core:NonSelectableProperty;
+	dash:propertyRole dash:LabelRole ;
+	core:enableOptional "false"^^xsd:boolean ;
+	core:enableNegation "false"^^xsd:boolean .
+
+this:I12AdoptedBelief_label # LABEL QUESITO DIAGNOSTICO
+	sh:path rdfs:label ;
+	sh:name "Label quesito diagnostico" ;
+	sh:nodeKind sh:Literal ;
+	sh:datatype rdf:string ;
+	sh:maxCount 1 ;
+	sh:minCount 1 ;
+	dash:searchWidget core:NonSelectableProperty;
+	dash:propertyRole dash:LabelRole ;
+	core:enableOptional "false"^^xsd:boolean ;
+	core:enableNegation "false"^^xsd:boolean .
+
+this:S13SampleCampioneLabel # LABEL CAMPIONE
+	sh:path rdfs:label ; 				 
 	sh:name "Label campione" ; 
 	sh:nodeKind sh:Literal ;
 	sh:datatype rdf:string ;
@@ -39,10 +64,37 @@ this:S13SampleCampioneLabel sh:path rdfs:label ; # LABEL CAMPIONE
 	core:enableOptional "false"^^xsd:boolean ;
 	core:enableNegation "false"^^xsd:boolean .
 
-this:E7ActivityDiagnosticaLabel sh:path rdfs:label ; # LABEL ATTIVITA' DIAGNOSTICA
-	sh:name "Label attività diagnostica" ; 
+this:S13SampleSottocampione_label # LABEL SOTTOCAMPIONE
+	sh:path rdfs:label ;
+	sh:name "Label sottocampione" ; 
 	sh:nodeKind sh:Literal ;
 	sh:datatype rdf:string ;
+	sh:maxCount 1 ;
+	sh:minCount 1 ;
+	dash:searchWidget core:NonSelectableProperty;
+	dash:propertyRole dash:LabelRole ;
+	core:enableOptional "false"^^xsd:boolean ;
+	core:enableNegation "false"^^xsd:boolean .
+
+this:S2SampleTakingCampionamento_label # LABEL CAMPIONAMENTO
+	sh:path rdfs:label ;
+	sh:name "Label campionamento" ; 
+	sh:nodeKind sh:Literal ;
+	sh:datatype rdf:string ;
+	sh:maxCount 1 ;
+	sh:minCount 1 ;
+	dash:searchWidget core:NonSelectableProperty;
+	dash:propertyRole dash:LabelRole ;
+	core:enableOptional "false"^^xsd:boolean ;
+	core:enableNegation "false"^^xsd:boolean .
+
+this:CP2ArchitectureWork_label # LABEL BENE DI RIFERIMENTO
+	sh:path rdfs:label ;
+	sh:name "Label bene di riferimento" ; 
+	sh:nodeKind sh:Literal ;
+	sh:datatype rdf:string ;
+	sh:maxCount 1 ;
+	sh:minCount 1 ;
 	dash:searchWidget core:NonSelectableProperty;
 	dash:propertyRole dash:LabelRole ;
 	core:enableOptional "false"^^xsd:boolean ;
@@ -64,6 +116,40 @@ this:CP9MaterialLabel # LABEL MATERIALE PREVALENTE COSTRUTTIVO - ELEMENTO COSTRU
 	sh:nodeKind sh:Literal ;
 	sh:datatype rdf:string ;
 	dash:searchWidget core:NonSelectableProperty ; # ???
+	dash:propertyRole dash:LabelRole ;
+	core:enableOptional "false"^^xsd:boolean ;
+	core:enableNegation "false"^^xsd:boolean .
+
+this:E7ActivityDiagnosticaLabel # LABEL ATTIVITA' DIAGNOSTICA
+	sh:path rdfs:label ;
+	sh:name "Label attività diagnostica" ; 
+	sh:nodeKind sh:Literal ;
+	sh:datatype rdf:string ;
+	dash:searchWidget core:NonSelectableProperty;
+	dash:propertyRole dash:LabelRole ;
+	core:enableOptional "false"^^xsd:boolean ;
+	core:enableNegation "false"^^xsd:boolean .
+
+this:E70ThingStrumento_label # LABEL STRUMENTO
+	sh:path rdfs:label ;
+	sh:name "Label strumento" ; 
+	sh:nodeKind sh:Literal ;
+	sh:datatype rdf:string ;
+	sh:maxCount 1 ;
+	sh:minCount 1 ;
+	dash:searchWidget core:NonSelectableProperty;
+	dash:propertyRole dash:LabelRole ;
+	core:enableOptional "false"^^xsd:boolean ;
+	core:enableNegation "false"^^xsd:boolean .
+
+this:E13AttributeAssignment_label # LABEL OUTPUT
+	sh:path rdfs:label ;
+	sh:name "Label output" ; 
+	sh:nodeKind sh:Literal ;
+	sh:datatype rdf:string ;
+	sh:maxCount 1 ;
+	sh:minCount 1 ;
+	dash:searchWidget core:NonSelectableProperty;
 	dash:propertyRole dash:LabelRole ;
 	core:enableOptional "false"^^xsd:boolean ;
 	core:enableNegation "false"^^xsd:boolean .
@@ -135,7 +221,7 @@ this:E7ActivityDiagnostica # ATTIVITA' DIAGNOSTICA
 		sh:name "ha proiezione temporale" ;
     ] ;
     sh:property [
-		sh:path crm:P134_continued ; #[sh:inversePath crm:P134i_was_continued_by] ; # usata proprietà inversa di P134_continued ...
+		sh:path crm:P134_continued ;
         sh:node this:E7ActivityAnalisiAssociata ;
 		sh:name "ha continuazione" ;
     ] ;
@@ -155,11 +241,6 @@ this:E7ActivityDiagnostica # ATTIVITA' DIAGNOSTICA
 		sh:name "è indicato da" ;
     ] ;
     sh:property [
-        sh:path [sh:inversePath crm:P16i_was_used_for] ; # usata proprietà inversa di P16_used_specific_object ...
-        sh:node this:E73InformationObjectSoftware ;
-		sh:name "ha usato un oggetto specifico" ;
-    ] ;
-    sh:property [
         sh:path crm:P129i_is_subject_of ;
         sh:node this:I4PropositionSet ;
 		sh:name "è soggetto di" ;
@@ -173,16 +254,6 @@ this:E7ActivityDiagnostica # ATTIVITA' DIAGNOSTICA
         sh:path crm:P70i_is_documented_in ; 
         sh:node this:E31Document ;
 		sh:name "è documentato in" ;
-    #] ;
-    #sh:property [
-    #    sh:path basecpm:PC43i_uses ;
-    #    sh:node this:CP2ArchitectureWork ;
-	#	sh:name "utilizza" ;
-    #] ;
-    #sh:property [
-    #    sh:path crm:P12_occurred_in_the_presence_of ;
-    #    sh:node this:S13SampleCampione ;
-	#	sh:name "è avvenuto in presenza di" ;
     ] ;
 		sh:property this:E7ActivityDiagnosticaLabel .
 
@@ -236,12 +307,12 @@ this:E13AttributeAssignment # OUTPUT
 		sh:name "ha tipo" ;
     ] ;
     sh:property [
-        sh:path crm:P140_assigned_attribute_to ;
-        sh:node this:S10MaterialSubstantialOutput ; 
-		sh:name "attributo assegnato a" ;
+        sh:path crm:P141_assigned ;
+        sh:node this:E57MaterialOutput ;
+		sh:name "assegnato" ;
     ] ;
     sh:property [
-        sh:path [sh:inversePath crm:P140i_was_attributed_by] ; # usata proprietà inversa di P140_assigned_attribute_to ... 
+        sh:path crm:P140_assigned_attribute_to ;
         sh:node this:E18PhysicalThing ; 
 		sh:name "è stato attribuito da" ;
     ] ;
@@ -254,12 +325,8 @@ this:E13AttributeAssignment # OUTPUT
         sh:path crm:P11_had_participant ;
         sh:node this:E39ActorCompetenza ; 
 		sh:name "ha avuto partecipante" ;
-    #] ;
-    #sh:property [
-    #    sh:path crm:P67i_is_referred_to_by ; 
-    #    sh:node this:E31Document ;
-	#	sh:name "è indicato da" ;
-    ] .
+    ] ;
+		sh:property this:E13AttributeAssignment_label .
 
 this:E18PhysicalThing # COMPONENTI SPECIFICI 
     a sh:NodeShape ;
@@ -288,7 +355,22 @@ this:I4PropositionSet # ASSUNTI DI BASE
 	sh:property [
         sh:path base:J4i_is_subject_of ;
 		sh:node this:I2BeliefInput ; 
-		sh:name "è soggeto di" ;
+		sh:name "è soggeto di" ;							   
+    ] .
+
+this:E73InformationObjectAllegato # ALLEGATO - LINK
+    a sh:NodeShape ;
+    sh:targetClass crm:E73_Information_Object ;
+	rdfs:label "Allegato - Link" ;
+	sh:property [
+        sh:path indagine:link_allegato_area_prelievo ;
+		sh:datatype xsd:string ;
+		sh:name "allegato - link" ;
+		sh:nodeKind sh:Literal ;
+		dash:searchWidget core:AutocompleteProperty ;
+		dash:propertyRole dash:LabelRole ;
+		core:enableOptional "true"^^xsd:boolean ;
+		core:enableNegation "true"^^xsd:boolean ;
     ] .
 
 this:E73InformationObjectMedium # MEDIUM 
@@ -301,19 +383,14 @@ this:E73InformationObjectMedium # MEDIUM
 		sh:name "ha tipo" ;
     ] ;
 	sh:property [
-        sh:path crm:P67i_is_referred_to_by ;
-		sh:node this:E73InformationObjectAllegato ;
-		sh:name "è indicato da" ;
-    #] ;
-	#sh:property [
-    #    sh:path crm:P67_refers_to ;
-	#	sh:node this:E42IdentifierSpecifiche ;
-	#	sh:name "si riferisce a" ;
-    #] ;
-    #sh:property [
-    #    sh:path crm:P15i_influenced ;
-    #    sh:node this:E13AttributeAssignment ; 
-	#	sh:name "ha influenzato" ;
+        sh:path crm:P165i_is_incorporated_in ;
+		sh:node this:E73InformationObjectLinkMedium ;
+		sh:name "è incorporato in" ;
+    ] ;
+    sh:property [
+        sh:path crm:P16_used_specific_object ;
+        sh:node this:E73InformationObjectSoftware ;
+		sh:name "ha usato un oggetto specifico" ;			   
     ] .
 	
 this:E73InformationObjectSoftware # SOFTWARE 
@@ -342,6 +419,20 @@ this:E73InformationObjectReport # ALLEGATO REPORT
 		core:enableNegation "true"^^xsd:boolean ;
     ] .
 
+this:E73InformationObjectLinkMedium # LINK
+    a sh:NodeShape ;
+    sh:targetClass crm:E73_Information_Object ;
+	rdfs:label "Link" ;
+	sh:property [
+        sh:path indagine:link_medium ;
+		sh:datatype xsd:string ;
+		sh:name "Link" ;
+		dash:searchWidget core:AutocompleteProperty ;
+		dash:propertyRole dash:LabelRole ;
+		core:enableOptional "true"^^xsd:boolean ;
+		core:enableNegation "true"^^xsd:boolean ;
+    ] .
+
 this:E70ThingStrumento # STRUMENTO 
     a sh:NodeShape ;
     sh:targetClass crm:E70_Thing ;
@@ -355,7 +446,8 @@ this:E70ThingStrumento # STRUMENTO
         sh:path crm:P48_has_preferred_identifier ;
 		sh:node this:E42IdentifierSpecifiche ;
 		sh:name "ha identificativo" ;
-    ] .
+    ] ;
+		sh:property this:E70ThingStrumento_label .
 	
 this:E29DesignorProcedureDiagnostica # PROCEDURA 
     a sh:NodeShape ;
@@ -380,11 +472,6 @@ this:E29DesignorProcedureDiagnostica # PROCEDURA
         sh:path crm:P69_has_association_with ;
 		sh:node this:E29DesignorProcedureProcAssociata ;
 		sh:name "ha associazione con" ;
-    #] ;
-    #sh:property [
-    #    sh:path crm:P67_refers_to ; 
-    #    sh:node this:E70ThingStrumento ; 
-	#	sh:name "si riferisce a" ;
     ] .
 
 this:E1CRMEntity # FINALITA' INDAGINE
@@ -447,22 +534,17 @@ this:S13SampleCampione # CAMPIONE
 		sh:name "è osservato da" ;
     ] ;
 	sh:property [
-        sh:path crm:P140i_was_attributed_by ;
-        sh:node this:E14ConditionAssessment ; 
-		sh:name "è stato attribuito da" ;
-    ] ;
-	sh:property [
         sh:path j.0:O25_contains ;
         sh:node this:S10MaterialSubstantialCampione ;
 		sh:name "contiene" ;
     ] ;
     sh:property [
-        sh:path j.0:O2i_was_removed_by ; 
+        sh:path j.0:O5i_was_removed_by ; 
         sh:node this:S2SampleTakingCampionamento ; 
 		sh:name "è stato rimosso da" ;
     ] ;
     sh:property [
-        sh:path [sh:inversePath j.0:O25i_is_contained_in] ; # usata proprietà inversa di O25_contains ...
+        sh:path crm:P130_shows_features_of ;
         sh:node this:S13SampleSottocampione ; 
 		sh:name "contiene" ;
     ] ;
@@ -502,11 +584,7 @@ this:S13SampleSottocampione # SOTTOCAMPIONE
         sh:node this:E62StringSottocampione ; 
 		sh:name "ha note" ;
     ] ;
-    sh:property [
-        sh:path crm:P130_shows_features_of ;
-        sh:node this:S13SampleCampione ; 
-		sh:name "mostra caratteristiche di" ;
-    ] .
+		sh:property this:S13SampleSottocampione_label .
 
 this:S2SampleTakingCampionamento # CAMPIONAMENTO
     a sh:NodeShape ;
@@ -531,12 +609,8 @@ this:S2SampleTakingCampionamento # CAMPIONAMENTO
         sh:path j.0:O4_sampled_at ; 
         sh:node this:E53PlaceAreaPrelievo ;
 		sh:name "campionato a" ;
-    #] ;
-    #sh:property [
-    #    sh:path crm:P8_took_place_on_or_within ; 
-    #    sh:node this:CP20ConstructionWork ;
-	#	sh:name "ha avuto luogo all'interno di" ;
-    ] .
+    ] ;
+		sh:property this:S2SampleTakingCampionamento_label .
 
 this:S2SampleTakingSottocampionamento # SOTTOCAMPIONAMENTO
     a sh:NodeShape ;
@@ -585,22 +659,6 @@ this:E53PlaceAreaPrelievo # AREA DI PRELIEVO
 		sh:group this:AllegatiGroup ;
     ] .
 
-this:E73InformationObjectAllegato # ALLEGATO - LINK
-    a sh:NodeShape ;
-    sh:targetClass crm:E73_Information_Object ;
-	rdfs:label "Allegato - Link" ;
-	sh:property [
-        sh:path indagine:link_allegato_area_prelievo ;
-		sh:datatype xsd:string ;
-		sh:name "allegato - link" ;
-		#sh:description "$UPLOAD$" ;
-		sh:nodeKind sh:Literal ;
-		dash:searchWidget core:AutocompleteProperty ;
-		dash:propertyRole dash:LabelRole ;
-		core:enableOptional "true"^^xsd:boolean ;
-		core:enableNegation "true"^^xsd:boolean ;
-    ] .
-
 this:CP38ArchitectureRepresentationObject # ALLEGATO - OGGETTO
     a sh:NodeShape ;
     sh:targetClass basecpm:CP38_Architecture_Representation_Object ;
@@ -638,7 +696,7 @@ this:S22SegmentofMatter # PORZIONE IDENTIFICATA
 
 this:E52TimespanDiagnostica # DATA ATTIVITA' DIAGNOSTICA
     a sh:NodeShape ;
-    sh:targetClass j.0:E52_Time-span ; #crm:E2_Temporal_Entity ; 
+    sh:targetClass crm:E52_Time-span ; 
 	rdfs:label "Data attività diagnostica" ;
 	sh:property [
         sh:path indagine:data_attivita_diagnostica ;
@@ -648,7 +706,7 @@ this:E52TimespanDiagnostica # DATA ATTIVITA' DIAGNOSTICA
 
 this:E52TimespanSottocampionamento # DATA SOTTOCAMPIONAMENTO
     a sh:NodeShape ;
-    sh:targetClass j.0:E52_Time-span ; 
+    sh:targetClass crm:E52_Time-span ; 
 	rdfs:label "Data sottocampionamento" ;
 	sh:property [
         sh:path indagine:data_sottocampionamento ;
@@ -658,7 +716,7 @@ this:E52TimespanSottocampionamento # DATA SOTTOCAMPIONAMENTO
 
 this:E2TemporalEntityCampionamento # DATA CAMPIONAMENTO
     a sh:NodeShape ;
-    sh:targetClass j.0:E2_Temporal_Entity ;
+    sh:targetClass crm:E2_Temporal_Entity ;
 	rdfs:label "Data campionamento" ;
 	sh:property [
         sh:path indagine:data_campionamento ;
@@ -668,7 +726,7 @@ this:E2TemporalEntityCampionamento # DATA CAMPIONAMENTO
 
 this:E2TemporalEntityCreazReport # DATA CREAZIONE REPORT
     a sh:NodeShape ;
-    sh:targetClass j.0:E2_Temporal_Entity ;
+    sh:targetClass crm:E2_Temporal_Entity ;
 	rdfs:label "Data creazione" ;
 	sh:property [
         sh:path indagine:data_creazione_report ;
@@ -678,17 +736,17 @@ this:E2TemporalEntityCreazReport # DATA CREAZIONE REPORT
 
 this:E2TemporalEntityAggiornReport # DATA AGGIORNAMENTO REPORT
     a sh:NodeShape ;
-    sh:targetClass j.0:E2_Temporal_Entity ;
+    sh:targetClass crm:E2_Temporal_Entity ;
 	rdfs:label "Data aggiornamento" ;
 	sh:property [
         sh:path indagine:data_aggiornamento_report ;
 		sh:datatype xsd:dateTime ;
-		sh:name "data" ;
+		sh:name "data" ;	 
     ] .
 
 this:E52TimespanOutput # DATA OUTPUT
     a sh:NodeShape ;
-    sh:targetClass j.0:E52_Time-span ; 
+    sh:targetClass crm:E52_Time-span ; 
 	rdfs:label "Data output" ;
 	sh:property [
         sh:path indagine:data_ouput ;
@@ -748,6 +806,12 @@ this:S4Observation # OSSERVAZIONE
         sh:path j.0:O16_observed_value ;
         sh:node this:CP41EnvironmentalObservableEntityStatoConservaz ;
 		sh:name "valore osservato" ;
+    ] ;
+    sh:property [
+        sh:path crm:P35_has_identified ;
+        sh:node this:E3ConditionState ;
+		sh:name "ha identificativo" ;
+        sh:maxCount 1 ;
     ] .
 
 this:S10MaterialSubstantialCampione # MATERIALE PREVALENTE - CAMPIONE
@@ -758,14 +822,6 @@ this:S10MaterialSubstantialCampione # MATERIALE PREVALENTE - CAMPIONE
         sh:path crm:P2_has_type ;
         sh:node this:E55TypeMateriale ;
 		sh:name "ha tipo" ;
-    #] ;
-    #sh:property [
-	#	sh:path [sh:inversePath j.0:O25i_is_contained_in] ; # usata proprietà inversa di O25_contains ...
-    #    sh:node this:S10MaterialSubstantialOutput ; 
-	#	sh:name "contiene" ;
-    #] ;
-    #sh:property [
-    #    sh:path [ sh:inversePath j.0:O25i_is_contained_in ] ; # attenzione scritta stessa proprietà anche prima ... anche se dovrebbe cambiare
     ] ;
 		sh:property this:S10MaterialSubstantialCampElemCostrLabel .
 
@@ -779,26 +835,6 @@ this:S10MaterialSubstantialSottocampione # MATERIALE PREVALENTE - SOTTOCAMPIONE
 		sh:name "ha tipo" ;
     ] .
 
-this:S10MaterialSubstantialOutput # MATERIALE SPECIFICO - OUTPUT
-    a sh:NodeShape ;
-    sh:targetClass j.0:S10_Material_Substantial ;
-	rdfs:label "Materiale specifico" ;
-    sh:property [
-        sh:path crm:P2_has_type ;
-        sh:node this:E55TypeMateriale ;
-		sh:name "ha tipo" ;
-    #] ;
-    #sh:property [
-    #    sh:path j.0:O25i_is_contained_in ;
-    #    sh:node this:CP2ArchitectureWork ;
-	#	sh:name "è contenuto in" ;
-    #] ;
-    #sh:property [
-    #    sh:path [sh:inversePath j.0:O25_contains] ; # usata proprietà inversa di O25i_is_contained_in ...
-    #    sh:node this:S13SampleCampione ;
-	#	sh:name "è contenuto in" ;
-    ] .
-
 this:S10MaterialSubstantialElemCostr # MATERIALE PREVALENTE - ELEMENTO COSTRUTTIVO
     a sh:NodeShape ;
     sh:targetClass j.0:S10_Material_Substantial ;
@@ -808,11 +844,6 @@ this:S10MaterialSubstantialElemCostr # MATERIALE PREVALENTE - ELEMENTO COSTRUTTI
         sh:node this:E55TypeMateriale ;
 		sh:name "ha tipo" ;
     ] ;
-    #sh:property [
-    #    sh:path j.0:O25_contains ;
-    #    sh:node this:S10MaterialSubstantialOutput ; # verrificare se funziona correttamente
-	#	sh:name "contiene" ;
-    #] ;
     sh:property [
         sh:path basecpm:PC51_was_affected_by ;
         sh:node this:CP42MaterialDecayShape ;
@@ -833,11 +864,6 @@ this:CP9BuildingMaterial # MATERIALE PREVALENTE COSTRUTTIVO - ELEMENTO COSTRUTTI
         sh:path crm:P2_has_type ;
         sh:node this:E55TypeMateriale ;
 		sh:name "ha tipo" ;
-    #] ;
-    #sh:property [
-    #    sh:path j.0:O25_contains ;
-    #    sh:node this:S10MaterialSubstantialOutput ; # verrificare se funziona correttamente
-	#	sh:name "contiene" ;
     ] ;
     sh:property [
         sh:path basecpm:PC51_was_affected_by ;
@@ -851,14 +877,14 @@ this:CP9BuildingMaterial # MATERIALE PREVALENTE COSTRUTTIVO - ELEMENTO COSTRUTTI
     ] ;
 		sh:property this:CP9MaterialLabel .
 	
-this:E14ConditionAssessment # VALUTAZIONE STATO CONSERVAZIONE
+this:E57MaterialOutput # MATERIALE SPECIFICO - OUTPUT
     a sh:NodeShape ;
-    sh:targetClass crm:E14_Condition_Assessment ;
-	rdfs:label "Valutazione stato conservazione" ;
+    sh:targetClass crm:E57_Material ;
+	rdfs:label "Materiale specifico" ;
     sh:property [
-        sh:path crm:P35_has_identified ;
-        sh:node this:E3ConditionState ;
-		sh:name "ha identificato" ;
+        sh:path crm:P2_has_type ;
+        sh:node this:E55TypeMateriale ;
+		sh:name "ha tipo" ;
     ] .
 
 this:E3ConditionState # TAFONOMIA E STATO CONSERVAZIONE
@@ -884,16 +910,6 @@ this:CP41EnvironmentalObservableEntityStatoConservaz # STATO CONSERVAZIONE - CON
         sh:path crm:P3_has_note ;
 		sh:node this:E62StringCondizAmbientale ;
 		sh:name "ha note" ;
-    #] ;
-	#sh:property [
-    #    sh:path basecpm:PC1_affects ;
-    #    sh:node this:E55TypeTecnicaDiagnostica ;
-	#	sh:name "interessa" ;
-    #] ;
-	#sh:property [
-    #    sh:path basecpm:PC1_affects ; # proprietà duplicata: non può funzionare, trovare altra proprietà
-    #    sh:node this:S13SampleCampione ;
-	#	sh:name "interessa" ;
     ] .
 
 this:CP2ArchitectureWork # BENE DI RIFERIMENTO
@@ -929,7 +945,8 @@ this:CP2ArchitectureWork # BENE DI RIFERIMENTO
         sh:path basecpm:PC61_was_affected_by ;
 		sh:node this:CP43StructuralDamage ;
 		sh:name "è stato influenzato da" ;
-    ] .
+    ] ;
+		sh:property this:CP2ArchitectureWork_label .
 
 this:CP43StructuralDamage # TIPO DISSESTI STRUTTURALI
     a sh:NodeShape ;
@@ -973,11 +990,6 @@ this:CP20ConstructionWork # ELEMENTO COSTRUTTIVO
         sh:path crm:P62_depicts ;
         sh:node this:I2BeliefInquadramentoCronologico ;
 		sh:name "rappresenta" ;
-    #] ;
-	#sh:property [
-    #    sh:path crm:P46i_forms_part_of ;
-    #    sh:node this:CP2ArchitectureWork ;
-	#	sh:name "forma parte di" ;
     ] .
 
 this:CP41EnvironmentalObservableEntityBene # FENOMENO OSSERVATO
@@ -1174,7 +1186,8 @@ this:I12AdoptedBelief # QUESITO DIAGNOSTICO
         sh:path crm:P2_has_type ;
         sh:node this:E55TypeQuesitoDiagnostico ;
 		sh:name "ha tipo" ;
-    ] .
+    ] ;
+		sh:property this:I12AdoptedBelief_label .
 
 this:E39ActorIndagine # ATTORI COINVOLTI
     a sh:NodeShape ;
@@ -1323,7 +1336,7 @@ this:I2BeliefInput # INPUT
 		sh:name "ha note" ;
     ] ;
 	sh:property [
-        sh:path crm:P134_continued ; # *** DA VERIFICARE *** inserito solo come prova ...
+        sh:path crm:P134_continued ;
 		sh:node this:E7ActivityAnalisiAssociata ;
 		sh:name "ha continuazione" ;
     ] .
@@ -1395,12 +1408,8 @@ this:E55TypeIndagine # TIPO INDAGINE
         core:enableNegation "true"^^xsd:boolean;
         datasources:treeRootsDatasource this:tree_root_tipo_indagine ;
         datasources:treeChildrenDatasource this:tree_children_broader_term ;
-	#] ;
-    #sh:property [
-    #    sh:path crm:P103_was_intended_for ;
-    #    sh:node this:E55TypeQuesitoDiagnostico ;
-	#	sh:name "è stato destinato a" ;
-    ] .
+    ] ;
+		sh:property this:E55TypeIndagine_label .
 
 this:E55TypeQuesitoDiagnostico # TIPO QUESITO DIAGNOSTICO
     a sh:NodeShape ;
@@ -1596,25 +1605,6 @@ this:E55TypeDiagnostica # TIPOLOGIE ATTIVITA' (FASE ANALISI, PREPARAZIONE CAMPIO
         datasources:treeRootsDatasource this:tree_root_tecnica_diagnostica ;
         datasources:treeChildrenDatasource this:tree_children_broader_term ;
     ] .
-
-#this:E55TypeTecnicaDiagnostica # TECNICA DIAGNOSTICA (già incluso nelle tipologie raggruppate di Attività Diagnostica ...)
-#    a sh:NodeShape ;
-#    sh:targetClass crm:E55_Type ;
-#	rdfs:label "Tecnica diagnostica" ;
-#    sh:property [
-#        sh:path indagine:tecnica_diagnostica ;
-#		sh:name "tecnica diagnostica" ;
-#        dash:searchWidget core:TreeProperty ;
-#        core:enableOptional "true"^^xsd:boolean;
-#        core:enableNegation "true"^^xsd:boolean;
-#        datasources:treeRootsDatasource this:tree_root_tecnica_diagnostica ;
-#        datasources:treeChildrenDatasource this:tree_children_broader_term ;
-#    ] ;
-#    sh:property [
-#        sh:path basecpm:PC1i_is_subject_to ;
-#		sh:node this:E55TypeInquadramCronologico ; # ATTENZIONE: collegamento valido solo se Tecnica Diagnostica richiamata da Condizione ambientale e non da Attività Diagnostica ...
-#		sh:name "è soggetto a" ;
-#    ] .
 
 this:E55TypeModalitaIndagine # TIPO MDALITA' INDAGINE
     a sh:NodeShape ;
