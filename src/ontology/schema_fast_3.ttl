@@ -215,7 +215,7 @@ this:E55TypeMateriale # TIPO MATERIALE
     rdfs:label "Tipo materiale" ;
     sh:deactivated "true"^^xsd:boolean ;
     sh:property [
-        sh:path indagine:materiale ;
+        sh:path indagine:tipo_materiale ;
         sh:name "tipo" ;
         dash:searchWidget core:TreeProperty ;
         core:enableOptional "true"^^xsd:boolean;
