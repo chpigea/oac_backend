@@ -29,7 +29,7 @@ this:E7ActivityIndagineLabel # LABEL INDAGINE
 	core:enableOptional "false"^^xsd:boolean ;
 	core:enableNegation "false"^^xsd:boolean .
 
-this:E55TypeIndagine_label # LABEL TIPO INDAGINE
+this:E55TypeIndagineLabel # LABEL TIPO INDAGINE
 	sh:path rdfs:label ;
 	sh:name "Label tipo indagine" ;
 	sh:nodeKind sh:Literal ;
@@ -41,9 +41,21 @@ this:E55TypeIndagine_label # LABEL TIPO INDAGINE
 	core:enableOptional "false"^^xsd:boolean ;
 	core:enableNegation "false"^^xsd:boolean .
 
-this:I12AdoptedBelief_label # LABEL QUESITO DIAGNOSTICO
+this:I12AdoptedBeliefLabel # LABEL QUESITO DIAGNOSTICO
 	sh:path rdfs:label ;
 	sh:name "Label quesito diagnostico" ;
+	sh:nodeKind sh:Literal ;
+	sh:datatype rdf:string ;
+	sh:maxCount 1 ;
+	sh:minCount 1 ;
+	dash:searchWidget core:NonSelectableProperty;
+	dash:propertyRole dash:LabelRole ;
+	core:enableOptional "false"^^xsd:boolean ;
+	core:enableNegation "false"^^xsd:boolean .
+
+this:E39ActorIndagineLabel # LABEL ATTORI
+	sh:path rdfs:label ;
+	sh:name "Label attori" ;
 	sh:nodeKind sh:Literal ;
 	sh:datatype rdf:string ;
 	sh:maxCount 1 ;
@@ -64,7 +76,7 @@ this:S13SampleCampioneLabel # LABEL CAMPIONE
 	core:enableOptional "false"^^xsd:boolean ;
 	core:enableNegation "false"^^xsd:boolean .
 
-this:S13SampleSottocampione_label # LABEL SOTTOCAMPIONE
+this:S13SampleSottocampioneLabel # LABEL SOTTOCAMPIONE
 	sh:path rdfs:label ;
 	sh:name "Label sottocampione" ; 
 	sh:nodeKind sh:Literal ;
@@ -76,7 +88,7 @@ this:S13SampleSottocampione_label # LABEL SOTTOCAMPIONE
 	core:enableOptional "false"^^xsd:boolean ;
 	core:enableNegation "false"^^xsd:boolean .
 
-this:S2SampleTakingCampionamento_label # LABEL CAMPIONAMENTO
+this:S2SampleTakingCampionamentoLabel # LABEL CAMPIONAMENTO
 	sh:path rdfs:label ;
 	sh:name "Label campionamento" ; 
 	sh:nodeKind sh:Literal ;
@@ -88,7 +100,7 @@ this:S2SampleTakingCampionamento_label # LABEL CAMPIONAMENTO
 	core:enableOptional "false"^^xsd:boolean ;
 	core:enableNegation "false"^^xsd:boolean .
 
-this:CP2ArchitectureWork_label # LABEL BENE DI RIFERIMENTO
+this:CP2ArchitectureWorkLabel # LABEL BENE DI RIFERIMENTO
 	sh:path rdfs:label ;
 	sh:name "Label bene di riferimento" ; 
 	sh:nodeKind sh:Literal ;
@@ -130,7 +142,19 @@ this:E7ActivityDiagnosticaLabel # LABEL ATTIVITA' DIAGNOSTICA
 	core:enableOptional "false"^^xsd:boolean ;
 	core:enableNegation "false"^^xsd:boolean .
 
-this:E70ThingStrumento_label # LABEL STRUMENTO
+this:E55TypeDiagnosticaLabel # LABEL ATTIVITA' (TIPOLOGIE)
+	sh:path rdfs:label ;
+	sh:name "Label attività" ; 
+	sh:nodeKind sh:Literal ;
+	sh:datatype rdf:string ;
+	sh:maxCount 1 ;
+	sh:minCount 1 ;
+	dash:searchWidget core:NonSelectableProperty;
+	dash:propertyRole dash:LabelRole ;
+	core:enableOptional "false"^^xsd:boolean ;
+	core:enableNegation "false"^^xsd:boolean .
+
+this:E70ThingStrumentoLabel # LABEL STRUMENTO
 	sh:path rdfs:label ;
 	sh:name "Label strumento" ; 
 	sh:nodeKind sh:Literal ;
@@ -142,7 +166,7 @@ this:E70ThingStrumento_label # LABEL STRUMENTO
 	core:enableOptional "false"^^xsd:boolean ;
 	core:enableNegation "false"^^xsd:boolean .
 
-this:E13AttributeAssignment_label # LABEL OUTPUT
+this:E13AttributeAssignmentLabel # LABEL OUTPUT
 	sh:path rdfs:label ;
 	sh:name "Label output" ; 
 	sh:nodeKind sh:Literal ;
@@ -326,7 +350,7 @@ this:E13AttributeAssignment # OUTPUT
         sh:node this:E39ActorCompetenza ; 
 		sh:name "ha avuto partecipante" ;
     ] ;
-		sh:property this:E13AttributeAssignment_label .
+		sh:property this:E13AttributeAssignmentLabel .
 
 this:E18PhysicalThing # COMPONENTI SPECIFICI 
     a sh:NodeShape ;
@@ -447,7 +471,7 @@ this:E70ThingStrumento # STRUMENTO
 		sh:node this:E42IdentifierSpecifiche ;
 		sh:name "ha identificativo" ;
     ] ;
-		sh:property this:E70ThingStrumento_label .
+		sh:property this:E70ThingStrumentoLabel .
 	
 this:E29DesignorProcedureDiagnostica # PROCEDURA 
     a sh:NodeShape ;
@@ -584,7 +608,7 @@ this:S13SampleSottocampione # SOTTOCAMPIONE
         sh:node this:E62StringSottocampione ; 
 		sh:name "ha note" ;
     ] ;
-		sh:property this:S13SampleSottocampione_label .
+		sh:property this:S13SampleSottocampioneLabel .
 
 this:S2SampleTakingCampionamento # CAMPIONAMENTO
     a sh:NodeShape ;
@@ -610,7 +634,7 @@ this:S2SampleTakingCampionamento # CAMPIONAMENTO
         sh:node this:E53PlaceAreaPrelievo ;
 		sh:name "campionato a" ;
     ] ;
-		sh:property this:S2SampleTakingCampionamento_label .
+		sh:property this:S2SampleTakingCampionamentoLabel .
 
 this:S2SampleTakingSottocampionamento # SOTTOCAMPIONAMENTO
     a sh:NodeShape ;
@@ -946,7 +970,7 @@ this:CP2ArchitectureWork # BENE DI RIFERIMENTO
 		sh:node this:CP43StructuralDamage ;
 		sh:name "è stato influenzato da" ;
     ] ;
-		sh:property this:CP2ArchitectureWork_label .
+		sh:property this:CP2ArchitectureWorkLabel .
 
 this:CP43StructuralDamage # TIPO DISSESTI STRUTTURALI
     a sh:NodeShape ;
@@ -1187,7 +1211,7 @@ this:I12AdoptedBelief # QUESITO DIAGNOSTICO
         sh:node this:E55TypeQuesitoDiagnostico ;
 		sh:name "ha tipo" ;
     ] ;
-		sh:property this:I12AdoptedBelief_label .
+		sh:property this:I12AdoptedBeliefLabel .
 
 this:E39ActorIndagine # ATTORI COINVOLTI
     a sh:NodeShape ;
@@ -1197,7 +1221,8 @@ this:E39ActorIndagine # ATTORI COINVOLTI
         sh:path crm:P1_is_identified_by ;
         sh:node this:E41AppellationAttori ;
 		sh:name "è identificato da" ;
-    ] .
+    ] ;
+		sh:property this:E39ActorIndagineLabel .
 
 this:E39ActorDiagnostica # AUTORE
     a sh:NodeShape ;
@@ -1409,7 +1434,7 @@ this:E55TypeIndagine # TIPO INDAGINE
         datasources:treeRootsDatasource this:tree_root_tipo_indagine ;
         datasources:treeChildrenDatasource this:tree_children_broader_term ;
     ] ;
-		sh:property this:E55TypeIndagine_label .
+		sh:property this:E55TypeIndagineLabel .
 
 this:E55TypeQuesitoDiagnostico # TIPO QUESITO DIAGNOSTICO
     a sh:NodeShape ;
@@ -1604,7 +1629,8 @@ this:E55TypeDiagnostica # TIPOLOGIE ATTIVITA' (FASE ANALISI, PREPARAZIONE CAMPIO
         core:enableNegation "true"^^xsd:boolean;
         datasources:treeRootsDatasource this:tree_root_tecnica_diagnostica ;
         datasources:treeChildrenDatasource this:tree_children_broader_term ;
-    ] .
+    ] ;
+		sh:property this:E55TypeDiagnosticaLabel .
 
 this:E55TypeModalitaIndagine # TIPO MDALITA' INDAGINE
     a sh:NodeShape ;
