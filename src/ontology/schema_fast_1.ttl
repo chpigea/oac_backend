@@ -191,6 +191,16 @@ this:E55TypeCampione # TIPO CAMPIONE
         datasources:treeChildrenDatasource this:tree_children_broader_term ;
     ] .
 
+# DATASOURCE DEI TERMINI DI VOCABOLARIO "TIPO CAMPIONE" (21)
+#this:tree_root_tipo_campione a datasources:SparqlTreeRootDatasource;
+#    datasources:queryString """
+#PREFIX crm:  <http://www.cidoc-crm.org/cidoc-crm/>
+#PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+#SELECT (?concept AS ?uri) ?label (EXISTS { ?child crm:P127_has_broader_term ?concept } AS ?hasChildren)
+#WHERE {
+#    BIND(<http://diagnostica/vocabularies/tipo-campione> AS ?concept)
+#    OPTIONAL { ?concept rdfs:label ?label . }
+#}""" .
 
 # DATASOURCE DEI TERMINI DI VOCABOLARIO "TIPO CAMPIONE" (21)
 this:tree_root_tipo_campione a datasources:SparqlTreeRootDatasource;
@@ -199,9 +209,11 @@ PREFIX crm:  <http://www.cidoc-crm.org/cidoc-crm/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT (?concept AS ?uri) ?label (EXISTS { ?child crm:P127_has_broader_term ?concept } AS ?hasChildren)
 WHERE {
-    BIND(<http://diagnostica/vocabularies/tipo-campione> AS ?concept)
+    BIND(<http://diagnostica/vocabularies/tipo-campione> AS ?root)
+    ?concept crm:P127_has_broader_term ?root .
     OPTIONAL { ?concept rdfs:label ?label . }
-}""" .
+}
+ORDER BY ?id""" .
 
 # DATASOURCE DEI TERMINI DI VOCABOLARIO "TIPO QUESITO DIAGNOSTICO" (8)
 this:tree_root_tipo_quesito_diagnostico a datasources:SparqlTreeRootDatasource;
@@ -210,9 +222,12 @@ PREFIX crm:  <http://www.cidoc-crm.org/cidoc-crm/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT (?concept AS ?uri) ?label (EXISTS { ?child crm:P127_has_broader_term ?concept } AS ?hasChildren)
 WHERE {
-    BIND(<http://diagnostica/vocabularies/quesito-diagnostico> AS ?concept)
+    BIND(<http://diagnostica/vocabularies/quesito-diagnostico> AS ?root)
+    ?concept crm:P127_has_broader_term ?root .
     OPTIONAL { ?concept rdfs:label ?label . }
-}""" .
+}
+ORDER BY ?id""" .
+
 
 # DATASOURCE DEI TERMINI DI VOCABOLARIO SUCCESSIVI 1° LIVELLO (vale per tutti i vocabolari)
 this:tree_children_broader_term a datasources:SparqlTreeChildrenDatasource;
@@ -224,5 +239,4 @@ WHERE {
     ?uri crm:P127_has_broader_term $node .
     OPTIONAL { ?uri rdfs:label ?label . }
 }
-ORDER BY ?label
-""" .    
+ORDER BY ?id""" .    
