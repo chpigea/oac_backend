@@ -261,7 +261,7 @@ router.get('/get-vocabolary-terms/:key', (req, res) => {
             PREFIX skos:   <http://www.w3.org/2004/02/skos/core#>
             PREFIX xsd:    <http://www.w3.org/2001/XMLSchema#>
             `
-            for(let i=0; i<bindings.length; i++){
+            for(let i=1; i<bindings.length; i++){
                 let item = bindings[i]
                 data_turtle += `
                 <${item.concept.value}>
