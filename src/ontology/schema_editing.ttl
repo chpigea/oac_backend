@@ -54,6 +54,18 @@ ex:I12AdoptedBeliefShape_label # LABEL QUESITO DIAGNOSTICO
 	core:enableOptional "false"^^xsd:boolean ;
 	core:enableNegation "false"^^xsd:boolean .
 
+ex:E39Actor01Shape_label # LABEL ATTORI
+	sh:path rdfs:label ;
+	sh:name "Label attori" ;
+	sh:nodeKind sh:Literal ;
+	sh:datatype rdf:string ;
+	sh:maxCount 1 ;
+	sh:minCount 1 ;
+	dash:searchWidget core:NonSelectableProperty;
+	dash:propertyRole dash:LabelRole ;
+	core:enableOptional "false"^^xsd:boolean ;
+	core:enableNegation "false"^^xsd:boolean .
+
 ex:S13Sample01Shape_label # LABEL CAMPIONE
 	sh:path rdfs:label ;
 	sh:name "Label campione" ; 
@@ -137,10 +149,22 @@ ex:CP9BuildingMaterialShape_label # LABEL MATERIALE PREVALENTE COSTRUTTIVO - ELE
 	dash:propertyRole dash:LabelRole ;
 	core:enableOptional "false"^^xsd:boolean ;
 	core:enableNegation "false"^^xsd:boolean .
- 	
+
 ex:E7Activity02Shape_label # LABEL ATTIVITA' DIAGNOSTICA
 	sh:path rdfs:label ;
 	sh:name "Label attività diagnostica" ; 
+	sh:nodeKind sh:Literal ;
+	sh:datatype rdf:string ;
+	sh:maxCount 1 ;
+	sh:minCount 1 ;
+	dash:searchWidget core:NonSelectableProperty;
+	dash:propertyRole dash:LabelRole ;
+	core:enableOptional "false"^^xsd:boolean ;
+	core:enableNegation "false"^^xsd:boolean .
+
+ex:E55Type13Shape_label # LABEL ATTIVITA' (TIPOLOGIE)
+	sh:path rdfs:label ;
+	sh:name "Label attività" ; 
 	sh:nodeKind sh:Literal ;
 	sh:datatype rdf:string ;
 	sh:maxCount 1 ;
@@ -380,7 +404,7 @@ ex:E13AttributeAssignmentShape # OUTPUT
 		sh:name "Competenza attore" ;
     ] ;
 		sh:property ex:E13AttributeAssignmentShape_label .
-		
+
 ex:E18PhysicalThingShape # COMPONENTI SPECIFICI 
     a sh:NodeShape ;
     sh:targetClass crm:E18_Physical_Thing ;
@@ -500,7 +524,7 @@ ex:E70ThingShape # STRUMENTO
         sh:maxCount 1 ;
     ] ;
 		sh:property ex:E70ThingShape_label .
-		
+
 ex:E29DesignorProcedure03Shape # PROCEDURA 
     a sh:NodeShape ;
     sh:targetClass crm:E29_Design_or_Procedure ;
@@ -653,7 +677,7 @@ ex:S13Sample02Shape # SOTTOCAMPIONE
         sh:maxCount 1 ;
     ] ;
 		sh:property ex:S13Sample02Shape_label .
-		
+
 ex:S2SampleTaking01Shape # CAMPIONAMENTO
     a sh:NodeShape ;
     sh:targetClass j.0:S2_Sample_Taking ;
@@ -683,7 +707,7 @@ ex:S2SampleTaking01Shape # CAMPIONAMENTO
 		sh:maxCount 1 ;
     ] ;
 		sh:property ex:S2SampleTaking01Shape_label .
-		
+
 ex:S2SampleTaking02Shape # SOTTOCAMPIONAMENTO
     a sh:NodeShape ;
     sh:targetClass j.0:S2_Sample_Taking ;
@@ -1295,7 +1319,8 @@ ex:E39Actor01Shape # ATTORI COINVOLTI
         sh:node ex:E41Appellation01Shape ;
 		sh:name "Ente richiedente - Schedatore" ;
         sh:maxCount 1 ;
-    ] .
+    ] ;
+		sh:property ex:E39Actor01Shape_label .
 
 ex:E39Actor02Shape # AUTORE
     a sh:NodeShape ;
@@ -1676,7 +1701,8 @@ ex:E55Type13Shape # TIPOLOGIE ATTIVITA' (FASE ANALISI, PREPARAZIONE CAMPIONE, TE
 		sh:name "Tecnica diagnostica" ;
         sh:maxCount 1 ;
         sh:minCount 1 ; 
-    ] .
+    ] ;
+		sh:property ex:E55Type13Shape_label .
 
 ex:E55Type14Shape # TIPO MDALITA' INDAGINE
     a sh:NodeShape ;
@@ -1861,7 +1887,7 @@ ex:E62String17Shape # NOTE COMPONENTE SPECIFICO
 		sh:name "Note" ;
         sh:maxCount 1 ;
     ] .
-																	 
+
 ex:E62String18Shape # RUOLO ATTORE
     a sh:NodeShape ;
     sh:targetClass crm:E62_String ;
