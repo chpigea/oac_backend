@@ -1874,9 +1874,11 @@ PREFIX crm:  <http://www.cidoc-crm.org/cidoc-crm/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT (?concept AS ?uri) ?label (EXISTS { ?child crm:P127_has_broader_term ?concept } AS ?hasChildren)
 WHERE {
-    BIND(<http://diagnostica/vocabularies/tipo-indagine> AS ?concept)
+    BIND(<http://diagnostica/vocabularies/tipo-indagine> AS ?root)
+    ?concept crm:P127_has_broader_term ?root .
     OPTIONAL { ?concept rdfs:label ?label . }
-}""" .
+}
+ORDER BY ?id""" .
 
 # DATASOURCE DEI TERMINI DI VOCABOLARIO "TIPO QUESITO DIAGNOSTICO" (8)
 this:tree_root_tipo_quesito_diagnostico a datasources:SparqlTreeRootDatasource;
@@ -1885,9 +1887,11 @@ PREFIX crm:  <http://www.cidoc-crm.org/cidoc-crm/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT (?concept AS ?uri) ?label (EXISTS { ?child crm:P127_has_broader_term ?concept } AS ?hasChildren)
 WHERE {
-    BIND(<http://diagnostica/vocabularies/quesito-diagnostico> AS ?concept)
+    BIND(<http://diagnostica/vocabularies/quesito-diagnostico> AS ?root)
+    ?concept crm:P127_has_broader_term ?root .
     OPTIONAL { ?concept rdfs:label ?label . }
-}""" .
+}
+ORDER BY ?id""" .
 
 # DATASOURCE DEI TERMINI DI VOCABOLARIO "PROCESSO CAMPIONAMENTO" (17)
 this:tree_root_processo_campionamento a datasources:SparqlTreeRootDatasource;
@@ -1896,9 +1900,11 @@ PREFIX crm:  <http://www.cidoc-crm.org/cidoc-crm/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT (?concept AS ?uri) ?label (EXISTS { ?child crm:P127_has_broader_term ?concept } AS ?hasChildren)
 WHERE {
-    BIND(<http://diagnostica/vocabularies/processo-di-campionamento> AS ?concept)
+    BIND(<http://diagnostica/vocabularies/processo-di-campionamento> AS ?root)
+    ?concept crm:P127_has_broader_term ?root .
     OPTIONAL { ?concept rdfs:label ?label . }
-}""" .
+}
+ORDER BY ?id""" .
 
 # DATASOURCE DEI TERMINI DI VOCABOLARIO "DISSESTI STRUTTURALI" (25)
 this:tree_root_dissesti_strutturali a datasources:SparqlTreeRootDatasource;
@@ -1907,9 +1913,11 @@ PREFIX crm:  <http://www.cidoc-crm.org/cidoc-crm/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT (?concept AS ?uri) ?label (EXISTS { ?child crm:P127_has_broader_term ?concept } AS ?hasChildren)
 WHERE {
-    BIND(<http://diagnostica/vocabularies/dissesti-strutturali> AS ?concept)
+    BIND(<http://diagnostica/vocabularies/dissesti-strutturali> AS ?root)
+    ?concept crm:P127_has_broader_term ?root .
     OPTIONAL { ?concept rdfs:label ?label . }
-}""" .
+}
+ORDER BY ?id""" .
 
 # DATASOURCE DEI TERMINI DI VOCABOLARIO "COMPETENZA" (5)
 this:tree_root_competenza_attore a datasources:SparqlTreeRootDatasource;
@@ -1918,9 +1926,11 @@ PREFIX crm:  <http://www.cidoc-crm.org/cidoc-crm/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT (?concept AS ?uri) ?label (EXISTS { ?child crm:P127_has_broader_term ?concept } AS ?hasChildren)
 WHERE {
-    BIND(<http://diagnostica/vocabularies/competenza> AS ?concept)
+    BIND(<http://diagnostica/vocabularies/competenza> AS ?root)
+    ?concept crm:P127_has_broader_term ?root .
     OPTIONAL { ?concept rdfs:label ?label . }
-}""" .
+}
+ORDER BY ?id""" .
 
 # DATASOURCE DEI TERMINI DI VOCABOLARIO "UNITA' MISURA" (14)
 this:tree_root_unita_misura a datasources:SparqlTreeRootDatasource;
@@ -1929,9 +1939,11 @@ PREFIX crm:  <http://www.cidoc-crm.org/cidoc-crm/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT (?concept AS ?uri) ?label (EXISTS { ?child crm:P127_has_broader_term ?concept } AS ?hasChildren)
 WHERE {
-    BIND(<http://diagnostica/vocabularies/unita-di-misura> AS ?concept)
+    BIND(<http://diagnostica/vocabularies/unita-di-misura> AS ?root)
+    ?concept crm:P127_has_broader_term ?root .
     OPTIONAL { ?concept rdfs:label ?label . }
-}""" .
+}
+ORDER BY ?id""" .
 
 # DATASOURCE DEI TERMINI DI VOCABOLARIO "INQUADRAMENTO CRONOLOGICO" (9)
 this:tree_root_inquadramento_cronologico a datasources:SparqlTreeRootDatasource;
@@ -1940,9 +1952,11 @@ PREFIX crm:  <http://www.cidoc-crm.org/cidoc-crm/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT (?concept AS ?uri) ?label (EXISTS { ?child crm:P127_has_broader_term ?concept } AS ?hasChildren)
 WHERE {
-    BIND(<http://diagnostica/vocabularies/inquadramento-cronologico> AS ?concept)
+    BIND(<http://diagnostica/vocabularies/inquadramento-cronologico> AS ?root)
+    ?concept crm:P127_has_broader_term ?root .
     OPTIONAL { ?concept rdfs:label ?label . }
-}""" .
+}
+ORDER BY ?id""" .
 		
 # DATASOURCE DEI TERMINI DI VOCABOLARIO "DESCRIZIONE CAMPIONE" (4)
 this:tree_root_descrizione_campione a datasources:SparqlTreeRootDatasource;
@@ -1951,9 +1965,11 @@ PREFIX crm:  <http://www.cidoc-crm.org/cidoc-crm/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT (?concept AS ?uri) ?label (EXISTS { ?child crm:P127_has_broader_term ?concept } AS ?hasChildren)
 WHERE {
-    BIND(<http://diagnostica/vocabularies/descrizione-del-campione> AS ?concept)
+    BIND(<http://diagnostica/vocabularies/descrizione-del-campione> AS ?root)
+    ?concept crm:P127_has_broader_term ?root .
     OPTIONAL { ?concept rdfs:label ?label . }
-}""" .
+}
+ORDER BY ?id""" .
 
 # DATASOURCE DEI TERMINI DI VOCABOLARIO "NATURA OGGETTO" (26)
 this:tree_root_natura_oggetto a datasources:SparqlTreeRootDatasource;
@@ -1962,9 +1978,11 @@ PREFIX crm:  <http://www.cidoc-crm.org/cidoc-crm/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT (?concept AS ?uri) ?label (EXISTS { ?child crm:P127_has_broader_term ?concept } AS ?hasChildren)
 WHERE {
-    BIND(<http://diagnostica/vocabularies/natura-oggetto> AS ?concept)
+    BIND(<http://diagnostica/vocabularies/natura-oggetto> AS ?root)
+    ?concept crm:P127_has_broader_term ?root .
     OPTIONAL { ?concept rdfs:label ?label . }
-}""" .
+}
+ORDER BY ?id""" .
 
 # DATASOURCE DEI TERMINI DI VOCABOLARIO "TIPO INQUADRAMENTO CRONOLOGICO" (23)
 this:tree_root_tipo_inquadram_cronologico a datasources:SparqlTreeRootDatasource;
@@ -1973,9 +1991,11 @@ PREFIX crm:  <http://www.cidoc-crm.org/cidoc-crm/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT (?concept AS ?uri) ?label (EXISTS { ?child crm:P127_has_broader_term ?concept } AS ?hasChildren)
 WHERE {
-    BIND(<http://diagnostica/vocabularies/tipologia-inquadramento-cronologico> AS ?concept)
+    BIND(<http://diagnostica/vocabularies/tipologia-inquadramento-cronologico> AS ?root)
+    ?concept crm:P127_has_broader_term ?root .
     OPTIONAL { ?concept rdfs:label ?label . }
-}""" .
+}
+ORDER BY ?id""" .
 
 # DATASOURCE DEI TERMINI DI VOCABOLARIO "TIPO CONDIZIONE AMBIENTALE" (1)
 this:tree_root_tipo_condizione_ambientale a datasources:SparqlTreeRootDatasource;
@@ -1984,9 +2004,11 @@ PREFIX crm:  <http://www.cidoc-crm.org/cidoc-crm/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT (?concept AS ?uri) ?label (EXISTS { ?child crm:P127_has_broader_term ?concept } AS ?hasChildren)
 WHERE {
-    BIND(<http://diagnostica/vocabularies/condizioni-ambientali> AS ?concept)
+    BIND(<http://diagnostica/vocabularies/condizioni-ambientali> AS ?root)
+    ?concept crm:P127_has_broader_term ?root .
     OPTIONAL { ?concept rdfs:label ?label . }
-}""" .
+}
+ORDER BY ?id""" .
 		
 # DATASOURCE DEI TERMINI DI VOCABOLARIO "TIPO TAFONOMIA E STATO CONSERVAZIONE" (19)
 this:tree_root_tipo_tafonomia_stato_conservaz a datasources:SparqlTreeRootDatasource;
@@ -1995,9 +2017,11 @@ PREFIX crm:  <http://www.cidoc-crm.org/cidoc-crm/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT (?concept AS ?uri) ?label (EXISTS { ?child crm:P127_has_broader_term ?concept } AS ?hasChildren)
 WHERE {
-    BIND(<http://diagnostica/vocabularies/tafonomia-e-stato-di-conservazione> AS ?concept)
+    BIND(<http://diagnostica/vocabularies/tafonomia-e-stato-di-conservazione> AS ?root)
+    ?concept crm:P127_has_broader_term ?root .
     OPTIONAL { ?concept rdfs:label ?label . }
-}""" .
+}
+ORDER BY ?id""" .
 
 # DATASOURCE DEI TERMINI DI VOCABOLARIO "TIPO CONTESTO" (2)
 this:tree_root_tipo_contesto a datasources:SparqlTreeRootDatasource;
@@ -2006,9 +2030,11 @@ PREFIX crm:  <http://www.cidoc-crm.org/cidoc-crm/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT (?concept AS ?uri) ?label (EXISTS { ?child crm:P127_has_broader_term ?concept } AS ?hasChildren)
 WHERE {
-    BIND(<http://diagnostica/vocabularies/contesto> AS ?concept)
+    BIND(<http://diagnostica/vocabularies/contesto> AS ?root)
+    ?concept crm:P127_has_broader_term ?root .
     OPTIONAL { ?concept rdfs:label ?label . }
-}""" .
+}
+ORDER BY ?id""" .
 
 # DATASOURCE DEI TERMINI DI VOCABOLARIO "TIPO ELEMENTO COSTRUTTIVO" (6)
 this:tree_root_tipo_elemento_costruttivo a datasources:SparqlTreeRootDatasource;
@@ -2017,9 +2043,11 @@ PREFIX crm:  <http://www.cidoc-crm.org/cidoc-crm/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT (?concept AS ?uri) ?label (EXISTS { ?child crm:P127_has_broader_term ?concept } AS ?hasChildren)
 WHERE {
-    BIND(<http://diagnostica/vocabularies/elemento-costruttivo> AS ?concept)
+    BIND(<http://diagnostica/vocabularies/elemento-costruttivo> AS ?root)
+    ?concept crm:P127_has_broader_term ?root .
     OPTIONAL { ?concept rdfs:label ?label . }
-}""" .
+}
+ORDER BY ?id""" .
 		
 # DATASOURCE DEI TERMINI DI VOCABOLARIO "TIPO LUOGO ANALISI" (10)
 this:tree_root_tipo_luogo_analisi a datasources:SparqlTreeRootDatasource;
@@ -2028,9 +2056,11 @@ PREFIX crm:  <http://www.cidoc-crm.org/cidoc-crm/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT (?concept AS ?uri) ?label (EXISTS { ?child crm:P127_has_broader_term ?concept } AS ?hasChildren)
 WHERE {
-    BIND(<http://diagnostica/vocabularies/luogo-di-analisi> AS ?concept)
+    BIND(<http://diagnostica/vocabularies/luogo-di-analisi> AS ?root)
+    ?concept crm:P127_has_broader_term ?root .
     OPTIONAL { ?concept rdfs:label ?label . }
-}""" .
+}
+ORDER BY ?id""" .
 		
 # DATASOURCE DEI TERMINI DI VOCABOLARIO "FASE ANALISI" (7)
 this:tree_root_fase_analisi a datasources:SparqlTreeRootDatasource;
@@ -2039,9 +2069,11 @@ PREFIX crm:  <http://www.cidoc-crm.org/cidoc-crm/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT (?concept AS ?uri) ?label (EXISTS { ?child crm:P127_has_broader_term ?concept } AS ?hasChildren)
 WHERE {
-    BIND(<http://diagnostica/vocabularies/fase-di-analisi> AS ?concept)
+    BIND(<http://diagnostica/vocabularies/fase-di-analisi> AS ?root)
+    ?concept crm:P127_has_broader_term ?root .
     OPTIONAL { ?concept rdfs:label ?label . }
-}""" .
+}
+ORDER BY ?id""" .
 
 # DATASOURCE DEI TERMINI DI VOCABOLARIO "PREPARAZIONE CAMPIONE" (16)
 this:tree_root_preparazione_campione a datasources:SparqlTreeRootDatasource;
@@ -2050,9 +2082,11 @@ PREFIX crm:  <http://www.cidoc-crm.org/cidoc-crm/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT (?concept AS ?uri) ?label (EXISTS { ?child crm:P127_has_broader_term ?concept } AS ?hasChildren)
 WHERE {
-    BIND(<http://diagnostica/vocabularies/preparazione-campione> AS ?concept)
+    BIND(<http://diagnostica/vocabularies/preparazione-campione> AS ?root)
+    ?concept crm:P127_has_broader_term ?root .
     OPTIONAL { ?concept rdfs:label ?label . }
-}""" .
+}
+ORDER BY ?id""" .
 
 # DATASOURCE DEI TERMINI DI VOCABOLARIO "MEDIUM" (12)
 this:tree_root_tipo_medium a datasources:SparqlTreeRootDatasource;
@@ -2061,9 +2095,11 @@ PREFIX crm:  <http://www.cidoc-crm.org/cidoc-crm/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT (?concept AS ?uri) ?label (EXISTS { ?child crm:P127_has_broader_term ?concept } AS ?hasChildren)
 WHERE {
-    BIND(<http://diagnostica/vocabularies/medium> AS ?concept)
+    BIND(<http://diagnostica/vocabularies/medium> AS ?root)
+    ?concept crm:P127_has_broader_term ?root .
     OPTIONAL { ?concept rdfs:label ?label . }
-}""" .
+}
+ORDER BY ?id""" .
 
 # DATASOURCE DEI TERMINI DI VOCABOLARIO "INPUT" (24)
 this:tree_root_tipo_input a datasources:SparqlTreeRootDatasource;
@@ -2072,9 +2108,11 @@ PREFIX crm:  <http://www.cidoc-crm.org/cidoc-crm/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT (?concept AS ?uri) ?label (EXISTS { ?child crm:P127_has_broader_term ?concept } AS ?hasChildren)
 WHERE {
-    BIND(<http://diagnostica/vocabularies/input> AS ?concept)
+    BIND(<http://diagnostica/vocabularies/input> AS ?root)
+    ?concept crm:P127_has_broader_term ?root .
     OPTIONAL { ?concept rdfs:label ?label . }
-}""" .
+}
+ORDER BY ?id""" .
 
 # DATASOURCE DEI TERMINI DI VOCABOLARIO "OUTPUT" (15)
 this:tree_root_tipo_output a datasources:SparqlTreeRootDatasource;
@@ -2083,9 +2121,11 @@ PREFIX crm:  <http://www.cidoc-crm.org/cidoc-crm/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT (?concept AS ?uri) ?label (EXISTS { ?child crm:P127_has_broader_term ?concept } AS ?hasChildren)
 WHERE {
-    BIND(<http://diagnostica/vocabularies/output> AS ?concept)
+    BIND(<http://diagnostica/vocabularies/output> AS ?root)
+    ?concept crm:P127_has_broader_term ?root .
     OPTIONAL { ?concept rdfs:label ?label . }
-}""" .
+}
+ORDER BY ?id""" .
 	
 # DATASOURCE DEI TERMINI DI VOCABOLARIO "TIPO DEGRADO" (3)
 this:tree_root_tipo_degrado a datasources:SparqlTreeRootDatasource;
@@ -2094,9 +2134,11 @@ PREFIX crm:  <http://www.cidoc-crm.org/cidoc-crm/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT (?concept AS ?uri) ?label (EXISTS { ?child crm:P127_has_broader_term ?concept } AS ?hasChildren)
 WHERE {
-    BIND(<http://diagnostica/vocabularies/degrado> AS ?concept)
+    BIND(<http://diagnostica/vocabularies/degrado> AS ?root)
+    ?concept crm:P127_has_broader_term ?root .
     OPTIONAL { ?concept rdfs:label ?label . }
-}""" .
+}
+ORDER BY ?id""" .
 
 # DATASOURCE DEI TERMINI DI VOCABOLARIO "STRUMENTAZIONE" (18)
 this:tree_root_strumentazione a datasources:SparqlTreeRootDatasource;
@@ -2105,9 +2147,11 @@ PREFIX crm:  <http://www.cidoc-crm.org/cidoc-crm/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT (?concept AS ?uri) ?label (EXISTS { ?child crm:P127_has_broader_term ?concept } AS ?hasChildren)
 WHERE {
-    BIND(<http://diagnostica/vocabularies/strumentazione> AS ?concept)
+    BIND(<http://diagnostica/vocabularies/strumentazione> AS ?root)
+    ?concept crm:P127_has_broader_term ?root .
     OPTIONAL { ?concept rdfs:label ?label . }
-}""" .
+}
+ORDER BY ?id""" .
 
 # DATASOURCE DEI TERMINI DI VOCABOLARIO "MODALITA' INDAGINE" (13)
 this:tree_root_modalita_indagine a datasources:SparqlTreeRootDatasource;
@@ -2116,9 +2160,11 @@ PREFIX crm:  <http://www.cidoc-crm.org/cidoc-crm/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT (?concept AS ?uri) ?label (EXISTS { ?child crm:P127_has_broader_term ?concept } AS ?hasChildren)
 WHERE {
-    BIND(<http://diagnostica/vocabularies/modalita-di-indagine> AS ?concept)
+    BIND(<http://diagnostica/vocabularies/modalita-di-indagine> AS ?root)
+    ?concept crm:P127_has_broader_term ?root .
     OPTIONAL { ?concept rdfs:label ?label . }
-}""" .
+}
+ORDER BY ?id""" .
 
 # DATASOURCE DEI TERMINI DI VOCABOLARIO "TECNICA DIAGNOSTICA" (20)
 this:tree_root_tecnica_diagnostica a datasources:SparqlTreeRootDatasource;
@@ -2127,9 +2173,11 @@ PREFIX crm:  <http://www.cidoc-crm.org/cidoc-crm/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT (?concept AS ?uri) ?label (EXISTS { ?child crm:P127_has_broader_term ?concept } AS ?hasChildren)
 WHERE {
-    BIND(<http://diagnostica/vocabularies/tecnica-diagnostica> AS ?concept)
+    BIND(<http://diagnostica/vocabularies/tecnica-diagnostica> AS ?root)
+    ?concept crm:P127_has_broader_term ?root .
     OPTIONAL { ?concept rdfs:label ?label . }
-}""" .
+}
+ORDER BY ?id""" .
 
 # DATASOURCE DEI TERMINI DI VOCABOLARIO "TIPO CAMPIONE" (21)
 this:tree_root_tipo_campione a datasources:SparqlTreeRootDatasource;
@@ -2138,9 +2186,11 @@ PREFIX crm:  <http://www.cidoc-crm.org/cidoc-crm/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT (?concept AS ?uri) ?label (EXISTS { ?child crm:P127_has_broader_term ?concept } AS ?hasChildren)
 WHERE {
-    BIND(<http://diagnostica/vocabularies/tipo-campione> AS ?concept)
+    BIND(<http://diagnostica/vocabularies/tipo-campione> AS ?root)
+    ?concept crm:P127_has_broader_term ?root .
     OPTIONAL { ?concept rdfs:label ?label . }
-}""" .
+}
+ORDER BY ?id""" .
 
 # DATASOURCE DEI TERMINI DI VOCABOLARIO "TIPO MATERIALE" (11)
 this:tree_root_tipo_materiale a datasources:SparqlTreeRootDatasource;
@@ -2149,9 +2199,11 @@ PREFIX crm:  <http://www.cidoc-crm.org/cidoc-crm/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT (?concept AS ?uri) ?label (EXISTS { ?child crm:P127_has_broader_term ?concept } AS ?hasChildren)
 WHERE {
-    BIND(<http://diagnostica/vocabularies/materiale> AS ?concept)
+    BIND(<http://diagnostica/vocabularies/materiale> AS ?root)
+    ?concept crm:P127_has_broader_term ?root .
     OPTIONAL { ?concept rdfs:label ?label . }
-}""" .
+}
+ORDER BY ?id""" .
 
 
 # DATASOURCE DEI TERMINI DI VOCABOLARIO SUCCESSIVI 1° LIVELLO (vale per tutti i vocabolari)
@@ -2164,5 +2216,4 @@ WHERE {
     ?uri crm:P127_has_broader_term $node .
     OPTIONAL { ?uri rdfs:label ?label . }
 }
-ORDER BY ?label
-""" .    
+ORDER BY ?id""" .    
