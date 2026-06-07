@@ -76,7 +76,7 @@ module.exports = function(jwtLib){
         name: 'anonymous',
         surname: 'anonymous',
         username: 'anonymous',
-        email: 'anonymous@igea-soluzioni.it',
+        email: 'hd-lsd.dsdra@uniroma1.it',
         mobile: null,
         role: 3,
         is_active: true,
