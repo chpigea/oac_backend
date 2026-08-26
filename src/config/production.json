@@ -27,8 +27,7 @@
 		"port": 465,
 		"secure": true,
 		"auth": {
-			"user": "hd-lsd.dsdra@uniroma1.it",
-			"pass": "ChiaraAlessia2026"
+			"user": "hd-lsd.dsdra@uniroma1.it"
 		}
 	},
 	"exposed":{
