@@ -23,12 +23,11 @@
 	},
 	"jwt_secret": "@igea#",
 	"smtp": {
-		"host": "smtps.aruba.it",
+		"host": "mail.uniroma1.it",
 		"port": 465,
 		"secure": true,
 		"auth": {
-			"user": "hd-lsd.dsdra@uniroma1.it",
-			"pass": "ChiaraAlessia2026"
+			"user": "hd-lsd.dsdra@uniroma1.it"
 		}
 	},
 	"exposed":{
