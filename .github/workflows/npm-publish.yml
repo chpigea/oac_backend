@@ -75,14 +75,7 @@ jobs:
         
     - name: Show whoami to confirm auth
       run: npm whoami
-
-    - name: Check access to IGEA packages
-      run: |
-        echo "=== NPM USER ==="
-        npm whoami
-        echo "=== PACKAGE ACCESS ==="
-        npm access list packages igea armydef
-        
+       
     - name: Publish to npm
       run: npm publish --access public
       env:
