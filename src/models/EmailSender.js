@@ -3,7 +3,7 @@ const config = require('../config');
 const SMTP = config.smtp || {};
 
 class EmailSender {
-
+  
   static sendPasswordRecoveryEmail(userEmail, recoveryLink) {
     // Logic to send email
     console.log(`Sending password recovery email to ${userEmail} with link: ${recoveryLink}`);
