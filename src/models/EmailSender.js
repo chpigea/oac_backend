@@ -21,16 +21,16 @@ class EmailSender {
           host: SMTP.host,
           port: SMTP.port,
           secure: SMTP.secure, // true for 465, false for other ports
-          auth: {
-            user: SMTP.auth.user,
-            pass: SMTP.auth.pass,
-          }
+          //auth: {
+          //  user: SMTP.auth.user,
+          //  pass: SMTP.auth.pass,
+          //}
         }
         console.log(smtpOptions)
         let transporter = nodemailer.createTransport(smtpOptions);
         
         let mailOptions = {
-          from: `"OAC" <${SMTP.auth.user}>`, // sender address
+          from: `"OAC" <${SMTP.from}>`, // sender address
           to: email, // list of receivers
           subject: message.subject, // Subject line
           text: message.text, // plain text body

@@ -28,7 +28,8 @@
 		"secure": true,
 		"auth": {
 			"user": "hd-lsd.dsdra@uniroma1.it"
-		}
+		},
+		"from" : "hd-lsd.dsdra@uniroma1.it"
 	},
 	"exposed":{
 		"protocol": "http",
