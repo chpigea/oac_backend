@@ -25,7 +25,8 @@
 	"smtp": {
 		"host": "mail.uniroma1.it",
 		"port": 465,
-		"secure": true,
+		"secure": false,
+		"requireTLS": true,
 		"auth": {
 			"user": "hd-lsd.dsdra@uniroma1.it"
 		},
