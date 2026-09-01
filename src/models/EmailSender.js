@@ -21,6 +21,8 @@ class EmailSender {
           host: SMTP.host,
           port: SMTP.port,
           secure: SMTP.secure, // true for 465, false for other ports
+          requireTLS : SMTP.requireTLS,
+
           //auth: {
           //  user: SMTP.auth.user,
           //  pass: SMTP.auth.pass,
